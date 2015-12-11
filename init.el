@@ -10,6 +10,12 @@
 (add-to-list 'load-path "~/.emacs.d/elcustom/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
+;; redireccionar autosave
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 ;; require pkgs
 (require 'movelines)
 (require 'powerline)
@@ -19,7 +25,15 @@
 ;; configs
 (ac-config-default)
 (powerline-center-theme)
-(load-theme 'blackboard t)
+(load-theme 'seti t)
+(yas-global-mode 1)
+(setq inhibit-startup-message t)
+
+;; projectile+helm
+(setq projectile-completion-system 'helm)
+(setq projectile-keymap-prefix (kbd "M-p"))
+(projectile-global-mode)
+(helm-projectile-on)
 
 
 ;; powerline
@@ -39,3 +53,4 @@
 (global-set-key (kbd "C-x g") 'magit-status)  ;; Legacy
 (global-set-key [C-tab] 'other-window)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
+(global-set-key (kbd "C-c C-f") 'helm-projectile-find-file)

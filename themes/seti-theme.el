@@ -119,7 +119,7 @@
 (custom-theme-set-variables
  'seti
  
-  `(cursor-type 'bar)
+  `(cursor-type 'box) ;; i'm not really fond of bar
   `(ansi-color-names-vector [ ,background ,red ,green ,yellow ,blue ,purple ,blue ,text])
   `(ansi-term-color-vector [unspecified ,background ,red ,green ,yellow ,blue ,purple ,blue ,text])))
  
