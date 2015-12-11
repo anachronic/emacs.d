@@ -8,16 +8,25 @@
 
 ;; todos los .el custom
 (add-to-list 'load-path "~/.emacs.d/elcustom/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; require pkgs
 (require 'movelines)
 (require 'powerline)
 (require 'helm-config)
+(require 'helm-custom)
 
 ;; configs
 (ac-config-default)
-(powerline-default-theme)
-(helm-mode 1)
+(powerline-center-theme)
+(load-theme 'blackboard t)
+
+
+;; powerline
+(set-face-attribute 'mode-line nil
+		    :foreground "Gray"
+		    :background "#492b94"
+		    :box nil)
 
 ;; visual.
 (menu-bar-mode -1)
