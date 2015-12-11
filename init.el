@@ -9,8 +9,15 @@
 ;; todos los .el custom
 (add-to-list 'load-path "~/.emacs.d/elcustom/")
 
-;; moveline
+;; require pkgs
 (require 'movelines)
+(require 'powerline)
+(require 'helm-config)
+
+;; configs
+(ac-config-default)
+(powerline-default-theme)
+(helm-mode 1)
 
 ;; visual.
 (menu-bar-mode -1)
@@ -22,5 +29,4 @@
 (global-set-key (kbd "<f8>") 'magit-status)
 (global-set-key (kbd "C-x g") 'magit-status)  ;; Legacy
 (global-set-key [C-tab] 'other-window)
-
-
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
