@@ -9,7 +9,6 @@
 ;; todos los .el custom
 (add-to-list 'load-path "~/.emacs.d/elcustom/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets/")
 
 ;; redireccionar autosave
 (setq backup-directory-alist
@@ -32,6 +31,8 @@
 (setq inhibit-startup-message t)
 (autopair-global-mode)
 (yas-reload-all)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets/")
 
 ;; projectile+helm
 (setq projectile-completion-system 'helm)
