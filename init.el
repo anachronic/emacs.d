@@ -33,6 +33,7 @@
 (yas-reload-all)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets/")
+(show-paren-mode 1)
 
 ;; projectile+helm
 (setq projectile-completion-system 'helm)
