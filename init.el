@@ -22,9 +22,9 @@
 (require 'helm-config)
 (require 'helm-custom)
 (require 'autopair)
+(require 'setup-helm-gtags)
 
-;; configs
-(ac-config-default)
+;;;;;;;;;;;;;;;;;;;;;; configs
 (powerline-center-theme)
 (load-theme 'seti t)
 (yas-global-mode 1)
@@ -35,11 +35,19 @@
 (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets/")
 (show-paren-mode 1)
 
-;; projectile+helm
+
+;; projectile+helm+neotree
+(setq projectile-switch-project-action 'neotree-projectile-action)
 (setq projectile-completion-system 'helm)
 (setq projectile-keymap-prefix (kbd "M-p"))
 (projectile-global-mode)
 (helm-projectile-on)
+
+;; requires que tienen dependencias arriba
+(require 'setup-helm-gtags)
+(require 'setup-company)
+
+;;;;;;;;;;;;;;;;;;;;;;;; END config
 
 
 ;; powerline
@@ -61,3 +69,17 @@
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c C-f") 'helm-projectile-find-file)
 (global-set-key (kbd "<f9>") 'neotree-toggle)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   (quote
+    ((company-clang-arguments "-I/home/nsalas/forks/tarea3-algoritmos/src/")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
