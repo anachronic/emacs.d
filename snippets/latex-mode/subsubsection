@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: subsubsection
+# key: subsub
+# binding: direct-keybinding
+# --
+\subsubsection{${1:subsubsection}}
+$0

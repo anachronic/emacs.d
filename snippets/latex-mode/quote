@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: quote
+# key: qu
+# binding: direct-keybinding
+# --
+``$1''$0

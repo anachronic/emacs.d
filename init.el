@@ -9,6 +9,7 @@
 ;; todos los .el custom
 (add-to-list 'load-path "~/.emacs.d/elcustom/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets/")
 
 ;; redireccionar autosave
 (setq backup-directory-alist
@@ -21,6 +22,7 @@
 (require 'powerline)
 (require 'helm-config)
 (require 'helm-custom)
+(require 'autopair)
 
 ;; configs
 (ac-config-default)
@@ -28,6 +30,8 @@
 (load-theme 'seti t)
 (yas-global-mode 1)
 (setq inhibit-startup-message t)
+(autopair-global-mode)
+(yas-reload-all)
 
 ;; projectile+helm
 (setq projectile-completion-system 'helm)
@@ -54,3 +58,4 @@
 (global-set-key [C-tab] 'other-window)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c C-f") 'helm-projectile-find-file)
+(global-set-key (kbd "<f9>") 'neotree-toggle)
