@@ -2,6 +2,8 @@
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
@@ -17,7 +19,7 @@
       `((".*" ,temporary-file-directory t)))
 
 ;; require pkgs
-(require 'movelines)
+(require 'setup-lines)
 (require 'powerline)
 (require 'helm-config)
 (require 'helm-custom)
@@ -76,7 +78,8 @@
  ;; If there is more than one, they won't work right.
  '(safe-local-variable-values
    (quote
-    ((company-clang-arguments "-I/home/nsalas/forks/tarea3-algoritmos/src/")))))
+    ((company-clang-arguments "-I/home/nsalas/Projects/tarea3-algoritmos/src/")
+     (company-clang-arguments "-I/home/nsalas/forks/tarea3-algoritmos/src/")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

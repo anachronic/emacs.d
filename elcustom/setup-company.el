@@ -1,11 +1,30 @@
 (global-company-mode)
 
-(defun my/remove-semantic ()
+(defun my/custom-backends ()
   (setq company-backends (delete 'company-semantic company-backends))
+  (setq company-backends (delete 'company-capf company-backend))
   (add-to-list 'company-backends 'company-c-headers))
 
-(add-hook 'c-mode-hook 'my/remove-semantic)
-(add-hook 'c++-mode-hook 'my/remove-semantic)
+(setq-default company-backends
+	      '((company-bbdb
+		 company-nxml
+		 company-css
+		 company-eclim
+		 company-semantic
+		 company-clang
+		 company-xcode
+		 company-cmake
+		 company-dabbrev-code
+		 company-gtags
+		 company-etags
+		 company-keywords
+		 company-oddmuse
+		 company-files
+		 company-capf
+		 company-c-headers)))
+
+;(add-hook 'c-mode-hook 'my/custom-backends)
+;(add-hook 'c++-mode-hook 'my/custom-backends)
 
 (eval-after-load 'company
   '(progn
