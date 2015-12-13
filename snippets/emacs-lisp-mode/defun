@@ -1,7 +1,7 @@
-# -*- mode: snippet -*-
+# -*- mode: snippet; require-final-newline: nil -*-
 # name: defun
-# key: def
+# key: defun
+# binding: direct-keybinding
 # --
-(defun ${1:fun} (${2:args})
-  ${3:(interactive${4: "P"})}
+(defun ${1:funname} (${2:args})
   $0)

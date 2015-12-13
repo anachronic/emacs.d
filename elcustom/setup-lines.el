@@ -60,4 +60,9 @@
   (next-line arg))
 (global-set-key (kbd "C-d") 'duplicate-line)
 
+(defun my/custom-c-binds ()
+  (local-set-key (kbd "C-d") 'duplicate-line))
+(add-hook 'c-mode-hook 'my/custom-c-binds)
+(add-hook 'c++-mode-hook 'my/custom-c-binds)
+
 (provide 'setup-lines)

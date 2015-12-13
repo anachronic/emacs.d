@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: stdlib
-# key: stdlib
+# name: const char pointer
+# key: ccp
 # binding: direct-keybinding
 # --
-#include <stdlib.h>
+const char *$0
