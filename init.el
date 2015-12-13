@@ -1,4 +1,9 @@
-;; packages
+;;; package --- Summary
+;;; Commentary:
+;;
+;; I have nothing substantial to say here.
+;;
+;;; Code:
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
@@ -25,9 +30,13 @@
 (require 'helm-custom)
 (require 'autopair)
 (require 'setup-helm-gtags)
+(require 'setup-markdown-mode)
+(require 'setup-powerline)
+(require 'highlight-lines)
 
 ;;;;;;;;;;;;;;;;;;;;;; configs
 (powerline-center-theme)
+;(my-powerline-default-theme)
 (load-theme 'seti t)
 (yas-global-mode 1)
 (setq inhibit-startup-message t)
@@ -47,7 +56,9 @@
 
 ;; requires que tienen dependencias arriba
 (require 'setup-helm-gtags)
-(require 'setup-company)
+;(require 'setup-company)
+(require 'setup-autocomplete)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;; END config
 
@@ -89,3 +100,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
+(provide 'init)
+;;; init.el ends here
