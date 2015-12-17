@@ -5,13 +5,12 @@
   (add-to-list 'company-backends 'company-c-headers))
 
 (setq-default company-backends
-	      '((company-semantic
-		 company-bbdb
+	      '((company-bbdb
 		 company-nxml
 		 company-css
 		 company-eclim
 		 company-semantic
-		 company-clang
+		 company-c-headers
 		 company-xcode
 		 company-cmake
 		 company-dabbrev-code
@@ -20,8 +19,8 @@
 		 company-keywords
 		 company-oddmuse
 		 company-files
-		 company-capf
-		 company-c-headers)))
+		 company-semantic
+		 company-capf)))
 
 ;(add-hook 'c-mode-hook 'my/custom-backends)
 ;(add-hook 'c++-mode-hook 'my/custom-backends)

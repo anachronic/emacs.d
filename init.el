@@ -56,6 +56,7 @@
 
 ;; requires que tienen dependencias arriba
 (require 'setup-helm-gtags)
+(require 'setup-semantic)
 (require 'setup-company)
 ;(require 'setup-autocomplete)
 
@@ -95,3 +96,11 @@
  '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(safe-local-variable-values
+   (quote
+    ((company-clang-arguments "-I/home/nsalas/Projects/tarea3-algoritmos/src/")))))
