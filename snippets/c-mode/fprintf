@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: unistd
-# key: unistd
+# name: fprintf
+# key: fpr
 # binding: direct-keybinding
 # --
-#include <unistd.h>$0
+fprintf(${1:filepointer}, ${2:text}, ${3:variables});
+$0

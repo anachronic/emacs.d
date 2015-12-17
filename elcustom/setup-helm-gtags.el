@@ -23,6 +23,7 @@
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 (define-key helm-gtags-mode-map (kbd "C-c C-z") 'helm-gtags-find-tag)
 (define-key helm-gtags-mode-map (kbd "C-c z") 'helm-gtags-find-tag-from-here)
+(define-key helm-gtags-mode-map (kbd "C-c s") 'helm-gtags-find-pattern)
 
 
 (provide 'setup-helm-gtags)

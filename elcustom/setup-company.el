@@ -1,12 +1,12 @@
 (global-company-mode)
 
 (defun my/custom-backends ()
-  (setq company-backends (delete 'company-semantic company-backends))
   (setq company-backends (delete 'company-capf company-backend))
   (add-to-list 'company-backends 'company-c-headers))
 
 (setq-default company-backends
-	      '((company-bbdb
+	      '((company-semantic
+		 company-bbdb
 		 company-nxml
 		 company-css
 		 company-eclim

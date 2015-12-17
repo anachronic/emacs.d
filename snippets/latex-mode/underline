@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: unistd
-# key: unistd
+# name: underline
+# key: un
 # binding: direct-keybinding
 # --
-#include <unistd.h>$0
+\underline{$1}$0

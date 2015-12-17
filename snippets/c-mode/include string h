@@ -1,6 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: unistd
-# key: unistd
+# name: include string h
+# key: istring
 # binding: direct-keybinding
 # --
-#include <unistd.h>$0
+#include <string.h>
+$0

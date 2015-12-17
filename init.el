@@ -56,8 +56,8 @@
 
 ;; requires que tienen dependencias arriba
 (require 'setup-helm-gtags)
-;(require 'setup-company)
-(require 'setup-autocomplete)
+(require 'setup-company)
+;(require 'setup-autocomplete)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;; END config
@@ -82,18 +82,11 @@
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-c C-f") 'helm-projectile-find-file)
 (global-set-key (kbd "<f9>") 'neotree-toggle)
+(global-set-key (kbd "<f10>") 'ff-find-other-file)
+(global-set-key (kbd "C-;") 'iedit-mode)
+(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 
 
-;; emacs generated stuff
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values
-   (quote
-    ((company-clang-arguments "-I/home/nsalas/Projects/tarea3-algoritmos/src/")
-     (company-clang-arguments "-I/home/nsalas/forks/tarea3-algoritmos/src/")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
