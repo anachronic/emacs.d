@@ -1,16 +1,11 @@
 (global-company-mode)
 
-(defun my/custom-backends ()
-  (setq company-backends (delete 'company-capf company-backend))
-  (add-to-list 'company-backends 'company-c-headers))
-
 (setq-default company-backends
 	      '((company-bbdb
 		 company-nxml
 		 company-css
 		 company-eclim
 		 company-semantic
-		 company-c-headers
 		 company-yasnippet
 		 company-xcode
 		 company-cmake
@@ -22,8 +17,11 @@
 		 company-files
 		 company-capf)))
 
-;(add-hook 'c-mode-hook 'my/custom-backends)
-;(add-hook 'c++-mode-hook 'my/custom-backends)
+(defun my/company-add-c-headers ()
+  (add-to-list 'company-backends 'company-c-headers))
+
+(add-hook 'c-mode-hook 'my/company-add-c-headers)
+(add-hook 'c++-mode-hook 'my/company-add-c-headers)
 
 (eval-after-load 'company
   '(progn

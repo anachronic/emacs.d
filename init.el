@@ -34,6 +34,7 @@
 (require 'setup-powerline)
 (require 'highlight-lines)
 (require 'shell-pop)
+(require 'setup-c-compilation)
 
 ;;;;;;;;;;;;;;;;;;;;;; configs
 (powerline-center-theme)
@@ -47,6 +48,7 @@
 (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets/")
 (show-paren-mode 1)
 (pdf-tools-install)
+(setq gdb-many-windows t)
 
 
 ;; projectile+helm+neotree
