@@ -20,7 +20,6 @@
 		 company-keywords
 		 company-oddmuse
 		 company-files
-		 company-semantic
 		 company-capf)))
 
 ;(add-hook 'c-mode-hook 'my/custom-backends)
