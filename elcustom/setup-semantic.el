@@ -6,4 +6,11 @@
 
 (semantic-mode 1)
 
+(require 'stickyfunc-enhance)
+(defun my/c-stickyfunc ()
+  (global-semantic-stickyfunc-mode))
+
+(add-hook 'c-mode-hook 'my/c-stickyfunc)
+(add-hook 'c++-mode-hook 'my/c-stickyfunc)
+
 (provide 'setup-semantic)

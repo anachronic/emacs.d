@@ -11,6 +11,7 @@
 		 company-eclim
 		 company-semantic
 		 company-c-headers
+		 company-yasnippet
 		 company-xcode
 		 company-cmake
 		 company-dabbrev-code
