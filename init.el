@@ -62,8 +62,12 @@
 (require 'setup-helm-gtags)
 (require 'setup-semantic)
 (require 'setup-company)
-;(require 'setup-autocomplete)
 
+
+(defun my/wrap-the-buffer ()
+  (visual-line-mode))
+
+(add-hook 'Man-mode-hook 'my/wrap-the-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;; END config
 
@@ -90,6 +94,11 @@
 (global-set-key (kbd "<f10>") 'ff-find-other-file)
 (global-set-key (kbd "C-;") 'iedit-mode)
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+
+(global-unset-key (kbd "C-z")) ; suspend was the most annoying thing ever
+(global-set-key (kbd "C-z") 'undo)
+
+
 
 
 (custom-set-faces
