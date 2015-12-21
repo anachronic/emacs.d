@@ -57,6 +57,7 @@
 (setq projectile-keymap-prefix (kbd "M-p"))
 (projectile-global-mode)
 (helm-projectile-on)
+(smex-initialize)
 
 ;; requires que tienen dependencias arriba
 (require 'setup-helm-gtags)
@@ -94,6 +95,8 @@
 (global-set-key (kbd "<f10>") 'ff-find-other-file)
 (global-set-key (kbd "C-;") 'iedit-mode)
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-S-<SPC>") 'company-complete) ;; C-SPC is classic, but its bound to mark, which i actually use
 
 (global-unset-key (kbd "C-z")) ; suspend was the most annoying thing ever
 (global-set-key (kbd "C-z") 'undo)
@@ -116,9 +119,9 @@
  ;; If there is more than one, they won't work right.
  '(company-backends
    (quote
-    ((company-semantic company-yasnippet)
-     company-bbdb company-nxml company-css company-eclim company-xcode company-cmake company-capf
-     (company-dabbrev-code company-gtags company-etags company-keywords)
+    (company-bbdb company-semantic company-elisp company-nxml
+		  company-css company-eclim company-xcode company-cmake company-capf company-yasnippet
+		  (company-dabbrev-code company-gtags company-etags company-keywords)
      company-oddmuse company-files)))
  '(erc-nick "anachronic")
  '(pdf-view-display-size (quote fit-height))
