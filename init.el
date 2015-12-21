@@ -63,7 +63,7 @@
 (require 'setup-semantic)
 (require 'setup-company)
 
-
+;; Make man pages wrap the buffer so it's readable in potentially small windows
 (defun my/wrap-the-buffer ()
   (visual-line-mode))
 
