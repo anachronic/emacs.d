@@ -114,6 +114,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-backends
+   (quote
+    ((company-semantic company-yasnippet)
+     company-bbdb company-nxml company-css company-eclim company-xcode company-cmake company-capf
+     (company-dabbrev-code company-gtags company-etags company-keywords)
+     company-oddmuse company-files)))
  '(erc-nick "anachronic")
  '(pdf-view-display-size (quote fit-height))
  '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
