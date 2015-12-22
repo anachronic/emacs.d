@@ -26,6 +26,7 @@
 ;; require pkgs
 (require 'setup-lines)
 (require 'powerline)
+(require 'expand-region)
 (require 'helm-config)
 (require 'helm-custom)
 (require 'autopair)
@@ -49,6 +50,7 @@
 (show-paren-mode 1)
 (pdf-tools-install)
 (setq gdb-many-windows t)
+(pending-delete-mode 1)
 
 
 ;; projectile+helm+neotree
@@ -97,6 +99,7 @@
 (global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-S-<SPC>") 'company-complete) ;; C-SPC is classic, but its bound to mark, which i actually use
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 (global-unset-key (kbd "C-z")) ; suspend was the most annoying thing ever
 (global-set-key (kbd "C-z") 'undo)
