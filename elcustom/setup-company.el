@@ -14,4 +14,9 @@
 (setq company-idle-delay 0.3)
 (company-statistics-mode)
 
+(defun my/company-add-jedi ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/company-add-jedi)
+
 (provide 'setup-company)
