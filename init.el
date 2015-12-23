@@ -25,21 +25,20 @@
 
 ;; require pkgs
 (require 'setup-lines)
-(require 'powerline)
+;(require 'powerline)
 (require 'expand-region)
 (require 'helm-config)
 (require 'helm-custom)
 (require 'autopair)
 (require 'setup-helm-gtags)
 (require 'setup-markdown-mode)
-(require 'setup-powerline)
 (require 'highlight-lines)
 (require 'shell-pop)
 (require 'setup-c-compilation)
+(require 'setup-python)
 
 ;;;;;;;;;;;;;;;;;;;;;; configs
 (powerline-center-theme)
-;(my-powerline-default-theme)
 (load-theme 'seti t)
 (yas-global-mode 1)
 (setq inhibit-startup-message t)
@@ -74,12 +73,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;; END config
 
-
-;; powerline
-(set-face-attribute 'mode-line nil
-		    :foreground "Gray"
-		    :background "#492b94"
-		    :box nil)
 
 ;; visual.
 (menu-bar-mode -1)
@@ -122,10 +115,12 @@
  ;; If there is more than one, they won't work right.
  '(company-backends
    (quote
-    (company-bbdb company-semantic company-elisp company-nxml
-		  company-css company-eclim company-xcode company-cmake company-capf company-yasnippet
+    (company-bbdb company-semantic company-elisp company-nxml company-css company-eclim company-xcode company-cmake company-capf company-yasnippet
 		  (company-dabbrev-code company-gtags company-etags company-keywords)
-     company-oddmuse company-files)))
+		  company-oddmuse company-files)))
+ '(custom-safe-themes
+   (quote
+    ("79a3f477ac0cb4a106f78b6109614e991564a5c2467c36e6e854d4bc1102e178" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(erc-nick "anachronic")
  '(pdf-view-display-size (quote fit-height))
  '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
