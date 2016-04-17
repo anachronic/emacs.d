@@ -13,6 +13,27 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
+;; custom wtvr
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-backends
+   (quote
+    (company-bbdb company-semantic company-elisp company-nxml company-css company-eclim company-xcode company-cmake company-capf company-yasnippet
+		  (company-dabbrev-code company-gtags company-etags company-keywords)
+		  company-oddmuse company-files)))
+ '(custom-safe-themes
+   (quote
+    ("79a3f477ac0cb4a106f78b6109614e991564a5c2467c36e6e854d4bc1102e178" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(erc-nick "anachronic")
+ '(pdf-view-display-size (quote fit-height))
+ '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
+ '(shell-pop-universal-key "<f5>")
+ '(shell-pop-window-position "right")
+ '(shell-pop-window-size 50))
+
 ;; todos los .el custom
 (add-to-list 'load-path "~/.emacs.d/elcustom/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -36,10 +57,12 @@
 (require 'shell-pop)
 (require 'setup-c-compilation)
 (require 'setup-python)
+(require 'linum-relative)
 
 ;;;;;;;;;;;;;;;;;;;;;; configs
 (powerline-center-theme)
-(load-theme 'seti t)
+;(load-theme 'seti t)
+(load-theme 'abyss t)
 (yas-global-mode 1)
 (setq inhibit-startup-message t)
 (autopair-global-mode)
@@ -59,6 +82,9 @@
 (projectile-global-mode)
 (helm-projectile-on)
 (smex-initialize)
+
+;; linum-relative
+(global-linum-mode)
 
 ;; requires que tienen dependencias arriba
 (require 'setup-helm-gtags)
@@ -108,22 +134,3 @@
  '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
 (provide 'init)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-backends
-   (quote
-    (company-bbdb company-semantic company-elisp company-nxml company-css company-eclim company-xcode company-cmake company-capf company-yasnippet
-		  (company-dabbrev-code company-gtags company-etags company-keywords)
-		  company-oddmuse company-files)))
- '(custom-safe-themes
-   (quote
-    ("79a3f477ac0cb4a106f78b6109614e991564a5c2467c36e6e854d4bc1102e178" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
- '(erc-nick "anachronic")
- '(pdf-view-display-size (quote fit-height))
- '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
- '(shell-pop-universal-key "<f5>")
- '(shell-pop-window-position "right")
- '(shell-pop-window-size 50))
