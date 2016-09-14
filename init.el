@@ -28,6 +28,7 @@
    (quote
     ("79a3f477ac0cb4a106f78b6109614e991564a5c2467c36e6e854d4bc1102e178" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(erc-nick "anachronic")
+ '(linum-relative-current-symbol "")
  '(pdf-view-display-size (quote fit-height))
  '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
  '(shell-pop-universal-key "<f5>")
@@ -46,14 +47,13 @@
 
 ;; require pkgs
 (require 'setup-lines)
-;(require 'powerline)
 (require 'expand-region)
 (require 'helm-config)
 (require 'helm-custom)
 (require 'autopair)
 (require 'setup-helm-gtags)
 (require 'setup-markdown-mode)
-(require 'highlight-lines)
+;; (require 'highlight-lines)
 (require 'shell-pop)
 (require 'setup-c-compilation)
 (require 'setup-python)
@@ -62,7 +62,7 @@
 ;;;;;;;;;;;;;;;;;;;;;; configs
 (powerline-center-theme)
 ;(load-theme 'seti t)
-(load-theme 'abyss t)
+(load-theme 'atom-one-dark t)
 (yas-global-mode 1)
 (setq inhibit-startup-message t)
 (autopair-global-mode)
@@ -73,6 +73,8 @@
 (pdf-tools-install)
 (setq gdb-many-windows t)
 (pending-delete-mode 1)
+(setq scroll-step 1) ; Just use Ctrl-L to readjust the screen.
+(global-hl-line-mode)
 
 
 ;; projectile+helm+neotree
@@ -85,6 +87,17 @@
 
 ;; linum-relative
 (global-linum-mode)
+
+
+;; Using AUCTeX with Evince.
+(require 'evince-synctex)
+
+;; Recent Files.
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key (kbd "C-S-x C-S-f") 'helm-recentf)
+
 
 ;; requires que tienen dependencias arriba
 (require 'setup-helm-gtags)
@@ -119,12 +132,14 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-S-<SPC>") 'company-complete) ;; C-SPC is classic, but its bound to mark, which i actually use
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-S-d") 'kill-whole-line)
 
 (global-unset-key (kbd "C-z")) ; suspend was the most annoying thing ever
 (global-set-key (kbd "C-z") 'undo)
 
 
 
+(setq-default cursor-type 'bar)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
