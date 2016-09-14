@@ -128,7 +128,10 @@
 (global-set-key (kbd "<f9>") 'neotree-toggle)
 (global-set-key (kbd "<f10>") 'ff-find-other-file)
 (global-set-key (kbd "C-;") 'iedit-mode)
-(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+(global-set-key (kbd "M-;") (lambda (lines)
+			      (interactive "P")
+			      (call-interactively 'evilnc-comment-or-uncomment-lines)
+			      (call-interactively 'forward-line)))
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-S-<SPC>") 'company-complete) ;; C-SPC is classic, but its bound to mark, which i actually use
 (global-set-key (kbd "C-=") 'er/expand-region)
