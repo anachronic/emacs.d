@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: empheq
+# key: emeq
+# binding: direct-keybinding
+# --
+\begin{empheq}[box=\mymath]{equation*}
+$1
+\end{empheq}
+$0

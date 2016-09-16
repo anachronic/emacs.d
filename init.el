@@ -30,6 +30,7 @@
  '(erc-nick "anachronic")
  '(linum-relative-current-symbol "")
  '(pdf-view-display-size (quote fit-height))
+ '(send-mail-function (quote smtpmail-send-it))
  '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
  '(shell-pop-universal-key "<f5>")
  '(shell-pop-window-position "right")
@@ -88,6 +89,9 @@
 ;; linum-relative
 (global-linum-mode)
 
+
+;; Mail conf: I DO NOT PROVIDE THIS FILE
+(require 'mailconf)
 
 ;; Using AUCTeX with Evince.
 (require 'evince-synctex)
