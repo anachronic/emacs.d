@@ -66,6 +66,27 @@
   (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
   (define-key company-active-map [tab] 'company-complete-common-or-cycle))
 
+;; Some help can't hurt
+(use-package company-quickhelp
+  :ensure t
+  :init
+  (company-quickhelp-mode 1))
+
+;; Helm fuzzy mode doesn't seem to be as good as smex...
+(use-package smex
+  :ensure t
+  :init
+  (smex-initialize)
+  :bind (("M-x" . smex)
+	 ("M-X" . smex-major-mode-commands)))
+
+;; Autopair lets you code with no worries.
+;; *especially* elisp, or any lisp based programming language
+(use-package autopair
+  :ensure t
+  :init
+  (autopair-global-mode))
+
 
 
 
