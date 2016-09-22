@@ -53,8 +53,18 @@
 
 ;; Magit is critical for any developer
 (use-package magit
+  :ensure t
   :bind ("<f8>" . magit-status))
 
+;; Company: Not much customization right now.
+(use-package company
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-idle-delay 0.3)
+  (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+  (define-key company-active-map [tab] 'company-complete-common-or-cycle))
 
 
 
