@@ -42,9 +42,6 @@
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
   (define-key helm-map (kbd "C-z") 'helm-select-action))
 
-;; Visual configuration. Here you'll find stuff about how Emacs looks
-(require 'setup-ui)
-
 ;; Recentf is small enough. We set it up right here.
 (require 'recentf)
 (recentf-mode 1)
@@ -89,9 +86,6 @@
   (autopair-global-mode)
   :diminish "")
 
-;; Along with autopair, we want to see the matching paren
-(show-paren-mode 1)
-
 ;; YASnippet, always so handy...
 (use-package yasnippet
   :ensure t
@@ -99,6 +93,14 @@
   :init
   (yas-global-mode 1))
 
+;; Markdown mode
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
 
 
@@ -107,6 +109,19 @@
 
 
 
+
+;; We have all our modes set.
+;; Simple config goes hardcoded here.
+;; Grouped configuration files can be found in ./elisp
+
+;; Add stuff to text so you get visual aid when coding
+(require 'setup-editor)
+
+;; Visual configuration. Here you'll find stuff about how Emacs looks
+(require 'setup-ui)
+
+;; Renaming an open buffer file.
+(require 'renamefile)
 
 
 (custom-set-variables
