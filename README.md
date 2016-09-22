@@ -22,12 +22,16 @@ You can now see why I don't provide them, and why this is not a big deal. The co
 
 They should now autoinstall:
 
-* Magit
-* company
-* helm
-* recentf (with config and helm...)
+* Magit for Git
+* company for autocompletion
+* helm for a nice way to input stuff
+* recentf (with config and helm...) for finding recently used files
+* smex for a *good* fuzzy M-x
+* company-quickhelp for documentation
+* autopair for smooth and good coding
+* YASnippet for faster coding with snippets
 
-I will include some more overtime.
+I will include some more over time.
 
 ## What is this good for?
 

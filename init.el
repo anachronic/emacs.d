@@ -64,7 +64,8 @@
   :config
   (setq company-idle-delay 0.3)
   (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
-  (define-key company-active-map [tab] 'company-complete-common-or-cycle))
+  (define-key company-active-map [tab] 'company-complete-common-or-cycle)
+  :diminish "comp")
 
 ;; Some help can't hurt
 (use-package company-quickhelp
@@ -85,8 +86,18 @@
 (use-package autopair
   :ensure t
   :init
-  (autopair-global-mode))
+  (autopair-global-mode)
+  :diminish "")
 
+;; Along with autopair, we want to see the matching paren
+(show-paren-mode 1)
+
+;; YASnippet, always so handy...
+(use-package yasnippet
+  :ensure t
+  :defer t
+  :init
+  (yas-global-mode 1))
 
 
 
