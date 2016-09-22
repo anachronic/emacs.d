@@ -1,8 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: typedef struct
-# key: tstruct
-# binding: direct-keybinding
-# --
-typedef struct {
-  $0
-} ${1:name};

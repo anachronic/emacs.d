@@ -1,9 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: equationresult
-# key: eqres
-# binding: direct-keybinding
-# --
-\begin{empheq}[box=\tcbhighmath]{equation*}
-    $1
-\end{empheq}
-$0

@@ -1,7 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: fprintf
-# key: fpr
-# binding: direct-keybinding
-# --
-fprintf(${1:filepointer}, ${2:text}, ${3:variables});
-$0

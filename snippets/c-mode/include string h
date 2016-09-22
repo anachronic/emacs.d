@@ -1,7 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: include string h
-# key: istring
-# binding: direct-keybinding
-# --
-#include <string.h>
-$0

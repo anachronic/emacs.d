@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: struct pointer
-# key: sp
-# binding: direct-keybinding
-# --
-struct $1 *$0

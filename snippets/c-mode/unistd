@@ -1,6 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: unistd
-# key: unistd
-# binding: direct-keybinding
-# --
-#include <unistd.h>$0
