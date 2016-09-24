@@ -70,6 +70,11 @@
   :init
   (company-quickhelp-mode 1))
 
+;; Company statistics. I do use this a lot, maybe i should't be coding like I do...
+(use-package company-statistics
+  :ensure t
+  :commands company-statistics-mode)
+
 ;; Helm fuzzy mode doesn't seem to be as good as smex...
 (use-package smex
   :ensure t
@@ -102,11 +107,60 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+;; Undo-Tree for real undo/redo commands
+(use-package undo-tree
+  :ensure t
+  :diminish ""
+  :init
+  (global-undo-tree-mode 1)
+  :bind
+  (("C-z" . undo)
+   ("C-S-z" . undo-tree-redo)))
+
+;;;;; At this point I feel like im just copying people..
+;;;;; thats fine though
+
+;; ace-window from Howard Abrams. I hear its nice
+(use-package ace-window
+  :ensure t
+  :init
+  (global-set-key (kbd "C-x o") 'ace-window))
+
+;; Projectile, for projects
+(use-package projectile
+  :ensure t
+  :init
+  (setq projectile-keymap-prefix (kbd "M-p"))
+  (setq projectile-completion-system 'helm)
+  (projectile-global-mode)
+  :config
+  (setq projectile-enable-caching t))
+
+
+;; Flycheck. What's an editor without error checking?
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode)
+  :diminish "Fchk")
+
+;; AUCTeX: This is critical for me and LaTeX
+(use-package auctex
+  :ensure t
+  :mode ("\\.tex\\'" . latex-mode)
+  :commands (latex-mode LaTeX-mode plain-tex-mode)
+  :init
+  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+  (setq TeX-auto-save t))
 
 
 
 
 
+
+
+
+;; load the latest theme.
 
 
 
@@ -129,7 +183,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (helm use-package))))
+ '(package-selected-packages
+   (quote
+    (auctex flycheck company-statistics helm use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

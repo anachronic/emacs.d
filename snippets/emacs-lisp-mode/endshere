@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: endshere
+# key: foot
+# --
+;;; $1.el ends here$0
