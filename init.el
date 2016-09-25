@@ -153,6 +153,11 @@
   (add-hook 'LaTeX-mode-hook 'visual-line-mode)
   (setq TeX-auto-save t))
 
+;; yaml-mode. mainly for syntax highlighting
+(use-package yaml-mode
+  :ensure t ;; seems like overkill
+  :init
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
 
 

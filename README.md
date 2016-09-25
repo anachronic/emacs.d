@@ -26,10 +26,18 @@ They should now autoinstall:
 * company for autocompletion
 * helm for a nice way to input stuff
 * recentf (with config and helm...) for finding recently used files
-* smex for a *good* fuzzy M-x
+* smex for a **good** fuzzy M-x
 * company-quickhelp for documentation
 * autopair for smooth and good coding
 * YASnippet for faster coding with snippets
+* Flycheck for linting
+* AUCTeX for latex editing, compiling and previewing
+* yaml-mode for .yml files.
+* ace-window for window quick navigating
+* Markdown-mode for editing files like this one.
+* Undo-Tree mainly for the redo action
+* Projectile for project managing.
+* Caroline theme.
 
 I will include some more over time.
 
