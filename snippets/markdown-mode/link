@@ -1,5 +1,4 @@
-# -*- mode: snippet -*-
-# name: link
-# key: link
+#name : Link
+#contributor: Peng Deng <dengpeng@gmail.com>
 # --
-[${1:visible name}](${2:url})$0
+[${1:Link Text}](${2:URL} $3) $0

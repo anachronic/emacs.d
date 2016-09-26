@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: long double
+# key: ld
+# binding: direct-keybinding
+# --
+long double $0

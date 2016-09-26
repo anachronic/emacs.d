@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: const char pointer
+# key: ccp
+# binding: direct-keybinding
+# --
+const char *$0

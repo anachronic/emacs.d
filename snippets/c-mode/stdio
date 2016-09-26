@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: stdio
+# key: stdio
+# binding: direct-keybinding
+# --
+#include <stdio.h>
+$0

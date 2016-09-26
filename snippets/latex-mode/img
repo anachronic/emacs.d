@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: img
+# key: img
+# binding: direct-keybinding
+# --
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.5]{$1}
+\end{center}
+\end{figure}
+
+$0

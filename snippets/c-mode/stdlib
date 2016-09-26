@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: stdlib
+# key: stdlib
+# binding: direct-keybinding
+# --
+#include <stdlib.h>

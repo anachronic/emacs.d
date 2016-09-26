@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: verbatim
+# key: verb
+# binding: direct-keybinding
+# --
+\begin{verbatim}
+$0
+\end{verbatim}
