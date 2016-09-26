@@ -34,12 +34,12 @@
 (use-package helm
   :ensure t
   :init 
-  (helm-mode 1)
-  (require 'helm-config)
   (setq helm-mode-fuzzy-match t)
   :bind (("C-x C-f" . helm-find-files)
 	 ("M-y" . helm-show-kill-ring))
   :config
+  (helm-mode 1)
+  (require 'helm-config)
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
   (define-key helm-map (kbd "C-z") 'helm-select-action))
 
@@ -68,7 +68,7 @@
 ;; Some help can't hurt
 (use-package company-quickhelp
   :ensure t
-  :init
+  :config
   (company-quickhelp-mode 1))
 
 ;; Company statistics. I do use this a lot, maybe i should't be coding like I do...
@@ -79,7 +79,7 @@
 ;; Helm fuzzy mode doesn't seem to be as good as smex...
 (use-package smex
   :ensure t
-  :init
+  :config
   (smex-initialize)
   :bind (("M-x" . smex)
 	 ("M-X" . smex-major-mode-commands)))
