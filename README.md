@@ -38,6 +38,8 @@ They should now autoinstall:
 * Undo-Tree mainly for the redo action
 * Projectile for project managing.
 * Caroline theme.
+* nlinum-relative for better navigation.
+* expand-region for cool selection
 
 I will include some more over time.
 

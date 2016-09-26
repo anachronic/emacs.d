@@ -37,7 +37,8 @@
   (helm-mode 1)
   (require 'helm-config)
   (setq helm-mode-fuzzy-match t)
-  :bind (("C-x C-f" . helm-find-files))
+  :bind (("C-x C-f" . helm-find-files)
+	 ("M-y" . helm-show-kill-ring))
   :config
   (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
   (define-key helm-map (kbd "C-z") 'helm-select-action))
@@ -160,7 +161,21 @@
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
 
+;; expand region. An *excellent* tool.
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . er/expand-region))
 
+;; smart forward. I hear its nice.
+;; Actually my current navigation tools kind of suck. Let's have a look
+(use-package smart-forward
+  :init
+  (require 'expand-region)
+  (global-set-key (kbd "M-<up>") 'smart-up)
+  (global-set-key (kbd "M-<down>") 'smart-down)
+  (global-set-key (kbd "M-<left>") 'smart-backward)
+  (global-set-key (kbd "M-<right>") 'smart-forward)
+  :ensure t)
 
 
 
@@ -190,7 +205,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (auctex flycheck company-statistics helm use-package))))
+    (linum-relative auctex flycheck company-statistics helm use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

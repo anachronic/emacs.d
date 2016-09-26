@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: em
+# key: em
+# --
+*$1*$0
