@@ -205,7 +205,9 @@
 ;; Renaming an open buffer file.
 (require 'renamefile)
 
-;; Need an org mode config.
+;; Need an org mode config file. For now it's small but I'm sure it'll
+;; get bigger.
+(require 'setup-org)
 
 ;; load the latest theme.
 (load-theme 'avk-darkblue-white t)
@@ -214,7 +216,7 @@
 (use-package powerline
   :ensure t
   :config
-  (powerline-center-theme))0
+  (powerline-center-theme))
 
 
 
