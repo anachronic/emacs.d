@@ -33,15 +33,16 @@
 ;; Completion is HISTORICALLY bound to TAB on almost ANY editor. So we do that here.
 (use-package helm
   :ensure t
-  :init 
-  (setq helm-mode-fuzzy-match t)
   :bind (("C-x C-f" . helm-find-files)
 	 ("M-y" . helm-show-kill-ring))
   :config
-  (helm-mode 1)
-  (require 'helm-config)
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-  (define-key helm-map (kbd "C-z") 'helm-select-action))
+  (progn
+    (helm-mode 1)
+    (setq helm-mode-fuzzy-match t)
+    (require 'helm-config)
+    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-z") 'helm-select-action))
+  :diminish "")
 
 ;; Recentf is small enough. We set it up right here.
 (require 'recentf)
@@ -52,7 +53,8 @@
 ;; Magit is critical for any developer
 (use-package magit
   :ensure t
-  :bind ("<f8>" . magit-status))
+  :bind (("<f8>" . magit-status)
+	 ("s-t" . magit-status)))
 
 ;; Company: Not much customization right now.
 (use-package company
@@ -60,10 +62,12 @@
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   :config
-  (setq company-idle-delay 0.3)
-  (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
-  (define-key company-active-map [tab] 'company-complete-common-or-cycle)
-  :diminish "comp")
+  (progn
+    (setq company-idle-delay 0.3)
+    (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+    (define-key company-active-map [tab] 'company-complete-common-or-cycle))
+  :diminish "comp"
+  :bind (("C-S-<SPC>" . company-complete)))
 
 ;; Some help can't hurt
 (use-package company-quickhelp
@@ -74,7 +78,10 @@
 ;; Company statistics. I do use this a lot, maybe i should't be coding like I do...
 (use-package company-statistics
   :ensure t
-  :commands company-statistics-mode)
+  :config
+  (company-statistics-mode))
+
+
 
 ;; Helm fuzzy mode doesn't seem to be as good as smex...
 (use-package smex
@@ -96,8 +103,14 @@
 (use-package yasnippet
   :ensure t
   :defer t
+  :diminish yas-minor-mode ;; well, this is always on, so..
   :init
-  (yas-global-mode 1))
+  (yas-global-mode 1)
+  :config
+  (progn
+    (yas-reload-all)
+    (define-key yas-minor-mode-map (kbd "C-<return>") 'yas-exit-snippet)
+    (define-key yas-minor-mode-map (kbd "<escape>") 'yas-exit-snippet)))
 
 ;; Markdown mode
 (use-package markdown-mode
@@ -131,28 +144,26 @@
 (use-package projectile
   :ensure t
   :init
-  (setq projectile-keymap-prefix (kbd "M-p"))
-  (setq projectile-completion-system 'helm)
-  (projectile-global-mode)
+  (progn
+    (setq projectile-keymap-prefix (kbd "M-p"))
+    (setq projectile-completion-system 'helm)
+    (projectile-global-mode))
   :config
-  (setq projectile-enable-caching t))
+  (setq projectile-enable-caching t)
+  :diminish "Pr")
 
 
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
   :ensure t
   :init
-  (global-flycheck-mode)
-  :diminish "Fchk")
+  (global-flycheck-mode))
 
 ;; AUCTeX: This is critical for me and LaTeX
 (use-package auctex
   :ensure t
   :mode ("\\.tex\\'" . latex-mode)
-  :commands (latex-mode LaTeX-mode plain-tex-mode)
-  :init
-  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
-  (setq TeX-auto-save t))
+  :commands (latex-mode LaTeX-mode plain-tex-mode))
 
 ;; yaml-mode. mainly for syntax highlighting
 (use-package yaml-mode
@@ -170,17 +181,14 @@
 ;; Actually my current navigation tools kind of suck. Let's have a look
 (use-package smart-forward
   :init
-  (require 'expand-region)
-  (global-set-key (kbd "M-<up>") 'smart-up)
-  (global-set-key (kbd "M-<down>") 'smart-down)
-  (global-set-key (kbd "M-<left>") 'smart-backward)
-  (global-set-key (kbd "M-<right>") 'smart-forward)
+  (progn
+    (require 'expand-region)
+    (global-set-key (kbd "M-<up>") 'smart-up)
+    (global-set-key (kbd "M-<down>") 'smart-down)
+    (global-set-key (kbd "M-<left>") 'smart-backward)
+    (global-set-key (kbd "M-<right>") 'smart-forward))
   :ensure t)
 
-
-
-
-;; load the latest theme.
 
 
 
@@ -197,6 +205,18 @@
 ;; Renaming an open buffer file.
 (require 'renamefile)
 
+;; Need an org mode config.
+
+;; load the latest theme.
+(load-theme 'avk-darkblue-white t)
+
+;; after the theme, powerline?
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-center-theme))0
+
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -212,3 +232,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(provide 'init)
+;;; init.el ends here

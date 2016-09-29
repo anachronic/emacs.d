@@ -31,5 +31,20 @@
 (delete-selection-mode 1)
 
 
+;; Wrapping the buffer is very useful in org mode and latex mode
+(defun my/visualmode ()
+  (visual-line-mode))
+
+(add-hook 'org-mode-hook 'my/visualmode)
+
+;; Also, autosave in LaTeX mode
+(add-hook 'LaTeX-mode-hook 'my/visualmode)
+(setq TeX-auto-save t)
+
+
+;; diminish visual-line-mode
+(diminish 'visual-line-mode)
+
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here

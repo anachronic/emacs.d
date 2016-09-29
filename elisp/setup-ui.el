@@ -10,3 +10,4 @@
 (setq inhibit-startup-screen t)
 
 (provide 'setup-ui)
+;;; setup-ui.el ends here

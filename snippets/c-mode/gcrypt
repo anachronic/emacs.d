@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: gcrypt
+# key: gcrypt
+# --
+#include <gcrypt.h>
+$0
