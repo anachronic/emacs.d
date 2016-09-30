@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: header
+# key: header
+# --
+;;; $1 --- $2.
+;;; Commentary:
+;;; Code:
+
+$0
