@@ -44,11 +44,8 @@
     (define-key helm-map (kbd "C-z") 'helm-select-action))
   :diminish "")
 
-;; Recentf is small enough. We set it up right here.
-(require 'recentf)
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
-(global-set-key (kbd "C-S-x C-S-f") 'helm-recentf)
+;; Recentf config.
+(require 'setup-recentf)
 
 ;; Magit is critical for any developer
 (use-package magit
@@ -228,12 +225,13 @@
  '(package-selected-packages
    (quote
     (linum-relative auctex flycheck company-statistics helm use-package))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
 
 (provide 'init)
 ;;; init.el ends here
