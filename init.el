@@ -78,6 +78,11 @@
   :config
   (company-statistics-mode))
 
+;; Will be trying company-flx for a while.
+(use-package company-flx
+  :ensure t
+  :config
+  (company-flx-mode +1))
 
 
 ;; Helm fuzzy mode doesn't seem to be as good as smex...
@@ -224,14 +229,13 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (linum-relative auctex flycheck company-statistics helm use-package))))
+    (company-flx linum-relative auctex flycheck company-statistics helm use-package))))
 
+(provide 'init)
+;;; init.el ends here
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
-
-(provide 'init)
-;;; init.el ends here
+ )
