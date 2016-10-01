@@ -33,16 +33,17 @@
 ;; Completion is HISTORICALLY bound to TAB on almost ANY editor. So we do that here.
 (use-package helm
   :ensure t
-  :bind (("C-x C-f" . helm-find-files)
-	 ("M-y" . helm-show-kill-ring))
   :config
   (progn
     (helm-mode 1)
     (setq helm-mode-fuzzy-match t)
     (require 'helm-config)
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-    (define-key helm-map (kbd "C-z") 'helm-select-action))
-  :diminish "")
+    (define-key helm-map (kbd "C-z") 'helm-select-action)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)
+    (global-set-key (kbd "M-y") 'helm-show-kill-ring))
+  :diminish ""
+  :demand)
 
 ;; Recentf config.
 (require 'setup-recentf)
@@ -191,6 +192,22 @@
     (global-set-key (kbd "M-<right>") 'smart-forward))
   :ensure t)
 
+;; Let's read some news, shall we?
+;; Note that this does NOT ensure elfeed is installed
+(use-package elfeed
+  :commands elfeed)
+
+;; configure our news feeds.
+(setq elfeed-feeds
+      '(("http://emacsredux.com/atom.xml" emacs)
+	("http://nullprogram.com/feed/" emacs)
+	("https://www.schneier.com/blog/atom.xml" security)
+	("http://www.muylinux.com/feed/" linux)
+	("http://feeds.feedburner.com/LinuxAdictos" linux)
+	("http://feeds.arstechnica.com/arstechnica/technology-lab?format=xml" tech)
+	("http://motherboard.vice.com/rss?trk_source=motherboard" tech)
+	("https://www.wired.com/category/security/feed/" security)
+	("https://www.wired.com/category/gear/feed/" tech)))
 
 
 
@@ -211,6 +228,8 @@
 ;; get bigger.
 (require 'setup-org)
 
+
+
 ;; load the latest theme.
 (load-theme 'avk-darkblue-white t)
 
@@ -229,10 +248,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-flx linum-relative auctex flycheck company-statistics helm use-package))))
-
-(provide 'init)
-;;; init.el ends here
+    (elfeed linum-relative auctex flycheck company-statistics helm use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
