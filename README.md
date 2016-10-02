@@ -17,7 +17,7 @@ This config *includes* my personal feeds, which you can delete, or whatever, for
 
 They should now autoinstall:
 
-* [Magit](https://magit.vc/) 
+* [Magit](https://magit.vc/)
 * [company](http://company-mode.github.io/) for autocompletion
 * [Helm](https://github.com/emacs-helm/helm) for a nice way to input stuff
 * [recentf](https://www.emacswiki.org/emacs/RecentFiles) (with config and helm...) for finding recently used files
@@ -48,3 +48,12 @@ We all use emacs for different purposes, and that's ok. I have been using this l
 ## Future work
 
 Most of what I plan to do include documentation on shortcuts, getting this to work well with C, C++, Python and maybe Ruby. This could change over time though, but I will update this README as this config directory evolves.
+
+## License
+You're free to do **whatever** you want with these files with absolutely no restriction. You can read the `LICENSE` file for more info. There are some files that have some restrictions, though.
+
+I've taken a lot of ideas from other people's files. But have, for the most part, written the code myself.
+
+The big exceptions here are:
+* The file `setup-eshell.el` under the `elisp` directory. I literally copied it from [this](https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org) file, which is under Creative Commons License. I do want to thank Howard, because I have learned so much from his files, and that process has absolutely helped me understand more about Emacs.
+* The `snippets` directory, which i got from [here](https://github.com/AndreaCrotti/yasnippet-snippets). The license is pretty permissive, but I thought I should mention it since the majority of the snippets come from there.
