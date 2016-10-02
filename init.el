@@ -217,6 +217,9 @@
 ;; Recentf config.
 (require 'setup-recentf)
 
+;; Eshell config.
+(require 'setup-eshell)
+
 
 ;; load the latest theme.
 (load-theme 'avk-darkblue-white t)
