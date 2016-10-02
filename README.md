@@ -9,37 +9,35 @@ I found out years later that Emacs is highly customizable and started playing ar
 
 ## Use
 
-Well, this config should work in any linux system, and while it is usable, we all have our own config files and directories. But feel free to use it, clone it and dig around the code inside.
+Well, this config should work in any linux system, and while it is usable, we all have our own config files and directories. But feel free to use it, clone it and dig around the code inside. Most of the packages are auto-installed when you first run Emacs. But in case you want to know, you'll need to manually install **elfeed** in order to read my RSS feeds.
 
-There are some configuration files *I do not provide*, but they're really not essential to begin using Emacs with this conf, they include:
-
-* RSS Reading stuff
-* Mail configuration
-
-You can now see why I don't provide them, and why this is not a big deal. The config should work just fine without those files.
+This config *includes* my personal feeds, which you can delete, or whatever, for now they're on `init.el`, and in retrospective, I should change it. I guess i'll do it sometime.
 
 ## Packages
 
 They should now autoinstall:
 
-* Magit for Git
-* company for autocompletion
-* helm for a nice way to input stuff
-* recentf (with config and helm...) for finding recently used files
-* smex for a **good** fuzzy M-x
-* company-quickhelp for documentation
-* autopair for smooth and good coding
-* YASnippet for faster coding with snippets
-* Flycheck for linting
-* AUCTeX for latex editing, compiling and previewing
-* yaml-mode for .yml files.
-* ace-window for window quick navigating
-* Markdown-mode for editing files like this one.
-* Undo-Tree mainly for the redo action
-* Projectile for project managing.
-* Caroline theme.
-* nlinum-relative for better navigation.
-* expand-region for cool selection
+* [Magit](https://magit.vc/) 
+* [company](http://company-mode.github.io/) for autocompletion
+* [Helm](https://github.com/emacs-helm/helm) for a nice way to input stuff
+* [recentf](https://www.emacswiki.org/emacs/RecentFiles) (with config and helm...) for finding recently used files
+* [smex](https://github.com/nonsequitur/smex) for a **good** fuzzy M-x
+* [company-quickhelp](https://github.com/expez/company-quickhelp) for documentation
+* [autopair](autopair) for smooth and good coding
+* [YASnippet](https://github.com/joaotavora/yasnippet) for faster coding with snippets
+  * [Snippets](https://github.com/AndreaCrotti/yasnippet-snippets) From [AndreaCrotti](https://github.com/AndreaCrotti)'s repository
+* [Flycheck](http://www.flycheck.org/en/latest/) for syntax checking
+* [AUCTeX](https://www.gnu.org/software/auctex/) for latex editing, compiling and previewing
+* [yaml-mode](yaml-mode) for .yml files.
+* [ace-window](https://github.com/abo-abo/ace-window)  for window quick navigating
+* [Markdown-mode](http://jblevins.org/projects/markdown-mode/) for editing files like this one and GitHub Flavored Markdown.
+* [Undo-Tree](http://www.dr-qubit.org/tags/computing-code-emacs.html) mainly for the redo action
+* [Projectile](https://github.com/bbatsov/projectile) for project managing.
+* [nlinum-relative](https://github.com/CodeFalling/nlinum-relative) for better navigation.
+* [expand-region](https://github.com/magnars/expand-region.el) for increasingly expanding regions.
+* [elfeed](https://github.com/skeeto/elfeed) for News reading! :)
+* [avy](https://github.com/abo-abo/avy) because I really try to avoid `C-n` and `C-p`
+* [smart-comment](https://github.com/paldepind/smart-comment) for commenting lines....
 
 I will include some more over time.
 
