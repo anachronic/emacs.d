@@ -1,11 +1,19 @@
+;;; setup-editor.el --- Set up everything associated with buffer manipulation.
+;;; Commentary:
+;;; Code:
+
 (require 'hl-line)
 (set-face-background hl-line-face "#404B4F")
 
 (show-paren-mode 1)
 (global-hl-line-mode)
 
-;; Make C-n add newlines at end of file. Should test this.
+;; Make C-n add newlines at end of file
 (setq next-line-add-newlines t)
+
+;; The last instruction isn't as good without this next instruction
+;; Yes, you guessed it, it deletes all trailing whitespaces and newlines..
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Linum relative for good editing
 (use-package nlinum-relative
@@ -73,6 +81,30 @@
 (use-package smart-comment
   :ensure t
   :bind ("M-;" . smart-comment))
+
+;; Let's use HideShow to fold code in long files, shall we?
+;; this idea i got from Howard Abrams' dotfiles.
+(defun ha/hs-show-all ()
+  (interactive)
+  (hs-minor-mode 1)
+  (hs-show-all))
+
+(defun ha/hs-hide-all ()
+  (interactive)
+  (hs-minor-mode 1)
+  (hs-hide-all))
+
+(defun ha/hs-toggle-hiding ()
+  (interactive)
+  (hs-minor-mode 1)
+  (hs-toggle-hiding))
+
+(global-set-key (kbd "C-c f h") 'ha/hs-hide-all)
+(global-set-key (kbd "C-c f t") 'ha/hs-toggle-hiding)
+(global-set-key (kbd "C-c f s") 'ha/hs-show-all)
+
+
+
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
