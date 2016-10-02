@@ -87,6 +87,9 @@
 
 (setq eshell-highlight-prompt nil)
 
+;; ---------------------------------- END HA's copy ------------------------------
+;; well, aliases go in eshell/ directory, so i won't bother with that for this.
+
 
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here
