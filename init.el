@@ -148,7 +148,7 @@
   :ensure t
   :init
   (progn
-    (setq projectile-keymap-prefix (kbd "M-p"))
+    (setq projectile-keymap-prefix (kbd "C-c p"))
     (setq projectile-completion-system 'helm)
     (projectile-global-mode))
   :config

@@ -12,7 +12,8 @@
       '("company-statistics-cache.el"))
 
 ;; we need the filter function!!
-(require 'dash)
+(use-package dash
+  :ensure t)
 
 ;; I really haven't coded serious lisp in ages...
 (mapc
