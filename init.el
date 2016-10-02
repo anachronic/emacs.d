@@ -236,7 +236,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (smart-comment direx elfeed linum-relative auctex flycheck company-statistics helm use-package))))
+    (color-identifiers-mode smart-comment direx elfeed linum-relative auctex flycheck company-statistics helm use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

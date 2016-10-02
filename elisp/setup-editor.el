@@ -22,7 +22,7 @@
   ;; something else you want
   (add-hook 'prog-mode-hook 'nlinum-relative-mode)
   (setq nlinum-relative-current-symbol "")
-  (setq nlinum-relative-redisplay-delay 0))
+  (setq nlinum-relative-redisplay-delay 0.2))
 
 ;; I want to be able to comment stuff easily.
 
@@ -103,7 +103,24 @@
 (global-set-key (kbd "C-c f t") 'ha/hs-toggle-hiding)
 (global-set-key (kbd "C-c f s") 'ha/hs-show-all)
 
+;; and let's get rid of the minor mode since these functions toggle it anyway
+(diminish 'hs-minor-mode)
 
+
+;; I've always liked coloring the buffer, because it makes easier to identify stuff around
+;; So let's test this mode
+(use-package color-identifiers-mode
+  :ensure t
+  :init
+    (add-hook 'after-init-hook 'global-color-identifiers-mode)
+  :diminish color-identifiers-mode)
+
+;; I hate abbrev when coding c-like languages!!
+(defun my/abbrev-gtfo ()
+  "Get rid of abbrev."
+  (abbrev-mode -1))
+
+(add-hook 'c-mode-common-hook 'my/abbrev-gtfo)
 
 
 (provide 'setup-editor)
