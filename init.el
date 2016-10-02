@@ -195,6 +195,10 @@
 	("https://www.wired.com/category/security/feed/" security)
 	("https://www.wired.com/category/gear/feed/" tech)))
 
+;; Shell pop config
+(use-package shell-pop
+  :ensure t
+  :demand)
 
 
 ;; We have all our modes set.
@@ -239,7 +243,17 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (color-identifiers-mode smart-comment direx elfeed linum-relative auctex flycheck company-statistics helm use-package))))
+    (shell-pop color-identifiers-mode smart-comment direx elfeed linum-relative auctex flycheck company-statistics helm use-package)))
+ '(projectile-mode-line
+   (quote
+    (:eval
+     (if
+         (file-remote-p default-directory)
+         " Projectile"
+       (format " Proj[%s]"
+               (projectile-project-name))))))
+ '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
+ '(shell-pop-universal-key "<f5>"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
