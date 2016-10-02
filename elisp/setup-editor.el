@@ -1,6 +1,3 @@
-;; load the theme
-(load-theme 'caroline t)
-
 (require 'hl-line)
 (set-face-background hl-line-face "#404B4F")
 
