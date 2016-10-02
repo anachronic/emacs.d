@@ -16,6 +16,9 @@
   :ensure t)
 
 ;; I really haven't coded serious lisp in ages...
+;; Get rid of the files we don't want to see in the recentf list
+(require 'dash)
+
 (mapc
  (lambda (banned-elem)
    (setq recentf-list

@@ -49,7 +49,8 @@
 (use-package magit
   :ensure t
   :bind (("<f8>" . magit-status)
-	 ("s-t" . magit-status)))
+	 ("s-t" . magit-status)
+         ("C-x g" . magit-status)))
 
 ;; Company: Not much customization right now.
 (use-package company
@@ -149,8 +150,7 @@
     (setq projectile-completion-system 'helm)
     (projectile-global-mode))
   :config
-  (setq projectile-enable-caching t)
-  :diminish "Pr")
+  (setq projectile-enable-caching t))
 
 
 ;; Flycheck. What's an editor without error checking?
@@ -236,7 +236,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (elfeed linum-relative auctex flycheck company-statistics helm use-package))))
+    (smart-comment direx elfeed linum-relative auctex flycheck company-statistics helm use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
