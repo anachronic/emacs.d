@@ -45,9 +45,6 @@
   :diminish ""
   :demand)
 
-;; Recentf config.
-(require 'setup-recentf)
-
 ;; Magit is critical for any developer
 (use-package magit
   :ensure t
@@ -217,6 +214,8 @@
 ;; get bigger.
 (require 'setup-org)
 
+;; Recentf config.
+(require 'setup-recentf)
 
 
 ;; load the latest theme.
