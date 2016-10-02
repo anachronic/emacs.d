@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bf
+# key: bf
+# --
+**$1**$0
