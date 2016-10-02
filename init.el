@@ -180,17 +180,6 @@
   :ensure t
   :bind ("C-=" . er/expand-region))
 
-;; smart forward. I hear its nice.
-;; Actually my current navigation tools kind of suck. Let's have a look
-(use-package smart-forward
-  :init
-  (progn
-    (require 'expand-region)
-    (global-set-key (kbd "M-<up>") 'smart-up)
-    (global-set-key (kbd "M-<down>") 'smart-down)
-    (global-set-key (kbd "M-<left>") 'smart-backward)
-    (global-set-key (kbd "M-<right>") 'smart-forward))
-  :ensure t)
 
 ;; Let's read some news, shall we?
 ;; Note that this does NOT ensure elfeed is installed
