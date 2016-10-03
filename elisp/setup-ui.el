@@ -3,9 +3,6 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; maximize the window. to focus.
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
 ;; get rid of the annoying GNU Emacs buffer
 (setq inhibit-startup-screen t)
 
