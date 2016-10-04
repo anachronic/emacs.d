@@ -200,6 +200,13 @@
   :ensure t
   :demand)
 
+;; which-key seems like a really nice help
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode)
+  :demand
+  :diminish which-key-mode)
 
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
