@@ -231,6 +231,9 @@
 ;; Eshell config.
 (require 'setup-eshell)
 
+;; C programming requires a special section
+(require 'c-programming)
+
 
 ;; load the latest theme.
 (load-theme 'avk-darkblue-white t)
@@ -250,7 +253,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (shell-pop color-identifiers-mode smart-comment direx elfeed linum-relative auctex flycheck company-statistics helm use-package)))
+    (helm-gtags shell-pop color-identifiers-mode smart-comment direx elfeed linum-relative auctex flycheck company-statistics helm use-package)))
  '(projectile-mode-line
    (quote
     (:eval
