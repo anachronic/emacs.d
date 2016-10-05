@@ -5,9 +5,21 @@
 
 ;; Set the PATH. For now it's harcoded
 ;; This is **testing**, so it might not work.
+(require 's)
 (setenv "PATH"
-        "/home/nsalas/.gem/ruby/2.3.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/nsalas/.gem/ruby/2.2.0/bin:/home/nsalas/.local/bin")
-
+        (let ((thepath (getenv "PATH"))
+              (thefile (cond ((file-exists-p "~/.zshrc") "~/.zshrc")
+                             ((file-exists-p "~/.bashrc") "~/.bashrc")
+                             (t ""))))
+          (if (s-equals? thefile "")
+              (thepath)
+            (let ((thestring
+                   (s-chomp (shell-command-to-string
+                             (concat "cat "
+                                     thefile
+                                     " | grep \"^[^#\]\" | grep \"export PATH\"")))))
+              (concat (s-chop-prefix "export PATH=" (s-chop-suffix "$PATH" thestring))
+                      (getenv "PATH"))))))
 
 ;; scroll on input
 (setq eshell-scroll-to-bottom-on-input t)
