@@ -118,13 +118,6 @@
     (add-hook 'after-init-hook 'global-color-identifiers-mode)
   :diminish color-identifiers-mode)
 
-;; I hate abbrev when coding c-like languages!!
-(defun my/abbrev-gtfo ()
-  "Get rid of abbrev."
-  (abbrev-mode -1))
-
-(add-hook 'c-mode-common-hook 'my/abbrev-gtfo)
-
 
 ;; Maximize and minimize windows
 (global-set-key (kbd "C-c C-m") 'maximize-window)

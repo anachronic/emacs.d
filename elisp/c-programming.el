@@ -3,6 +3,7 @@
 ;;; Code:
 
 ;; We do love GTAGS.
+;; I couldn't get the helm-gtags prefix. But that's ok
 (if (executable-find "global")
     (use-package helm-gtags
       :ensure t
@@ -20,10 +21,23 @@
         (define-key helm-gtags-mode-map (kbd "C-t c") 'helm-gtags-create-tags)
         (define-key helm-gtags-mode-map (kbd "C-t f") 'helm-gtags-find-tag)
         (define-key helm-gtags-mode-map (kbd "C-t p") 'helm-gtags-find-pattern)
-        (define-key helm-grep-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
+        (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
   (message "c-programming.el: GNU GLOBAL not found in PATH. helm-gtags will not be working."))
 
 (add-hook 'c-mode-common-hook 'helm-gtags-mode)
+
+;; I hate abbrev when coding c-like languages!!
+(defun my/abbrev-gtfo ()
+  "Get rid of abbrev."
+  (abbrev-mode -1))
+
+(add-hook 'c-mode-common-hook 'my/abbrev-gtfo)
+
+;; I'll set the default style to k&r.
+;; we might want to try out linux. We'll see
+(setq c-default-style '((java-mode . "java")
+                        (awk-mode . "awk")
+                        (other . "k&r")))
 
 
 (provide 'c-programming)
