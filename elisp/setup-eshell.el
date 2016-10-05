@@ -3,8 +3,7 @@
 ;;;                This code is mainly a replica of the Howard Abrams' setup.
 ;;; Code:
 
-;; Set the PATH. For now it's harcoded
-;; This is **testing**, so it might not work.
+;; Set the PATH. Should determine between bash and zsh configs atm.
 (require 's)
 (setenv "PATH"
         (let ((thepath (getenv "PATH"))
@@ -12,7 +11,7 @@
                              ((file-exists-p "~/.bashrc") "~/.bashrc")
                              (t ""))))
           (if (s-equals? thefile "")
-              (thepath)
+              thepath
             (let ((thestring
                    (s-chomp (shell-command-to-string
                              (concat "cat "
