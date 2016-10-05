@@ -85,16 +85,19 @@
 ;; Let's use HideShow to fold code in long files, shall we?
 ;; this idea i got from Howard Abrams' dotfiles.
 (defun ha/hs-show-all ()
+  "Show the whole buffer.  In other words: don't fold any code."
   (interactive)
   (hs-minor-mode 1)
   (hs-show-all))
 
 (defun ha/hs-hide-all ()
+  "Fold everything in the current buffer."
   (interactive)
   (hs-minor-mode 1)
   (hs-hide-all))
 
 (defun ha/hs-toggle-hiding ()
+  "Fold/unfold the current fundef."
   (interactive)
   (hs-minor-mode 1)
   (hs-toggle-hiding))
@@ -121,6 +124,11 @@
   (abbrev-mode -1))
 
 (add-hook 'c-mode-common-hook 'my/abbrev-gtfo)
+
+
+;; Maximize and minimize windows
+(global-set-key (kbd "C-c C-m") 'maximize-window)
+(global-set-key (kbd "C-c C-S-m") 'minimize-window)
 
 
 (provide 'setup-editor)

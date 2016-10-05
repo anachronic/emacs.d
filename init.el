@@ -177,11 +177,23 @@
   :ensure t
   :bind ("C-=" . er/expand-region))
 
+;; Visual fill column for text-only buffers, like mail and feeds. and maybe org..
+(use-package visual-fill-column
+  :ensure t)
+
 
 ;; Let's read some news, shall we?
 ;; Note that this does NOT ensure elfeed is installed
 (use-package elfeed
-  :commands elfeed)
+  :commands elfeed
+  :bind ("C-x w" . elfeed)
+  :config
+  (add-hook 'elfeed-show-mode-hook
+            (lambda ()
+              (progn
+                (setq visual-fill-column-width 120)
+                (visual-fill-column-mode))))
+  )
 
 ;; configure our news feeds.
 (setq elfeed-feeds
@@ -190,10 +202,7 @@
 	("https://www.schneier.com/blog/atom.xml" security)
 	("http://www.muylinux.com/feed/" linux)
 	("http://feeds.feedburner.com/LinuxAdictos" linux)
-	("http://feeds.arstechnica.com/arstechnica/technology-lab?format=xml" tech)
-	("http://motherboard.vice.com/rss?trk_source=motherboard" tech)
-	("https://www.wired.com/category/security/feed/" security)
-	("https://www.wired.com/category/gear/feed/" tech)))
+	("http://feeds.arstechnica.com/arstechnica/technology-lab?format=xml" tech)))
 
 ;; Shell pop config
 (use-package shell-pop
@@ -251,9 +260,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (helm-gtags shell-pop color-identifiers-mode smart-comment direx elfeed linum-relative auctex flycheck company-statistics helm use-package)))
  '(projectile-mode-line
    (quote
     (:eval

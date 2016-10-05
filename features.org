@@ -1,0 +1,9 @@
+* Features to add to this repository
+
+Over the next few months and so on, i'll be adding these features:
+
+** Packages and/or features
+  * [ ]helm-gtags
+  * [ ]any Python REPL
+  * [ ]Django support
+  * [ ]jedi, company-jedi and so on..
