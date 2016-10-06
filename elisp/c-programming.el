@@ -39,6 +39,24 @@
                         (awk-mode . "awk")
                         (other . "k&r")))
 
+;; the headers are important here.
+(use-package company-c-headers
+  :ensure t)
+
+(add-to-list 'company-backends 'company-c-headers)
+
+
+;; we don't want flycheck to tell us gtk isn't there (mostly because it IS)
+(use-package flycheck-pkg-config
+  :ensure t)
+
+(require 'flycheck-pkg-config)
+(setq flycheck-clang-include-path
+      (flycheck-pkg-config--include-paths "gtk+-3.0"))
+
+;; I should add more of there when i start developing on other platforms.
+
+
 
 (provide 'c-programming)
 ;;; c-programming.el ends here

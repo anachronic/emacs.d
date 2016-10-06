@@ -217,6 +217,10 @@
   :demand
   :diminish which-key-mode)
 
+;; s.el is useful for our own functions
+(use-package s
+  :ensure t)
+
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
 ;; Grouped configuration files can be found in ./elisp
