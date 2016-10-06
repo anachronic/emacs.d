@@ -243,6 +243,9 @@
 ;; C programming requires a special section
 (require 'c-programming)
 
+;; Mail conf
+(require 'setup-mail)
+
 
 ;; load the latest theme.
 (load-theme 'avk-darkblue-white t)
