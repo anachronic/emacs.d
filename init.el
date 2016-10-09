@@ -255,11 +255,17 @@
 (load-theme 'avk-darkblue-white t)
 
 ;; after the theme, powerline?
-(use-package powerline
-  :ensure t
-  :config
-  (powerline-center-theme))
+;; (use-package powerline
+;;   :ensure t
+;;   :config
+;;   (powerline-center-theme))
 
+(use-package spaceline
+  :ensure t
+  :demand
+  :config
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme))
 
 
 (custom-set-variables
@@ -269,7 +275,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smex smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
+    (latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smex smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
  '(projectile-mode-line
    (quote
     (:eval

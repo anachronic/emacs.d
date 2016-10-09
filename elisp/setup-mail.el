@@ -2,7 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(load-file "~/elisp/mail.el")
+(when (file-exists-p "~/elisp/mail.el")
+  (load-file "~/elisp/mail.el"))
 ;; (setq send-mail-function    'smtpmail-send-it
 ;;       smtpmail-smtp-server  "example.org"
 ;;       smtpmail-stream-type  'ssl
