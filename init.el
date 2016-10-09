@@ -251,23 +251,6 @@
 (require 'setup-mail)
 
 
-;; load the latest theme.
-(load-theme 'avk-darkblue-white t)
-
-;; after the theme, powerline?
-;; (use-package powerline
-;;   :ensure t
-;;   :config
-;;   (powerline-center-theme))
-
-(use-package spaceline
-  :ensure t
-  :demand
-  :config
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme))
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
