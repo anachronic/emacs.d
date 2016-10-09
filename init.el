@@ -205,6 +205,14 @@
 (use-package s
   :ensure t)
 
+;; As of this point I feel like: YEAH!! LET'S COLOUR EVERYTHING!
+(use-package dired-k
+  :ensure t
+  :config
+  (progn
+    (add-hook 'dired-initial-position-hook 'dired-k)
+    (add-hook 'dired-after-readin-hook #'dired-k-no-revert)))
+
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
 ;; Grouped configuration files can be found in ./elisp
