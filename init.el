@@ -181,28 +181,12 @@
 (use-package visual-fill-column
   :ensure t)
 
-
-;; Let's read some news, shall we?
-;; Note that this does NOT ensure elfeed is installed
-(use-package elfeed
-  :commands elfeed
-  :bind ("C-x w" . elfeed)
+;; ace-link is a great way of jumping around links.
+(use-package ace-link
+  :ensure t
   :config
-  (add-hook 'elfeed-show-mode-hook
-            (lambda ()
-              (progn
-                (setq visual-fill-column-width 120)
-                (visual-fill-column-mode))))
-  )
+  (ace-link-setup-default))
 
-;; configure our news feeds.
-(setq elfeed-feeds
-      '(("http://emacsredux.com/atom.xml" emacs)
-	("http://nullprogram.com/feed/" emacs)
-	("https://www.schneier.com/blog/atom.xml" security)
-	("http://www.muylinux.com/feed/" linux)
-	("http://feeds.feedburner.com/LinuxAdictos" linux)
-	("http://feeds.arstechnica.com/arstechnica/technology-lab?format=xml" tech)))
 
 ;; Shell pop config
 (use-package shell-pop
@@ -250,6 +234,10 @@
 ;; Mail conf
 (require 'setup-mail)
 
+;; News reading conf
+(require 'setup-news)
+
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -258,7 +246,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smex smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
+    (elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smex smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
  '(projectile-mode-line
    (quote
     (:eval

@@ -1,5 +1,6 @@
-#contributor: Xah Lee (XahLee.org)
-#name: require
-#key: require
+# -*- mode: snippet -*-
+# name: req
+# key: req
 # --
-(require $0 )
+(require '${1:provided})
+$0

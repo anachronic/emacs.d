@@ -1,5 +1,6 @@
-#contributor: Xah Lee (XahLee.org)
-#name: fboundp
-#key: fboundp
+# -*- mode: snippet -*-
+# name: up
+# key: up
 # --
-(fboundp '$0 )
+(use-package ${1:package-name}
+  $0)
