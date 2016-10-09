@@ -77,10 +77,10 @@
          ("M-g g" . avy-goto-line)))
 
 
-;; smart-comment looks like the best ``commenter'' for emacs
-(use-package smart-comment
+;; smart comment was crap. Let's stick to the good ol' evil-nerd-commenter
+(use-package evil-nerd-commenter
   :ensure t
-  :bind ("M-;" . smart-comment))
+  :bind ("M-;" . evilnc-comment-or-uncomment-lines))
 
 ;; Let's use HideShow to fold code in long files, shall we?
 ;; this idea i got from Howard Abrams' dotfiles.
@@ -140,6 +140,9 @@
 
 (global-set-key (kbd "M-n") 'my/scrolldown)
 (global-set-key (kbd "M-p") 'my/scrollup)
+
+;; Maybe this should be C-M-d
+(global-set-key (kbd "C-S-d") 'delete-backward-char)
 
 
 
