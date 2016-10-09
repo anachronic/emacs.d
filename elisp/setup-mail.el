@@ -4,10 +4,14 @@
 
 (when (file-exists-p "~/elisp/mail.el")
   (load-file "~/elisp/mail.el"))
-;; (setq send-mail-function    'smtpmail-send-it
+
+
+;; (setq user-full-name        "John Doe."
+;;       user-mail-address     "example@example.org"
 ;;       smtpmail-smtp-server  "example.org"
-;;       smtpmail-stream-type  'ssl
-;;       smtpmail-smtp-service 587)
+;;       smtpmail-smtp-service 587
+;;       send-mail-function    'smtpmail-send-it)
+
 
 (provide 'setup-mail)
 ;;; setup-mail.el ends here
