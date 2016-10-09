@@ -124,5 +124,24 @@
 (global-set-key (kbd "C-c C-S-m") 'minimize-window)
 
 
+;; I want to be able to scroll without moving the point
+;; source: https://www.emacswiki.org/emacs/Scrolling
+(defun my/scrolldown (n)
+  "Scroll down N lines without moving the point."
+  (interactive "p")
+  (dotimes (i n)
+    (scroll-up-command 1)))
+
+(defun my/scrollup (n)
+  "Scroll up N lines without moving the point."
+  (interactive "p")
+  (dotimes (i n)
+    (scroll-down-command 1)))
+
+(global-set-key (kbd "M-n") 'my/scrolldown)
+(global-set-key (kbd "M-p") 'my/scrollup)
+
+
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
