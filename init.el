@@ -112,6 +112,7 @@
     (yas-reload-all)
     (define-key yas-minor-mode-map (kbd "C-<return>") 'yas-exit-snippet)
     (define-key yas-minor-mode-map (kbd "<escape>") 'yas-exit-snippet)))
+    ;; (define-key yas-minor-mode-map (kbd "C-m") 'yas-exit-snippet)))
 
 ;; Markdown mode
 (use-package markdown-mode
@@ -164,6 +165,13 @@
   :ensure t
   :mode ("\\.tex\\'" . latex-mode)
   :commands (latex-mode LaTeX-mode plain-tex-mode))
+
+;; We'd also like to instantly preview our TeX docs.
+;; It's quite nice that latex-preview-pane works well with DocView
+(use-package latex-preview-pane
+  :ensure t
+  :config
+  (latex-preview-pane-enable))
 
 ;; yaml-mode. mainly for syntax highlighting
 (use-package yaml-mode

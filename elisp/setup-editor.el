@@ -144,7 +144,8 @@
 ;; Maybe this should be C-M-d
 (global-set-key (kbd "C-S-d") 'delete-backward-char)
 
-
+;; I like prettify symbols mode. but only for elisp
+(add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
