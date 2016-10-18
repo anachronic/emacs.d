@@ -62,7 +62,7 @@
     (setq company-idle-delay 0.3)
     (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
     (define-key company-active-map [tab] 'company-complete-common-or-cycle))
-  :diminish "comp"
+  :diminish ""  ;; it is almost always on anyway.
   :bind (("C-S-<SPC>" . company-complete)))
 
 ;; Some help can't hurt
@@ -278,7 +278,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Droid Sans Mono for Powerline" :foundry "1ASC" :slant normal :weight normal :height 120 :width normal)))))
+ '(default ((t (:family "Monospace" :foundry "1ASC" :slant normal :weight normal :height 120 :width normal)))))
 
 ;; just to suppress warnings.
 (provide 'init)
