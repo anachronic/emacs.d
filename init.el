@@ -221,6 +221,11 @@
     (add-hook 'dired-initial-position-hook 'dired-k)
     (add-hook 'dired-after-readin-hook #'dired-k-no-revert)))
 
+;; evil is good for navigation, lets give it a key.
+(use-package evil)
+
+(global-set-key (kbd "<f6>") (lambda (x) (interactive "p") (call-interactively 'evil-mode)))
+
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
 ;; Grouped configuration files can be found in ./elisp
@@ -254,7 +259,6 @@
 (require 'setup-news)
 
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -262,7 +266,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smex smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
+    (evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smex smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
  '(projectile-mode-line
    (quote
     (:eval

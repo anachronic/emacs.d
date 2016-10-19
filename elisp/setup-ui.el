@@ -16,6 +16,10 @@
   (require 'spaceline-config)
   (spaceline-spacemacs-theme))
 
+;; been using frames lately, so let's make a keybinding for that
+(global-set-key (kbd "C-c F") 'make-frame)
+
+
 
 (provide 'setup-ui)
 ;;; setup-ui.el ends here
