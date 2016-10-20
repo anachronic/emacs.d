@@ -19,6 +19,8 @@
 ;; been using frames lately, so let's make a keybinding for that
 (global-set-key (kbd "C-c F") 'make-frame)
 
+;; no DING!
+(setq visible-bell 1)
 
 
 (provide 'setup-ui)
