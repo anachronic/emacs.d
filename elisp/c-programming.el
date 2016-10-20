@@ -39,16 +39,6 @@
                         (awk-mode . "awk")
                         (other . "k&r")))
 
-;; we don't want flycheck to tell us gtk isn't there (mostly because it IS)
-(use-package flycheck-pkg-config
-  :ensure t)
-
-(require 'flycheck-pkg-config)
-(setq flycheck-clang-include-path
-      (flycheck-pkg-config--include-paths "gtk+-3.0"))
-
-;; I should add more of there when i start developing on other platforms.
-
 
 ;; Will be trying irony mode for FlyC and company
 (use-package irony
