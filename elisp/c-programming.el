@@ -39,13 +39,6 @@
                         (awk-mode . "awk")
                         (other . "k&r")))
 
-;; the headers are important here.
-(use-package company-c-headers
-  :ensure t)
-
-(add-to-list 'company-backends 'company-c-headers)
-
-
 ;; we don't want flycheck to tell us gtk isn't there (mostly because it IS)
 (use-package flycheck-pkg-config
   :ensure t)
@@ -55,6 +48,37 @@
       (flycheck-pkg-config--include-paths "gtk+-3.0"))
 
 ;; I should add more of there when i start developing on other platforms.
+
+
+;; Will be trying irony mode for FlyC and company
+(use-package irony
+  :ensure t
+  :config
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+
+;; auto-install the server for irony mode.
+(when (not (file-exists-p "~/.emacs.d/irony"))
+  (call-interactively 'irony-install-server))
+
+;; We want to use flycheck with irony.
+(use-package flycheck-irony
+  :ensure t)
+
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+
+;; Add company-irony and company-irony-c-headers to company backends
+(use-package company-irony
+  :ensure t)
+
+(use-package company-irony-c-headers
+  :ensure t)
+
+(setq company-backends (delete 'company-semantic company-backends))
+(eval-after-load 'company
+  '(add-to-list 'company-backends '(company-irony company-irony-c-headers)))
 
 
 
