@@ -76,6 +76,11 @@
          ("C-c j j" . avy-goto-word-0)
          ("M-g g" . avy-goto-line)))
 
+;; also ace link
+(use-package ace-link
+  :ensure t
+  :bind ("C-c j u" . ace-link))
+
 
 ;; smart comment was crap. Let's stick to the good ol' evil-nerd-commenter
 (use-package evil-nerd-commenter
