@@ -56,7 +56,7 @@
    `(flymake-warnline ((t (:background "#3f3f3f"))))
    `(flycheck-error ((t (:background "brown4"))))
    `(flycheck-fringe-error ((t (:inherit (flycheck-error)))))
-   `(font-lock-builtin-face ((((class color) (min-colors 88) (background dark)) (:foreground "green"))))
+   `(font-lock-builtin-face ((((class color) (min-colors 88) (background dark)) (:foreground "cyan"))))
    `(font-lock-comment-delimiter-face ((default (:inherit font-lock-comment-face)) (((class color) (min-colors 16)) nil)))
    `(font-lock-comment-face ((t (:foreground "rosy brown" :slant italic :weight normal))))
    `(font-lock-function-name-face ((t (:background "midnight blue" :foreground "gray77" :box (:line-width 2 :color "black" :style pressed-button) :weight bold))))
