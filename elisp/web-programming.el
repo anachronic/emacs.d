@@ -25,12 +25,8 @@
           '(("django"    . "\\.html\\'"))
           )))
 
-;; electric pair and web mode have conflicts.
-;; so, at least for now disable "{}" matching for electric pair
-(setq electric-pair-inhibit-predicate
-      (lambda (chr)
-        (and (equal (format "%s" major-mode) "web-mode")
-             (char-equal chr ?\{))))
+;; inhibit { pairing in web mode
+(sp-pair "{" nil :actions :rem)
 
 ;; Emmet!!!
 (use-package emmet-mode
