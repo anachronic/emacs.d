@@ -16,8 +16,10 @@
   (require 'spaceline-config)
   (spaceline-spacemacs-theme))
 
-;; been using frames lately, so let's make a keybinding for that
+;; Frame commands
 (global-set-key (kbd "C-c F") 'make-frame)
+(global-set-key (kbd "C-c K") 'delete-frame)
+
 
 ;; no DING!
 (setq visible-bell 1)
