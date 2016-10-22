@@ -144,7 +144,7 @@
    `(rst-level-2-face ((t (:background "grey20"))) t)
    `(secondary-selection ((t (:background "forest green" :foreground "white"))))
    `(shadow ((((class color grayscale) (min-colors 88) (background dark)) (:foreground "grey40"))))
-   `(show-paren-match ((t (:foreground "deep sky blue" :inverse-video t))))
+   `(show-paren-match ((t (:foreground "sky blue" :inverse-video t))))
    `(smerge-refined-change ((t (:background "midnight blue"))))
    `(tabbar-default ((t (:inherit variable-pitch :background "gray75" :foreground "MidNightBlue" :family "verdana"))))
    `(tabbar-selected ((t (:inherit tabbar-default :foreground "red4" :family "verdana"))))
