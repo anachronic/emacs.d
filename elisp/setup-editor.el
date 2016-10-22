@@ -161,17 +161,7 @@
 
 ;; According to: https://github.com/joaotavora/autopair,
 ;; electric-pair-mode is *better* than autopair
-;;(electric-pair-mode)
-
-;; let's try smart parens
-(use-package smartparens
-  :ensure t
-  :pin melpa-stable
-  :diminish smartparens-mode
-  :config
-  (progn
-    (require 'smartparens-config)
-    (smartparens-global-mode 1)))
+(electric-pair-mode)
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here

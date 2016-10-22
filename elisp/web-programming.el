@@ -25,15 +25,17 @@
           '(("django"    . "\\.html\\'"))
           )))
 
-(defun my/web-mode-before-function-p (id action context)
-  "Check if the char 2 positions before point is a closing paren."
-  (and (eq action 'insert)
-       (equal (progn (save-excursion
-                       (backward-char)
-                       (string (preceding-char))))
-              ")")))
+(defun my/web-mode-before-function-p (chr)
+  "Return false if CHR is {, major mode is web-mode and previous char is closing paren."
+  (not (and (eq major-mode 'web-mode)
+            (eq ?\{ chr)
+            (equal (progn (save-excursion
+                            (backward-char)
+                            (string (preceding-char))))
+                   ")"))))
 
-(sp-local-pair 'web-mode "{" "}" :when '(my/web-mode-before-function-p))
+(setq electric-pair-inhibit-predicate
+      'my/web-mode-before-function-p)
 
 ;; Emmet!!!
 (use-package emmet-mode
