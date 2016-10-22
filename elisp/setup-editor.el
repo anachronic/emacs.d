@@ -152,6 +152,7 @@
 ;; Let's use multiple cursors.
 (use-package multiple-cursors
   :ensure t
+  :pin melpa-stable
   :bind
   (("C->"         . mc/mark-next-like-this)
    ("C-<"         . mc/mark-previous-like-this)

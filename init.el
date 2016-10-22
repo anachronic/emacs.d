@@ -100,10 +100,9 @@
   :ensure t
   :defer t
   :diminish yas-minor-mode ;; well, this is always on, so..
-  :init
-  (yas-global-mode 1)
   :config
   (progn
+    (yas-global-mode 1)
     (yas-reload-all)
     (define-key yas-minor-mode-map (kbd "C-<return>") 'yas-exit-snippet)
     (define-key yas-minor-mode-map (kbd "<escape>") 'yas-exit-snippet)))
@@ -152,8 +151,9 @@
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
   :ensure t
-  :init
-  (global-flycheck-mode))
+  :config
+  (global-flycheck-mode)
+  (setq flycheck-emacs-lisp-load-path 'inherit))
 
 ;; AUCTeX: This is critical for me and LaTeX
 (use-package auctex
