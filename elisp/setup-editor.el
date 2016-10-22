@@ -163,5 +163,14 @@
 ;; electric-pair-mode is *better* than autopair
 (electric-pair-mode)
 
+;; Indent the whole buffer
+(defun my/indent-whole-buffer ()
+  "Indent the whole buffer according to the defined style."
+  (interactive)
+  (save-excursion (indent-region (point-min) (point-max) nil)))
+
+(global-set-key (kbd "C-c TAB") 'my/indent-whole-buffer)
+
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
