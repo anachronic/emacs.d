@@ -27,12 +27,14 @@
 
 (defun my/web-mode-before-function-p (chr)
   "Return false if CHR is {, major mode is web-mode and previous char is closing paren."
-  (not (and (eq major-mode 'web-mode)
-            (eq ?\{ chr)
-            (equal (progn (save-excursion
-                            (backward-char)
-                            (string (preceding-char))))
-                   ")"))))
+  (if (not (eq major-mode 'web-mode))
+      nil
+    (not (and (eq major-mode 'web-mode)
+              (eq ?\{ chr)
+              (equal (progn (save-excursion
+                              (backward-char)
+                              (string (preceding-char))))
+                     ")")))))
 
 (setq electric-pair-inhibit-predicate
       'my/web-mode-before-function-p)
