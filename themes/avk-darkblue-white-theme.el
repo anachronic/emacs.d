@@ -130,7 +130,7 @@
    `(org-scheduled ((t (:foreground "thistle4" :slant italic))))
    `(org-scheduled-previously ((t (:foreground "indian red"))))
    `(org-scheduled-today ((t (:foreground "SeaGreen3" :slant italic))))
-   
+
    `(org-upcoming-deadline ((t (:foreground "hot pink"))))
    `(outline-3 ((t (:foreground "seashell3"))))
    `(outline-7 ((t (:foreground "chartreuse"))))
@@ -173,6 +173,11 @@
    `(ediff-odd-diff-Ancestor ((t (:background "gray40" :foreground "cyan3"))))
    `(ediff-odd-diff-B ((t (:background "light grey" :foreground "Black"))))
    `(ediff-odd-diff-C ((t (:background "Grey" :foreground "White"))))
+   `(web-mode-block-control-face ((t (:foreground "#86caf7"))))
+   `(web-mode-block-delimiter-face ((t (:foreground "#4e78f5"))))
+   `(web-mode-html-tag-face ((t (:foreground "#86f78f"))))
+   `(web-mode-html-tag-bracket-face ((t (:foreground "#86f78f"))))
+   `(web-mode-function-call-face ((t (:foreground "#e9aafa"))))
 
 ))
 
