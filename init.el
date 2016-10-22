@@ -252,6 +252,9 @@
 ;; C programming requires a special section
 (require 'c-programming)
 
+;; Python programming should be in another file.
+(require 'python-programming)
+
 ;; Mail conf
 (require 'setup-mail)
 
