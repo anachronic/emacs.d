@@ -37,6 +37,7 @@
   (progn
     (helm-mode 1)
     (setq helm-mode-fuzzy-match t)
+    (setq helm-ff-newfile-prompt-p nil)
     (require 'helm-config)
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z") 'helm-select-action)
