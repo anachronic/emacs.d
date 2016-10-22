@@ -22,5 +22,11 @@
           '(("django"    . "\\.html\\'"))
           )))
 
+(use-package emmet-mode
+  :ensure t
+  :config
+  (progn
+    (add-hook 'web-mode-hook 'emmet-mode)))
+
 (provide 'web-programming)
 ;;; web-programming.el ends here
