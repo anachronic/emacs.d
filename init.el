@@ -33,6 +33,8 @@
 ;; Completion is HISTORICALLY bound to TAB on almost ANY editor. So we do that here.
 (use-package helm
   :ensure t
+  :bind
+  (("C-S-m" . helm-mini))
   :config
   (progn
     (helm-mode 1)
@@ -290,7 +292,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Monospace" :foundry "1ASC" :slant normal :weight normal :height 105 :width normal)))))
+ )
 
 ;; just to suppress warnings.
 (provide 'init)
