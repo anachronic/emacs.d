@@ -3,8 +3,6 @@
 ;;; Code:
 
 (require 'hl-line)
-(set-face-background hl-line-face "#404B4F")
-
 (show-paren-mode 1)
 (global-hl-line-mode)
 
@@ -52,7 +50,6 @@
 (diminish 'visual-line-mode)
 
 ;; might as well explicitly tell emacs we don't like tabs
-;; I actually like 2 spaces per indentation block, but mi classmates don't really do that, so...
 (setq-default indent-tabs-mode nil)
 
 ;; I have had some problems with the tab key and AC/company
