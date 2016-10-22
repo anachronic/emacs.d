@@ -24,6 +24,9 @@
 ;; no DING!
 (setq visible-bell 1)
 
+;; This has been driving me crazy. So new key binding.
+(global-set-key (kbd "<f9>") 'split-window-right)
+
 
 (provide 'setup-ui)
 ;;; setup-ui.el ends here
