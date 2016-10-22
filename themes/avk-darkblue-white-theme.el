@@ -123,6 +123,7 @@
    `(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "dim gray" :strike-through t))))
    `(org-hide ((((background dark)) (:foreground "darkslategrey"))))
    `(outline-1 ((t (:foreground "LightSteelBlue2" :inherit nil))))
+   `(org-level-1 ((t (:foreground "yellow" :height 1.2 :weight bold))))
    `(org-level-2 ((((class color) (min-colors 16) (background dark)) (:foreground "RosyBrown2"))))
    `(org-level-4 ((((class color) (min-colors 88) (background dark)) (:foreground "darkgoldenrod3"))))
    `(org-link ((t (:foreground "DarkGoldenrod1" :underline "IndianRed3" :weight bold))))

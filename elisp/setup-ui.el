@@ -1,3 +1,7 @@
+;;; setup-ui.el --- UI related configuration.
+;;; Commentary:
+;;; Code:
+
 ;; get rid of everything other than the title at the top.
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -14,7 +18,8 @@
   :demand
   :config
   (require 'spaceline-config)
-  (spaceline-spacemacs-theme))
+  (spaceline-spacemacs-theme)
+  (setq spaceline-minor-modes-separator " "))
 
 ;; Frame commands
 (global-set-key (kbd "C-c F") 'make-frame)
