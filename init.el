@@ -93,14 +93,6 @@
   :bind (("M-x" . smex)
 	 ("M-X" . smex-major-mode-commands)))
 
-;; Autopair lets you code with no worries.
-;; *especially* elisp, or any lisp based programming language
-(use-package autopair
-  :ensure t
-  :init
-  (autopair-global-mode)
-  :diminish "")
-
 ;; YASnippet, always so handy...
 (use-package yasnippet
   :ensure t

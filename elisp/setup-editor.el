@@ -158,5 +158,9 @@
    ("C-c C-<"     . mc/mark-all-like-this)
    ("C-S-c C-S-c" . mc/edit-lines)))
 
+;; According to: https://github.com/joaotavora/autopair,
+;; electric-pair-mode is *better* than autopair
+(electric-pair-mode)
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
