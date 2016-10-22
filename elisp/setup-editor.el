@@ -152,5 +152,14 @@
 ;; I like prettify symbols mode. but only for elisp
 (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
 
+;; Let's use multiple cursors.
+(use-package multiple-cursors
+  :ensure t
+  :bind
+  (("C->"         . mc/mark-next-like-this)
+   ("C-<"         . mc/mark-previous-like-this)
+   ("C-c C-<"     . mc/mark-all-like-this)
+   ("C-S-c C-S-c" . mc/edit-lines)))
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here

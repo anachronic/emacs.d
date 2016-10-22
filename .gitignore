@@ -21,3 +21,4 @@ semanticdb
 flycheck_init.el
 /bookmarks
 irony
+/.mc-lists.el
