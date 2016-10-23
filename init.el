@@ -151,6 +151,7 @@
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
   :ensure t
+  :diminish "FlyC" ;; Errors and warnings appear in the modeline anyway
   :config
   (global-flycheck-mode)
   (setq flycheck-emacs-lisp-load-path 'inherit))
