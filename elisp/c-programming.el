@@ -69,7 +69,8 @@
 
 
 (defun my/add-irony-to-company ()
-  (setq company-backends (delete 'company-semantic company-backends))
+  "Setup company to work with irony mode."
+  (setq-local company-backends (delete 'company-semantic company-backends))
   (add-to-list 'company-backends '(company-irony company-irony-c-headers)))
 
 (add-hook 'c-mode-hook 'my/add-irony-to-company)
