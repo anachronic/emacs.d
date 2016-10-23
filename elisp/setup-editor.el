@@ -171,6 +171,45 @@
 
 (global-set-key (kbd "C-c TAB") 'my/indent-whole-buffer)
 
+;; =======Inserting lines, duplicating, etcetera.=======
+;; This one comes directly from ha's config:
+;; https://github.com/howardabrams/dot-files/blob/master/emacs-fixes.org
+(defun newline-for-code ()
+  "Insert a newline as if RET was pressed on the end of this line."
+  (interactive)
+  (move-end-of-line 1)
+  (newline-and-indent))
+
+(global-set-key (kbd "M-RET") 'newline-for-code)
+
+;; C-o's default behaviour is kind of poor, so lets simulate vim's o.
+(defun my/open-line-above ()
+  "Insert a newline before the current line and leave point on it."
+  (interactive)
+  (move-beginning-of-line 1)
+  (newline-and-indent)
+  (previous-line)
+  (indent-for-tab-command))
+
+(global-set-key (kbd "C-o") 'my/open-line-above)
+
+;; This should be a macro, but let's define it as a function
+;; I want it to behave exactly like PyCharm or IntelliJ Idea's C-d
+(defun my/duplicate-the-line ()
+  "Duplicate the current line below and set the point in the same column in the new line."
+  (interactive)
+  (save-excursion
+    (move-beginning-of-line 1)
+    (set-mark-command nil)
+    (move-end-of-line 1)
+    (kill-ring-save (region-beginning) (region-end))
+    (newline)
+    (yank))
+  (next-line))
+
+(global-set-key (kbd "C-c d") 'my/duplicate-the-line)
+
+
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
