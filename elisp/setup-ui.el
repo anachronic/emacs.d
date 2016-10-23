@@ -33,6 +33,10 @@
 ;; This has been driving me crazy. So new key binding.
 (global-set-key (kbd "<f9>") 'split-window-right)
 
+;; enlarge/shrink current window
+(global-set-key (kbd "s-f") 'enlarge-window-horizontally)
+(global-set-key (kbd "s-b") 'shrink-window-horizontally)
+
 
 (provide 'setup-ui)
 ;;; setup-ui.el ends here
