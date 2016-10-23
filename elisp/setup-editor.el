@@ -186,6 +186,7 @@
 (defun my/open-line-above ()
   "Insert a newline before the current line and leave point on it."
   (interactive)
+  (push-mark)
   (move-beginning-of-line 1)
   (newline-and-indent)
   (previous-line)
