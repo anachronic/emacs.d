@@ -76,5 +76,25 @@
 (add-hook 'c++-mode-hook 'my/add-irony-to-company)
 
 
+;; Key chord. This mode is absolutely AWESOME. I can't stop thinking about
+;; how much I have needed something like this over the past few years.
+;; I got the idea from -> http://emacsrocks.com/e07.html
+;; The documentation can be found on EmacsWiki:
+;; https://www.emacswiki.org/emacs/KeyChord
+(require 'key-chord)
+
+(defun my/add-keychords-c-mode ()
+  "Add ;; keystroke to mean insert semicolon at the end of the line."
+  (key-chord-define-local ";;" "\C-e;")
+  (key-chord-define-local ";;" "\C-e;"))
+
+(defun my/keychord-mode-on ()
+  "Activate keychord mode."
+  (key-chord-mode 1))
+
+(add-hook 'c-mode-common-hook 'my/keychord-mode-on)
+(add-hook 'c-mode-common-hook 'my/add-keychords-c-mode)
+
+
 (provide 'c-programming)
 ;;; c-programming.el ends here
