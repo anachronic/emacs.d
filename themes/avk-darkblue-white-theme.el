@@ -60,7 +60,7 @@
    `(font-lock-comment-delimiter-face ((default (:inherit font-lock-comment-face)) (((class color) (min-colors 16)) nil)))
    `(font-lock-comment-face ((t (:foreground "rosy brown" :slant italic :weight normal))))
    `(font-lock-function-name-face ((t (:background "midnight blue" :foreground "gray77" :box (:line-width 2 :color "black" :style pressed-button) :weight bold))))
-   `(font-lock-keyword-face ((((class color) (min-colors 88) (background dark)) (:foreground "PaleVioletRed3" :weight bold))))
+   `(font-lock-keyword-face ((((class color) (min-colors 88) (background dark)) (:foreground "#fe8019" :weight bold))))
    `(font-lock-string-face ((t (:foreground "#2d9574"))))
    `(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "PaleVioletRed3" :weight bold))))
    `(helm-buffer-saved-out ((t (:foreground "red"))))
