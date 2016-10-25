@@ -77,6 +77,13 @@
 (add-hook 'c++-mode-hook 'my/add-irony-to-company)
 
 
+(defun my/add-header-jump ()
+  "Add a header jump key binding."
+  (local-set-key (kbd "C-c j h") 'ff-find-other-file))
+
+(add-hook 'c-mode-common-hook 'my/add-header-jump)
+
+
 ;; Key chord. This mode is absolutely AWESOME. I can't stop thinking about
 ;; how much I have needed something like this over the past few years.
 ;; I got the idea from -> http://emacsrocks.com/e07.html
