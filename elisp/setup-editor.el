@@ -40,6 +40,8 @@
 
 (add-hook 'org-mode-hook 'my/visualmode)
 (add-hook 'Man-mode-hook 'my/visualmode)
+(add-hook 'gfm-mode-hook 'my/visualmode)
+(add-hook 'markdown-mode-hook 'my/visualmode)
 
 ;; Also, autosave in LaTeX mode
 (add-hook 'LaTeX-mode-hook 'my/visualmode)
