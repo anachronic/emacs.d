@@ -246,6 +246,10 @@ point reaches the beginning or end of the buffer, stop there."
 
 (global-set-key (kbd "C-c d") 'my/duplicate-the-line)
 
+;; occur next-prev. Actually it can be used with errors too
+(global-set-key (kbd "M-s M-n") 'next-error)
+(global-set-key (kbd "M-s M-p") 'previous-error)
+
 
 
 (provide 'setup-editor)
