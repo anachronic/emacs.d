@@ -40,6 +40,8 @@
 
 (add-hook 'org-mode-hook 'my/visualmode)
 (add-hook 'Man-mode-hook 'my/visualmode)
+(add-hook 'gfm-mode-hook 'my/visualmode)
+(add-hook 'markdown-mode-hook 'my/visualmode)
 
 ;; Also, autosave in LaTeX mode
 (add-hook 'LaTeX-mode-hook 'my/visualmode)
@@ -243,6 +245,10 @@ point reaches the beginning or end of the buffer, stop there."
   (next-line))
 
 (global-set-key (kbd "C-c d") 'my/duplicate-the-line)
+
+;; occur next-prev. Actually it can be used with errors too
+(global-set-key (kbd "M-s M-n") 'next-error)
+(global-set-key (kbd "M-s M-p") 'previous-error)
 
 
 
