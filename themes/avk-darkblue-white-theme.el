@@ -67,6 +67,7 @@
    `(helm-buffer-directory ((t (:inherit dired-directory))))
    `(helm-dired-directory ((t (:inherit dired-directory))))
    `(helm-ff-executable ((t (:foreground "green" :weight bold))))
+   `(helm-grep-file ((t (:foreground "#329ba3" :weight bold))))
    `(helm-ff-invalid-symlink ((t (:inherit dired-symlink :strike-through "red"))))
    `(helm-ff-symlink ((t (:inherit dired-symlink))))
    `(helm-selection ((t (:inherit region))))
