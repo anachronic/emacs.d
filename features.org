@@ -1,9 +1,10 @@
 * Features to add to this repository
 
-Over the next few months and so on, i'll be adding these features:
+To add in the latest version of this file:
 
-** Packages and/or features
-  * [ ]helm-gtags
-  * [ ]any Python REPL
-  * [ ]Django support
-  * [ ]jedi, company-jedi and so on..
+- [ ] occur-dwim (possibly with helm) [dwim as in occur with region when it's active]
+- [ ] Maybe helm-swoop
+- [ ] Change mode line to telephone, or something more custom
+- [ ] Safe dir-locals.el
+- [ ] Remove annoying helm autocompletion for *saving* files.
+- [ ] Test hydra
