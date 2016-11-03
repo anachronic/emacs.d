@@ -228,12 +228,30 @@
 ;; evil is good for navigation, lets give it a key.
 (use-package evil)
 
+;; hydra
+(use-package hydra
+  :ensure t)
+
 (global-set-key (kbd "<f6>") (lambda (x) (interactive "p") (call-interactively 'evil-mode)))
 
 ;; My projectile grep was making emacs crash, so 100MB should be more than enough
 ;; for emacs to work. Got this answer from:
 ;; https://github.com/bbatsov/projectile/issues/600
 (setq gc-cons-threshold 100000000)
+
+;; navigating hydra
+(defhydra hydra-text (:columns 3)
+  "Movement and text manipulation hydra"
+  ("i" previous-line "up")
+  ("k" next-line "down")
+  ("j" backward-char "back")
+  ("l" forward-char "forward")
+  ("dd" kill-whole-line "kill the whole line")
+  ("d$" kill-line "kill until the end of the line")
+  ("0" beginning-of-line "beginning of line")
+  ("$" end-of-line "end of line")
+  ("h" nil "quit (insert mode)" :color blue)
+  ("q" nil "quit" :color blue))
 
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
@@ -293,7 +311,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smex smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
+    (hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smex smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
  '(projectile-mode-line
    (quote
     (:eval
