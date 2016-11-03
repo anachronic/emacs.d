@@ -36,6 +36,24 @@
                               (string (preceding-char))))
                      ")")))))
 
+;; A great package. Not only does it complete HTML stuff, but it also
+;; displays documentation with company-quickhelp
+(use-package company-web
+  :ensure t)
+
+;; This package works wonders. I have to say I didn't expect it to.
+(use-package ac-html-bootstrap
+  :ensure t)
+
+(defun my/add-company-backends-webmode ()
+  "Add Tern, webmode and bootstrap backends to company."
+  (add-to-list 'company-backends 'company-web-html)
+  (add-to-list 'company-backends 'company-tern)
+  (company-web-bootstrap+))
+
+(add-hook 'web-mode-hook 'my/add-company-backends-webmode)
+
+
 (setq electric-pair-inhibit-predicate
       'my/web-mode-before-function-p)
 
