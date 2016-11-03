@@ -228,8 +228,6 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
 
-;; ==================== END of line manipulation functions =====
-
 ;; This should be a macro, but let's define it as a function
 ;; I want it to behave exactly like PyCharm or IntelliJ Idea's C-d
 (defun my/duplicate-the-line ()
@@ -246,8 +244,40 @@ point reaches the beginning or end of the buffer, stop there."
 
 (global-set-key (kbd "C-c d") 'my/duplicate-the-line)
 
+;; My version of transpose lines. While emacs' transpose lines does the job,
+;; I like the IntelliJ/Pycharm implementation better. It's cleaner. So let's
+;; do that
+
+(defun my/move-line-up ()
+  "Transpose the current line with the one above leaving the cursor in the first line."
+  (interactive)
+  (let ((col (current-column)))
+    (transpose-lines 1)
+    (previous-line 2)
+    (move-beginning-of-line 1)
+    (forward-char col)))
+
+
+(defun my/move-line-down ()
+  "Transpose the current line with the one below leaving the cursor in the first line."
+  (interactive)
+  (let ((col (current-column)))
+    (forward-line 1)
+    (transpose-lines 1)
+    (previous-line 1)
+    (move-beginning-of-line 1)
+    (forward-char col)))
+
+(global-set-key (kbd "M-P") 'my/move-line-up)
+(global-set-key (kbd "M-<up>") 'my/move-line-up)
+
+(global-set-key (kbd "M-<down>") 'my/move-line-down)
+(global-set-key (kbd "M-N") 'my/move-line-down)
+
+
+;; ==================== END of line manipulation functions =====
+
 ;; occur next-prev. Actually it can be used with errors too
-(global-set-key (kbd "M-s M-n") 'next-error)
 (global-set-key (kbd "M-s M-p") 'previous-error)
 
 
