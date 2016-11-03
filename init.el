@@ -239,20 +239,6 @@
 ;; https://github.com/bbatsov/projectile/issues/600
 (setq gc-cons-threshold 100000000)
 
-;; navigating hydra
-(defhydra hydra-text (:columns 3)
-  "Movement and text manipulation hydra"
-  ("i" previous-line "up")
-  ("k" next-line "down")
-  ("j" backward-char "back")
-  ("l" forward-char "forward")
-  ("dd" kill-whole-line "kill the whole line")
-  ("d$" kill-line "kill until the end of the line")
-  ("0" beginning-of-line "beginning of line")
-  ("$" end-of-line "end of line")
-  ("h" nil "quit (insert mode)" :color blue)
-  ("q" nil "quit" :color blue))
-
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
 ;; Grouped configuration files can be found in ./elisp

@@ -251,6 +251,23 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "M-s M-p") 'previous-error)
 
 
+;; navigating hydra
+(defhydra hydra-text (:columns 3)
+  "Movement and text manipulation hydra"
+  ("i" previous-line "up")
+  ("k" next-line "down")
+  ("j" backward-char "back")
+  ("l" forward-char "forward")
+  ("dd" kill-whole-line "kill the whole line")
+  ("d$" kill-line "kill until the end of the line")
+  ("0" beginning-of-line "beginning of line")
+  ("$" end-of-line "end of line")
+  ("h" nil "quit (insert mode)" :color blue)
+  ("q" nil "quit" :color blue))
+
+;; C-q was never used so bind this to that.
+(global-set-key (kbd "C-q") 'hydra-text/body)
+
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
