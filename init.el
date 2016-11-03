@@ -225,6 +225,13 @@
     (add-hook 'dired-initial-position-hook 'dired-k)
     (add-hook 'dired-after-readin-hook #'dired-k-no-revert)))
 
+;; This is GREAT when tags don't really cut it
+(use-package dumb-jump
+  :ensure t
+  :diminish (dumb-jump-mode . "Dumb")
+  :config
+  (add-hook 'prog-mode-hook 'dumb-jump-mode))
+
 ;; evil is good for navigation, lets give it a key.
 (use-package evil)
 
