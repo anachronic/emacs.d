@@ -6,9 +6,9 @@
 ;;; Code:
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives
-	     '("melpa-stable" . "http://stable.melpa.org/packages/"))
+             '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
@@ -60,7 +60,7 @@
 (use-package magit
   :ensure t
   :bind (("<f8>" . magit-status)
-	 ("s-t" . magit-status)
+         ("s-t" . magit-status)
          ("C-x g" . magit-status)))
 
 ;; Company: Not much customization right now.
@@ -101,7 +101,7 @@
   :config
   (smex-initialize)
   :bind (("M-x" . smex)
-	 ("M-X" . smex-major-mode-commands)))
+         ("M-X" . smex-major-mode-commands)))
 
 ;; YASnippet, always so handy...
 (use-package yasnippet
