@@ -299,5 +299,12 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "C-q") 'hydra-text/body)
 
 
+;; This looks handy. I'll have to test it though because I'm not very
+;; used to it
+(use-package zzz-to-char
+  :ensure t
+  :bind (("M-z"   . zzz-up-to-char)
+         ("C-M-z" . zzz-to-char)))
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
