@@ -37,6 +37,12 @@
 (global-set-key (kbd "s-f") 'enlarge-window-horizontally)
 (global-set-key (kbd "s-b") 'shrink-window-horizontally)
 
+;; I like next/previous buffer handy. I don't always want to write
+;; the name of the buffer i'm looking for.
+(global-set-key (kbd "C-<tab>") 'next-buffer)
+(global-set-key (kbd "<f10>") 'next-buffer)
+(global-set-key (kbd "C-<f10>") 'previous-buffer)
+
 
 (provide 'setup-ui)
 ;;; setup-ui.el ends here
