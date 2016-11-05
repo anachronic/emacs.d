@@ -245,6 +245,8 @@
 ;; for emacs to work. Got this answer from:
 ;; https://github.com/bbatsov/projectile/issues/600
 (setq gc-cons-threshold 100000000)
+(global-set-key (kbd "<menu>") 'smex)
+
 
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
