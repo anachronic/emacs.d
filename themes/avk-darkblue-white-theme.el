@@ -183,6 +183,10 @@
    `(web-mode-html-tag-face ((t (:foreground "#86f78f"))))
    `(web-mode-html-tag-bracket-face ((t (:foreground "#86f78f"))))
    `(web-mode-function-call-face ((t (:foreground "#e9aafa"))))
+   `(erc-nick-default-face ((t (:foreground "Gold" :weight bold))))
+   `(erc-button ((t (:foreground "DeepSkyBlue" :underline t :weight bold))))
+   `(erc-notice-face ((t (:foreground "CadetBlue" :weight bold))))
+   `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))
 
 ))
 
