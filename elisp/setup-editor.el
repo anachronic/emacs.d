@@ -299,6 +299,11 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "C-q") 'hydra-text/body)
 
 
+;; Toggle some modes.
+(global-set-key (kbd "C-c M C") 'color-identifiers-mode)
+(global-set-key (kbd "C-c M W") 'whitespace-mode)
+(global-set-key (kbd "C-c M L") 'nlinum-relative-mode)
+
 ;; This looks handy. I'll have to test it though because I'm not very
 ;; used to it
 (use-package zzz-to-char
