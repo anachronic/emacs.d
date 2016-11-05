@@ -275,6 +275,16 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "M-N") 'my/move-line-down)
 
 
+;; Kill to beginning of line
+;; not sure about binding this one yet.
+(defun my/kill-to-line-beg ()
+  "Kill to beginning of line."
+  (interactive)
+  (set-mark-command nil)
+  (back-to-indentation)
+  (kill-region (region-beginning) (region-end)))
+
+
 ;; ==================== END of line manipulation functions =====
 
 ;; occur next-prev. Actually it can be used with errors too
@@ -289,14 +299,22 @@ point reaches the beginning or end of the buffer, stop there."
   ("j" backward-char "back")
   ("l" forward-char "forward")
   ("dd" kill-whole-line "kill the whole line")
-  ("d$" kill-line "kill until the end of the line")
-  ("0" beginning-of-line "beginning of line")
-  ("$" end-of-line "end of line")
+  ("de" kill-line "kill until the end of the line")
+  ("da" my/kill-to-line-beg "kill until beginning of line")
+  ("a" beginning-of-line "beginning of line")
+  ("e" end-of-line "end of line")
+  ("x" delete-char "kill char at point")
+  ("z" zzz-up-to-char "zzz up to char")
+  ("u" undo-tree-undo "undo")
+  ("r" undo-tree-redo "redo")
+  ("wc" capitalize-word "capitalize word")
+  ("wd" downcase-word "downcase word")
+  ("wu" upcase-word "uppercase word")
   ("h" nil "quit (insert mode)" :color blue)
   ("q" nil "quit" :color blue))
 
-;; C-q was never used so bind this to that.
-(global-set-key (kbd "C-q") 'hydra-text/body)
+;; Transpose words is cool. just not that important
+(global-set-key (kbd "M-t") 'hydra-text/body)
 
 
 ;; Toggle some modes.
