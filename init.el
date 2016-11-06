@@ -289,6 +289,9 @@
 ;; News reading conf
 (require 'setup-news)
 
+;; IRC config. Using ERC for now
+(require 'setup-chat)
+
 ;; Vala mode setuo
 (require 'vala-mode)
 
