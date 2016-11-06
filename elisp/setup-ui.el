@@ -8,6 +8,10 @@
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
 
+;; these two come from: https://www.emacswiki.org/emacs/SmoothScrolling
+(setq scroll-step 1)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
 ;; get rid of the annoying GNU Emacs buffer
 (setq inhibit-startup-screen t)
 
