@@ -186,7 +186,7 @@
    `(erc-default-face ((t (:foreground "white"))))
    `(erc-nick-default-face ((t (:foreground "Goldenrod" :weight bold))))
    `(erc-button ((t (:foreground "DeepSkyBlue" :underline t :weight bold))))
-   `(erc-notice-face ((t (:foreground "CadetBlue" :weight bold))))
+   `(erc-notice-face ((t (:foreground "DarkSlateBlue" :weight bold))))
    `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))
 
 ))
