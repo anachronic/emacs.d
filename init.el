@@ -178,7 +178,8 @@
   :after (counsel projectile helm-projectile)
   :config
   (define-key projectile-mode-map [remap projectile-find-file] #'counsel-projectile-find-file)
-  (define-key projectile-mode-map [remap projectile-find-dir] #'counsel-projectile-find-dir))
+  (define-key projectile-mode-map [remap projectile-find-dir] #'counsel-projectile-find-dir)
+  (define-key projectile-mode-map [remap projectile-switch-project] #'counsel-projectile-switch-project))
 
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
