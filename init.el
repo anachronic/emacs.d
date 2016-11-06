@@ -131,7 +131,7 @@
 (use-package undo-tree
   :ensure t
   :diminish ""
-  :init
+  :config
   (global-undo-tree-mode 1)
   :bind
   (("C-z" . undo)
@@ -143,7 +143,7 @@
 ;; ace-window from Howard Abrams. I hear its nice
 (use-package ace-window
   :ensure t
-  :init
+  :config
   (global-set-key (kbd "C-x o") 'ace-window))
 
 (use-package ivy
@@ -204,7 +204,7 @@
 ;; yaml-mode. mainly for syntax highlighting
 (use-package yaml-mode
   :ensure t ;; seems like overkill
-  :init
+  :config
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
 
