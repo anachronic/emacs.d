@@ -68,6 +68,12 @@
 ;; I want C-x k to delete the current buffer, not to ask. I can do that with C-x C-k...
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
+;; According to http://oremacs.com/2015/02/18/undo-nonsense/, find-file-read-only
+;; is a trashy command. Whatever. Who cares about useless commands, we don't even use
+;; the useful ones sometimes, right?
+;; That's right. But hold on. This trashy command is bound to C-x C-r. Let's get
+;; rid of it and bind it to a useful command: revert buffer
+(global-set-key (kbd "C-x C-r") (lambda () (interactive) (revert-buffer nil t)))
 
 ;; avy is a cool package that lets you navigate easily
 ;; I mainly use this to get rid of C-[npbf] nonsense
@@ -123,7 +129,7 @@
 (use-package color-identifiers-mode
   :ensure t
   :init
-    (add-hook 'after-init-hook 'global-color-identifiers-mode)
+    (add-hook 'prog-init-hook 'global-color-identifiers-mode)
   :diminish color-identifiers-mode)
 
 
