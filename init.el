@@ -50,13 +50,16 @@
   :demand)
 
 ;; I've come to think helm is not really good with files anymore. So let's
-;; use counsel
+;; use counsel. It also has some nice builtin functionality:
+;; http://oremacs.com/2015/04/19/git-grep-ivy/
 (use-package counsel
   :ensure t
   :after helm
   :config
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "C-.") 'counsel-imenu))
+  (global-set-key (kbd "C-.") 'counsel-imenu)
+  (global-set-key (kbd "C-c g") 'counsel-grep)
+  (global-set-key (kbd "C-c j") 'counsel-git-grep))
 
 ;; Magit is critical for any developer
 (use-package magit
