@@ -36,7 +36,7 @@
    `(compilation-line-number ((t (:foreground "orange red" :weight bold))))
    `(cursor ((t (:background "spring green"))))
    `(custom-variable-tag ((((class color) (background dark)) (:inherit variable-pitch :foreground "DarkOrange" :weight bold))))
-   `(default ((t (:stipple nil :background "#191935" :foreground "ivory3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal ))))
+   `(default ((t (:stipple nil :background "#191935" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal ))))
    `(diff-added ((t (:foreground "lawn green"))))
    `(diff-removed ((t (:foreground "light coral"))))
    `(dired-directory ((t (:inherit font-lock-function-name-face))))

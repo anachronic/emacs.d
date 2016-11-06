@@ -28,6 +28,10 @@
 (global-set-key (kbd "<f12>") 'other-window)
 (global-set-key (kbd "C-<f12>") (lambda () (interactive) (other-window -1)))
 
+;; Some bindings from https://www.masteringemacs.org/article/my-emacs-keybindings
+(global-set-key (kbd "M-o") 'other-window)
+
+
 ;; I'm a little bit too young for emacs,
 ;; so I like replacing the region with stuff.
 (delete-selection-mode 1)
