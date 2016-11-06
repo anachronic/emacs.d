@@ -34,7 +34,8 @@
 (use-package helm
   :ensure t
   :bind
-  (("C-S-m" . helm-mini))
+  (("C-S-m" . helm-mini)
+   ("C-x b" . helm-mini))
   :config
   (progn
     (helm-mode 1)
@@ -43,18 +44,19 @@
     (require 'helm-config)
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z") 'helm-select-action)
-    (global-set-key (kbd "C-x C-f") 'helm-find-files)
     (global-set-key (kbd "M-y") 'helm-show-kill-ring)
     (global-set-key [remap occur] 'helm-occur))
   :diminish ""
   :demand)
 
-;; Helm projectile. I'm surprised I didn't install this before.
-(use-package helm-projectile
+;; I've come to think helm is not really good with files anymore. So let's
+;; use counsel
+(use-package counsel
   :ensure t
+  :after helm
   :config
-  (helm-projectile-on)
-  (setq projectile-completion-system 'helm))
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "C-.") 'counsel-imenu))
 
 ;; Magit is critical for any developer
 (use-package magit
@@ -144,6 +146,9 @@
   :init
   (global-set-key (kbd "C-x o") 'ace-window))
 
+(use-package ivy
+  :ensure t)
+
 ;; Projectile, for projects
 (use-package projectile
   :ensure t
@@ -156,6 +161,24 @@
   (setq projectile-enable-caching t)
   (setq projectile-switch-project-action 'projectile-dired))
 
+;; Helm projectile. I'm surprised I didn't install this before.
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on)
+  (setq projectile-completion-system 'helm))
+
+;; Helm is very cool for everything. So is counsel/avy/etc...
+;; However: Helm is __terrible__ when dealing with file handling. Whether it be finding a file
+;; (especially a directory), or worse, saving a file. Helm is a pain in the ass
+;; So we'll use counsel to save and load files.
+;; On the other hand. No package is better for occur/grep than helm.
+(use-package counsel-projectile
+  :ensure t
+  :after (counsel projectile helm-projectile)
+  :config
+  (define-key projectile-mode-map [remap projectile-find-file] #'counsel-projectile-find-file)
+  (define-key projectile-mode-map [remap projectile-find-dir] #'counsel-projectile-find-dir))
 
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
