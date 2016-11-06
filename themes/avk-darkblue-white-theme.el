@@ -64,7 +64,7 @@
    `(font-lock-string-face ((t (:foreground "#2d9574"))))
    `(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "PaleVioletRed3" :weight bold))))
    `(helm-buffer-saved-out ((t (:foreground "red"))))
-   `(helm-buffer-directory ((t (:inherit dired-directory))))
+   `(helm-buffer-directory ((t (:inherit helm-ff-dotted-directory))))
    `(helm-dired-directory ((t (:inherit dired-directory))))
    `(helm-ff-executable ((t (:foreground "green" :weight bold))))
    `(helm-grep-file ((t (:foreground "#329ba3" :weight bold))))
