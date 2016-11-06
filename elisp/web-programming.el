@@ -25,16 +25,22 @@
           '(("django"    . "\\.html\\'"))
           )))
 
+;; This function should return t when chr is {, mode is web-mode
+;; and the next character _before_ point (without spaces and/or newlines)
+;; is __NOT__ a closing paren
 (defun my/web-mode-before-function-p (chr)
-  "Return false if CHR is {, major mode is web-mode and previous char is closing paren."
+  "True if CHR is {, mode is web-mode and previous character is NOT a closing paren."
   (if (not (eq major-mode 'web-mode))
       nil
-    (not (and (eq major-mode 'web-mode)
-              (eq ?\{ chr)
-              (equal (progn (save-excursion
+    (and (eq major-mode 'web-mode)
+         (eq ?\{ chr)
+         (not (equal (progn (save-excursion
                               (backward-char)
                               (string (preceding-char))))
                      ")")))))
+
+(setq electric-pair-inhibit-predicate
+      'my/web-mode-before-function-p)
 
 ;; A great package. Not only does it complete HTML stuff, but it also
 ;; displays documentation with company-quickhelp
@@ -52,10 +58,6 @@
   (company-web-bootstrap+))
 
 (add-hook 'web-mode-hook 'my/add-company-backends-webmode)
-
-
-(setq electric-pair-inhibit-predicate
-      'my/web-mode-before-function-p)
 
 ;; Emmet!!!
 (use-package emmet-mode
