@@ -58,8 +58,8 @@
   :config
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (global-set-key (kbd "C-.") 'counsel-imenu)
-  (global-set-key (kbd "C-c g") 'counsel-grep)
-  (global-set-key (kbd "C-c j") 'counsel-git-grep))
+  (global-set-key (kbd "C-c s") 'counsel-grep)
+  (global-set-key (kbd "C-c g") 'counsel-git-grep))
 
 ;; Magit is critical for any developer
 (use-package magit
