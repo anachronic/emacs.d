@@ -51,6 +51,16 @@
 (global-set-key (kbd "<f10>") 'previous-buffer)
 (global-set-key (kbd "C-<f10>") 'next-buffer)
 
+;; This mode looks way cool. Let's use it
+;; We shall never lose the cursor again.!
+;; URL: http://endlessparentheses.com/beacon-never-lose-your-cursor-again.html
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode)
+  (setq beacon-push-mark 35)
+  (setq beacon-color "yellow")
+  :diminish 'beacon-mode)
 
 (provide 'setup-ui)
 ;;; setup-ui.el ends here
