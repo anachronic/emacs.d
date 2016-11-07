@@ -73,7 +73,7 @@
    `(helm-ff-dotted-directory ((t (:foreground "gold3" :weight bold))))
    `(helm-ff-invalid-symlink ((t (:inherit dired-symlink :strike-through "red"))))
    `(helm-ff-symlink ((t (:inherit dired-symlink))))
-   `(helm-selection ((t (:foreground "Navy" :box (:line-width 2 :style pressed-button :color "black") :weight bold :background "DeepSkyBlue"))))
+   `(helm-selection ((t (:foreground "Navy" :underline t :weight bold :background "DeepSkyBlue"))))
    `(helm-source-header ((t (:inherit font-lock-function-name-face))))
    `(helm-visible-mark ((t (:background "dark green"))))
    `(ivy-minibuffer-match-face-1 ((t (:background "SpringGreen1" :weight bold :foreground "MidnightBlue"))))
