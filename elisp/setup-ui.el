@@ -15,6 +15,9 @@
 ;; get rid of the annoying GNU Emacs buffer
 (setq inhibit-startup-screen t)
 
+;; also get rid of the scratch buffer message
+(setq initial-scratch-message nil)
+
 ;; load the latest theme.
 (load-theme 'avk-darkblue-white t)
 (set-face-attribute 'default nil :height 105)
@@ -44,9 +47,9 @@
 
 ;; I like next/previous buffer handy. I don't always want to write
 ;; the name of the buffer i'm looking for.
-(global-set-key (kbd "C-<tab>") 'next-buffer)
-(global-set-key (kbd "<f10>") 'next-buffer)
-(global-set-key (kbd "C-<f10>") 'previous-buffer)
+(global-set-key (kbd "C-<tab>") 'previous-buffer)
+(global-set-key (kbd "<f10>") 'previous-buffer)
+(global-set-key (kbd "C-<f10>") 'next-buffer)
 
 
 (provide 'setup-ui)
