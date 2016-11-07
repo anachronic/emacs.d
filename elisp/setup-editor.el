@@ -356,5 +356,39 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [remap fill-paragraph]
                 #'endless/fill-or-unfill)
 
+
+;; Another useful one. COnvert DOuble CAps to Single Caps minor mode.
+;; Source 1: http://endlessparentheses.com/fixing-double-capitals-as-you-type.html
+;; Source 2: http://emacs.stackexchange.com/questions/13970/fixing-double-capitals-as-i-type/13975#13975
+(defun dcaps-to-scaps ()
+  "Convert word in DOuble CApitals to Single Capitals."
+  (interactive)
+  (and (= ?w (char-syntax (char-before)))
+       (save-excursion
+         (and (if (called-interactively-p)
+                  (skip-syntax-backward "w")
+                (= -3 (skip-syntax-backward "w")))
+              (let (case-fold-search)
+                (looking-at "\\b[[:upper:]]\\{2\\}[[:lower:]]"))
+              (capitalize-word 1)))))
+
+(define-minor-mode dubcaps-mode
+  "Toggle `dubcaps-mode'.  Converts words in DOuble CApitals to
+Single Capitals as you type."
+  :init-value nil
+  :lighter (" DC")
+  (if dubcaps-mode
+      (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+    (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
+
+;; This minor mode is useful with Org and LaTeX. Maybe others as we
+;; write
+(add-hook 'LaTeX-mode-hook #'dubcaps-mode)
+(add-hook 'org-mode-hook #'dubcaps-mode)
+(add-hook 'markdown-mode-hook #'dubcaps-mode)
+(add-hook 'gfm-mode-hook #'dubcaps-mode)
+(add-hook 'text-mode-hook #'dubcaps-mode)
+
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here

@@ -121,8 +121,9 @@
   :ensure t
   :config
   (smex-initialize)
-  :bind (("M-x" . smex)
-         ("M-X" . smex-major-mode-commands)))
+  :bind (("M-x"    . smex)
+         ("M-X"    . smex-major-mode-commands)
+         ("<menu>" . smex)))
 
 ;; YASnippet, always so handy...
 (use-package yasnippet
@@ -167,6 +168,11 @@
 
 (use-package ivy
   :ensure t)
+
+;; Lets use swiper conservatively. I actually like isearch better.
+(use-package swiper
+  :ensure t
+  :bind ("C-S-s" . swiper))
 
 ;; Projectile, for projects
 (use-package projectile
@@ -298,7 +304,6 @@
 ;; for emacs to work. Got this answer from:
 ;; https://github.com/bbatsov/projectile/issues/600
 (setq gc-cons-threshold 100000000)
-(global-set-key (kbd "<menu>") 'smex)
 
 
 ;; We have all our modes set.
