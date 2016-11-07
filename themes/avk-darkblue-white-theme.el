@@ -66,6 +66,8 @@
    `(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "PaleVioletRed3" :weight bold))))
    `(helm-buffer-saved-out ((t (:foreground "red"))))
    `(helm-buffer-directory ((t (:inherit helm-ff-dotted-directory))))
+   `(helm-ff-directory ((t (:inherit helm-ff-dotted-directory))))
+   `(helm-ff-file ((t (:foreground "DarkTurquoise"))))
    `(helm-dired-directory ((t (:inherit dired-directory))))
    `(helm-ff-executable ((t (:foreground "green" :weight bold))))
    `(helm-grep-file ((t (:foreground "#329ba3" :weight bold))))
@@ -197,7 +199,7 @@
    `(erc-notice-face ((t (:foreground "DarkSlateBlue" :weight bold))))
    `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))
 
-))
+   ))
 
 ;;;###autoload
 (when (and load-file-name (boundp 'custom-theme-load-path))
