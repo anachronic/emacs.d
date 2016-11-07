@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: init
+# key: init
+# --
+;;; `(file-name-nondirectory (buffer-file-name))` --- ${1:Nothing substantial about this file.}.
+;;; Commentary:
+;;; Code:
+
+$0
+
+(provide '`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`)
+;;; `(file-name-nondirectory (buffer-file-name))` ends here
