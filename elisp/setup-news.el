@@ -20,11 +20,12 @@
 (setq elfeed-feeds
       '(("http://emacsredux.com/atom.xml" emacs)
 	("http://nullprogram.com/feed/" emacs)
+        ("http://endlessparentheses.com/atom.xml" emacs)
+        ("http://oremacs.com/atom.xml" emacs)
+        ("https://www.masteringemacs.org/feed" emacs)
 	("https://www.schneier.com/blog/atom.xml" security)
 	("http://www.muylinux.com/feed/" linux)
-	("http://feeds.feedburner.com/LinuxAdictos" linux)
-	("http://feeds.arstechnica.com/arstechnica/technology-lab?format=xml" tech)))
-
+	("http://feeds.feedburner.com/LinuxAdictos" linux)))
 
 
 
