@@ -59,7 +59,8 @@
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
   (global-set-key (kbd "C-.") 'counsel-imenu)
   (global-set-key (kbd "C-c s") 'counsel-grep)
-  (global-set-key (kbd "C-c g") 'counsel-git-grep))
+  (global-set-key (kbd "C-c g") 'counsel-git-grep)
+  (global-set-key (kbd "C-c M-x") 'counsel-M-x))
 
 ;; Magit is critical for any developer
 (use-package magit
@@ -192,19 +193,6 @@
   (global-flycheck-mode)
   (setq flycheck-emacs-lisp-load-path 'inherit))
 
-;; AUCTeX: This is critical for me and LaTeX
-(use-package auctex
-  :ensure t
-  :mode ("\\.tex\\'" . latex-mode)
-  :commands (latex-mode LaTeX-mode plain-tex-mode))
-
-;; We'd also like to instantly preview our TeX docs.
-;; It's quite nice that latex-preview-pane works well with DocView
-(use-package latex-preview-pane
-  :ensure t
-  :config
-  (latex-preview-pane-enable))
-
 ;; yaml-mode. mainly for syntax highlighting
 (use-package yaml-mode
   :ensure t ;; seems like overkill
@@ -323,6 +311,9 @@
 
 ;; js programming. God this is annoying
 (require 'js-programming)
+
+;; LaTeX writing.
+(require 'latex-writing)
 
 ;; Mail conf
 (require 'setup-mail)
