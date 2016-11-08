@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: defkey
+# key: defkey
+# --
+(define-key ${1:map} "${2:key}" ${3:function})$0
