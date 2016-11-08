@@ -291,14 +291,24 @@
   (add-hook 'c-mode-common-hook #'aggressive-indent-mode)
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode))
 
-;; evil is good for navigation, lets give it a key.
-(use-package evil)
-
 ;; hydra
 (use-package hydra
   :ensure t)
 
-(global-set-key (kbd "<f6>") (lambda (x) (interactive "p") (call-interactively 'evil-mode)))
+;; evil is good for navigation, lets give it a key.
+(use-package evil)
+
+;; Let's make a mode prefix
+(defvar my/mode-toggle-map)
+(define-prefix-command 'my/mode-toggle-map)
+(global-set-key (kbd "<f6>") 'my/mode-toggle-map)
+
+(define-key my/mode-toggle-map "e" #'evil-mode)
+(define-key my/mode-toggle-map "w" #'whitespace-mode)
+(define-key my/mode-toggle-map "l" #'nlinum-relative-mode)
+(define-key my/mode-toggle-map "c" #'color-identifiers-mode)
+
+
 
 ;; My projectile grep was making emacs crash, so 100MB should be more than enough
 ;; for emacs to work. Got this answer from:
