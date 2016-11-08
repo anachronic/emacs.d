@@ -29,5 +29,9 @@
 ;; Also diminish Flyspell to FlyS
 (diminish 'flyspell-mode "FlyS")
 
+;; Enable narrowing. God disabled commands are annoying.
+(put 'LaTeX-narrow-to-environment 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+
 (provide 'latex-writing)
 ;;; latex-writing.el ends here

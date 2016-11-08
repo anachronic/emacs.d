@@ -9,6 +9,41 @@
 ;; Make C-n add newlines at end of file
 (setq next-line-add-newlines t)
 
+;; Enable narrow commands
+(put 'narrow-to-region 'disabled nil)
+
+;; This is a beautiful command from endlessparentheses
+;; url: http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
+(defun narrow-or-widen-dwim (p)
+  "Widen if buffer is narrowed, narrow-dwim otherwise.
+Dwim means: region, org-src-block, org-subtree, or
+defun, whichever applies first. Narrowing to
+org-src-block actually calls `org-edit-src-code'.
+
+With prefix P, don't widen, just narrow even if buffer
+is already narrowed."
+  (interactive "P")
+  (declare (interactive-only))
+  (cond ((and (buffer-narrowed-p) (not p)) (widen))
+        ((region-active-p)
+         (narrow-to-region (region-beginning)
+                           (region-end)))
+        ((derived-mode-p 'org-mode)
+         ;; `org-edit-src-code' is not a real narrowing
+         ;; command. Remove this first conditional if
+         ;; you don't want it.
+         (cond ((ignore-errors (org-edit-src-code) t)
+                (delete-other-windows))
+               ((ignore-errors (org-narrow-to-block) t))
+               (t (org-narrow-to-subtree))))
+        ((derived-mode-p 'latex-mode)
+         (LaTeX-narrow-to-environment))
+        (t (narrow-to-defun))))
+
+;; Let's bind it to C-c n
+(global-set-key (kbd "C-c n") #'narrow-or-widen-dwim)
+
+
 ;; The last instruction isn't as good without this next instruction
 ;; Yes, you guessed it, it deletes all trailing whitespaces and newlines..
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -389,6 +424,11 @@ Single Capitals as you type."
 (add-hook 'gfm-mode-hook #'dubcaps-mode)
 (add-hook 'text-mode-hook #'dubcaps-mode)
 
+;; I'll be trying Paredit. Should be quite useful for lisp-like stuff
+(use-package paredit
+  :ensure t
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
