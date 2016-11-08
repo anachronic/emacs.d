@@ -307,7 +307,9 @@
 (define-key my/mode-toggle-map "w" #'whitespace-mode)
 (define-key my/mode-toggle-map "l" #'nlinum-relative-mode)
 (define-key my/mode-toggle-map "c" #'color-identifiers-mode)
-
+(define-key my/mode-toggle-map "v" #'visual-line-mode)
+(define-key my/mode-toggle-map "p" #'projectile-mode)
+(define-key my/mode-toggle-map "k" #'which-key-mode)
 
 
 ;; My projectile grep was making emacs crash, so 100MB should be more than enough
