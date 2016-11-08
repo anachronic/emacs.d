@@ -312,10 +312,10 @@
 (define-key my/mode-toggle-map "k" #'which-key-mode)
 
 
-;; My projectile grep was making emacs crash, so 100MB should be more than enough
+;; My projectile grep was making emacs crash, so 500MB should be more than enough
 ;; for emacs to work. Got this answer from:
 ;; https://github.com/bbatsov/projectile/issues/600
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 500000000)
 
 
 ;; We have all our modes set.
