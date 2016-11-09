@@ -424,5 +424,9 @@ Single Capitals as you type."
   :config
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
 
+;; At our own risk we'll use this binding. But burying a buffer is kind of essential
+(global-set-key (kbd "C-c C-k") 'bury-buffer)
+(global-set-key (kbd "C-c q") 'bury-buffer)
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
