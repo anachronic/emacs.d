@@ -47,23 +47,8 @@
     (global-set-key (kbd "M-y") 'helm-show-kill-ring)
     (global-set-key (kbd "C-x C-f") 'helm-find-files)
     (global-set-key [remap occur] 'helm-occur)
-
-    ;; I was using counsel to find files. But since ocasionally I do have
-    ;; to edit some system files, Helm will do the trick. This disables
-    ;; which-key and projectile globally, which is a pain in the ass.
-    ;; It's ok though. I don't do this very often.
-    ;; sources:
-    ;; advice: http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
-    ;; Projectile & wk: http://emacs.stackexchange.com/questions/4234/cannot-edit-a-file-as-root-if-authinfo-gpg-file-exists
-    (defadvice helm-find-files (after find-file-sudo activate)
-      "Find file as root if necessary."
-      (unless (and buffer-file-name
-                   (file-writable-p buffer-file-name))
-        (projectile-mode -1)
-        (which-key-mode -1)
-        (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name)))))
-  :diminish ""
-  :demand)
+    :diminish ""
+    :demand))
 
 ;; I've come to think helm is not really good with files anymore. So let's
 ;; use counsel. It also has some nice builtin functionality:
@@ -137,7 +122,6 @@
     (yas-reload-all)
     (define-key yas-minor-mode-map (kbd "C-<return>") 'yas-exit-snippet)
     (define-key yas-minor-mode-map (kbd "<escape>") 'yas-exit-snippet)))
-    ;; (define-key yas-minor-mode-map (kbd "C-m") 'yas-exit-snippet)))
 
 ;; Markdown mode
 (use-package markdown-mode
