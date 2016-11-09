@@ -24,10 +24,11 @@
 (add-hook 'LaTeX-mode-hook 'my/add-preview-pane-toggle)
 
 ;; Let's try Flyspell with TeX documents.
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-
-;; Also diminish Flyspell to FlyS
-(diminish 'flyspell-mode "FlyS")
+(defun my/add-flyspell ()
+  "Add Flyspell to a buffer and diminish it to FlyS."
+  (flyspell-mode)
+  (diminish 'flyspell-mode "FlyS"))
+(add-hook 'LaTeX-mode-hook #'my/add-flyspell)
 
 ;; Enable narrowing. God disabled commands are annoying.
 (put 'LaTeX-narrow-to-environment 'disabled nil)

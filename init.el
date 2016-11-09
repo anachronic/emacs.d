@@ -113,7 +113,8 @@
 (use-package company-flx
   :ensure t
   :config
-  (company-flx-mode +1))
+  (company-flx-mode +1)
+  (setq company-flx-limit 75))
 
 
 ;; Helm fuzzy mode doesn't seem to be as good as smex...
