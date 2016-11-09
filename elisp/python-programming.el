@@ -6,8 +6,12 @@
 ;; elpy is GREAT!
 (use-package elpy
   :ensure t
+  :commands elpy-enable
+  :init (with-eval-after-load 'python (elpy-enable))
   :config
-  (elpy-enable))
+  (delete 'elpy-module-highlight-indentation elpy-modules)
+  (delete 'elpy-module-yasnippet elpy-modules)
+  (delete 'elpy-module-flymake elpy-modules))
 
 ;; python-django seems to work quite ok with it.
 (use-package python-django
