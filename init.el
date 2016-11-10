@@ -263,15 +263,6 @@
 (use-package gitignore-mode
   :ensure t)
 
-;; According to Emacs Redux, aggressive-indent-mode rocks
-;; Let's give it a try.
-;; URL: http://emacsredux.com/blog/2016/02/07/auto-indent-your-code-with-aggressive-indent-mode/
-(use-package aggressive-indent
-  :ensure t
-  :config
-  (add-hook 'c-mode-common-hook #'aggressive-indent-mode)
-  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode))
-
 ;; hydra
 (use-package hydra
   :ensure t)
