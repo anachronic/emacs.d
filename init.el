@@ -59,19 +59,24 @@
 ;; http://oremacs.com/2015/04/19/git-grep-ivy/
 (use-package counsel
   :ensure t
-  :after helm
+  :after (helm ivy flx)
   :config
+  (setq ivy-re-builders-alist
+        '((counsel-M-x . ivy--regex-fuzzy)
+          (t . ivy--regex-plus)))
   (global-set-key (kbd "C-.") 'counsel-imenu)
   (global-set-key (kbd "C-c s") 'counsel-grep)
   (global-set-key (kbd "C-c g") 'counsel-git-grep)
-  (global-set-key (kbd "C-c M-x") 'counsel-M-x))
+  (global-set-key (kbd "M-x") 'counsel-M-x))
 
 ;; Magit is critical for any developer
 (use-package magit
   :ensure t
   :bind (("<f8>" . magit-status)
          ("s-t" . magit-status)
-         ("C-x g" . magit-status)))
+         ("C-x g" . magit-status))
+  :config
+  (define-key vc-prefix-map (kbd "h") #'magit-log-buffer-file))
 
 ;; Company: Not much customization right now.
 (use-package company
@@ -98,22 +103,17 @@
   :config
   (company-statistics-mode))
 
+;; flx is a dependency for company-flx and ivy's M-x (or any ivy actually).
+(use-package flx
+  :ensure t)
+
 ;; Will be trying company-flx for a while.
 (use-package company-flx
   :ensure t
+  :after flx
   :config
   (company-flx-mode +1)
   (setq company-flx-limit 75))
-
-
-;; Helm fuzzy mode doesn't seem to be as good as smex...
-(use-package smex
-  :ensure t
-  :config
-  (smex-initialize)
-  :bind (("M-x"    . smex)
-         ("M-X"    . smex-major-mode-commands)
-         ("<menu>" . smex)))
 
 ;; YASnippet, always so handy...
 (use-package yasnippet
