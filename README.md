@@ -11,39 +11,47 @@ I found out years later that Emacs is highly customizable and started playing ar
 
 Well, this config should work in any linux system, and while it is usable, we all have our own config files and directories. But feel free to use it, clone it and dig around the code inside. Most of the packages are auto-installed when you first run Emacs. But in case you want to know, you'll need to manually install **elfeed** in order to read my RSS feeds.
 
-This config *includes* my personal feeds, which you can delete, or whatever, for now they're on `init.el`, and in retrospective, I should change it. I guess i'll do it sometime.
+There are some personal configuration files that these files load. But that's only when they exist so that should be fine.
 
 ## Packages
 
-They should now autoinstall:
+I had a list before, but it has grown to the point that it's kind of unmantainable, so I'll just list the important ones. Of course there's `magit`, `yas`, and all that stuff.
 
-* [Magit](https://magit.vc/)
-* [company](http://company-mode.github.io/) for autocompletion
-* [Helm](https://github.com/emacs-helm/helm) for a nice way to input stuff
-* [recentf](https://www.emacswiki.org/emacs/RecentFiles) (with config and helm...) for finding recently used files
-* [smex](https://github.com/nonsequitur/smex) for a **good** fuzzy M-x
-* [company-quickhelp](https://github.com/expez/company-quickhelp) for documentation
-* [autopair](autopair) for smooth and good coding
-* [YASnippet](https://github.com/joaotavora/yasnippet) for faster coding with snippets
-  * [Snippets](https://github.com/AndreaCrotti/yasnippet-snippets) From [AndreaCrotti](https://github.com/AndreaCrotti)'s repository
-* [Flycheck](http://www.flycheck.org/en/latest/) for syntax checking
-* [AUCTeX](https://www.gnu.org/software/auctex/) for latex editing, compiling and previewing
-* [yaml-mode](yaml-mode) for .yml files.
-* [ace-window](https://github.com/abo-abo/ace-window)  for window quick navigating
-* [Markdown-mode](http://jblevins.org/projects/markdown-mode/) for editing files like this one and GitHub Flavored Markdown.
-* [Undo-Tree](http://www.dr-qubit.org/tags/computing-code-emacs.html) mainly for the redo action
-* [Projectile](https://github.com/bbatsov/projectile) for project managing.
-* [nlinum-relative](https://github.com/CodeFalling/nlinum-relative) for better navigation.
-* [expand-region](https://github.com/magnars/expand-region.el) for increasingly expanding regions.
-* [elfeed](https://github.com/skeeto/elfeed) for News reading! :)
-* [avy](https://github.com/abo-abo/avy) because I really try to avoid `C-n` and `C-p`
-* [smart-comment](https://github.com/paldepind/smart-comment) for commenting lines....
+* [Magit](https://magit.vc/) - Git interface
+* [company](http://company-mode.github.io/) - Autocompletion
+* [Helm](https://github.com/emacs-helm/helm) - Input stuff easily
+* [ivy](https://github.com/abo-abo/swiper) - Same as above. I default ivy and use Helm for specific stuff.
+* [AUCTeX](https://www.gnu.org/software/auctex/) - LaTeX. Previewing things is nice.
+* [Projectile](https://github.com/bbatsov/projectile) - Project managing.
+* [expand-region](https://github.com/magnars/expand-region.el) - One of the best packages ever.
+* [elfeed](https://github.com/skeeto/elfeed) - News reading. Mainly linux and emacs news.
+* [multiple-cursors](https://github.com/magnars/multiple-cursors.el) - Another **GREAT** package. Check it out!
+* [Elpy](https://github.com/jorgenschaefer/elpy) - Python programming. I'd rather use anaconda, but it doesn't autoimport stuff.
+* [helm-gtags](https://github.com/syohex/emacs-helm-gtags) - GNU Global TAGS interface. It's great.
+* [dumb-jump](https://github.com/jacktasia/dumb-jump) - Use grep/ag to jump defs. I use as a fallback when TAGS are not available or don't work as expected.
 
-I will include some more over time.
+That's the important stuff, I'm sure you can find better ones than me. Youtube is full of great videos that not only show great packages but also have demos or can show you how to use them. What has made a difference for me is reading people's blogs. Seriously, if you haven't, you should. I have found **amazing** code snippets out there, the most recent one being `narrow-or-widen-dwim`. If you don't know what narrow is, [look it up](https://www.gnu.org/software/emacs/manual/html_node/emacs/Narrowing.html). Most of what I've copied or adapted are in my elfeed feeds list. But I'll include them, because they're truly amazing:
+
+* [or emacs](http://oremacs.com/)
+* [emacs redux](http://emacsredux.com/)
+* [Endless parentheses](http://endlessparentheses.com/)
+* [Mastering Emacs](https://www.masteringemacs.org/all-articles)
+
+There are others, but I haven't checked them out. If you find any interest one, I beg you let me know!
+
 
 ## What is this good for?
 
-We all use emacs for different purposes, and that's ok. I have been using this lately for LaTeX and Org-mode. I have used it for C programming and some Python. I wouldn't recommend this for Python though, especially if you're doing something like web programming or some really sophisticated stuff, because *it has flaws*. TeX, C and Org should be fine though.
+We all use emacs for different purposes, and that's ok. I have been using this lately for LaTeX and Org-mode. I have used it for C programming and some Python. Configuration should be ready to do:
+
+1. Python
+2. C/C++
+3. Javascript/Node.js
+4. Web mode (default is Django for now)
+5. Markdown, ofc.
+6. Vala. I haven't used this yet, but I do intend to.
+
+And some other *not-so-important* major modes like `gitignore-mode`. Whatever.
 
 ## Future work
 
