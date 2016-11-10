@@ -22,6 +22,8 @@
   (setq org-agenda-files (list my/org-agenda-file)))
 
 ;; reveal.js stuff
+;; Thanks to Mike Zamansky
+;; https://www.youtube.com/watch?v=psDpCpcIVYs
 (use-package ox-reveal
   :ensure ox-reveal
   :config
