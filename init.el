@@ -4,6 +4,11 @@
 ;; I have nothing substantial to say here.
 ;;
 ;;; Code:
+
+;; According to https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
+;; This can reduce emacs init time. I went from 3.0s to 2.5s
+(setq gc-cons-threshold 500000000)
+
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -281,6 +286,8 @@
 
 ;; Let's make a mode prefix
 (defvar my/mode-toggle-map)
+
+
 (define-prefix-command 'my/mode-toggle-map)
 (global-set-key (kbd "<f6>") 'my/mode-toggle-map)
 
@@ -293,11 +300,9 @@
 (define-key my/mode-toggle-map "k" #'which-key-mode)
 
 
-;; My projectile grep was making emacs crash, so 500MB should be more than enough
-;; for emacs to work. Got this answer from:
-;; https://github.com/bbatsov/projectile/issues/600
-(setq gc-cons-threshold 500000000)
-
+;;; Set garbage collection back to a normal value
+;; I hope it doesn't make it hang again..
+(setq gc-cons-threshold 65000000)
 
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
