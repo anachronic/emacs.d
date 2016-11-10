@@ -33,5 +33,10 @@
 (use-package htmlize
   :ensure t)
 
+;; Ensure we can get out of org-src with C-x C-x
+;; god narrow-or-widen-dwim is cool
+(eval-after-load 'org-src
+  '(define-key org-src-mode-map "\C-x\C-s" #'org-edit-src-exit))
+
 (provide 'setup-org)
 ;;; setup-org.el ends here
