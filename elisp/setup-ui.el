@@ -19,7 +19,8 @@
 (setq initial-scratch-message nil)
 
 ;; load the latest theme.
-(load-theme 'monokai t)
+;; (load-theme 'monokai t)
+(load-theme 'avk-darkblue-white t)
 (set-face-attribute 'default nil :height 105)
 
 (use-package spaceline
