@@ -304,6 +304,9 @@
 ;; I hope it doesn't make it hang again..
 (setq gc-cons-threshold 65000000)
 
+;; Emacs has been hanging lately, so we'll keep an eye on this
+(setq garbage-collection-messages t)
+
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
 ;; Grouped configuration files can be found in ./elisp
