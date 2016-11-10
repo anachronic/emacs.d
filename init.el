@@ -175,6 +175,7 @@
 ;; Helm projectile. I'm surprised I didn't install this before.
 (use-package helm-projectile
   :ensure t
+  :bind (("C-S-x C-S-m" . helm-projectile-switch-to-buffer))
   :config
   (helm-projectile-on)
   (setq projectile-completion-system 'helm))
@@ -187,6 +188,7 @@
 (use-package counsel-projectile
   :ensure t
   :after (counsel projectile helm-projectile)
+  :bind (("C-S-x C-S-n" . counsel-projectile-find-file))
   :config
   (define-key projectile-mode-map [remap projectile-find-file] #'counsel-projectile-find-file)
   (define-key projectile-mode-map [remap projectile-find-dir] #'counsel-projectile-find-dir)
