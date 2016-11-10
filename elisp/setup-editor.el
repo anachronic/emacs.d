@@ -335,6 +335,9 @@ point reaches the beginning or end of the buffer, stop there."
 ;; occur next-prev. Actually it can be used with errors too
 (global-set-key (kbd "M-s M-p") 'previous-error)
 
+;; I've been using occur pretty frequently.
+(global-set-key (kbd "C-S-o") 'occur)
+
 
 ;; navigating hydra
 (defhydra hydra-text (:columns 3)

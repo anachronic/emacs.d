@@ -38,7 +38,6 @@
    ("C-x b" . helm-mini))
   :config
   (progn
-    (helm-mode 1)
     (setq helm-mode-fuzzy-match t)
     (setq helm-ff-newfile-prompt-p nil)
     (require 'helm-config)
@@ -46,9 +45,9 @@
     (define-key helm-map (kbd "C-z") 'helm-select-action)
     (global-set-key (kbd "M-y") 'helm-show-kill-ring)
     (global-set-key (kbd "C-x C-f") 'helm-find-files)
-    (global-set-key [remap occur] 'helm-occur)
-    :diminish ""
-    :demand))
+    (global-set-key [remap occur] 'helm-occur))
+  :diminish ""
+  :demand)
 
 ;; I've come to think helm is not really good with files anymore. So let's
 ;; use counsel. It also has some nice builtin functionality:
@@ -150,9 +149,6 @@
   :ensure t
   :config
   (global-set-key (kbd "C-x o") 'ace-window))
-
-(use-package ivy
-  :ensure t)
 
 ;; Lets use swiper conservatively. I actually like isearch better.
 (use-package swiper
@@ -282,6 +278,15 @@
 
 ;; evil is good for navigation, lets give it a key.
 (use-package evil)
+
+;; Use ivy after helm. I like it's completion system better
+;; just like Helm for specific things.
+(use-package ivy
+  :ensure t
+  :after helm
+  :diminish 'ivy-mode
+  :config
+  (ivy-mode 1))
 
 ;; Let's make a mode prefix
 (defvar my/mode-toggle-map)
