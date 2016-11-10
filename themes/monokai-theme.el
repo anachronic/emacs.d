@@ -3264,26 +3264,26 @@ Also affects 'linum-mode' background."
    ;; https://github.com/magit/magit/search?utf8=%E2%9C%93&q=face
    ;;
    `(magit-diff-added
-     ((,class (:foreground ,monokai-green
-                           :background ,monokai-bg))
+     ((,class (:foreground "#ddffdd"
+                           :background "#335533"))
       (,terminal-class (:foreground ,terminal-monokai-green
                                     :background ,terminal-monokai-bg))))
 
    `(magit-diff-added-highlight
-     ((,class (:foreground ,monokai-green
-                           :background ,monokai-highlight-line))
+     ((,class (:foreground "#cceecc"
+                           :background "#336633"))
       (,terminal-class (:foreground ,terminal-monokai-green
                                     :background ,terminal-monokai-highlight-line))))
 
    `(magit-diff-removed
-     ((,class (:foreground ,monokai-red
-                           :background ,monokai-bg))
+     ((,class (:foreground "#ffdddd"
+                           :background "#553333"))
       (,terminal-class (:foreground ,terminal-monokai-red
                                     :background ,terminal-monokai-bg))))
 
    `(magit-diff-removed-highlight
-     ((,class (:foreground ,monokai-red
-                           :background ,monokai-highlight-line))
+     ((,class (:foreground "#cceecc"
+                           :background "#663333"))
       (,terminal-class (:foreground ,terminal-monokai-red
                                     :background ,terminal-monokai-highlight-line))))
 
