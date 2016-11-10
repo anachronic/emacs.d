@@ -19,7 +19,7 @@
 (setq initial-scratch-message nil)
 
 ;; load the latest theme.
-(load-theme 'avk-darkblue-white t)
+(load-theme 'monokai t)
 (set-face-attribute 'default nil :height 105)
 
 (use-package spaceline
@@ -59,7 +59,7 @@
   :config
   (beacon-mode)
   (setq beacon-push-mark 35)
-  (setq beacon-color "yellow")
+  (setq beacon-color "#F92672")
   :diminish 'beacon-mode)
 
 (provide 'setup-ui)
