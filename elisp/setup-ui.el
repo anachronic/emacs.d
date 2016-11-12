@@ -51,6 +51,9 @@ Otherwise exit Emacs."
 ;; rebind it to C-x C-c
 (define-key ctl-x-map (kbd "C-c") 'my/emacs-close-dwim)
 
+;; use ibuffer instead of default C-x C-b
+(define-key ctl-x-map (kbd "C-b") 'ibuffer)
+
 ;; no DING!
 (setq visible-bell 1)
 
