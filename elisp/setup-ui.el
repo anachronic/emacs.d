@@ -35,6 +35,21 @@
 (global-set-key (kbd "C-c F") 'make-frame)
 (global-set-key (kbd "C-c K") 'delete-frame)
 
+;; emacs-close-dwim
+;; I want to C-x C-c out of a frame without closing emacs.
+;; So if there's more than one frame active. Just close it
+;; If there's only one, shut down emacs. And hell, don't ask
+;; to save buffers, just do it.
+(defun my/emacs-close-dwim ()
+  "Close current frame if there's more than one active.
+Otherwise exit Emacs."
+  (interactive)
+  (if (> (length (frame-list)) 1)
+      (delete-frame)
+    (save-buffers-kill-emacs)))
+
+;; rebind it to C-x C-c
+(define-key ctl-x-map (kbd "C-c") 'my/emacs-close-dwim)
 
 ;; no DING!
 (setq visible-bell 1)
