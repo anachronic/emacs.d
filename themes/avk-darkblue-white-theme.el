@@ -161,7 +161,7 @@
    `(rst-level-2-face ((t (:background "grey20"))) t)
    `(secondary-selection ((t (:background "forest green" :foreground "white"))))
    `(shadow ((((class color grayscale) (min-colors 88) (background dark)) (:foreground "grey40"))))
-   `(show-paren-match ((t (:foreground "firebrick" :background "dark sky blue" :underline t :weight bold))))
+   `(show-paren-match ((t (:foreground "#98fb98" :background "#2e8b57" :underline t :weight bold))))
    `(smerge-refined-change ((t (:background "midnight blue"))))
    `(tabbar-default ((t (:inherit variable-pitch :background "gray75" :foreground "MidNightBlue" :family "verdana"))))
    `(tabbar-selected ((t (:inherit tabbar-default :foreground "red4" :family "verdana"))))

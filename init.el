@@ -286,6 +286,14 @@
   :config
   (ivy-mode 1))
 
+;; This one was recommended by Steve Purcell. Looked pretty good
+;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY
+(use-package fullframe
+  :ensure t
+  :after magit
+  :config
+  (fullframe magit-status magit-mode-quit-window))
+
 ;; Let's make a mode prefix
 (defvar my/mode-toggle-map)
 
@@ -373,7 +381,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode all-the-icons neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
+    (fullframe htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode all-the-icons neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
  '(projectile-mode-line
    (quote
     (:eval
