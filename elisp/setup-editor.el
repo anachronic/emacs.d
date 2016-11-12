@@ -40,9 +40,9 @@ is already narrowed."
          (LaTeX-narrow-to-environment))
         (t (narrow-to-defun))))
 
-;; Let's bind it to C-c n
+;; Let's bind it to C-c n and C-x n
 (global-set-key (kbd "C-c n") #'narrow-or-widen-dwim)
-
+(define-key ctl-x-map (kbd "n") #'narrow-or-widen-dwim)
 
 ;; The last instruction isn't as good without this next instruction
 ;; Yes, you guessed it, it deletes all trailing whitespaces and newlines..
@@ -100,8 +100,17 @@ is already narrowed."
 ;; I DO NOT LIKE TYPING YES!!!!
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; I want C-x k to delete the current buffer, not to ask. I can do that with C-x C-k...
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
+;; So i was using kill-this-buffer for C-x k. But sometimes I don't really
+;; want to kill the buffer, I just want it to get it out of the way.
+;; So let's bury the buffer with the same key when a prefix is specified.
+(defun my/kill-buffer-or-bury-dwim (&optional arg)
+  "If ARG, bury buffer, otherwise kill the buffer."
+  (interactive "P")
+  (if arg
+      (bury-buffer)
+    (kill-this-buffer)))
+
+(define-key ctl-x-map (kbd "k") 'my/kill-buffer-or-bury-dwim)
 
 ;; According to http://oremacs.com/2015/02/18/undo-nonsense/, find-file-read-only
 ;; is a trashy command. Whatever. Who cares about useless commands, we don't even use
