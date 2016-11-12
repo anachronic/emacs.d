@@ -35,6 +35,7 @@
    `(compilation-error ((t (:inherit font-lock-warning-face))))
    `(compilation-line-number ((t (:foreground "orange red" :weight bold))))
    `(cursor ((t (:background "spring green"))))
+   `(variable-pitch ((t (:family "DejaVu Serif" :height 1.5))))
    `(custom-variable-tag ((((class color) (background dark)) (:inherit variable-pitch :foreground "DarkOrange" :weight bold))))
    `(default ((t (:stipple nil :background "#191935" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal ))))
    `(diff-added ((t (:foreground "lawn green"))))
@@ -202,9 +203,7 @@
    `(erc-nick-default-face ((t (:foreground "Goldenrod" :weight bold))))
    `(erc-button ((t (:foreground "DeepSkyBlue" :underline t :weight bold))))
    `(erc-notice-face ((t (:foreground "DarkSlateBlue" :weight bold))))
-   `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))
-
-   ))
+   `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))))
 
 ;;;###autoload
 (when (and load-file-name (boundp 'custom-theme-load-path))
