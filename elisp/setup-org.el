@@ -38,5 +38,14 @@
 (eval-after-load 'org-src
   '(define-key org-src-mode-map "\C-x\C-s" #'org-edit-src-exit))
 
+(setenv "PDFLATEX" "pdflatex -shell-escape")
+(setq org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+(setq org-latex-listings 'minted)
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+
+(setq org-latex-create-formula-image-program 'imagemagick)
+
+(setq org-src-fontify-natively t)
+
 (provide 'setup-org)
 ;;; setup-org.el ends here
