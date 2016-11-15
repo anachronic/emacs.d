@@ -64,6 +64,7 @@
    `(font-lock-keyword-face ((((class color) (min-colors 88) (background dark)) (:foreground "#fe8019" :weight bold))))
    `(font-lock-string-face ((t (:foreground "#Eedd82"))))
    `(font-lock-doc-face ((t (:foreground "SlateBlue"))))
+   `(font-lock-variable-name-face ((t (:foreground "#87ceeb"))))
    `(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "PaleVioletRed3" :weight bold))))
    `(helm-buffer-saved-out ((t (:foreground "red"))))
    `(helm-buffer-directory ((t (:inherit helm-ff-dotted-directory))))
