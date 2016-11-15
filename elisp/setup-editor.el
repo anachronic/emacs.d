@@ -440,5 +440,12 @@ Single Capitals as you type."
 (global-set-key (kbd "C-c C-k") 'bury-buffer)
 (global-set-key (kbd "C-c q") 'bury-buffer)
 
+;; I've ran into this situation where I really need to insert some paragraphs or
+;; stuff, so let's use lorem-ipsum
+(use-package lorem-ipsum
+  :ensure t
+  :config
+  (lorem-ipsum-use-default-bindings))
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
