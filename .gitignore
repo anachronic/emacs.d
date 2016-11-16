@@ -22,3 +22,4 @@ flycheck_init.el
 /bookmarks
 irony
 /.mc-lists.el
+/var/pcache/gh/gh-gist-api/anachronic
