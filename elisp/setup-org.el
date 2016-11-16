@@ -2,6 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
+
+;; Use org plus contrib
+(use-package org-plus-contrib
+  :ensure t)
+
 ;; Agenda is cool
 (global-set-key (kbd "C-c a") 'org-agenda)
 
@@ -33,7 +38,7 @@
 (use-package htmlize
   :ensure t)
 
-;; Ensure we can get out of org-src with C-x C-x
+;; Ensure we can get out of org-src with C-x C-s
 ;; god narrow-or-widen-dwim is cool
 (eval-after-load 'org-src
   '(define-key org-src-mode-map "\C-x\C-s" #'org-edit-src-exit))
