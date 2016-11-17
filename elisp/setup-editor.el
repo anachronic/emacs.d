@@ -447,5 +447,8 @@ Single Capitals as you type."
   :config
   (lorem-ipsum-use-default-bindings))
 
+;; Let's use hippie expand.
+(global-set-key (kbd "C-/") #'hippie-expand)
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
