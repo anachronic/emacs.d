@@ -1,10 +1,19 @@
 * Features to add to this repository
 
-To add in the latest version of this file:
+This file is intended to guide myself into what I want to add
 
-- [ ] occur-dwim (possibly with helm) [dwim as in occur with region when it's active]
-- [ ] Maybe helm-swoop
-- [ ] Change mode line to telephone, or something more custom
-- [ ] Safe dir-locals.el
-- [ ] Remove annoying helm autocompletion for *saving* files.
-- [ ] Test hydra
+- Fix elpy-format-code. Either leave the point where it is or at least
+  push mark before
+- Bind paredit-kill to an *easy* key. I've been using it outside elisp
+  so much it hurts to M-x each time
+- This one could be big: Write an elisp extension that can wrap the
+  region inside keywords such as try/catch, if, if/else, def(..):,
+  etcetera. I've wanted it for so long it hurts not to have it. I used
+  it all the time in Pycharm/IntelliJ. It was bound to C-M-t. I'll
+  definetly write this one.
+- Do something about the Gtk autocompletion in Python. It's not
+  working and it really annoys me. Maybe i could auto-generate an
+  abbrev table or something.
+- Try out anaconda-mode
+- Bind counsel-git to something. It looks way more useful than
+  projectile's
