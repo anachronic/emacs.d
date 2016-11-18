@@ -22,5 +22,9 @@
   (eval-after-load 'company
     '(add-to-list 'company-backends 'company-tern)))
 
+;; Been using this one for work lately
+(use-package json-reformat
+  :ensure t)
+
 (provide 'js-programming)
 ;;; js-programming.el ends here
