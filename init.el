@@ -68,10 +68,11 @@
   (setq ivy-re-builders-alist
         '((counsel-M-x . ivy--regex-fuzzy)
           (t . ivy--regex-plus)))
-  (global-set-key (kbd "C-.") 'counsel-imenu)
-  (global-set-key (kbd "C-c s") 'counsel-grep)
-  (global-set-key (kbd "C-c g") 'counsel-git-grep)
-  (global-set-key (kbd "M-x") 'counsel-M-x))
+  (global-set-key (kbd "C-.") #'counsel-imenu)
+  (global-set-key (kbd "C-c s") #'counsel-grep)
+  (global-set-key (kbd "C-c g") #'counsel-git-grep)
+  (global-set-key (kbd "C-S-x C-S-n") #'counsel-git)
+  (global-set-key (kbd "M-x") #'counsel-M-x))
 
 ;; Magit is critical for any developer
 (use-package magit
@@ -192,7 +193,6 @@
 (use-package counsel-projectile
   :ensure t
   :after (counsel projectile helm-projectile)
-  :bind (("C-S-x C-S-n" . counsel-projectile-find-file))
   :config
   (define-key projectile-mode-map [remap projectile-find-file] #'counsel-projectile-find-file)
   (define-key projectile-mode-map [remap projectile-find-dir] #'counsel-projectile-find-dir)
