@@ -12,7 +12,7 @@
 
 ;; org keywords. I like having more than the usual TODO/
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WAITING(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
+      '((sequence "TODO(t)" "IN-PROGRESS(p!)" "|" "DONE(d!)" "CANCELLED(c@)" "WAITING(w@/!)")))
 
 ;; org-bullets bro!
 (use-package org-bullets
