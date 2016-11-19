@@ -44,6 +44,7 @@
    `(dired-header ((t (:inherit font-lock-type-face :weight bold :height 1.2 :family "verdana"))))
    `(dired-mark ((t (:inherit font-lock-constant-face :foreground "VioletRed4"))))
    `(dired-marked ((t (:background "VioletRed4" :underline "green"))))
+   `(dired-k-directory ((t (:foreground "#00bfff" :weight bold))))
    `(django-tag-face ((t (:background "#092e20" :box (:line-width 1 :color "grey22")))) t)
    `(django-variable-face ((t (:foreground "#479dcc"))) t)
    `(dropdown-list-face ((t (:inherit default :background "gray89" :foreground "black"))))
