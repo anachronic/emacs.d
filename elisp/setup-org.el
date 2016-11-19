@@ -21,6 +21,7 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; Let's load our agenda file(s)
+(defvar my/org-agenda-file)
 (setq my/org-agenda-file "~/Dropbox/agenda.org")
 
 (when (file-exists-p my/org-agenda-file)
