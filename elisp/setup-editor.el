@@ -436,9 +436,11 @@ Single Capitals as you type."
   :config
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
 
-;; At our own risk we'll use this binding. But burying a buffer is kind of essential
-(global-set-key (kbd "C-c C-k") 'bury-buffer)
-(global-set-key (kbd "C-c q") 'bury-buffer)
+;; Actually let's change the behaviour:
+;;                                      C-q   <- bury-buffer
+;;                                      C-c q <- quoted-insert
+(global-set-key (kbd "C-q") 'bury-buffer)
+(global-set-key (kbd "C-c q") 'quoted-insert)
 
 ;; I've ran into this situation where I really need to insert some paragraphs or
 ;; stuff, so let's use lorem-ipsum
