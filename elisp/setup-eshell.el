@@ -101,6 +101,20 @@
 ;; ---------------------------------- END HA's copy ------------------------------
 ;; well, aliases go in eshell/ directory, so i won't bother with that for this.
 
+;; I use C-d quite frequently when in shells. I guess I want that
+;; too. Thank you Howard!
+(defun ha/eshell-quit-or-delete-char (arg)
+  (interactive "p")
+  (if (and (eolp) (looking-back eshell-prompt-regexp))
+      (progn
+        (eshell-life-is-too-much) ; Why not? (eshell/exit)
+        (delete-window))
+    (delete-forward-char arg)))
+
+(add-hook 'eshell-mode-hook (lambda ()
+   (define-key eshell-mode-map (kbd "C-d")
+                               'ha/eshell-quit-or-delete-char)))
+
 
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here
