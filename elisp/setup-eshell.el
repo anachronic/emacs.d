@@ -20,6 +20,13 @@
               (concat (s-chop-prefix "export PATH=" (s-chop-suffix "$PATH" thestring))
                       (getenv "PATH"))))))
 
+;; Need to set the same value for exec-path and eshell-path-env
+(add-hook 'eshell-mode-hook (lambda ()
+                              (let ((my/userpath (getenv "PATH")))
+                                (setq eshell-path-env my/userpath)
+                                (setq exec-path (s-split ":" my/userpath)))))
+
+
 ;; scroll on input
 (setq eshell-scroll-to-bottom-on-input t)
 
