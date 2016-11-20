@@ -199,8 +199,9 @@ is already narrowed."
 (global-set-key (kbd "M-n") 'my/scrolldown)
 (global-set-key (kbd "M-p") 'my/scrollup)
 
-;; Maybe this should be C-M-d
+;; Deleting stuff
 (global-set-key (kbd "C-S-d") 'delete-backward-char)
+(global-set-key (kbd "M-D") 'backward-kill-word)
 
 ;; I like prettify symbols mode. but only for elisp
 (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
@@ -434,7 +435,8 @@ Single Capitals as you type."
 (use-package paredit
   :ensure t
   :config
-  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode))
+  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  (global-set-key (kbd "M-K") #'paredit-kill))
 
 ;; Actually let's change the behaviour:
 ;;                                      C-q   <- bury-buffer
