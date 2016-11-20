@@ -18,9 +18,13 @@
 
 (use-package company-tern
   :ensure t
+  :after (company tern js2-mode)
   :config
-  (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-tern)))
+  (defun my/add-tern-company ()
+    (setq-local company-backends company-backends)
+    (add-to-list 'company-backends 'company-tern))
+  (add-hook 'js2-mode-hook #'my/add-tern-company))
+
 
 ;; Been using this one for work lately
 (use-package json-reformat

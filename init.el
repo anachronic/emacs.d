@@ -123,14 +123,11 @@
 ;; YASnippet, always so handy...
 (use-package yasnippet
   :ensure t
-  :defer t
-  :diminish yas-minor-mode ;; well, this is always on, so..
   :config
-  (progn
-    (yas-global-mode 1)
-    (yas-reload-all)
-    (define-key yas-minor-mode-map (kbd "C-<return>") 'yas-exit-snippet)
-    (define-key yas-minor-mode-map (kbd "<escape>") 'yas-exit-snippet)))
+  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (yas-global-mode 1)
+  (define-key yas-minor-mode-map (kbd "C-<return>") 'yas-exit-snippet)
+  (define-key yas-minor-mode-map (kbd "<escape>") 'yas-exit-snippet))
 
 ;; Markdown mode
 (use-package markdown-mode
@@ -393,7 +390,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-plus-contrib gist browse-at-remote lorem-ipsum fullframe htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode all-the-icons neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
+    (company-anaconda anaconda-mode org-plus-contrib gist browse-at-remote lorem-ipsum fullframe htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode all-the-icons neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
  '(projectile-mode-line
    (quote
     (:eval
