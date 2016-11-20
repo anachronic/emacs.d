@@ -173,7 +173,7 @@ is already narrowed."
 (use-package color-identifiers-mode
   :ensure t
   :init
-    (add-hook 'prog-init-hook 'global-color-identifiers-mode)
+  (add-hook 'prog-init-hook 'global-color-identifiers-mode)
   :diminish color-identifiers-mode)
 
 
@@ -438,10 +438,23 @@ Single Capitals as you type."
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
   (global-set-key (kbd "M-K") #'paredit-kill))
 
-;; Actually let's change the behaviour:
-;;                                      C-q   <- bury-buffer
-;;                                      C-c q <- quoted-insert
-(global-set-key (kbd "C-q") 'bury-buffer)
+;; I've been burying buffers like crazy lately because it feels more
+;; natural than killing them. However, I'd like to have the
+;; possibility to bury the current buffer with C-q and bury the other
+;; buffer with a prefix argument. This will override quoted insert,
+;; but that's ok since i hardly ever use it. Let's just rebind that to
+;; C-c q
+(defun my/bury-buffer-dwim (arg)
+  "Bury current buffer, if ARG is not nil, bury other-window's buffer instead."
+  (interactive "P")
+  (if arg
+      (progn
+        (other-window 1)
+        (bury-buffer)
+        (other-window -1))
+    (bury-buffer)))
+
+(global-set-key (kbd "C-q") 'my/bury-buffer-dwim)
 (global-set-key (kbd "C-c q") 'quoted-insert)
 
 ;; I've ran into this situation where I really need to insert some paragraphs or

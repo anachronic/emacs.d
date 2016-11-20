@@ -14,3 +14,9 @@ This file is intended to guide myself into what I want to add
 3. Write an importmagic package for python mode. It hurts to have it
    Atom, Sublime Text and Elpy and to not have it in Emacs (at least
    not as an standalone package)
+
+** Some useful URLs for these issues:
+
+   - [[https://github.com/strycore/fakegir][fakegir]]. Autocomplete PyGObject code. Haven't tried it yet.
+   - [[https://github.com/davidhalter/jedi/issues/531][jedi bug discussion]] regarding Gobject Instrospection
+   - [[https://blog.jetbrains.com/idea/2006/07/surround-with/][IntelliJ's blog]] surround with functionality
