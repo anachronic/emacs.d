@@ -36,8 +36,8 @@
   :ensure t
   :config
   (defun my/set-pyvenv-workon ()
-    (local-set-key (kbd "C-c C-w") #'pyvenv-workon)
-    (local-set-key (kbd "C-c C-d") #'pyvenv-deactivate))
+    (local-set-key (kbd "C-c C-d") #'pyvenv-deactivate)
+    (local-set-key (kbd "C-c C-w") #'pyvenv-workon))
   (add-hook 'python-mode-hook #'my/set-pyvenv-workon))
 
 ;; The warning message is very annoying, let's get rid of it
@@ -59,7 +59,7 @@
 
 ;; Let's get rid of the region/buffer keybindings by making -yet
 ;; again- a dwim command. Bind it to C-c C-c
-(defun python-shell-send-dwim (&optional send-main msg)
+(defun my/python-shell-send-dwim (&optional send-main msg)
   "If region is active, send region to buffer, otherwise send the entire buffer.
 The SEND-MAIN and MSG arguments are the same as in python-shell-send-region and
 python-shell-send-buffer."
@@ -77,12 +77,22 @@ python-shell-send-buffer."
                                   send-main
                                   msg)))))
 
-(defun my/replace-python-send-buffer ()
-  "Replace python-shell-send-buffer key binding to python-shell-send-dwim."
-  (local-set-key (kbd "C-c C-c") #'python-shell-send-dwim))
-
-(add-hook 'python-mode-hook #'my/replace-python-send-buffer)
-
+;; While the former function is pretty ok with everything and you
+;; don't lose any functionality, it's kind of a bummer that you have
+;; to C-c C-p before sending the buffer. Why can't we just C-c C-c and
+;; create a Python shell if there isn't one active? Let's just take
+;; the magnars approach here: Don't wait for anyone to fix it, just
+;; code it and be happy. It kind of sucks that print statements show
+;; before completion the first time the command is run, but I'm fine
+;; with that. I'd rather not have to hit C-c C-p before C-c. Elpy
+;; really got a lot of this right.
+(defun python-shell-send-dwim (&optional send-main msg)
+  (interactive (list current-prefix-arg t))
+  (condition-case nil
+      (call-interactively 'my/python-shell-send-dwim)
+    (error (progn
+             (run-python (python-shell-calculate-command) nil t)
+             (call-interactively 'my/python-shell-send-dwim)))))
 
 ;; There's a great approach to the "run project" problem in Spacemacs
 ;; that I thought is very valuable. Just set a hotkey to run the
@@ -103,18 +113,29 @@ python-shell-send-buffer."
         (inferior-python-mode)))))
 
 
-;; The ideal binding for this is C-c C-r, which is unfortunately bound
-;; to python-shell-send-region. Since that's kind of a stupid matter,
-;; I should code a function python-shell-send-region-or-buffer-dwim
-;; which could be bound to C-c C-c and then I could use C-c C-r for
-;; "running" the project.
-(defun my/add-python-execute ()
-  "Add a Python execute file key binding to the buffer."
-  (local-set-key (kbd "C-c C-r") #'spacemacs/python-execute-file))
+;; Let's add more tweaks to the Python key bindings. I'd like to use
+;; C-c C-z (which is python-shell-switch-to-shell) without having to
+;; C-c C-p before. If it's not there, well, start it, why wouldn't we
+;; do that?
+(defun my/python-switch-to-shell ()
+  "Switch to Python shell in other window, create a Python shell if it doesn't exist."
+  (interactive)
+  (condition-case nil
+      (python-shell-switch-to-shell)
+    (error (progn
+             (run-python)
+             (python-shell-switch-to-shell)))))
 
-;; Well, I guess I fixed the C-c C-c issue. So let's use an
-;; appropriate key binding for running the file
-(add-hook 'python-mode-hook #'my/add-python-execute)
+
+;; Add tweaks to standard python.el defined in this file.
+(defun my/python-rebinds ()
+  "Add the functions defined in python-programming.el to Python buffer locally."
+  (local-set-key (kbd "C-c C-z") #'my/python-switch-to-shell)
+  (local-set-key (kbd "C-c C-r") #'spacemacs/python-execute-file)
+  (local-set-key (kbd "C-c C-c") #'python-shell-send-dwim))
+
+(add-hook 'python-mode-hook #'my/python-rebinds)
+
 
 ;; python-django seems to work quite ok with it.
 (use-package python-django
