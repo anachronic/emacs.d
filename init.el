@@ -60,12 +60,17 @@
   :diminish ""
   :demand)
 
+;; Smex provides a GREAT interface for M-x. I got rid of it at some
+;; point but i really regret it, mostly for the last used commands.
+(use-package smex
+  :ensure t)
+
 ;; I've come to think helm is not really good with files anymore. So let's
 ;; use counsel. It also has some nice builtin functionality:
 ;; http://oremacs.com/2015/04/19/git-grep-ivy/
 (use-package counsel
   :ensure t
-  :after (helm ivy flx)
+  :after (helm ivy flx smex)
   :config
   (global-set-key (kbd "C-.") #'counsel-imenu)
   (global-set-key (kbd "C-c s") #'counsel-grep)
@@ -78,9 +83,11 @@
   :ensure t
   :bind (("<f8>" . magit-status)
          ("s-t" . magit-status)
-         ("C-x g" . magit-status))
-  :config
-  (define-key vc-prefix-map (kbd "h") #'magit-log-buffer-file))
+         ("C-x g" . magit-status)))
+
+;; This one can't really be up there, because that doesn't load
+;; anything until you actually fire up Magit.
+(define-key vc-prefix-map (kbd "h") #'magit-log-buffer-file)
 
 ;; Company: Not much customization right now.
 (use-package company
@@ -279,6 +286,13 @@
   :after helm
   :diminish 'ivy-mode
   :config
+  (setq ivy-re-builders-alist
+        '((swiper . ivy--regex-plus)
+          (t . ivy--regex-fuzzy)))
+  (setq ivy-initial-inputs-alist
+        '((counsel-M-x . "^")
+          (man . "^")
+          (woman . "^")))
   (ivy-mode 1))
 
 ;; This one was recommended by Steve Purcell. Looked pretty good
@@ -385,7 +399,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (immortal-scratch hl-sexp highlight-symbol highlight-quoted anzu iy-go-to-char command-log-mode pyvenv py-yapf company-anaconda anaconda-mode org-plus-contrib gist browse-at-remote lorem-ipsum fullframe htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
+    (smex immortal-scratch hl-sexp highlight-symbol highlight-quoted anzu iy-go-to-char command-log-mode pyvenv py-yapf company-anaconda anaconda-mode org-plus-contrib gist browse-at-remote lorem-ipsum fullframe htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
  '(projectile-mode-line
    (quote
     (:eval
