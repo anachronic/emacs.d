@@ -48,15 +48,15 @@
   (("C-S-m" . helm-mini)
    ("C-x b" . helm-mini))
   :config
-  (progn
-    (setq helm-mode-fuzzy-match t)
-    (setq helm-ff-newfile-prompt-p nil)
-    (require 'helm-config)
-    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-    (define-key helm-map (kbd "C-z") 'helm-select-action)
-    (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-    (global-set-key (kbd "C-x C-f") 'helm-find-files)
-    (global-set-key [remap occur] 'helm-occur))
+  (require 'helm-buffers)
+  (require 'helm-config)
+  (setq helm-mode-fuzzy-match t)
+  (setq helm-ff-newfile-prompt-p nil)
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-z") 'helm-select-action)
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (global-set-key [remap occur] 'helm-occur)
   :diminish ""
   :demand)
 
@@ -249,14 +249,6 @@
 (use-package s
   :ensure t)
 
-;; As of this point I feel like: YEAH!! LET'S COLOUR EVERYTHING!
-(use-package dired-k
-  :ensure t
-  :config
-  (progn
-    (add-hook 'dired-initial-position-hook 'dired-k)
-    (add-hook 'dired-after-readin-hook #'dired-k-no-revert)))
-
 ;; This is GREAT when tags don't really cut it
 (use-package dumb-jump
   :ensure t
@@ -355,6 +347,9 @@
 
 ;; Renaming an open buffer file.
 (require 'renamefile)
+
+;; File navigation
+(require 'setup-file-nav)
 
 ;; Need an org mode config file. For now it's small but I'm sure it'll
 ;; get bigger.

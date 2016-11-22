@@ -4,8 +4,7 @@
 
 ;; direx looks like a good alternative. I have tried NeoTree, but it sucks.
 (use-package direx
-  :ensure t
-  :bind ("C-x C-j" . direx:jump-to-directory))
+  :ensure t)
 
 ;; NeoTree could *sometimes* be better than Dired.
 (use-package neotree
@@ -16,6 +15,13 @@
 ;; lets bind that to dired-up-directory
 (define-key dired-mode-map (kbd "b") #'dired-up-directory)
 
+;; This package is cool, I like coloring stuff around
+(use-package dired-k
+  :ensure t
+  :config
+  (progn
+    (add-hook 'dired-initial-position-hook 'dired-k)
+    (add-hook 'dired-after-readin-hook #'dired-k-no-revert)))
 
-
+(provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here
