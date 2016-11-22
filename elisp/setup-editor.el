@@ -432,6 +432,7 @@ Single Capitals as you type."
 ;; already have C-m.
 (use-package paredit
   :ensure t
+  :diminish "par"
   :config
   (define-key paredit-mode-map (kbd "C-j") nil)
   (define-key paredit-mode-map (kbd "M-;") nil)
