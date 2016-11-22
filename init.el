@@ -257,11 +257,6 @@
   :config
   (add-hook 'prog-mode-hook 'dumb-jump-mode))
 
-;; NeoTree could *sometimes* be better than Dired.
-(use-package neotree
-  :ensure t
-  :bind ("<f7>" . neotree-toggle))
-
 ;; Git ignore modes, and misc stuff major modes.
 (use-package gitignore-mode
   :ensure t)
