@@ -141,8 +141,7 @@ is already narrowed."
   :bind (("C-c j c" . iy-go-up-to-char)
          ("C-c j b" . iy-go-to-char-backward))
   :config
-  (keyboard-translate ?\C-j ?\H-j)
-  (global-set-key [?\H-j] #'iy-go-to-or-up-to-continue)
+  (global-set-key (kbd "C-j") #'iy-go-to-or-up-to-continue)
   (global-set-key (kbd "C-S-j") #'iy-go-up-to-char-continue-backward))
 
 ;; also ace link
@@ -461,9 +460,14 @@ Single Capitals as you type."
 (add-hook 'text-mode-hook #'dubcaps-mode)
 
 ;; I'll be trying Paredit. Should be quite useful for lisp-like stuff
+;; Yeah, I've been becoming more fond of paredit every day. It rocks!
+;; However, I don't use C-j for anything, since electric indent does
+;; everything for me, and if I need a key binding for newline, well, I
+;; already have C-m.
 (use-package paredit
   :ensure t
   :config
+  (define-key paredit-mode-map (kbd "C-j") nil)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
   (global-set-key (kbd "M-K") #'paredit-kill))
 

@@ -64,6 +64,8 @@
   :ensure t
   :config
   (progn
+    (define-key emmet-mode-keymap (kbd "C-j") nil)
+    (define-key emmet-mode-keymap (kbd "<backtab>") #'emmet-expand-line)
     (add-hook 'web-mode-hook 'emmet-mode)))
 
 (provide 'web-programming)
