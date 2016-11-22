@@ -198,7 +198,7 @@
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
   :ensure t
-  :diminish "FlyC" ;; Errors and warnings appear in the modeline anyway
+  :diminish "" ;; Errors and warnings appear in the modeline anyway
   :config
   (global-flycheck-mode)
   (setq flycheck-emacs-lisp-load-path 'inherit))
@@ -401,7 +401,7 @@
      (if
          (file-remote-p default-directory)
          " Projectile"
-       (format " Proj[%s]"
+       (format " [%s]"
                (projectile-project-name))))))
  '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
  '(shell-pop-universal-key "<f5>"))

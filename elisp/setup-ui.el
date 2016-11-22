@@ -23,13 +23,22 @@
 (load-theme 'avk-darkblue-white t)
 (set-face-attribute 'default nil :height 105)
 
+;;; Spaceline is the coolest modeline.
 (use-package spaceline
   :ensure t
-  :demand
-  :config
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme)
-  (setq spaceline-minor-modes-separator " "))
+  :demand)
+
+;; Unfortunately it does not display anything when the buffer is
+;; narrowed. I'd like to have that, you know?
+;; Let's do it. Define a segment that does exactly what I want.
+(require 'spaceline-config)
+(require 'spaceline)
+(spaceline-define-segment narrow
+  "Display Narrowed when buffer is narrowed."
+  (when (buffer-narrowed-p)
+    "Narrowed"))
+(spaceline-spacemacs-theme 'narrow)
+(setq spaceline-minor-modes-separator " ")
 
 ;; Frame commands
 (global-set-key (kbd "C-c F") 'make-frame)
