@@ -92,5 +92,39 @@ Otherwise exit Emacs."
   (setq beacon-color "#F92672")
   :diminish 'beacon-mode)
 
+;; Maximize and minimize windows. I used to have them in C-c C-m and
+;; C-c C-M, but I found out that's no good. I haven't even made use of
+;; those commands, but if I even need them I'll leave them at C-c +
+;; and C-c -
+(global-set-key (kbd "C-c +") 'maximize-window)
+(global-set-key (kbd "C-c -") 'minimize-window)
+
+
+;; Change window with F12 should be good
+(global-set-key (kbd "<f12>") 'other-window)
+(global-set-key (kbd "C-<f12>") (lambda () (interactive) (other-window -1)))
+
+;; Some bindings from https://www.masteringemacs.org/article/my-emacs-keybindings
+(global-set-key (kbd "M-o") 'other-window)
+
+;; I want to be able to scroll without moving the point
+;; source: https://www.emacswiki.org/emacs/Scrolling
+(defun my/scrolldown (n)
+  "Scroll down N lines without moving the point."
+  (interactive "p")
+  (dotimes (i n)
+    (scroll-up-command 1)))
+
+(defun my/scrollup (n)
+  "Scroll up N lines without moving the point."
+  (interactive "p")
+  (dotimes (i n)
+    (scroll-down-command 1)))
+
+(global-set-key (kbd "M-n") 'my/scrolldown)
+(global-set-key (kbd "M-p") 'my/scrollup)
+
+
+
 (provide 'setup-ui)
 ;;; setup-ui.el ends here

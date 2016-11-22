@@ -57,13 +57,6 @@ is already narrowed."
   (setq nlinum-relative-current-symbol "")
   (setq nlinum-relative-redisplay-delay 0.2))
 
-;; Change window with F12 should be good
-(global-set-key (kbd "<f12>") 'other-window)
-(global-set-key (kbd "C-<f12>") (lambda () (interactive) (other-window -1)))
-
-;; Some bindings from https://www.masteringemacs.org/article/my-emacs-keybindings
-(global-set-key (kbd "M-o") 'other-window)
-
 
 ;; I'm a little bit too young for emacs,
 ;; so I like replacing the region with stuff.
@@ -94,9 +87,6 @@ is already narrowed."
 ;; I have had some problems with the tab key and AC/company
 ;; This could fix it. Not sure.
 (setq-default tab-always-indent 'complete)
-
-;; I DO NOT LIKE TYPING YES!!!!
-(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; So i was using kill-this-buffer for C-x k. But sometimes I don't really
 ;; want to kill the buffer, I just want it to get it out of the way.
@@ -189,23 +179,6 @@ is already narrowed."
   (add-hook 'prog-init-hook 'global-color-identifiers-mode)
   :diminish color-identifiers-mode)
 
-
-;; I want to be able to scroll without moving the point
-;; source: https://www.emacswiki.org/emacs/Scrolling
-(defun my/scrolldown (n)
-  "Scroll down N lines without moving the point."
-  (interactive "p")
-  (dotimes (i n)
-    (scroll-up-command 1)))
-
-(defun my/scrollup (n)
-  "Scroll up N lines without moving the point."
-  (interactive "p")
-  (dotimes (i n)
-    (scroll-down-command 1)))
-
-(global-set-key (kbd "M-n") 'my/scrolldown)
-(global-set-key (kbd "M-p") 'my/scrollup)
 
 ;; Deleting stuff
 (global-set-key (kbd "C-S-d") 'delete-backward-char)

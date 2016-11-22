@@ -22,6 +22,8 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
+;; I DO NOT LIKE TYPING YES!!!!
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; General paths. Self-written scripts and themes.
 (add-to-list 'load-path "~/.emacs.d/elisp/")
