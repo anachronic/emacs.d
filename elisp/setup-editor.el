@@ -490,5 +490,13 @@ Single Capitals as you type."
 ;; Also make this available in Markdown
 (add-hook 'markdown-mode-hook 'goto-address-mode)
 
+;; Stealing conf from purcell's .emacs.d. This package is actually
+;; pretty cool, it gets you out of the dullness of full white text (or
+;; should I say: default face)
+(use-package highlight-quoted
+  :ensure t
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'highlight-quoted-mode))
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
