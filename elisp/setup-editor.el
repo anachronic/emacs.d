@@ -57,8 +57,6 @@ is already narrowed."
   (setq nlinum-relative-current-symbol "")
   (setq nlinum-relative-redisplay-delay 0.2))
 
-;; I want to be able to comment stuff easily.
-
 ;; Change window with F12 should be good
 (global-set-key (kbd "<f12>") 'other-window)
 (global-set-key (kbd "C-<f12>") (lambda () (interactive) (other-window -1)))
@@ -190,11 +188,6 @@ is already narrowed."
   :init
   (add-hook 'prog-init-hook 'global-color-identifiers-mode)
   :diminish color-identifiers-mode)
-
-
-;; Maximize and minimize windows
-(global-set-key (kbd "C-c C-m") 'maximize-window)
-(global-set-key (kbd "C-c C-S-m") 'minimize-window)
 
 
 ;; I want to be able to scroll without moving the point
@@ -514,6 +507,15 @@ Single Capitals as you type."
   (define-key isearch-mode-map [remap isearch-query-replace-regexp] #'anzu-isearch-query-replace-regexp)
   (global-set-key [remap query-replace] #'anzu-query-replace)
   (global-set-key [remap query-replace-regexp] #'anzu-query-replace-regexp))
+
+
+;; I asked a question on reddit about how to make links clickable and
+;; got an answer quite quickly. Thank you reddit!
+;; https://www.reddit.com/r/emacs/comments/5e94pg/have_links_in_comments_like_spacemacs/
+(add-hook 'prog-mode-hook 'goto-address-prog-mode)
+
+;; Also make this available in Markdown
+(add-hook 'markdown-mode-hook 'goto-address-mode)
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
