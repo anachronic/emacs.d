@@ -9,7 +9,7 @@
 (blink-cursor-mode -1)
 
 ;; these two come from: https://www.emacswiki.org/emacs/SmoothScrolling
-(setq scroll-step 1)
+;; (setq scroll-step 1)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 ;; get rid of the annoying GNU Emacs buffer
@@ -22,6 +22,11 @@
 ;; (load-theme 'monokai t)
 (load-theme 'avk-darkblue-white t)
 (set-face-attribute 'default nil :height 105)
+
+;; I ran into a VERY weird issue where C-n is the slowest thing
+;; ever. Fortunately, I found an answer
+;; https://lists.gnu.org/archive/html/emacs-devel/2006-09/msg00634.html
+(setq auto-window-vscroll nil)
 
 ;;; Spaceline is the coolest modeline.
 (use-package spaceline
