@@ -26,7 +26,7 @@
 ;; I ran into a VERY weird issue where C-n is the slowest thing
 ;; ever. Fortunately, I found an answer
 ;; https://lists.gnu.org/archive/html/emacs-devel/2006-09/msg00634.html
-(setq auto-window-vscroll nil)
+;; (setq auto-window-vscroll nil)
 
 ;;; Spaceline is the coolest modeline.
 (use-package spaceline
