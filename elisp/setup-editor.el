@@ -175,8 +175,8 @@ is already narrowed."
 ;; So let's test this mode
 (use-package color-identifiers-mode
   :ensure t
-  :init
-  (add-hook 'prog-init-hook 'global-color-identifiers-mode)
+  :config
+  (add-hook 'prog-mode-hook 'global-color-identifiers-mode)
   :diminish color-identifiers-mode)
 
 
