@@ -173,6 +173,8 @@
   (defun isearch-swiper ()
     "Switch from isearch to swiper keeping query string."
     (interactive)
+    (isearch-exit)
+    (anzu--reset-mode-line)
     (swiper isearch-string))
   (define-key isearch-mode-map (kbd "C-S-s") #'isearch-swiper)
   (define-key isearch-mode-map (kbd "C-S-r") #'isearch-swiper))
