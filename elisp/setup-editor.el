@@ -496,5 +496,20 @@ Single Capitals as you type."
 ;; Let's use hippie expand.
 (global-set-key (kbd "M-/") #'hippie-expand)
 
+;; I gave it a try. looks pretty cool.
+(use-package anzu
+  :ensure t
+  :diminish ""
+  :config
+  ;; Spaceline already has the config. So let's remove anzu's modeline toggle.
+  (global-anzu-mode +1)
+  (setq anzu-cons-mode-line-p nil)
+  (set-face-attribute 'anzu-mode-line nil
+                      :foreground "yellow" :weight 'bold)
+  (define-key isearch-mode-map [remap isearch-query-replace]  #'anzu-isearch-query-replace)
+  (define-key isearch-mode-map [remap isearch-query-replace-regexp] #'anzu-isearch-query-replace-regexp)
+  (global-set-key [remap query-replace] #'anzu-query-replace)
+  (global-set-key [remap query-replace-regexp] #'anzu-query-replace-regexp))
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
