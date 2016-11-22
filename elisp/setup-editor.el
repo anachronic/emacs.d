@@ -119,15 +119,31 @@ is already narrowed."
 ;; rid of it and bind it to a useful command: revert buffer
 (global-set-key (kbd "C-x C-r") (lambda () (interactive) (revert-buffer nil t)))
 
-;; avy is a cool package that lets you navigate easily
-;; I mainly use this to get rid of C-[npbf] nonsense
+;; While I once thought avy was cool, it isn't really what I thought
+;; it would be. I'd much rather use isearch and iy-go-up-to-char
 (use-package avy
   :ensure t
-  :bind (("C-c j c" . avy-goto-char)
-         ("C-c j l" . avy-goto-line)
-         ("C-c j w" . avy-goto-word-1)
-         ("C-c j j" . avy-goto-word-0)
-         ("M-g g" . avy-goto-line)))
+  :bind (("C-c j w" . avy-goto-word-1)
+         ("C-c j l" . avy-goto-line)))
+
+;; So let's use iy-go-up-to-char. I hardly ever use (and this is to be
+;; precautious, because i actually NEVER use it) C-j. It's a really
+;; valuable key that's lost. mainly because I always use Emacs with
+;; Gtk. I tend to use vim while in a terminal. It's also useful for
+;; navegation. I guess I could set it to the "normal" C-j if last
+;; command wasn't an iy-related command. But that's just too much work
+;; and I'll most likely never use that.
+;; It's a shame that it is related to some weird key binding. I had to
+;; look it up. But it all works in the end.
+;; solution: http://stackoverflow.com/a/2253044
+(use-package iy-go-to-char
+  :ensure t
+  :bind (("C-c j c" . iy-go-up-to-char)
+         ("C-c j b" . iy-go-to-char-backward))
+  :config
+  (keyboard-translate ?\C-j ?\H-j)
+  (global-set-key [?\H-j] #'iy-go-to-or-up-to-continue)
+  (global-set-key (kbd "C-S-j") #'iy-go-up-to-char-continue-backward))
 
 ;; also ace link
 (use-package ace-link
@@ -374,12 +390,25 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Transpose words is cool. just not that important
 (global-set-key (kbd "M-t") 'hydra-text/body)
 
-;; This looks handy. I'll have to test it though because I'm not very
-;; used to it
-(use-package zzz-to-char
-  :ensure t
-  :bind (("M-z"   . zzz-up-to-char)
-         ("C-M-z" . zzz-to-char)))
+;; I've ran into the situation where I want to zap stuff (specially
+;; with paredit). And I was trying zzz-up-to-char. But the extra key
+;; press isn't quite the right solution for the job: you see, if the
+;; region you want to kill is large, you will -as the word suggests-
+;; use a *region*. My mindset is that i'll only use zap to and up to
+;; char when the text region is short, which is why I do *not* want an
+;; extra key press, I just want the job done. I found the solution at
+;; purcell's emacs, magnars' and the irreal blog. Zapping can be very
+;; useful
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR.")
+
+;; M-z for up to and M-Z for the including variant.
+(global-set-key (kbd "M-z") 'zap-up-to-char)
+(global-set-key (kbd "M-Z") 'zap-to-char)
+
+;; For zapping backwards needs negative prefix. Need a lot of muscle
+;; memory for that.
+
 
 ;; I found out this code snippet that while it doesn't really work in
 ;; the scratch buffer, it does look useful. We shall see. Should be
