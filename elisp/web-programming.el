@@ -53,6 +53,7 @@
 
 (defun my/add-company-backends-webmode ()
   "Add Tern, webmode and bootstrap backends to company."
+  (setq-local company-backends company-backends)
   (add-to-list 'company-backends 'company-web-html)
   (add-to-list 'company-backends 'company-tern)
   (company-web-bootstrap+))
