@@ -4,7 +4,7 @@
 
 (require 'hl-line)
 (show-paren-mode 1)
-(global-hl-line-mode)
+;; (global-hl-line-mode)
 
 ;; Make C-n add newlines at end of file
 (setq next-line-add-newlines t)
@@ -434,6 +434,7 @@ Single Capitals as you type."
   :ensure t
   :config
   (define-key paredit-mode-map (kbd "C-j") nil)
+  (define-key paredit-mode-map (kbd "M-;") nil)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
   (global-set-key (kbd "M-K") #'paredit-kill))
 
@@ -497,6 +498,19 @@ Single Capitals as you type."
   :ensure t
   :config
   (add-hook 'emacs-lisp-mode-hook #'highlight-quoted-mode))
+
+;; More from purcell's. I once thought highlighting symbol was slowing
+;; down my PC. Looks like I was wrong
+(use-package highlight-symbol
+  :ensure t
+  :diminish ""
+  :config
+  (add-hook 'prog-mode-hook #'highlight-symbol-mode)
+  (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate)
+    "Suppress symbol highlighting while isearching."
+    (unless (or isearch-mode
+                (and (boundp 'multiple-cursors-mode) multiple-cursors-mode))
+      ad-do-it)))
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
