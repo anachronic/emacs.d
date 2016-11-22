@@ -55,7 +55,8 @@
 ;; They say IPython rocks. I guess it does.
 (when (executable-find "ipython")
   (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "--simple-prompt -i"))
+        python-shell-interpreter-args "--simple-prompt -i"
+        python-shell-buffer-name "IPython"))
 
 ;; Let's get rid of the region/buffer keybindings by making -yet
 ;; again- a dwim command. Bind it to C-c C-c
@@ -136,6 +137,9 @@ python-shell-send-buffer."
 
 (add-hook 'python-mode-hook #'my/python-rebinds)
 
+;; Try out fakegir
+(when (file-exists-p "~/.cache/fakegir")
+  (add-to-list 'python-shell-extra-pythonpaths "~/.cache/fakegir"))
 
 ;; python-django seems to work quite ok with it.
 (use-package python-django
