@@ -6,9 +6,6 @@
 (show-paren-mode 1)
 ;; (global-hl-line-mode)
 
-;; Make C-n add newlines at end of file
-(setq next-line-add-newlines t)
-
 ;; Enable narrow commands
 (put 'narrow-to-region 'disabled nil)
 
@@ -126,9 +123,13 @@ is already narrowed."
 ;; solution: http://stackoverflow.com/a/2253044
 (use-package iy-go-to-char
   :ensure t
+  :after key-chord
   :bind (("C-c j c" . iy-go-up-to-char)
          ("C-c j b" . iy-go-to-char-backward))
   :config
+  (require 'key-chord)
+  (key-chord-define-global "jh" #'iy-go-to-char-backward)
+  (key-chord-define-global "jk" #'iy-go-up-to-char)
   (global-set-key (kbd "C-j") #'iy-go-to-or-up-to-continue)
   (global-set-key (kbd "C-S-j") #'iy-go-up-to-char-continue-backward))
 
@@ -166,10 +167,6 @@ is already narrowed."
 (global-set-key (kbd "C-c f h") 'ha/hs-hide-all)
 (global-set-key (kbd "C-c f t") 'ha/hs-toggle-hiding)
 (global-set-key (kbd "C-c f s") 'ha/hs-show-all)
-
-;; and let's get rid of the minor mode since these functions toggle it anyway
-(diminish 'hs-minor-mode)
-
 
 ;; I've always liked coloring the buffer, because it makes easier to identify stuff around
 ;; So let's test this mode

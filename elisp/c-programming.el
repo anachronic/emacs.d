@@ -84,23 +84,14 @@
 (add-hook 'c-mode-common-hook 'my/add-header-jump)
 
 
-;; Key chord. This mode is absolutely AWESOME. I can't stop thinking about
-;; how much I have needed something like this over the past few years.
-;; I got the idea from -> http://emacsrocks.com/e07.html
-;; The documentation can be found on EmacsWiki:
-;; https://www.emacswiki.org/emacs/KeyChord
+;; Key chords for C/C++
 (require 'key-chord)
 
+;; Put every key chord for C mode into this function
 (defun my/add-keychords-c-mode ()
   "Add ;; keystroke to mean insert semicolon at the end of the line."
-  (key-chord-define-local ";;" "\C-e;")
   (key-chord-define-local ";;" "\C-e;"))
 
-(defun my/keychord-mode-on ()
-  "Activate keychord mode."
-  (key-chord-mode 1))
-
-(add-hook 'c-mode-common-hook 'my/keychord-mode-on)
 (add-hook 'c-mode-common-hook 'my/add-keychords-c-mode)
 
 
