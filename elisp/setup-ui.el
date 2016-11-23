@@ -85,12 +85,6 @@ Otherwise exit Emacs."
 (global-set-key (kbd "s-f") 'enlarge-window-horizontally)
 (global-set-key (kbd "s-b") 'shrink-window-horizontally)
 
-;; I like next/previous buffer handy. I don't always want to write
-;; the name of the buffer i'm looking for.
-(global-set-key (kbd "C-<tab>") 'previous-buffer)
-(global-set-key (kbd "<f10>") 'previous-buffer)
-(global-set-key (kbd "C-<f10>") 'next-buffer)
-
 ;; This mode looks way cool. Let's use it
 ;; We shall never lose the cursor again.!
 ;; URL: http://endlessparentheses.com/beacon-never-lose-your-cursor-again.html
