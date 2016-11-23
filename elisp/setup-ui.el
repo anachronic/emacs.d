@@ -23,6 +23,11 @@
 (load-theme 'avk-darkblue-white t)
 (set-face-attribute 'default nil :height 105)
 
+;; On my laptop I'd rather have a bigger text
+(require 's)
+(when (s-equals? (system-name) "okinawa")
+  (set-face-attribute 'default nil :height 110))
+
 ;; I ran into a VERY weird issue where C-n is the slowest thing
 ;; ever. Fortunately, I found an answer
 ;; https://lists.gnu.org/archive/html/emacs-devel/2006-09/msg00634.html
