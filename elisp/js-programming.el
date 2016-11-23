@@ -9,6 +9,9 @@
   :mode (("\\.js\\'" . js2-mode)
          ("\\.jsx?\\'" . js2-jsx-mode))
   :config
+  (setq js2-basic-offset 2)
+  (setq-default js2-mode-show-parse-errors nil
+                js2-mode-show-strict-warnings nil)
   (add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode)))
 
 (use-package tern
