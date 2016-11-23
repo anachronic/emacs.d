@@ -326,12 +326,31 @@ point reaches the beginning or end of the buffer, stop there."
 ;; I've been using occur pretty frequently.
 (global-set-key (kbd "C-S-o") 'occur)
 
+;; I've ran into the situation where I want to zap stuff (specially
+;; with paredit). And I was trying zzz-up-to-char. But the extra key
+;; press isn't quite the right solution for the job: you see, if the
+;; region you want to kill is large, you will -as the word suggests-
+;; use a *region*. My mindset is that i'll only use zap to and up to
+;; char when the text region is short, which is why I do *not* want an
+;; extra key press, I just want the job done. I found the solution at
+;; purcell's emacs, magnars' and the irreal blog. Zapping can be very
+;; useful
+(autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
 
-;; navigating hydra
+;; M-z for up to and M-Z for the including variant.
+(global-set-key (kbd "M-z") 'zap-up-to-char)
+(global-set-key (kbd "M-Z") 'zap-to-char)
+
+;; For zapping backwards needs negative prefix. Need a lot of muscle
+;; memory for that.
+
+;; Navigating hydra. This turned out to be very useful with key-chord
+;; when you want to navigate a text. Cool stuff. I actually like 'kk'
+;; better for it rather than jj
 (defhydra hydra-text (:columns 3)
   "Movement and text manipulation hydra"
-  ("i" previous-line "up")
-  ("k" next-line "down")
+  ("i" (forward-line -1) "up")
+  ("k" (forward-line 1) "down")
   ("j" backward-char "back")
   ("l" forward-char "forward")
   ("dd" kill-whole-line "kill the whole line")
@@ -340,7 +359,7 @@ point reaches the beginning or end of the buffer, stop there."
   ("a" beginning-of-line "beginning of line")
   ("e" end-of-line "end of line")
   ("x" delete-char "kill char at point")
-  ("z" zzz-up-to-char "zzz up to char")
+  ("z" zap-up-to-char "zap up to char")
   ("u" undo-tree-undo "undo")
   ("r" undo-tree-redo "redo")
   ("wc" capitalize-word "capitalize word")
@@ -351,27 +370,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; I used to have the key biding in M-t. But that was a crappy choice,
 ;; it gets much better with key-chord.
-(key-chord-define-global "jj" #'hydra-text/body)
-
-;; I've ran into the situation where I want to zap stuff (specially
-;; with paredit). And I was trying zzz-up-to-char. But the extra key
-;; press isn't quite the right solution for the job: you see, if the
-;; region you want to kill is large, you will -as the word suggests-
-;; use a *region*. My mindset is that i'll only use zap to and up to
-;; char when the text region is short, which is why I do *not* want an
-;; extra key press, I just want the job done. I found the solution at
-;; purcell's emacs, magnars' and the irreal blog. Zapping can be very
-;; useful
-(autoload 'zap-up-to-char "misc"
-  "Kill up to, but not including ARGth occurrence of CHAR.")
-
-;; M-z for up to and M-Z for the including variant.
-(global-set-key (kbd "M-z") 'zap-up-to-char)
-(global-set-key (kbd "M-Z") 'zap-to-char)
-
-;; For zapping backwards needs negative prefix. Need a lot of muscle
-;; memory for that.
-
+(key-chord-define-global "kk" #'hydra-text/body)
 
 ;; I found out this code snippet that while it doesn't really work in
 ;; the scratch buffer, it does look useful. We shall see. Should be

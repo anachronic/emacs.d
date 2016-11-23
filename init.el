@@ -345,8 +345,23 @@
 (defvar my/mode-toggle-map)
 
 
-(define-prefix-command 'my/mode-toggle-map)
-(global-set-key (kbd "<f6>") 'my/mode-toggle-map)
+;; I used to have a prefix for the mode toggle, but I think hydras can be very useful, because the help can be displayed vertically.
+(defhydra mode-toggle (:color blue
+                       :columns 1)
+  "Toggle one of these modes"
+  ("e" evil-mode "Evil mode")
+  ("w" whitespace-mode "Whitespace mode")
+  ("l" linum-relative-mode "Linum relative")
+  ("c" color-identifiers-mode "Color identifiers mode")
+  ("v" visual-line-mode "Visual line mode")
+  ("p" projectile-mode "Projectile")
+  ("k" which-key-mode "Which key")
+  ("h" global-hl-line-mode "Highlight line")
+  ("a" artist-mode "Artist mode")
+  ("s" key-chord-mode "Key chord mode")
+  ("q" nil "quit"))
+
+(global-set-key (kbd "<f6>") 'mode-toggle/body)
 
 (define-key my/mode-toggle-map "e" #'evil-mode)
 (define-key my/mode-toggle-map "w" #'whitespace-mode)
@@ -357,6 +372,7 @@
 (define-key my/mode-toggle-map "k" #'which-key-mode)
 (define-key my/mode-toggle-map "h" #'global-hl-line-mode)
 (define-key my/mode-toggle-map "a" #'artist-mode)
+(define-key my/mode-toggle-map "s" #'key-chord-mode)
 
 
 ;;; Set garbage collection back to a normal value
