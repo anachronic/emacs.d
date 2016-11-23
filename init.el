@@ -92,13 +92,14 @@
 ;; Company: Not much customization right now.
 (use-package company
   :ensure t
+  :after yasnippet
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   :config
   (progn
     (setq company-idle-delay 0.7)
-    (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
-    (define-key company-active-map [tab] 'company-complete-common-or-cycle))
+    (define-key company-active-map (kbd "TAB") 'yas-expand)
+    (define-key company-active-map (kbd "<tab>") 'yas-expand))
   :diminish ""  ;; it is almost always on anyway.
   :bind (("C-S-<SPC>" . company-complete)))
 
@@ -363,18 +364,6 @@
   ("q" nil "quit"))
 
 (global-set-key (kbd "<f6>") 'mode-toggle/body)
-
-(define-key my/mode-toggle-map "e" #'evil-mode)
-(define-key my/mode-toggle-map "w" #'whitespace-mode)
-(define-key my/mode-toggle-map "l" #'nlinum-relative-mode)
-(define-key my/mode-toggle-map "c" #'color-identifiers-mode)
-(define-key my/mode-toggle-map "v" #'visual-line-mode)
-(define-key my/mode-toggle-map "p" #'projectile-mode)
-(define-key my/mode-toggle-map "k" #'which-key-mode)
-(define-key my/mode-toggle-map "h" #'global-hl-line-mode)
-(define-key my/mode-toggle-map "a" #'artist-mode)
-(define-key my/mode-toggle-map "s" #'key-chord-mode)
-
 
 ;;; Set garbage collection back to a normal value
 ;; I hope it doesn't make it hang again..

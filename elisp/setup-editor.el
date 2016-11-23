@@ -81,10 +81,6 @@ is already narrowed."
 ;; might as well explicitly tell emacs we don't like tabs
 (setq-default indent-tabs-mode nil)
 
-;; I have had some problems with the tab key and AC/company
-;; This could fix it. Not sure.
-(setq-default tab-always-indent 'complete)
-
 ;; So i was using kill-this-buffer for C-x k. But sometimes I don't really
 ;; want to kill the buffer, I just want it to get it out of the way.
 ;; So let's bury the buffer with the same key when a prefix is specified.
