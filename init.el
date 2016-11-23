@@ -338,6 +338,7 @@
 (define-key my/mode-toggle-map "p" #'projectile-mode)
 (define-key my/mode-toggle-map "k" #'which-key-mode)
 (define-key my/mode-toggle-map "h" #'global-hl-line-mode)
+(define-key my/mode-toggle-map "a" #'artist-mode)
 
 
 ;;; Set garbage collection back to a normal value
