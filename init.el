@@ -237,6 +237,9 @@
 ;; I got the idea from -> http://emacsrocks.com/e07.html
 ;; The documentation can be found on EmacsWiki:
 ;; https://www.emacswiki.org/emacs/KeyChord
+;; Key chord definitions are mainly found on:
+;; - mode programming files (like c-programming.el)
+;; - editor binding files [setup-editor.el] (mainly hj, jk and jj)
 (use-package key-chord
   :ensure t
   :config

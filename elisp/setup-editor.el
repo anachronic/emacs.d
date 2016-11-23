@@ -349,8 +349,9 @@ point reaches the beginning or end of the buffer, stop there."
   ("h" nil "quit (insert mode)" :color blue)
   ("q" nil "quit" :color blue))
 
-;; Transpose words is cool. just not that important
-(global-set-key (kbd "M-t") 'hydra-text/body)
+;; I used to have the key biding in M-t. But that was a crappy choice,
+;; it gets much better with key-chord.
+(key-chord-define-global "jj" #'hydra-text/body)
 
 ;; I've ran into the situation where I want to zap stuff (specially
 ;; with paredit). And I was trying zzz-up-to-char. But the extra key
