@@ -319,7 +319,8 @@
   :ensure t
   :after magit
   :config
-  (fullframe magit-status magit-mode-quit-window))
+  (fullframe magit-status magit-mode-quit-window)
+  (fullframe ibuffer ibuffer-quit))
 
 ;; browse-at-remote. I do github browsing a lot. So let's use this!
 (use-package browse-at-remote
