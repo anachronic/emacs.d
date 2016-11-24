@@ -7,8 +7,8 @@
 (when (file-exists-p "~/Dropbox/elisp/chat.el")
   (load-file "~/Dropbox/elisp/chat.el"))
 
-(require 'erc)
-(setq erc-prompt (lambda () (concat (buffer-name) " >>>")))
+(with-eval-after-load 'erc
+  (setq erc-prompt (lambda () (concat (buffer-name) " >>>"))))
 
 
 (provide 'setup-chat)

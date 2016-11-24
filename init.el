@@ -291,11 +291,13 @@
   :ensure t)
 
 ;; evil is good for navigation, lets give it a key.
-(use-package evil)
+(use-package evil
+  :defer t)
 
 ;; Command-log is useful sometimes, but let's not autoinstall as it
 ;; will only slow first run time.
-(use-package command-log-mode)
+(use-package command-log-mode
+  :defer t)
 
 ;; Use ivy after helm. I like it's completion system better
 ;; just like Helm for specific things.
@@ -439,7 +441,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ibuffer-vc key-chord restart-emacs help-fns+ smex immortal-scratch hl-sexp highlight-symbol highlight-quoted anzu iy-go-to-char command-log-mode pyvenv py-yapf company-anaconda anaconda-mode org-plus-contrib gist browse-at-remote lorem-ipsum fullframe htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
+    (dired+ ibuffer-vc key-chord restart-emacs help-fns+ smex immortal-scratch hl-sexp highlight-symbol highlight-quoted anzu iy-go-to-char command-log-mode pyvenv py-yapf company-anaconda anaconda-mode org-plus-contrib gist browse-at-remote lorem-ipsum fullframe htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
  '(projectile-mode-line
    (quote
     (:eval

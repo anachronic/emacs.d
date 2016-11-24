@@ -50,25 +50,26 @@
 (with-eval-after-load 'org-src
   (define-key org-src-mode-map "\C-x\C-s" #'org-edit-src-exit))
 
-(setenv "PDFLATEX" "pdflatex -shell-escape")
-(setq org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-(setq org-latex-listings 'minted)
-(add-to-list 'org-latex-packages-alist '("" "minted"))
+(with-eval-after-load 'org
+  (setenv "PDFLATEX" "pdflatex -shell-escape")
+  (setq org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  (setq org-latex-listings 'minted)
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
 
-(setq org-latex-create-formula-image-program 'imagemagick)
+  (setq org-latex-create-formula-image-program 'imagemagick)
 
-(setq org-src-fontify-natively t)
+  (setq org-src-fontify-natively t)
 
-;; Some org key bindings conflict with mine. Namely C-j. I do like to
-;; navigate and move around quickly, but org indentation is also a
-;; pain, which is why C-j is so cool.
+  ;; Some org key bindings conflict with mine. Namely C-j. I do like to
+  ;; navigate and move around quickly, but org indentation is also a
+  ;; pain, which is why C-j is so cool.
 
-;; Turns out since I write comments constantly when programming, I use
-;; M-j quite frequently, and also, org mode really feels like you're
-;; commenting stuff rather than programming, so that's a win. Let's
-;; use that.
-(define-key org-mode-map (kbd "C-j") nil)
-(define-key org-mode-map (kbd "M-j") 'org-return-indent)
+  ;; Turns out since I write comments constantly when programming, I use
+  ;; M-j quite frequently, and also, org mode really feels like you're
+  ;; commenting stuff rather than programming, so that's a win. Let's
+  ;; use that.
+  (define-key org-mode-map (kbd "C-j") nil)
+  (define-key org-mode-map (kbd "M-j") 'org-return-indent))
 
 (provide 'setup-org)
 ;;; setup-org.el ends here
