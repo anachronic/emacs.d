@@ -79,22 +79,6 @@
   :config
   (global-set-key (kbd "C-x o") 'ace-window))
 
-;; Lets use swiper conservatively. I actually like isearch better.
-(use-package swiper
-  :ensure t
-  :bind ("C-S-s" . swiper)
-  :config
-  ;; I'd like to do something along the lines of isearch-swiper, which
-  ;; means to switch my isearch query to swiper
-  (defun isearch-swiper ()
-    "Switch from isearch to swiper keeping query string."
-    (interactive)
-    (isearch-exit)
-    (anzu--reset-mode-line)
-    (swiper isearch-string))
-  (define-key isearch-mode-map (kbd "C-S-s") #'isearch-swiper)
-  (define-key isearch-mode-map (kbd "C-S-r") #'isearch-swiper))
-
 ;; Projectile, for projects
 (use-package projectile
   :ensure t
