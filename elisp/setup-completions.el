@@ -108,5 +108,24 @@
   (setq company-flx-limit 75))
 
 
+;; Now that ivy is set up, let's have helm. I'd rather not have it,
+;; but it has grown in such a way that many packages use helm for
+;; useful stuff. Seriously, I've seen from controlling spotify to
+;; chrome. It seems like waste not to have that.
+
+;; The only one thing i really miss about helm when using ivy is
+;; helm-mini. I mean, to have recentf is such a cool feature you don't
+;; have to set any weird keybindings for anything anymore.
+(use-package helm
+  :ensure t
+  :demand
+  :bind (("C-x b" . helm-mini)
+         ("C-S-m" . helm-mini)
+         ("M-y" . helm-show-kill-ring))
+  :config
+  (require 'helm-config)
+  (global-set-key [remap occur] #'helm-occur))
+
+
 (provide 'setup-completions)
 ;;; setup-completions.el ends here
