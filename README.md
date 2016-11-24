@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/anachronic/emacs.d.svg?branch=master)](https://travis-ci.org/anachronic/emacs.d)
+
 # My Emacs config
 
 
@@ -42,7 +44,7 @@ There are others, but I haven't checked them out. If you find any interest one, 
 
 ## What is this good for?
 
-We all use emacs for different purposes, and that's ok. I have been using this lately for LaTeX and Org-mode. I have used it for C programming and some Python. Configuration should be ready to do:
+My main goal is to make this an editor that's usable for any text editing task I have to face. Currently the config that I feel is ready to go on the fly are the following modes:
 
 1. Python
 2. C/C++
@@ -51,11 +53,11 @@ We all use emacs for different purposes, and that's ok. I have been using this l
 5. Markdown, ofc.
 6. Vala. I haven't used this yet, but I do intend to.
 
-And some other *not-so-important* major modes like `gitignore-mode`. Whatever.
+There are also other *not-so-important* major modes like `gitignore-mode` here. Whatever.
 
 ## Future work
 
-Most of what I plan to do include documentation on shortcuts, getting this to work well with C, C++, Python and maybe Ruby. This could change over time though, but I will update this README as this config directory evolves.
+Most of what I want to do is navigate quickly, have proper syntax highlighting, to be able to jump around and whatnot. I plan to write some elisp packages in the future, but as of these times I'm not able to, because I don't have a lot of time.
 
 ## License
 You're free to do **whatever** you want with these files with absolutely no restriction. You can read the `LICENSE` file for more info. There are some files that have some restrictions, though.
@@ -65,3 +67,4 @@ I've taken a lot of ideas from other people's files. But have, for the most part
 The big exceptions here are:
 * The file `setup-eshell.el` under the `elisp` directory. I literally copied it from [this](https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org) file, which is under Creative Commons License. I do want to thank Howard, because I have learned so much from his files, and that process has absolutely helped me understand more about Emacs.
 * The `snippets` directory, which i got from [here](https://github.com/AndreaCrotti/yasnippet-snippets). The license is pretty permissive, but I thought I should mention it since the majority of the snippets come from there.
+* The **ibuffer** configurations in `setup-ui.el` for `ibuffer` and `ibuffer-vc` as well as the Travis CI build scripts. I directly copied from [Steve Purcell's](https://github.com/purcell/emacs.d) repository. I got some ideas out if it too, but I mostly wrote the code myself and added my own customizations for those packages. Everything is commented in the files, though.
