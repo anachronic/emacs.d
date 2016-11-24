@@ -3,10 +3,14 @@
 ;;; Code:
 
 ;; get rid of everything other than the title at the top.
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(blink-cursor-mode -1)
+(when (fboundp 'menu-bar-mode)
+  (menu-bar-mode -1))
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))
+(when (fboundp 'blink-cursor-mode)
+  (blink-cursor-mode -1))
 
 ;; these two come from: https://www.emacswiki.org/emacs/SmoothScrolling
 ;; (setq scroll-step 1)
