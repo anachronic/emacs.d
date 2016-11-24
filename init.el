@@ -49,15 +49,7 @@
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
-;; Undo-Tree for real undo/redo commands
-(use-package undo-tree
-  :ensure t
-  :diminish ""
-  :config
-  (global-undo-tree-mode 1)
-  :bind
-  (("C-z" . undo)
-   ("C-S-z" . undo-tree-redo)))
+
 
 ;;;;; At this point I feel like im just copying people..
 ;;;;; thats fine though
@@ -83,11 +75,6 @@
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
 
 
-;; expand region. An *excellent* tool.
-(use-package expand-region
-  :ensure t
-  :bind ("C-=" . er/expand-region))
-
 ;; Key chord. This mode is absolutely AWESOME. I can't stop thinking about
 ;; how much I have needed something like this over the past few years.
 ;; I got the idea from -> http://emacsrocks.com/e07.html
@@ -105,18 +92,6 @@
 ;; Visual fill column for text-only buffers, like mail and feeds. and maybe org..
 (use-package visual-fill-column
   :ensure t)
-
-;; ace-link is a great way of jumping around links.
-(use-package ace-link
-  :ensure t
-  :config
-  (ace-link-setup-default))
-
-
-;; Shell pop config
-(use-package shell-pop
-  :ensure t
-  :demand)
 
 ;; which-key seems like a really nice help
 (use-package which-key

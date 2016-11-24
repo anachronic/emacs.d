@@ -59,6 +59,21 @@ is already narrowed."
 ;; so I like replacing the region with stuff.
 (delete-selection-mode 1)
 
+;; expand region. An *excellent* tool.
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . er/expand-region))
+
+;; Undo-Tree for real undo/redo commands
+(use-package undo-tree
+  :ensure t
+  :diminish ""
+  :config
+  (global-undo-tree-mode 1)
+  :bind
+  (("C-z" . undo)
+   ("C-S-z" . undo-tree-redo)))
+
 
 ;; Wrapping the buffer is very useful in org mode and latex mode
 (defun my/visualmode ()

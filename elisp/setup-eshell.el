@@ -3,6 +3,12 @@
 ;;;                This code is mainly a replica of the Howard Abrams' setup.
 ;;; Code:
 
+;; I don't mind putting this in here since I do use shell-pop with
+;; eshell
+(use-package shell-pop
+  :ensure t
+  :demand)
+
 ;; Set the PATH. Should determine between bash and zsh configs atm.
 (require 's)
 (setenv "PATH"
