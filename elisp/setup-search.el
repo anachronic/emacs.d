@@ -31,10 +31,10 @@
   (global-set-key (kbd "C-j") #'iy-go-to-or-up-to-continue)
   (global-set-key (kbd "C-S-j") #'iy-go-up-to-char-continue-backward))
 
-;; also ace link
-(use-package ace-link
+;; Seems better than ace-link
+(use-package link-hint
   :ensure t
-  :bind ("C-c j u" . ace-link))
+  :bind ("C-c j u" . link-hint-open-link))
 
 ;; I've been using occur pretty frequently.
 (global-set-key (kbd "C-S-o") 'occur)
