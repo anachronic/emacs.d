@@ -40,17 +40,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Magit is critical for any developer
-(use-package magit
-  :ensure t
-  :bind (("<f8>" . magit-status)
-         ("s-t" . magit-status)
-         ("C-x g" . magit-status)))
-
-;; This one can't really be up there, because that doesn't load
-;; anything until you actually fire up Magit.
-(define-key vc-prefix-map (kbd "h") #'magit-log-buffer-file)
-
 ;; Markdown mode
 (use-package markdown-mode
   :ensure t
@@ -78,19 +67,6 @@
   :ensure t
   :config
   (global-set-key (kbd "C-x o") 'ace-window))
-
-;; Projectile, for projects
-(use-package projectile
-  :ensure t
-  :demand
-  :config
-  (projectile-mode)
-  (setq-default projectile-keymap-prefix (kbd "C-c p"))
-  (setq projectile-completion-system 'ivy)
-  (setq projectile-enable-caching t)
-  (setq projectile-switch-project-action 'projectile-dired))
-
-
 
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
@@ -161,10 +137,6 @@
   :config
   (add-hook 'prog-mode-hook 'dumb-jump-mode))
 
-;; Git ignore modes, and misc stuff major modes.
-(use-package gitignore-mode
-  :ensure t)
-
 ;; hydra
 (use-package hydra
   :ensure t)
@@ -188,14 +160,6 @@
   (fullframe ibuffer ibuffer-quit)
   (fullframe package-list-packages quit-window)
   (fullframe list-packages quit-window))
-
-;; browse-at-remote. I do github browsing a lot. So let's use this!
-(use-package browse-at-remote
-  :ensure t)
-
-;; gist. I'm sure I'll use this someday.
-(use-package gist
-  :ensure t)
 
 ;; This is useful for config.
 (use-package restart-emacs
@@ -245,8 +209,15 @@
 ;; Add stuff to text so you get visual aid when coding
 (require 'setup-editor)
 
+;; Searching and jumping around
+(require 'setup-search)
+
 ;; This has grown beyond the point of mantainable in init.el
 (require 'setup-completions)
+
+;; Version control stuff
+(require 'setup-vc)
+
 
 ;; Visual configuration. Here you'll find stuff about how Emacs looks
 (require 'setup-ui)

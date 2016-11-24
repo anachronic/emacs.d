@@ -457,12 +457,6 @@ Single Capitals as you type."
 (use-package hl-sexp
   :ensure t)
 
-;; diff-hl. I kind of liked the IntelliJ approach to this
-(use-package diff-hl
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook #'turn-on-diff-hl-mode))
-
 ;; More stealing: immortal scratch. I wish I knew about this one
 ;; before
 (use-package immortal-scratch
