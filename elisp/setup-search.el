@@ -28,13 +28,19 @@
   (require 'key-chord)
   (key-chord-define-global "jh" #'iy-go-to-char-backward)
   (key-chord-define-global "jk" #'iy-go-up-to-char)
+  (global-set-key (kbd "C-c j c") #'iy-go-up-to-char)
+  (global-set-key (kbd "C-c j b") #'iy-go-to-char-backward)
   (global-set-key (kbd "C-j") #'iy-go-to-or-up-to-continue)
   (global-set-key (kbd "C-S-j") #'iy-go-up-to-char-continue-backward))
 
 ;; Seems better than ace-link
 (use-package link-hint
   :ensure t
-  :bind ("C-c j u" . link-hint-open-link))
+  :bind ("C-c j u" . link-hint-open-link)
+  :config
+  (defun my/set-link-hint-key ()
+    (local-set-key "o" #'link-hint-open-link))
+  (add-hook 'package-menu-mode-hook #'my/set-link-hint-key))
 
 ;; I've been using occur pretty frequently.
 (global-set-key (kbd "C-S-o") 'occur)

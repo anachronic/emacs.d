@@ -61,7 +61,7 @@
 (use-package yasnippet
   :ensure t
   :config
-  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (setq-default yas-snippet-dirs `(,(expand-file-name "../snippets")))
   (yas-global-mode 1)
   (define-key yas-minor-mode-map (kbd "C-<return>") 'yas-exit-snippet)
   (define-key yas-minor-mode-map (kbd "<escape>") 'yas-exit-snippet))

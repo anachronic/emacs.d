@@ -26,8 +26,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; General paths. Self-written scripts and themes.
-(add-to-list 'load-path "~/.emacs.d/elisp/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "elisp/")))
+(add-to-list 'custom-theme-load-path (expand-file-name (concat user-emacs-directory "themes/")))
 
 ;; Nobody likes those annoying ~ end files, so redirect them.
 (setq backup-directory-alist
