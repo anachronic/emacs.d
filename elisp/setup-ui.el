@@ -128,6 +128,15 @@ Otherwise exit Emacs."
 (global-set-key (kbd "M-n") 'my/scrolldown)
 (global-set-key (kbd "M-p") 'my/scrollup)
 
+;; The licensed code below has a BSD license which requires me to
+;; include the following:
+
+;; Copyright (c) 2006-2014, Steve Purcell
+;; All rights reserved.
+
+;; Actually I'm not trying to redistribute this code or anything, but
+;; I feel like it's healthier
+
 ;; I've been stealing from Steve Purcell's config a lot. So let's
 ;; tweak ibuffer to show human readable sizes
 (with-eval-after-load 'ibuffer
