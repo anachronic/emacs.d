@@ -51,7 +51,15 @@
 
 ;; auto-install the server for irony mode.
 (when (not (file-exists-p "~/.emacs.d/irony"))
-  (call-interactively 'irony-install-server))
+  (irony-install-server (format
+                         (concat "%s %s %s && %s --build . "
+                                 "--use-stderr --config Release --target install")
+                         (shell-quote-argument irony-cmake-executable)
+                         (shell-quote-argument (concat "-DCMAKE_INSTALL_PREFIX="
+                                                       (expand-file-name
+                                                        irony-server-install-prefix)))
+                         (shell-quote-argument irony-server-source-dir)
+                         (shell-quote-argument irony-cmake-executable))))
 
 ;; We want to use flycheck with irony.
 (use-package flycheck-irony
