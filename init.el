@@ -75,17 +75,7 @@
 (use-package visual-fill-column
   :ensure t)
 
-;; which-key seems like a really nice help
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode)
-  :demand
-  :diminish which-key-mode)
 
-;; s.el is useful for our own functions
-(use-package s
-  :ensure t)
 
 ;; This is GREAT when tags don't really cut it
 (use-package dumb-jump
@@ -102,10 +92,7 @@
 (use-package evil
   :defer t)
 
-;; Command-log is useful sometimes, but let's not autoinstall as it
-;; will only slow first run time.
-(use-package command-log-mode
-  :defer t)
+
 
 ;; This one was recommended by Steve Purcell. Looked pretty good
 ;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY
@@ -118,28 +105,12 @@
   (fullframe package-list-packages quit-window)
   (fullframe list-packages quit-window))
 
-;; This is useful for config.
-(use-package restart-emacs
-  :ensure t)
-
-;; Looking for a way to explore a keymap I found a pretty cool package:
-(use-package help-fns+
-  :ensure t)
-
-;; Apparently it doesn't have autoload, so let's do this
-(require 'help-fns+)
-(define-key help-map "\M-k" 'describe-keymap)
-
-;;; Set garbage collection back to a normal value
-;; I hope it doesn't make it hang again..
-(setq gc-cons-threshold 128000000)
-
-;; Emacs has been hanging lately, so we'll keep an eye on this
-(setq garbage-collection-messages t)
-
 ;; We have all our modes set.
 ;; Simple config goes hardcoded here.
 ;; Grouped configuration files can be found in ./elisp
+
+;; Emacs core stuff
+(require 'setup-emacs)
 
 ;; Add stuff to text so you get visual aid when coding
 (require 'setup-editor)
@@ -152,6 +123,10 @@
 
 ;; Version control stuff
 (require 'setup-vc)
+
+;; Help enhancement
+(require 'setup-help)
+
 
 ;; Buffer moving/killing defuns
 (require 'setup-buffers)
