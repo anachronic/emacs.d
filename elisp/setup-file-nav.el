@@ -30,5 +30,11 @@
  (with-eval-after-load 'dired+
    (define-key dired-mode-map (kbd "b") #'dired-up-directory)))
 
+;; We want to be able to toggle dot files in dired
+(with-eval-after-load 'dired
+  (require 'dired-x)
+  (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+  (define-key dired-mode-map "h" #'dired-omit-mode))
+
 (provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here
