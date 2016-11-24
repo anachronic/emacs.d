@@ -218,6 +218,8 @@
 ;; Version control stuff
 (require 'setup-vc)
 
+;; Buffer moving/killing defuns
+(require 'setup-buffers)
 
 ;; Visual configuration. Here you'll find stuff about how Emacs looks
 (require 'setup-ui)

@@ -81,26 +81,6 @@ is already narrowed."
 ;; might as well explicitly tell emacs we don't like tabs
 (setq-default indent-tabs-mode nil)
 
-;; So i was using kill-this-buffer for C-x k. But sometimes I don't really
-;; want to kill the buffer, I just want it to get it out of the way.
-;; So let's bury the buffer with the same key when a prefix is specified.
-(defun my/kill-buffer-or-bury-dwim (&optional arg)
-  "If ARG, bury buffer, otherwise kill the buffer."
-  (interactive "P")
-  (if arg
-      (bury-buffer)
-    (kill-this-buffer)))
-
-(define-key ctl-x-map (kbd "k") 'my/kill-buffer-or-bury-dwim)
-
-;; According to http://oremacs.com/2015/02/18/undo-nonsense/, find-file-read-only
-;; is a trashy command. Whatever. Who cares about useless commands, we don't even use
-;; the useful ones sometimes, right?
-;; That's right. But hold on. This trashy command is bound to C-x C-r. Let's get
-;; rid of it and bind it to a useful command: revert buffer
-(global-set-key (kbd "C-x C-r") (lambda () (interactive) (revert-buffer nil t)))
-
-
 ;; smart comment was crap. Let's stick to the good ol' evil-nerd-commenter
 (use-package evil-nerd-commenter
   :ensure t
@@ -394,25 +374,6 @@ Single Capitals as you type."
   (define-key paredit-mode-map (kbd "M-;") nil)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
   (global-set-key (kbd "M-K") #'paredit-kill))
-
-;; I've been burying buffers like crazy lately because it feels more
-;; natural than killing them. However, I'd like to have the
-;; possibility to bury the current buffer with C-q and bury the other
-;; buffer with a prefix argument. This will override quoted insert,
-;; but that's ok since i hardly ever use it. Let's just rebind that to
-;; C-c q
-(defun my/bury-buffer-dwim (arg)
-  "Bury current buffer, if ARG is not nil, bury other-window's buffer instead."
-  (interactive "P")
-  (if arg
-      (progn
-        (other-window 1)
-        (bury-buffer)
-        (other-window -1))
-    (bury-buffer)))
-
-(global-set-key (kbd "C-q") 'my/bury-buffer-dwim)
-(global-set-key (kbd "C-c q") 'quoted-insert)
 
 ;; I've ran into this situation where I really need to insert some paragraphs or
 ;; stuff, so let's use lorem-ipsum
