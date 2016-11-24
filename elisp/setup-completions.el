@@ -28,6 +28,7 @@
         '((counsel-M-x . "^")
           (man . "^")
           (woman . "^")))
+  (setq ivy-count-format "(%d/%d) ")
   (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
   (define-key ivy-minibuffer-map [tab] #'ivy-alt-done)
   (define-key ivy-minibuffer-map (kbd "C-l") #'ivy-backward-delete-char)
