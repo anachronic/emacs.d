@@ -6,6 +6,7 @@
   :ensure t
   :pin gnu
   :commands (js2-mode js2-jsx-mode)
+  :defer t
   :mode (("\\.js\\'" . js2-mode)
          ("\\.jsx?\\'" . js2-jsx-mode))
   :config
@@ -16,12 +17,15 @@
 
 (use-package tern
   :ensure t
+  :after js2
+  :defer t
   :config
   (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
 
 (use-package company-tern
   :ensure t
   :after (company tern js2-mode)
+  :defer t
   :config
   (defun my/add-tern-company ()
     (setq-local company-backends company-backends)
