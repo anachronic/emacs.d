@@ -40,46 +40,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Helm Config
-;; Completion is HISTORICALLY bound to TAB on almost ANY editor. So we do that here.
-(use-package helm
-  :ensure t
-  :bind
-  (("C-S-m" . helm-mini)
-   ("C-x b" . helm-mini))
-  :config
-  (require 'helm-buffers)
-  (require 'helm-config)
-  (setq helm-mode-fuzzy-match t)
-  (setq helm-ff-newfile-prompt-p nil)
-  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-  (define-key helm-map (kbd "C-z") 'helm-select-action)
-  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-  (global-set-key (kbd "C-x C-f") 'helm-find-files)
-  (global-set-key [remap occur] 'helm-occur)
-  :diminish ""
-  :demand)
-
-;; Smex provides a GREAT interface for M-x. I got rid of it at some
-;; point but i really regret it, mostly for the last used commands.
-(use-package smex
-  :ensure t)
-
-;; I've come to think helm is not really good with files anymore. So let's
-;; use counsel. It also has some nice builtin functionality:
-;; http://oremacs.com/2015/04/19/git-grep-ivy/
-(use-package counsel
-  :ensure t
-  :after (helm ivy flx smex)
-  :config
-  (global-set-key (kbd "C-.") #'counsel-imenu)
-  (global-set-key (kbd "C-c s") #'counsel-grep)
-  (global-set-key (kbd "C-c a") #'counsel-ag)
-  (global-set-key (kbd "M-G") #'counsel-ag)
-  (global-set-key (kbd "C-c g") #'counsel-git-grep)
-  (global-set-key (kbd "C-S-x C-S-n") #'counsel-git)
-  (global-set-key (kbd "M-x") #'counsel-M-x))
-
 ;; Magit is critical for any developer
 (use-package magit
   :ensure t
@@ -91,52 +51,6 @@
 ;; anything until you actually fire up Magit.
 (define-key vc-prefix-map (kbd "h") #'magit-log-buffer-file)
 
-;; Company: Not much customization right now.
-(use-package company
-  :ensure t
-  :after yasnippet
-  :init
-  (add-hook 'after-init-hook 'global-company-mode)
-  :config
-  (progn
-    (setq company-idle-delay 0.7)
-    (define-key company-active-map (kbd "TAB") 'yas-expand)
-    (define-key company-active-map (kbd "<tab>") 'yas-expand))
-  :diminish ""  ;; it is almost always on anyway.
-  :bind (("C-S-<SPC>" . company-complete)))
-
-;; Some help can't hurt
-(use-package company-quickhelp
-  :ensure t
-  :config
-  (company-quickhelp-mode 1))
-
-;; Company statistics. I do use this a lot, maybe i should't be coding like I do...
-(use-package company-statistics
-  :ensure t
-  :config
-  (company-statistics-mode))
-
-;; flx is a dependency for company-flx and ivy's M-x (or any ivy actually).
-(use-package flx
-  :ensure t)
-
-;; Will be trying company-flx for a while.
-(use-package company-flx
-  :ensure t
-  :after flx
-  :config
-  (company-flx-mode +1)
-  (setq company-flx-limit 75))
-
-;; YASnippet, always so handy...
-(use-package yasnippet
-  :ensure t
-  :config
-  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
-  (yas-global-mode 1)
-  (define-key yas-minor-mode-map (kbd "C-<return>") 'yas-exit-snippet)
-  (define-key yas-minor-mode-map (kbd "<escape>") 'yas-exit-snippet))
 
 ;; Markdown mode
 (use-package markdown-mode
@@ -189,20 +103,9 @@
   :config
   (projectile-mode)
   (setq-default projectile-keymap-prefix (kbd "C-c p"))
-  (setq projectile-completion-system 'helm)
+  (setq projectile-completion-system 'ivy)
   (setq projectile-enable-caching t)
   (setq projectile-switch-project-action 'projectile-dired))
-
-;; Helm projectile. I'm surprised I didn't install this before.
-(use-package helm-projectile
-  :ensure t
-  :bind (("C-S-x C-S-m" . helm-projectile-switch-to-buffer))
-  :after helm
-  :demand
-  :config
-  (with-eval-after-load 'projectile
-    (helm-projectile-on)
-    (setq projectile-completion-system 'helm)))
 
 ;; Helm is very cool for everything. So is counsel/avy/etc...
 ;; However: Helm is __terrible__ when dealing with file handling. Whether it be finding a file
@@ -211,11 +114,9 @@
 ;; On the other hand. No package is better for occur/grep than helm.
 (use-package counsel-projectile
   :ensure t
-  :after (counsel projectile helm-projectile)
+  :after (counsel projectile)
   :config
-  (define-key projectile-mode-map [remap projectile-find-file] #'counsel-projectile-find-file)
-  (define-key projectile-mode-map [remap projectile-find-dir] #'counsel-projectile-find-dir)
-  (define-key projectile-mode-map [remap projectile-switch-project] #'counsel-projectile-switch-project))
+  )
 
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
@@ -303,23 +204,6 @@
 (use-package command-log-mode
   :defer t)
 
-;; Use ivy after helm. I like it's completion system better
-;; just like Helm for specific things.
-(use-package ivy
-  :ensure t
-  :after helm
-  :diminish 'ivy-mode
-  :config
-  (setq ivy-re-builders-alist
-        '((swiper . ivy--regex-plus)
-          (counsel-git-grep . ivy--regex-plus)
-          (t . ivy--regex-fuzzy)))
-  (setq ivy-initial-inputs-alist
-        '((counsel-M-x . "^")
-          (man . "^")
-          (woman . "^")))
-  (ivy-mode 1))
-
 ;; This one was recommended by Steve Purcell. Looked pretty good
 ;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY
 (use-package fullframe
@@ -386,6 +270,9 @@
 
 ;; Add stuff to text so you get visual aid when coding
 (require 'setup-editor)
+
+;; This has grown beyond the point of mantainable in init.el
+(require 'setup-completions)
 
 ;; Visual configuration. Here you'll find stuff about how Emacs looks
 (require 'setup-ui)

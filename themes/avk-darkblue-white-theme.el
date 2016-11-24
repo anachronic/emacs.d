@@ -90,7 +90,7 @@
    `(helm-visible-mark ((t (:background "dark green"))))
    `(helm-selection ((t (:foreground "Navy" :underline t :weight bold :background "DeepSkyBlue"))))
    `(ivy-virtual ((t (:foreground "#Add8e6"))))
-   `(ivy-current-match ((t (:inherit helm-selection))))
+   `(ivy-current-match ((t (:foreground "Navy" :underline t :weight bold :background "DeepSkyBlue"))))
    `(ivy-minibuffer-match-face-1 ((t (:weight bold :background "#555555" :foreground "MidnightBlue"))))
    `(ivy-minibuffer-match-face-2 ((t (:weight bold :background "#777777" :foreground "MidnightBlue"))))
    `(ivy-minibuffer-match-face-3 ((t (:weight bold :background "#7777ff" :foreground "MidnightBlue"))))

@@ -33,8 +33,6 @@
 
 (my/recentf-ban-from-blacklist)
 
-(global-set-key (kbd "C-S-x C-S-f") 'helm-recentf)
-
 (add-hook 'kill-emacs-hook 'my/recentf-ban-from-blacklist)
 
 (provide 'setup-recentf)
