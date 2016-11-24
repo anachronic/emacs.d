@@ -48,6 +48,15 @@
          ("C-S-x C-S-n" . counsel-git)
          ("M-x" . counsel-M-x)))
 
+;; I had a mix of stuff before. So it's nice to decide on
+;; counsel-projectile after all. I don't even projectile that much,
+;; but using counsel makes it way more consistent than it was before
+(use-package counsel-projectile
+  :ensure t
+  :after (counsel projectile)
+  :config
+  (counsel-projectile-on))
+
 ;; YASnippet, always so handy...
 (use-package yasnippet
   :ensure t

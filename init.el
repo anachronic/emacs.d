@@ -51,7 +51,6 @@
 ;; anything until you actually fire up Magit.
 (define-key vc-prefix-map (kbd "h") #'magit-log-buffer-file)
 
-
 ;; Markdown mode
 (use-package markdown-mode
   :ensure t
@@ -107,16 +106,7 @@
   (setq projectile-enable-caching t)
   (setq projectile-switch-project-action 'projectile-dired))
 
-;; Helm is very cool for everything. So is counsel/avy/etc...
-;; However: Helm is __terrible__ when dealing with file handling. Whether it be finding a file
-;; (especially a directory), or worse, saving a file. Helm is a pain in the ass
-;; So we'll use counsel to save and load files.
-;; On the other hand. No package is better for occur/grep than helm.
-(use-package counsel-projectile
-  :ensure t
-  :after (counsel projectile)
-  :config
-  )
+
 
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
@@ -259,7 +249,7 @@
 
 ;;; Set garbage collection back to a normal value
 ;; I hope it doesn't make it hang again..
-(setq gc-cons-threshold 65000000)
+(setq gc-cons-threshold 128000000)
 
 ;; Emacs has been hanging lately, so we'll keep an eye on this
 (setq garbage-collection-messages t)
