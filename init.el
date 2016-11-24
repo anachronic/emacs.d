@@ -40,20 +40,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Markdown mode
-(use-package markdown-mode
-  :ensure t
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
-
-
-
-;;;;; At this point I feel like im just copying people..
-;;;;; thats fine though
-
 ;; ace-window from Howard Abrams. I hear its nice
 (use-package ace-window
   :ensure t
@@ -68,11 +54,7 @@
   (global-flycheck-mode)
   (setq flycheck-emacs-lisp-load-path 'inherit))
 
-;; yaml-mode. mainly for syntax highlighting
-(use-package yaml-mode
-  :ensure t ;; seems like overkill
-  :config
-  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
+
 
 
 ;; Key chord. This mode is absolutely AWESOME. I can't stop thinking about
@@ -148,28 +130,6 @@
 (require 'help-fns+)
 (define-key help-map "\M-k" 'describe-keymap)
 
-;; Let's make a mode prefix
-(defvar my/mode-toggle-map)
-
-
-;; I used to have a prefix for the mode toggle, but I think hydras can be very useful, because the help can be displayed vertically.
-(defhydra mode-toggle (:color blue
-                       :columns 1)
-  "Toggle one of these modes"
-  ("e" evil-mode "Evil mode")
-  ("w" whitespace-mode "Whitespace mode")
-  ("l" linum-relative-mode "Linum relative")
-  ("c" color-identifiers-mode "Color identifiers mode")
-  ("v" visual-line-mode "Visual line mode")
-  ("p" projectile-mode "Projectile")
-  ("k" which-key-mode "Which key")
-  ("h" global-hl-line-mode "Highlight line")
-  ("a" artist-mode "Artist mode")
-  ("s" key-chord-mode "Key chord mode")
-  ("q" nil "quit"))
-
-(global-set-key (kbd "<f6>") 'mode-toggle/body)
-
 ;;; Set garbage collection back to a normal value
 ;; I hope it doesn't make it hang again..
 (setq gc-cons-threshold 128000000)
@@ -229,6 +189,9 @@
 
 ;; LaTeX writing.
 (require 'latex-writing)
+
+;; Misc modes that don't need a separate file: (yaml, markdown)
+(require 'setup-modes)
 
 ;; Mail conf
 (require 'setup-mail)
