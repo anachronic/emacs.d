@@ -107,5 +107,16 @@
 (global-set-key (kbd "M-n") 'my/scrolldown)
 (global-set-key (kbd "M-p") 'my/scrollup)
 
+;; This one was recommended by Steve Purcell. Looked pretty good
+;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY
+(use-package fullframe
+  :ensure t
+  :after magit
+  :config
+  (fullframe magit-status magit-mode-quit-window)
+  (fullframe ibuffer ibuffer-quit)
+  (fullframe package-list-packages quit-window)
+  (fullframe list-packages quit-window))
+
 (provide 'setup-ui)
 ;;; setup-ui.el ends here

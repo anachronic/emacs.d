@@ -40,78 +40,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; ace-window from Howard Abrams. I hear its nice
-(use-package ace-window
-  :ensure t
-  :config
-  (global-set-key (kbd "C-x o") 'ace-window))
-
-;; Flycheck. What's an editor without error checking?
-(use-package flycheck
-  :ensure t
-  :diminish "" ;; Errors and warnings appear in the modeline anyway
-  :config
-  (global-flycheck-mode)
-  (setq flycheck-emacs-lisp-load-path 'inherit))
-
-
-
-
-;; Key chord. This mode is absolutely AWESOME. I can't stop thinking about
-;; how much I have needed something like this over the past few years.
-;; I got the idea from -> http://emacsrocks.com/e07.html
-;; The documentation can be found on EmacsWiki:
-;; https://www.emacswiki.org/emacs/KeyChord
-;; Key chord definitions are mainly found on:
-;; - mode programming files (like c-programming.el)
-;; - editor binding files [setup-editor.el] (mainly hj, jk and jj)
-(use-package key-chord
-  :ensure t
-  :config
-  (key-chord-mode 1))
-
-
-;; Visual fill column for text-only buffers, like mail and feeds. and maybe org..
-(use-package visual-fill-column
-  :ensure t)
-
-
-
-;; This is GREAT when tags don't really cut it
-(use-package dumb-jump
-  :ensure t
-  :diminish (dumb-jump-mode . "Dumb")
-  :config
-  (add-hook 'prog-mode-hook 'dumb-jump-mode))
-
-;; hydra
-(use-package hydra
-  :ensure t)
-
-;; evil is good for navigation, lets give it a key.
-(use-package evil
-  :defer t)
-
-
-
-;; This one was recommended by Steve Purcell. Looked pretty good
-;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY
-(use-package fullframe
-  :ensure t
-  :after magit
-  :config
-  (fullframe magit-status magit-mode-quit-window)
-  (fullframe ibuffer ibuffer-quit)
-  (fullframe package-list-packages quit-window)
-  (fullframe list-packages quit-window))
-
-;; We have all our modes set.
-;; Simple config goes hardcoded here.
-;; Grouped configuration files can be found in ./elisp
-
-;; Emacs core stuff
-(require 'setup-emacs)
-
 ;; Add stuff to text so you get visual aid when coding
 (require 'setup-editor)
 
@@ -211,6 +139,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Emacs core stuff
+(require 'setup-emacs)
 
 ;; just to suppress warnings.
 (provide 'init)

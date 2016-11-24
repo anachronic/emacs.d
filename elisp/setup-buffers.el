@@ -127,6 +127,12 @@ Otherwise exit Emacs."
       (ibuffer-do-sort-by-filename/process)))
   (add-hook 'ibuffer-hook #'ibuffer-set-up-preferred-filters))
 
+;; ace-window from Howard Abrams. I hear its nice
+(use-package ace-window
+  :ensure t
+  :config
+  (global-set-key (kbd "C-x o") 'ace-window))
+
 
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here

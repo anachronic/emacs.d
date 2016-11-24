@@ -2,12 +2,41 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Key chord. This mode is absolutely AWESOME. I can't stop thinking about
+;; how much I have needed something like this over the past few years.
+;; I got the idea from -> http://emacsrocks.com/e07.html
+;; The documentation can be found on EmacsWiki:
+;; https://www.emacswiki.org/emacs/KeyChord
+;; Key chord definitions are mainly found on:
+;; - mode programming files (like c-programming.el)
+;; - editor binding files [setup-editor.el] (mainly hj, jk and jj)
+(use-package key-chord
+  :ensure t
+  :config
+  (key-chord-mode 1))
+
+;; Visual fill column for text-only buffers, like mail and feeds. and maybe org..
+(use-package visual-fill-column
+  :ensure t)
+
+;; hydra
+(use-package hydra
+  :ensure t)
+
 (require 'hl-line)
 (show-paren-mode 1)
 ;; (global-hl-line-mode)
 
 ;; Enable narrow commands
 (put 'narrow-to-region 'disabled nil)
+
+;; Flycheck. What's an editor without error checking?
+(use-package flycheck
+  :ensure t
+  :diminish "" ;; Errors and warnings appear in the modeline anyway
+  :config
+  (global-flycheck-mode)
+  (setq flycheck-emacs-lisp-load-path 'inherit))
 
 ;; This is a beautiful command from endlessparentheses
 ;; url: http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html

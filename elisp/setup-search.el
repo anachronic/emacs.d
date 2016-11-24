@@ -70,5 +70,14 @@
   (define-key isearch-mode-map (kbd "C-S-s") #'isearch-swiper)
   (define-key isearch-mode-map (kbd "C-S-r") #'isearch-swiper))
 
+;; This is GREAT when tags don't really cut it
+(use-package dumb-jump
+  :ensure t
+  :diminish (dumb-jump-mode . "Dumb")
+  :config
+  (add-hook 'prog-mode-hook 'dumb-jump-mode))
+
+
+
 (provide 'setup-search)
 ;;; setup-search.el ends here
