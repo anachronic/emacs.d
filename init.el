@@ -74,6 +74,8 @@
   :config
   (global-set-key (kbd "C-.") #'counsel-imenu)
   (global-set-key (kbd "C-c s") #'counsel-grep)
+  (global-set-key (kbd "C-c a") #'counsel-ag)
+  (global-set-key (kbd "M-G") #'counsel-ag)
   (global-set-key (kbd "C-c g") #'counsel-git-grep)
   (global-set-key (kbd "C-S-x C-S-n") #'counsel-git)
   (global-set-key (kbd "M-x") #'counsel-M-x))
@@ -183,12 +185,11 @@
 ;; Projectile, for projects
 (use-package projectile
   :ensure t
-  :init
-  (progn
-    (setq projectile-keymap-prefix (kbd "C-c p"))
-    (setq projectile-completion-system 'helm)
-    (projectile-global-mode))
+  :demand
   :config
+  (projectile-mode)
+  (setq-default projectile-keymap-prefix (kbd "C-c p"))
+  (setq projectile-completion-system 'helm)
   (setq projectile-enable-caching t)
   (setq projectile-switch-project-action 'projectile-dired))
 
@@ -196,9 +197,12 @@
 (use-package helm-projectile
   :ensure t
   :bind (("C-S-x C-S-m" . helm-projectile-switch-to-buffer))
+  :after helm
+  :demand
   :config
-  (helm-projectile-on)
-  (setq projectile-completion-system 'helm))
+  (with-eval-after-load 'projectile
+    (helm-projectile-on)
+    (setq projectile-completion-system 'helm)))
 
 ;; Helm is very cool for everything. So is counsel/avy/etc...
 ;; However: Helm is __terrible__ when dealing with file handling. Whether it be finding a file

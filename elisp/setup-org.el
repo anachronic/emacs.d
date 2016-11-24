@@ -9,7 +9,7 @@
   :defer t)
 
 ;; Agenda is cool
-(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c A") 'org-agenda)
 
 ;; org keywords. I like having more than the usual TODO/
 (setq org-todo-keywords
