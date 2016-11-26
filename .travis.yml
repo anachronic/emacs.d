@@ -18,3 +18,8 @@ matrix:
 
 script:
   lsb_release -a && ./test-startup.sh
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: wtb
+# key: wtb
+# --
+(with-temp-buffer
+$0)
