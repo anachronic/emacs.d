@@ -55,7 +55,6 @@
 ;; Help enhancement
 (require 'setup-help)
 
-
 ;; Buffer moving/killing defuns
 (require 'setup-buffers)
 
