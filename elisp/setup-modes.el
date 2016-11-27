@@ -31,5 +31,8 @@
 (use-package evil
   :defer t)
 
+(use-package camcorder
+  :defer t)
+
 (provide 'setup-modes)
 ;;; setup-modes.el ends here
