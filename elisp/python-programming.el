@@ -145,6 +145,11 @@ python-shell-send-buffer."
 (use-package python-django
   :ensure t)
 
+;; Trying out my new package
+(when (file-exists-p "/home/nsalas/forks/importmagic.el")
+  (require 'importmagic)
+  (add-hook 'python-mode-hook 'importmagic-mode))
+
 
 (provide 'python-programming)
 ;;; python-programming.el ends here

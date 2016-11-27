@@ -27,6 +27,7 @@
 
 ;; General paths. Self-written scripts and themes.
 (add-to-list 'load-path (expand-file-name (concat user-emacs-directory "elisp/")))
+(add-to-list 'load-path (expand-file-name (concat user-emacs-directory "site-lisp/")))
 (add-to-list 'custom-theme-load-path (expand-file-name (concat user-emacs-directory "themes/")))
 
 ;; Nobody likes those annoying ~ end files, so redirect them.

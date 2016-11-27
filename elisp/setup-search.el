@@ -37,6 +37,7 @@
 (use-package link-hint
   :ensure t
   :bind ("C-c j u" . link-hint-open-link)
+  :demand
   :config
   (defun my/set-link-hint-key ()
     (local-set-key "o" #'link-hint-open-link))
