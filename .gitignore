@@ -21,7 +21,6 @@ semanticdb
 flycheck_init.el
 /bookmarks
 irony
-/.mc-lists.el
 /var/pcache/gh/gh-gist-api/anachronic
 anaconda-mode
 image-dired
