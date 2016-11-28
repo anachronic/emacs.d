@@ -36,5 +36,8 @@
   (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
   (define-key dired-mode-map "h" #'dired-omit-mode))
 
+;; Using "a" in dired is way more sensible than f.
+(put 'dired-find-alternate-file 'disabled nil)
+
 (provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here

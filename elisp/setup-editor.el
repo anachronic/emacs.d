@@ -159,7 +159,7 @@ is already narrowed."
 (use-package color-identifiers-mode
   :ensure t
   :config
-  (add-hook 'prog-mode-hook 'global-color-identifiers-mode)
+  (add-hook 'prog-mode-hook 'color-identifiers-mode)
   :diminish color-identifiers-mode)
 
 

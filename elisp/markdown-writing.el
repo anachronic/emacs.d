@@ -13,7 +13,9 @@
 
 
 (use-package markdown-preview-mode
-  :ensure t)
+  :ensure t
+  :config
+  (setq markdown-preview-style "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
 
 (defun my/add-markdown-preview-key ()
   "Set a new key for markdown-preview-mode."
