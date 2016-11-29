@@ -12,14 +12,21 @@
 (use-package restart-emacs
   :ensure t)
 
-;;; Set garbage collection back to a normal value
-;; I hope it doesn't make it hang again..
-(setq gc-cons-threshold 128000000)
-
 ;; s.el is useful for our own functions
 (use-package s
   :ensure t)
 
+;; we need the filter function!!
+(use-package dash
+  :ensure t)
+
+;; I've been using f.el lately
+(use-package f
+  :ensure t)
+
+;; Misc crap that i don't know where to put
+(use-package epc
+  :ensure t)
 
 (provide 'setup-emacs)
 ;;; setup-emacs.el ends here

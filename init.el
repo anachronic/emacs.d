@@ -45,10 +45,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Misc crap that i don't know where to put
-(use-package epc
-  :ensure t)
 
+;; Emacs core stuff
+(require 'setup-emacs)
 
 ;; I'd like to have a cool prefix key to do my own things without
 ;; having to worry that anyone overrides its key binding and, as you
@@ -165,8 +164,9 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; Emacs core stuff
-(require 'setup-emacs)
+;;; Set garbage collection back to a normal value
+;; I hope it doesn't make it hang again..
+(setq gc-cons-threshold 128000000)
 
 ;; just to suppress warnings.
 (provide 'init)

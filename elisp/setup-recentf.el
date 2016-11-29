@@ -13,10 +13,6 @@
         "-autoloads.el"
         ".elfeed/index"))
 
-;; we need the filter function!!
-(use-package dash
-  :ensure t)
-
 ;; I really haven't coded serious lisp in ages...
 ;; Get rid of the files we don't want to see in the recentf list
 (require 'dash)
