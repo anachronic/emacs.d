@@ -104,11 +104,7 @@ is already narrowed."
    ("C-S-z" . undo-tree-redo)))
 
 
-(add-hook 'Man-mode-hook 'my/visualmode)
-
-;; Also, autosave in LaTeX mode
-(add-hook 'LaTeX-mode-hook 'my/visualmode)
-(setq TeX-auto-save t)
+(add-hook 'Man-mode-hook 'visual-line-mode)
 
 ;; diminish visual-line-mode
 (diminish 'visual-line-mode)
@@ -157,9 +153,6 @@ is already narrowed."
 ;; Deleting stuff backwards
 (global-set-key (kbd "C-S-d") 'delete-backward-char)
 (global-set-key (kbd "M-D") 'backward-kill-word)
-
-;; I like prettify symbols mode. but only for elisp
-(add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
 
 ;; Let's use multiple cursors.
 (use-package multiple-cursors
@@ -279,11 +272,7 @@ point reaches the beginning or end of the buffer, stop there."
     (forward-char col)))
 
 (global-set-key (kbd "M-P") 'my/move-line-up)
-(global-set-key (kbd "M-<up>") 'my/move-line-up)
-
 (global-set-key (kbd "M-<down>") 'my/move-line-down)
-(global-set-key (kbd "M-N") 'my/move-line-down)
-
 
 ;; Kill to beginning of line
 ;; not sure about binding this one yet.
@@ -396,20 +385,6 @@ Single Capitals as you type."
 (add-hook 'gfm-mode-hook #'dubcaps-mode)
 (add-hook 'text-mode-hook #'dubcaps-mode)
 
-;; I'll be trying Paredit. Should be quite useful for lisp-like stuff
-;; Yeah, I've been becoming more fond of paredit every day. It rocks!
-;; However, I don't use C-j for anything, since electric indent does
-;; everything for me, and if I need a key binding for newline, well, I
-;; already have C-m.
-(use-package paredit
-  :ensure t
-  :diminish "par"
-  :config
-  (define-key paredit-mode-map (kbd "C-j") nil)
-  (define-key paredit-mode-map (kbd "M-;") nil)
-  (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
-  (global-set-key (kbd "M-K") #'paredit-kill))
-
 ;; I've ran into this situation where I really need to insert some paragraphs or
 ;; stuff, so let's use lorem-ipsum
 (use-package lorem-ipsum
@@ -425,17 +400,6 @@ Single Capitals as you type."
 ;; https://www.reddit.com/r/emacs/comments/5e94pg/have_links_in_comments_like_spacemacs/
 (add-hook 'prog-mode-hook 'goto-address-prog-mode)
 
-;; Also make this available in Markdown
-(add-hook 'markdown-mode-hook 'goto-address-mode)
-
-;; Stealing conf from purcell's .emacs.d. This package is actually
-;; pretty cool, it gets you out of the dullness of full white text (or
-;; should I say: default face)
-(use-package highlight-quoted
-  :ensure t
-  :config
-  (add-hook 'emacs-lisp-mode-hook #'highlight-quoted-mode))
-
 ;; More from purcell's. I once thought highlighting symbol was slowing
 ;; down my PC. Looks like I was wrong
 (use-package highlight-symbol
@@ -448,10 +412,6 @@ Single Capitals as you type."
     (unless (or isearch-mode
                 (and (boundp 'multiple-cursors-mode) multiple-cursors-mode))
       ad-do-it)))
-
-;; We continue the stealing: hl-sexp. Useful sometimes
-(use-package hl-sexp
-  :ensure t)
 
 ;; More stealing: immortal scratch. I wish I knew about this one
 ;; before

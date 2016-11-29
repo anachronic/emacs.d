@@ -34,5 +34,8 @@
 (put 'LaTeX-narrow-to-environment 'disabled nil)
 (put 'narrow-to-page 'disabled nil)
 
+;; Also, autosave in LaTeX mode
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+
 (provide 'latex-writing)
 ;;; latex-writing.el ends here

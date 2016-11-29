@@ -22,6 +22,10 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
+;; For some reason I find it hard to navigate package list without
+;; highlighting the line.
+(add-hook 'package-menu-mode-hook #'hl-line-mode)
+
 ;; I DO NOT LIKE TYPING YES!!!!
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -44,6 +48,16 @@
 ;; Misc crap that i don't know where to put
 (use-package epc
   :ensure t)
+
+
+;; I'd like to have a cool prefix key to do my own things without
+;; having to worry that anyone overrides its key binding and, as you
+;; know, C-c is quite cluttered. So, let's rebind C-a to combine M-m
+;; and C-a and voilà!, we get a free cool key to bind to a prefix.
+;; The rebinding happens in setup-editor.el
+(global-unset-key (kbd "M-m"))
+(define-prefix-command 'meta-m-map)
+(global-set-key (kbd "M-m") 'meta-m-map)
 
 ;; Add stuff to text so you get visual aid when coding
 (require 'setup-editor)
@@ -81,6 +95,9 @@
 
 ;; Eshell config.
 (require 'setup-eshell)
+
+;; Elisp programming
+(require 'elisp-programming)
 
 ;; C programming requires a special section
 (require 'c-programming)
@@ -129,7 +146,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (camcorder markdown-preview-mode epc link-hint diff-hl dired+ ibuffer-vc key-chord restart-emacs help-fns+ smex immortal-scratch hl-sexp highlight-symbol highlight-quoted anzu iy-go-to-char command-log-mode pyvenv py-yapf company-anaconda anaconda-mode org-plus-contrib gist browse-at-remote lorem-ipsum fullframe htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
+    (page-break-lines camcorder markdown-preview-mode epc link-hint diff-hl dired+ ibuffer-vc key-chord restart-emacs help-fns+ smex immortal-scratch hl-sexp highlight-symbol highlight-quoted anzu iy-go-to-char command-log-mode pyvenv py-yapf company-anaconda anaconda-mode org-plus-contrib gist browse-at-remote lorem-ipsum fullframe htmlize ox-reveal paredit beacon aggressive-indent gitignore-mode neotree ac-html-bootstrap company-web zzz-to-char hydra helm-projectile company-tern tern js2-mode multiple-cursors rainbow-mode rainbow-delimiters emmet-mode web-mode python-django elpy company-irony-c-headers company-irony flycheck-irony irony evil elfeed-goodies ace-link evil-nerd-commenter latex-preview-pane helm-gtags yasnippet yaml-mode which-key visual-fill-column use-package undo-tree smart-comment shell-pop projectile powerline nlinum-relative markdown-mode magit helm flycheck expand-region elfeed direx company-statistics company-quickhelp company-flx color-identifiers-mode autopair auctex ace-window)))
  '(projectile-mode-line
    (quote
     (:eval
