@@ -41,6 +41,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Misc crap that i don't know where to put
+(use-package epc
+  :ensure t)
+
 ;; Add stuff to text so you get visual aid when coding
 (require 'setup-editor)
 
