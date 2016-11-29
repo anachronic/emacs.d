@@ -133,6 +133,10 @@ Otherwise exit Emacs."
   :config
   (global-set-key (kbd "C-x o") 'ace-window))
 
+;; I've actually not used shift+arrows in a while, so let's bind
+;; windmove to that
+(windmove-default-keybindings)
+
 
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here

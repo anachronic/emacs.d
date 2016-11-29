@@ -50,6 +50,9 @@
 (with-eval-after-load 'org-src
   (define-key org-src-mode-map "\C-x\C-s" #'org-edit-src-exit))
 
+(add-hook 'org-mode-hook #'auto-fill-mode)
+(add-hook 'org-mode-hook #'visual-line-mode)
+
 (with-eval-after-load 'org
   (setenv "PDFLATEX" "pdflatex -shell-escape")
   (setq org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))

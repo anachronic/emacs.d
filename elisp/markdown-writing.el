@@ -25,6 +25,10 @@
       (local-set-key (kbd "C-c C-c C-o") #'markdown-preview-open-browser))))
 
 (add-hook 'markdown-mode-hook #'my/add-markdown-preview-key)
+(add-hook 'markdown-mode-hook #'auto-fill-mode)
+(add-hook 'gfm-mode-hook #'auto-fill-mode)
+(add-hook 'gfm-mode-hook #'visual-line-mode)
+(add-hook 'markdown-mode-hook #'visual-line-mode)
 
 (provide 'markdown-writing)
 ;;; markdown-writing.el ends here

@@ -104,20 +104,11 @@ is already narrowed."
    ("C-S-z" . undo-tree-redo)))
 
 
-;; Wrapping the buffer is very useful in org mode and latex mode
-(defun my/visualmode ()
-  "Setup visual line mode in the buffer."
-  (visual-line-mode))
-
-(add-hook 'org-mode-hook 'my/visualmode)
 (add-hook 'Man-mode-hook 'my/visualmode)
-(add-hook 'gfm-mode-hook 'my/visualmode)
-(add-hook 'markdown-mode-hook 'my/visualmode)
 
 ;; Also, autosave in LaTeX mode
 (add-hook 'LaTeX-mode-hook 'my/visualmode)
 (setq TeX-auto-save t)
-
 
 ;; diminish visual-line-mode
 (diminish 'visual-line-mode)
@@ -163,7 +154,7 @@ is already narrowed."
   :diminish color-identifiers-mode)
 
 
-;; Deleting stuff
+;; Deleting stuff backwards
 (global-set-key (kbd "C-S-d") 'delete-backward-char)
 (global-set-key (kbd "M-D") 'backward-kill-word)
 
