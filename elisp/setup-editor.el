@@ -272,7 +272,7 @@ point reaches the beginning or end of the buffer, stop there."
     (forward-char col)))
 
 (global-set-key (kbd "M-P") 'my/move-line-up)
-(global-set-key (kbd "M-<down>") 'my/move-line-down)
+(global-set-key (kbd "M-N") 'my/move-line-down)
 
 ;; Kill to beginning of line
 ;; not sure about binding this one yet.
