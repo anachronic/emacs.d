@@ -210,13 +210,22 @@
    `(erc-nick-default-face ((t (:foreground "Goldenrod" :weight bold))))
    `(erc-button ((t (:foreground "DeepSkyBlue" :underline t :weight bold))))
    `(erc-notice-face ((t (:foreground "DarkSlateBlue" :weight bold))))
-   `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))))
+   `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))
+
+   `(rainbow-delimiters-depth-1-face ((t (:foreground "deep pink"))))
+   `(rainbow-delimiters-depth-2-face ((t (:foreground "chartreuse"))))
+   `(rainbow-delimiters-depth-3-face ((t (:foreground "deep sky blue"))))
+   `(rainbow-delimiters-depth-4-face ((t (:foreground "yellow"))))
+   `(rainbow-delimiters-depth-5-face ((t (:foreground "orchid"))))
+   `(rainbow-delimiters-depth-6-face ((t (:foreground "spring green"))))
+   `(rainbow-delimiters-depth-7-face ((t (:foreground "sienna1"))))
+   `(rainbow-delimiters-depth-8-face ((t (:foreground "dark orange"))))))
 
 ;;;###autoload
 (when (and load-file-name (boundp 'custom-theme-load-path))
- (add-to-list
-      'custom-theme-load-path
-      (file-name-as-directory (file-name-directory load-file-name))))
+  (add-to-list
+   'custom-theme-load-path
+   (file-name-as-directory (file-name-directory load-file-name))))
 
 (provide-theme 'nsalas-tomorrow-night)
 ;;; nsalas-tomorrow-night.el ends here

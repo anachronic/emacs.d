@@ -42,5 +42,10 @@
 (use-package hl-sexp
   :ensure t)
 
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
+
 (provide 'elisp-programming)
 ;;; elisp-programming.el ends here
