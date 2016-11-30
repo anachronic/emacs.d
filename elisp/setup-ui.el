@@ -23,8 +23,7 @@
 (setq initial-scratch-message nil)
 
 ;; load the latest theme.
-;; (load-theme 'monokai t)
-(load-theme 'avk-darkblue-white t)
+(load-theme 'nsalas-tomorrow-night t)
 (set-face-attribute 'default nil :height 105)
 
 ;; On my laptop I'd rather have a bigger text
