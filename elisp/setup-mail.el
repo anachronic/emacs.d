@@ -18,6 +18,13 @@
 (setq send-mail-function 'async-smtpmail-send-it
       message-send-mail-function 'async-smtpmail-send-it)
 
+;; And finally, Notmuch is really the way to go with mail
+(use-package notmuch
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c m") #'notmuch)
+  (setq notmuch-search-oldest-first nil))
+
 
 (provide 'setup-mail)
 ;;; setup-mail.el ends here

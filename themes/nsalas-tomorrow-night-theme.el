@@ -103,7 +103,7 @@
    `(jabber-chat-prompt-local ((t (:inherit org-level-4))))
    `(jabber-roster-user-online ((t (:inherit font-lock-string-face))))
    `(lazy-highlight ((((class color) (min-colors 88) (background dark)) (:background "#483d8b" :foreground "white"))))
-   `(link ((t (:foreground "#4245de" :underline t))))
+   `(link ((t (:foreground "#349b98" :underline t))))
    `(match ((((class color) (min-colors 88) (background dark)) (:background "SlateBlue4" :foreground "white"))))
    `(message-cited-text ((((class color) (background dark)) (:foreground "SandyBrown"))))
    `(message-header-name ((((class color) (background dark)) (:foreground "DarkGrey"))))
