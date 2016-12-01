@@ -420,5 +420,12 @@ Single Capitals as you type."
   :config
   (add-hook 'after-init-hook #'immortal-scratch-mode))
 
+;; I saw this in purcell's config, looks useful
+(use-package indent-guide
+  :ensure t
+  :diminish ""
+  :config
+  (indent-guide-global-mode))
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
