@@ -99,8 +99,9 @@
   (dotimes (i n)
     (scroll-down-command 1)))
 
-(global-set-key (kbd "M-n") 'my/scrolldown)
-(global-set-key (kbd "M-p") 'my/scrollup)
+;; I'll rebind these to C-v and M-v someday
+;; (global-set-key (kbd "M-n") 'my/scrolldown)
+;; (global-set-key (kbd "M-p") 'my/scrollup)
 
 ;; This one was recommended by Steve Purcell. Looked pretty good
 ;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY

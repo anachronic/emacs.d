@@ -407,6 +407,7 @@ Single Capitals as you type."
   :diminish ""
   :config
   (add-hook 'prog-mode-hook #'highlight-symbol-mode)
+  (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
   (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate)
     "Suppress symbol highlighting while isearching."
     (unless (or isearch-mode
