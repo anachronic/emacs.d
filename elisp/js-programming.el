@@ -4,7 +4,6 @@
 
 (use-package js2-mode
   :ensure t
-  :pin gnu
   :commands (js2-mode js2-jsx-mode)
   :defer t
   :mode (("\\.js\\'" . js2-mode)

@@ -42,7 +42,6 @@
 ;; Will be trying irony mode for FlyC and company
 (use-package irony
   :ensure t
-  :pin melpa-stable
   :config
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'c++-mode-hook 'irony-mode)
