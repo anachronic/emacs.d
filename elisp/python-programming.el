@@ -133,7 +133,12 @@ python-shell-send-buffer."
   "Add the functions defined in python-programming.el to Python buffer locally."
   (local-set-key (kbd "C-c C-z") #'my/python-switch-to-shell)
   (local-set-key (kbd "C-c C-r") #'spacemacs/python-execute-file)
-  (local-set-key (kbd "C-c C-c") #'python-shell-send-dwim))
+  (local-set-key (kbd "C-c C-c") #'python-shell-send-dwim)
+  ;; I don't know why these are not defaults
+  (local-set-key (kbd "C-M-f") #'python-nav-forward-sexp)
+  (local-set-key (kbd "C-M-b") #'python-nav-backward-sexp)
+  (local-set-key (kbd "C-M-a") #'python-nav-backward-defun)
+  (local-set-key (kbd "C-M-e") #'python-nav-forward-defun))
 
 (add-hook 'python-mode-hook #'my/python-rebinds)
 
