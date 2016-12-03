@@ -64,10 +64,12 @@
 ;; URL: http://endlessparentheses.com/beacon-never-lose-your-cursor-again.html
 (use-package beacon
   :ensure t
+  :demand
+  :bind (("C-x =" . beacon-blink))
   :config
   (beacon-mode)
   (setq beacon-push-mark 35)
-  (setq beacon-color "#F92672")
+  (setq beacon-color "#32e006")
   :diminish 'beacon-mode)
 
 ;; Maximize and minimize windows. I used to have them in C-c C-m and
