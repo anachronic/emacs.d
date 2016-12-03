@@ -2,8 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (file-exists-p "~/elisp/mail.el")
-  (load-file "~/elisp/mail.el"))
+(let ((mailfile "~/elisp/mail.el"))
+  (when (file-exists-p mailfile)
+    (load-file mailfile)))
 
 ;; The following settings are ~/elisp/mail.el examples.
 ;; (setq user-full-name        "John Doe."
@@ -23,7 +24,19 @@
   :ensure t
   :config
   (global-set-key (kbd "C-c m") #'notmuch)
-  (setq notmuch-search-oldest-first nil))
+  (setq notmuch-search-oldest-first nil)
+  (setq notmuch-show-text/html-blocked-images nil))
+
+(with-eval-after-load 'time
+  (setq display-time-use-mail-icon t)
+  (setq display-time-24hr-format t)
+  (setq display-time-load-average-threshold 100)
+  (setq display-time-mail-function
+        (lambda ()
+          (not (eq 0
+                   (string-to-number
+                    (shell-command-to-string
+                     "notmuch search tag:inbox,unread | wc -l")))))))
 
 
 (provide 'setup-mail)
