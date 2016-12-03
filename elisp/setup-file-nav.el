@@ -9,7 +9,17 @@
 ;; NeoTree could *sometimes* be better than Dired.
 (use-package neotree
   :ensure t
-  :bind ("<f7>" . neotree-toggle))
+  :config
+  (defun my/neotree-toggle ()
+    "If there's a projectile project going on, open neotree at project root."
+    (interactive)
+    (if (neo-global--window-exists-p)
+        (neotree-hide)
+      (let ((project-dir (projectile-project-root)))
+        (neotree-toggle)
+        (when (projectile-project-p)
+          (neotree-dir project-dir)))))
+  (global-set-key (kbd "<f7>") #'my/neotree-toggle))
 
 ;; This package is cool, I like coloring stuff around
 (use-package dired-k
