@@ -33,10 +33,12 @@
   (setq display-time-load-average-threshold 100)
   (setq display-time-mail-function
         (lambda ()
-          (not (eq 0
-                   (string-to-number
-                    (shell-command-to-string
-                     "notmuch search tag:inbox,unread | wc -l")))))))
+          (let ((newmail (string-to-number
+                          (shell-command-to-string
+                           "notmuch search tag:unread | wc -l"))))
+            (if (eq 0 newmail)
+                nil
+              newmail)))))
 
 
 (provide 'setup-mail)
