@@ -426,7 +426,8 @@ Single Capitals as you type."
   :ensure t
   :diminish ""
   :config
-  (indent-guide-global-mode))
+  (add-hook 'js2-mode-hook #'indent-guide-mode)
+  (add-hook 'python-mode-hook #'indent-guide-mode))
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here

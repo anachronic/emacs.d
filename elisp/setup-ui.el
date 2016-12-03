@@ -85,23 +85,34 @@
 ;; Some bindings from https://www.masteringemacs.org/article/my-emacs-keybindings
 (global-set-key (kbd "M-o") 'other-window)
 
-;; I want to be able to scroll without moving the point
-;; source: https://www.emacswiki.org/emacs/Scrolling
+;; I want to be able to scroll without moving the point source:
+;; https://www.emacswiki.org/emacs/Scrolling Actually, I'll make these
+;; interactive "P", so that C-u prefix will behave like a normal C-v
+;; and same with M-v
 (defun my/scrolldown (n)
-  "Scroll down N lines without moving the point."
-  (interactive "p")
-  (dotimes (i n)
-    (scroll-up-command 1)))
+  "Scroll down N lines without moving the point.
+
+With an unnumbered prefix, do a normal call to scroll up command."
+  (interactive "P")
+  (if (and n (listp n))
+      (scroll-up-command)
+    (when (not n) (setq n 1))
+    (dotimes (i n)
+      (scroll-up-command 1))))
 
 (defun my/scrollup (n)
-  "Scroll up N lines without moving the point."
-  (interactive "p")
-  (dotimes (i n)
-    (scroll-down-command 1)))
+  "Scroll up N lines without moving the point.
 
-;; I'll rebind these to C-v and M-v someday
-;; (global-set-key (kbd "M-n") 'my/scrolldown)
-;; (global-set-key (kbd "M-p") 'my/scrollup)
+With unnumbered prefix do normal call to scroll down command."
+  (interactive "P")
+  (if (and n (listp n))
+      (scroll-down-command)
+    (when (not n) (setq n 1))
+    (dotimes (i n)
+      (scroll-down-command 1))))
+
+(global-set-key (kbd "C-v") 'my/scrolldown)
+(global-set-key (kbd "M-v") 'my/scrollup)
 
 ;; This one was recommended by Steve Purcell. Looked pretty good
 ;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY
