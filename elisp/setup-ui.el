@@ -24,7 +24,6 @@
 
 ;; load the latest theme.
 (load-theme 'nsalas-tomorrow-night t)
-(set-face-attribute 'default nil :height 105)
 
 ;; On my laptop I'd rather have a bigger text
 (require 's)
@@ -34,7 +33,9 @@
 ;; I ran into a VERY weird issue where C-n is the slowest thing
 ;; ever. Fortunately, I found an answer
 ;; https://lists.gnu.org/archive/html/emacs-devel/2006-09/msg00634.html
-;; (setq auto-window-vscroll nil)
+;; Actually this, for some reason, makes the C-n be very fast even in
+;; very large buffers. Weird
+(setq auto-window-vscroll nil)
 
 ;;; Spaceline is the coolest modeline.
 (use-package spaceline

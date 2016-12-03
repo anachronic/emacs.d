@@ -24,7 +24,7 @@
    `(cursor ((t (:background "#cc6666"))))
    `(variable-pitch ((t (:family "Sans"))))
    `(custom-variable-tag ((((class color) (background dark)) (:inherit variable-pitch :foreground "DarkOrange" :weight bold))))
-   `(default ((t (:stipple nil :background "#1d1f21" :foreground "#dddddd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal ))))
+   `(default ((t (:stipple nil :background "#1d1f21" :foreground "#dddddd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :family "DejaVu Sans Mono" :height 105))))
    `(diff-added ((t (:foreground "lawn green"))))
    `(diff-removed ((t (:foreground "light coral"))))
    `(dired-directory ((t (:inherit diredp-dir-name))))
