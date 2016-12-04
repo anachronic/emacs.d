@@ -15,10 +15,16 @@
     (interactive)
     (if (neo-global--window-exists-p)
         (neotree-hide)
-      (let ((project-dir (projectile-project-root)))
-        (neotree-toggle)
-        (when (projectile-project-p)
-          (neotree-dir project-dir)))))
+      (let* ((this-file (f-this-file))
+             (this-path (when this-file
+                          (f-dirname (f-this-file))))
+             (this-project (when (projectile-project-p)
+                             (projectile-project-root))))
+        (neotree-show)
+        (if this-project
+            (neotree-dir this-project)
+          (when this-file
+            (neotree-dir this-path))))))
   (global-set-key (kbd "<f7>") #'my/neotree-toggle))
 
 ;; This package is cool, I like coloring stuff around
@@ -32,13 +38,13 @@
 ;; it seems sensible to hide every detail by default and use ) when I
 ;; have to show more info, like file size or permissions
 (use-package dired+
- :ensure t
- :config
- (global-dired-hide-details-mode 1)
- ;; Since b is unbound in dired and ^ is a very annoying key to press,
- ;; lets bind that to dired-up-directory
- (with-eval-after-load 'dired+
-   (define-key dired-mode-map (kbd "b") #'dired-up-directory)))
+  :ensure t
+  :config
+  (global-dired-hide-details-mode 1)
+  ;; Since b is unbound in dired and ^ is a very annoying key to press,
+  ;; lets bind that to dired-up-directory
+  (with-eval-after-load 'dired+
+    (define-key dired-mode-map (kbd "b") #'dired-up-directory)))
 
 ;; We want to be able to toggle dot files in dired
 (add-hook 'dired-mode-hook (lambda ()
