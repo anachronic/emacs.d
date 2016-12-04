@@ -27,6 +27,8 @@
   (setq notmuch-search-oldest-first nil)
   (setq notmuch-show-text/html-blocked-images nil))
 
+(display-time-mode)
+
 (with-eval-after-load 'time
   (setq display-time-use-mail-icon t)
   (setq display-time-24hr-format t)
