@@ -53,6 +53,37 @@
     "Narrowed"))
 (spaceline-spacemacs-theme 'narrow)
 (setq spaceline-minor-modes-separator " ")
+(spaceline-toggle-buffer-encoding-abbrev-off)
+(spaceline-toggle-buffer-position-off)
+
+;; This package looks ok
+(use-package window-numbering
+  :ensure t
+  :demand
+  :config
+  (window-numbering-mode)
+  (window-numbering-clear-mode-line)
+  (define-key window-numbering-keymap (kbd "M-0") nil)
+  (define-key window-numbering-keymap (kbd "M-1") nil)
+  (define-key window-numbering-keymap (kbd "M-2") nil)
+  (define-key window-numbering-keymap (kbd "M-3") nil)
+  (define-key window-numbering-keymap (kbd "M-4") nil)
+  (define-key window-numbering-keymap (kbd "M-5") nil)
+  (define-key window-numbering-keymap (kbd "M-6") nil)
+  (define-key window-numbering-keymap (kbd "M-7") nil)
+  (define-key window-numbering-keymap (kbd "M-8") nil)
+  (define-key window-numbering-keymap (kbd "M-9") nil)
+  (define-key window-numbering-keymap (kbd "M-0") nil)
+  (define-key window-numbering-keymap (kbd "C-M-0") 'select-window-0)
+  (define-key window-numbering-keymap (kbd "C-M-1") 'select-window-1)
+  (define-key window-numbering-keymap (kbd "C-M-2") 'select-window-2)
+  (define-key window-numbering-keymap (kbd "C-M-3") 'select-window-3)
+  (define-key window-numbering-keymap (kbd "C-M-4") 'select-window-4)
+  (define-key window-numbering-keymap (kbd "C-M-5") 'select-window-5)
+  (define-key window-numbering-keymap (kbd "C-M-6") 'select-window-6)
+  (define-key window-numbering-keymap (kbd "C-M-7") 'select-window-7)
+  (define-key window-numbering-keymap (kbd "C-M-8") 'select-window-8)
+  (define-key window-numbering-keymap (kbd "C-M-9") 'select-window-9))
 
 ;; no DING!
 (setq visible-bell 1)
@@ -86,7 +117,17 @@
 (global-set-key (kbd "C-<f12>") (lambda () (interactive) (other-window -1)))
 
 ;; Some bindings from https://www.masteringemacs.org/article/my-emacs-keybindings
-(global-set-key (kbd "M-o") 'other-window)
+;; Let's combine it with window-numbering
+(defun my/other-window (arg)
+  "Switch to ARGth window (as in window-numbered), if not arg, regular `other-window'."
+  (interactive "p")
+  (if (or (not arg)
+          (< arg 0)
+          (> arg 9))
+      (other-window 1)
+    (select-window-by-number arg)))
+
+(global-set-key (kbd "M-o") 'my/other-window)
 
 ;; I want to be able to scroll without moving the point source:
 ;; https://www.emacswiki.org/emacs/Scrolling Actually, I'll make these

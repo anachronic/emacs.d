@@ -12,6 +12,7 @@
         paredit-kill
         paredit-open-round
         paredit-semicolon
+        paredit-wrap-round
         smarter-move-beginning-of-line
         ))
 

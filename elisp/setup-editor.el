@@ -428,5 +428,9 @@ Single Capitals as you type."
   (add-hook 'js2-mode-hook #'indent-guide-mode)
   (add-hook 'python-mode-hook #'indent-guide-mode))
 
+;; I use this all the time
+(use-package rainbow-mode
+  :ensure t)
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
