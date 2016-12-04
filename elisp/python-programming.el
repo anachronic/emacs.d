@@ -127,10 +127,32 @@ python-shell-send-buffer."
              (run-python)
              (python-shell-switch-to-shell)))))
 
+;; Default yanking in python sucks ballz. I had to rewrite my own
+;; function for it. It's really hard to infer how one should do the
+;; indentation. This functions assumes that you hit C-y at the level
+;; you want.
+(defun my/python-yank (arg)
+  "Yank and reindent python code, with ARG, dont reindent."
+  (interactive "P")
+  (yank)
+  (when arg
+    (save-excursion
+      (exchange-point-and-mark)
+      (forward-line 1)
+      (let ((times (count-lines (region-beginning) (region-end))))
+        (deactivate-mark)
+        (dotimes (i times)
+          (indent-for-tab-command)
+          (when (< i times)
+            (forward-line 1)))))))
+
 
 ;; Add tweaks to standard python.el defined in this file.
 (defun my/python-rebinds ()
   "Add the functions defined in python-programming.el to Python buffer locally."
+  ;; Basic commands
+  (define-key python-mode-map (kbd "C-y") #'my/python-yank)
+  ;; Shell related commands
   (local-set-key (kbd "C-c C-z") #'my/python-switch-to-shell)
   (local-set-key (kbd "C-c C-r") #'spacemacs/python-execute-file)
   (local-set-key (kbd "C-c C-c") #'python-shell-send-dwim)
@@ -153,8 +175,18 @@ python-shell-send-buffer."
 ;; Trying out my new package
 (when (file-exists-p "/home/nsalas/forks/importmagic.el")
   (require 'importmagic)
-  (add-hook 'python-mode-hook 'importmagic-mode))
+  (add-hook 'python-mode-hook 'importmagic-mode)
+  (define-key python-mode-map (kbd "C-c C-f") nil)
+  (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports))
 
+;; Diminish it to free up mode line space.
+(diminish 'importmagic-mode)
+
+;; Also get rid of the annoying buffers for ivy and helm.
+(with-eval-after-load 'helm
+  (add-to-list 'helm-boring-buffer-regexp-list "\\*epc con"))
+(with-eval-after-load 'ivy
+  (add-to-list 'ivy-ignore-buffers "\\*epc con"))
 
 (provide 'python-programming)
 ;;; python-programming.el ends here
