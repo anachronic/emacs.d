@@ -120,8 +120,9 @@
 ;; Let's combine it with window-numbering
 (defun my/other-window (arg)
   "Switch to ARGth window (as in window-numbered), if not arg, regular `other-window'."
-  (interactive "p")
+  (interactive "P")
   (if (or (not arg)
+          (listp arg)
           (< arg 0)
           (> arg 9))
       (other-window 1)
