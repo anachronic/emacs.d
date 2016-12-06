@@ -47,7 +47,7 @@
 
 
 ;; Frame commands
-(global-set-key (kbd "C-c F") 'make-frame)
+(global-set-key (kbd "C-c n") 'make-frame)
 
 ;; Switch frames.
 (global-set-key (kbd "C-c o") 'other-frame)

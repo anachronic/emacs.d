@@ -66,8 +66,7 @@ is already narrowed."
          (LaTeX-narrow-to-environment))
         (t (narrow-to-defun))))
 
-;; Let's bind it to C-c n and C-x n
-(global-set-key (kbd "C-c n") #'narrow-or-widen-dwim)
+;; Let's bind it to C-x n
 (define-key ctl-x-map (kbd "n") #'narrow-or-widen-dwim)
 
 ;; The last instruction isn't as good without this next instruction
@@ -117,29 +116,13 @@ is already narrowed."
   :ensure t
   :bind ("M-;" . evilnc-comment-or-uncomment-lines))
 
-;; Let's use HideShow to fold code in long files, shall we?
-;; this idea i got from Howard Abrams' dotfiles.
-(defun ha/hs-show-all ()
-  "Show the whole buffer.  In other words: don't fold any code."
-  (interactive)
-  (hs-minor-mode 1)
-  (hs-show-all))
-
-(defun ha/hs-hide-all ()
-  "Fold everything in the current buffer."
-  (interactive)
-  (hs-minor-mode 1)
-  (hs-hide-all))
-
-(defun ha/hs-toggle-hiding ()
-  "Fold/unfold the current fundef."
-  (interactive)
-  (hs-minor-mode 1)
-  (hs-toggle-hiding))
-
-(global-set-key (kbd "C-c f h") 'ha/hs-hide-all)
-(global-set-key (kbd "C-c f t") 'ha/hs-toggle-hiding)
-(global-set-key (kbd "C-c f s") 'ha/hs-show-all)
+;; Folding seems way better with origami
+(use-package origami
+  :ensure t
+  :bind (("C-c f" . origami-recursively-toggle-node)
+         ("C-c F" . origami-toggle-all-nodes))
+  :config
+  (add-hook 'prog-mode-hook #'origami-mode))
 
 ;; I've always liked coloring the buffer, because it makes easier to identify stuff around
 ;; So let's test this mode
