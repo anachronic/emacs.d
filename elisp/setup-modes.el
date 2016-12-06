@@ -13,12 +13,12 @@
   ("v" visual-line-mode "Visual line mode")
   ("p" projectile-mode "Projectile")
   ("k" which-key-mode "Which key")
-  ("h" global-hl-line-mode "Highlight line")
+  ("h" hl-line-mode "Highlight line")
   ("a" artist-mode "Artist mode")
   ("s" key-chord-mode "Key chord mode")
   ("q" nil "quit"))
 
-(global-set-key (kbd "<f6>") 'mode-toggle/body)
+(define-key meta-m-map (kbd "m") 'mode-toggle/body)
 
 ;; yaml-mode. mainly for syntax highlighting
 (use-package yaml-mode
