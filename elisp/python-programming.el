@@ -164,6 +164,15 @@ python-shell-send-buffer."
 
 (add-hook 'python-mode-hook #'my/python-rebinds)
 
+;; Debugging
+(defun my/python-debug ()
+  "Insert import ipdb; ipdb.set_trace() in the buffer."
+  (interactive)
+  (insert "import ipdb; ipdb.set_trace()")
+  (newline-and-indent))
+
+(define-key python-mode-map (kbd "C-c C-e") 'my/python-debug)
+
 ;; Try out fakegir
 (when (file-exists-p "~/.cache/fakegir")
   (add-to-list 'python-shell-extra-pythonpaths "~/.cache/fakegir"))
