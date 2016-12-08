@@ -213,5 +213,8 @@ _q_uit
 
 (global-set-key (kbd "C-c w") 'hydra-window/body)
 
+;; Some people swear by winner mode
+(winner-mode 1)
+
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here

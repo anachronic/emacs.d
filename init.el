@@ -156,7 +156,7 @@
 (require 'setup-ui)
 
 ;; Ediff
-(require 'setupd-ediff)
+(require 'setup-ediff)
 
 ;;; Set garbage collection back to a normal value
 ;; I hope it doesn't make it hang again..
