@@ -32,9 +32,13 @@
   (define-key direx:direx-mode-map (kbd "b") #'direx:collapse-current)
   ;; I'd also like to go to dired-mode from direx
   (define-key direx:direx-mode-map (kbd "C-x C-j") #'my/dired-jump-from-direx)
-  (define-key direx:direx-mode-map (kbd "s") #'counsel-git)
-  (define-key ctl-x-map (kbd "C-j") #'my/directory-jump)
-  (define-key ctl-x-map (kbd "d") #'dired-jump))
+  (define-key direx:direx-mode-map (kbd "s") #'counsel-git))
+
+(with-eval-after-load 'dired-x
+  (global-unset-key (kbd "C-x C-j"))
+  (global-unset-key (kbd "C-x d"))
+  (define-key ctl-x-map (kbd "C-j") 'my/directory-jump)
+  (define-key ctl-x-map (kbd "d") 'dired-jump))
 
 ;; NeoTree could *sometimes* be better than Dired.
 (use-package neotree
