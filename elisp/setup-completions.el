@@ -36,7 +36,8 @@
   (ivy-mode 1))
 
 ;; I found this digging around the pull requests in melpa
-(require 'ivy-rich)
+(with-eval-after-load 'projectile
+  (require 'ivy-rich))
 
 ;; I've come to think helm is not really good with files anymore. So let's
 ;; use counsel. It also has some nice builtin functionality:
