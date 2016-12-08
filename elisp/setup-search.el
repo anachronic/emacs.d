@@ -7,7 +7,8 @@
 (use-package avy
   :ensure t
   :bind (("C-c j w" . avy-goto-word-1)
-         ("C-c j l" . avy-goto-line)))
+         ("C-c j l" . avy-goto-line)
+         ("C-:"     . avy-goto-word-1)))
 
 ;; So let's use iy-go-up-to-char. I hardly ever use (and this is to be
 ;; precautious, because i actually NEVER use it) C-j. It's a really
