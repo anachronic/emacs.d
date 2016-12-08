@@ -69,7 +69,7 @@
     (if (> (length p-lst) 2)
         (concat
          (mapconcat (lambda (elm) (if (zerop (length elm)) ""
-                               (substring elm 0 1)))
+                                    (substring elm 0 1)))
                     (butlast p-lst 2)
                     "/")
          "/"
@@ -125,9 +125,11 @@
     (delete-forward-char arg)))
 
 (add-hook 'eshell-mode-hook (lambda ()
-   (define-key eshell-mode-map (kbd "C-d")
-                               'ha/eshell-quit-or-delete-char)))
+                              (define-key eshell-mode-map (kbd "C-d")
+                                'ha/eshell-quit-or-delete-char)))
 
+;; Sometimes a shell is better...
+(define-key meta-m-map (kbd "s") #'shell)
 
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here

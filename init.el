@@ -35,8 +35,13 @@
          " Projectile"
        (format " [%s]"
                (projectile-project-name))))))
+ '(safe-local-variable-values
+   (quote
+    ((web-mode-script-padding . 1)
+     (web-mode-style-padding . 2)
+     (web-mode-block-padding . 2))))
  '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
- '(shell-pop-universal-key "<f5>")
+ '(shell-pop-universal-key "M-m M-z")
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
