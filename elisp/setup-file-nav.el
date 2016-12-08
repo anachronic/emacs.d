@@ -25,7 +25,8 @@
             (neotree-dir this-project)
           (when this-file
             (neotree-dir this-path))))))
-  (global-set-key (kbd "<f7>") #'my/neotree-toggle))
+  (global-set-key (kbd "<f7>") #'my/neotree-toggle)
+  (define-key meta-m-map (kbd "M-d") #'my/neotree-toggle))
 
 ;; This package is cool, I like coloring stuff around
 (use-package dired-k
