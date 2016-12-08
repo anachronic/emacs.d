@@ -216,5 +216,9 @@ _q_uit
 ;; Some people swear by winner mode
 (winner-mode 1)
 
+;; uniquify. I really got used to IntelliJ idea's way of handling stuff
+(setq uniquify-buffer-name-style 'forward)
+
+
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here
