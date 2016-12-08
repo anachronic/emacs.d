@@ -21,10 +21,17 @@
       (direx-project:jump-to-project-root)
     (dired-jump)))
 
+;; Jump to dired pointing at current direx file
+(defun my/dired-jump-from-direx ()
+  "Jump from direx to dired."
+  (interactive)
+  (let ((path (aref (direx:item-tree (direx:item-at-point!)) 2)))
+    (dired-jump nil path)))
+
 (with-eval-after-load 'direx
   (define-key direx:direx-mode-map (kbd "b") #'direx:collapse-current)
   ;; I'd also like to go to dired-mode from direx
-  (define-key direx:direx-mode-map (kbd "C-x C-j") #'dired-jump)
+  (define-key direx:direx-mode-map (kbd "C-x C-j") #'my/dired-jump-from-direx)
   (define-key direx:direx-mode-map (kbd "s") #'counsel-git)
   (define-key ctl-x-map (kbd "C-j") #'my/directory-jump)
   (define-key ctl-x-map (kbd "d") #'dired-jump))
