@@ -29,10 +29,14 @@
           (man . "^")
           (woman . "^")))
   (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-height 16)
   (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
   (define-key ivy-minibuffer-map [tab] #'ivy-alt-done)
   (define-key ivy-minibuffer-map (kbd "C-l") #'ivy-backward-delete-char)
   (ivy-mode 1))
+
+;; I found this digging around the pull requests in melpa
+(require 'ivy-rich)
 
 ;; I've come to think helm is not really good with files anymore. So let's
 ;; use counsel. It also has some nice builtin functionality:
@@ -130,8 +134,7 @@
 (use-package helm
   :ensure t
   :demand
-  :bind (("C-x b" . helm-mini)
-         ("C-S-m" . helm-mini)
+  :bind (("C-S-m" . helm-mini)
          ("M-y" . helm-show-kill-ring))
   :config
   (require 'helm-config)
