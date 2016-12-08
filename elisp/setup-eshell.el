@@ -9,8 +9,7 @@
   :ensure t
   :demand
   :config
-  (setq shell-pop-shell-type '("eshell" "*eshell*" (lambda nil (eshell))))
-  (setq shell-pop-universal-key "M-m M-z"))
+  (define-key meta-m-map (kbd "M-z") 'shell-pop))
 
 
 ;; Set the PATH. Should determine between bash and zsh configs atm.
