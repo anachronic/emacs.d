@@ -6,6 +6,29 @@
 (use-package direx
   :ensure t)
 
+(defun direx:collapse-current ()
+  "Collapse the current item's parent."
+  (interactive)
+  (direx:up-item)
+  (direx:toggle-item))
+
+;; Jump to directory: I'd like to use direx if there's a projectile
+;; session going on and fallback to dired if there's none.
+(defun my/directory-jump ()
+  "Jump to direx on project root if a project is active, dired otherwise."
+  (interactive)
+  (if (projectile-project-p)
+      (direx-project:jump-to-project-root)
+    (dired-jump)))
+
+(with-eval-after-load 'direx
+  (define-key direx:direx-mode-map (kbd "b") #'direx:collapse-current)
+  ;; I'd also like to go to dired-mode from direx
+  (define-key direx:direx-mode-map (kbd "C-x C-j") #'dired-jump)
+  (define-key direx:direx-mode-map (kbd "s") #'counsel-git)
+  (define-key ctl-x-map (kbd "C-j") #'my/directory-jump)
+  (define-key ctl-x-map (kbd "d") #'dired-jump))
+
 ;; NeoTree could *sometimes* be better than Dired.
 (use-package neotree
   :ensure t
