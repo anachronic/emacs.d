@@ -61,6 +61,7 @@
 ;; YASnippet, always so handy...
 (use-package yasnippet
   :ensure t
+  :diminish 'yas-minor-mode
   :config
   (setq-default yas-snippet-dirs `(,(expand-file-name
                                      (concat user-emacs-directory
@@ -82,11 +83,12 @@
     (if (eq 1 company-candidates-length)
         (company-complete)
       (yas-expand)))
-  (global-company-mode)
+  (add-hook 'prog-mode-hook #'company-mode)
+  (add-hook 'comint-mode-hook #'company-mode)
   (setq company-idle-delay 0.5)
   (define-key company-active-map (kbd "TAB") #'my/company-complete-if-only-one)
   (define-key company-active-map (kbd "<tab>") #'my/company-complete-if-only-one)
-  :diminish ""  ;; it is almost always on anyway.
+  :diminish "comp"  ;; I'm really hating company in non-programming modes
   :bind (("C-S-<SPC>" . company-complete)))
 
 ;; Help is cool

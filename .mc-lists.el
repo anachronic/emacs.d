@@ -14,6 +14,7 @@
         paredit-semicolon
         paredit-wrap-round
         smarter-move-beginning-of-line
+        tab-to-tab-stop
         ))
 
 (setq mc/cmds-to-run-once
