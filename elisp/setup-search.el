@@ -26,8 +26,8 @@
          ("C-c j b" . iy-go-to-char-backward))
   :config
   (require 'key-chord)
-  (key-chord-define-global "jh" #'iy-go-to-char-backward)
-  (key-chord-define-global "jk" #'iy-go-up-to-char)
+  (key-chord-define-global "jk" #'iy-go-to-char-backward)
+  (key-chord-define-global "kl" #'iy-go-up-to-char)
   (global-set-key (kbd "C-c j c") #'iy-go-up-to-char)
   (global-set-key (kbd "C-c j b") #'iy-go-to-char-backward)
   (global-set-key (kbd "C-j") #'iy-go-to-or-up-to-continue)

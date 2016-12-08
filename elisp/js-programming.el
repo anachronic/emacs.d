@@ -36,5 +36,11 @@
 (use-package json-reformat
   :ensure t)
 
+(defun my/add-keychords-js2-mode ()
+  "Add ;; keystroke to mean insert semicolon at the end of the line."
+  (key-chord-define-local ";;" "\C-e;"))
+
+(add-hook 'js2-mode-hook 'my/add-keychords-js2-mode)
+
 (provide 'js-programming)
 ;;; js-programming.el ends here

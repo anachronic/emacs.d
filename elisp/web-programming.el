@@ -57,6 +57,12 @@
 
 (add-hook 'web-mode-hook 'my/add-company-backends-webmode)
 
+(defun my/add-keychords-web-mode ()
+  "Add ;; keystroke to mean insert semicolon at the end of the line."
+  (key-chord-define-local ";;" "\C-e;"))
+
+(add-hook 'web-mode-hook 'my/add-keychords-web-mode)
+
 ;; Emmet!!!
 (use-package emmet-mode
   :ensure t
@@ -64,6 +70,7 @@
   (progn
     (define-key emmet-mode-keymap (kbd "C-j") nil)
     (define-key emmet-mode-keymap (kbd "<backtab>") #'emmet-expand-line)
+    (define-key emmet-mode-keymap (kbd "C-;") #'emmet-expand-line)
     (add-hook 'web-mode-hook 'emmet-mode)))
 
 (provide 'web-programming)
