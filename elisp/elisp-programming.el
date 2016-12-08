@@ -25,6 +25,7 @@
   (define-key paredit-mode-map (kbd "C-j") nil)
   (define-key paredit-mode-map (kbd "M-;") nil)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
+  (add-hook 'ielm-mode-hook #'enable-paredit-mode)
 
   ;; This thing is so freaking useful it freaks me out a little.
   (global-set-key (kbd "M-K") #'paredit-kill))
