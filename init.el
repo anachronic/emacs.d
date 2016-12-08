@@ -11,11 +11,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(custom-safe-themes
-   (quote
-    ("98a598de72681b65763c795f823b51b1b9a24b4e887faf3570f51aa9c5e260a8" default)))
- '(display-time-mode t)
  '(notmuch-saved-searches
    (quote
     ((:name "unread" :query "tag:unread" :key "u")
@@ -35,15 +30,8 @@
          " Projectile"
        (format " [%s]"
                (projectile-project-name))))))
- '(safe-local-variable-values
-   (quote
-    ((web-mode-script-padding . 1)
-     (web-mode-style-padding . 2)
-     (web-mode-block-padding . 2))))
  '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell)))))
- '(shell-pop-universal-key "M-m M-z")
- '(show-paren-mode t)
- '(tool-bar-mode nil)
+ '(shell-pop-universal-key "<f5>")
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 
 ;; According to https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
@@ -167,6 +155,9 @@
 ;; Load UI stuff last
 (require 'setup-ui)
 
+;; Ediff
+(require 'setupd-ediff)
+
 ;;; Set garbage collection back to a normal value
 ;; I hope it doesn't make it hang again..
 (setq gc-cons-threshold 128000000)
@@ -174,9 +165,3 @@
 ;; just to suppress warnings.
 (provide 'init)
 ;;; init.el ends here
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 105 :width normal)))))
