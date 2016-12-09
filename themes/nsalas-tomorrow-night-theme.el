@@ -213,6 +213,10 @@
    `(erc-notice-face ((t (:foreground "DarkSlateBlue" :weight bold))))
    `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))
 
+   ;; Hydra faces
+   `(hydra-face-red ((t (:foreground "#f44256" :weight bold))))
+   `(hydra-face-blue ((t (:foreground "#4b9af4" :weight bold))))
+
    `(rainbow-delimiters-depth-1-face ((t (:foreground "deep pink"))))
    `(rainbow-delimiters-depth-2-face ((t (:foreground "chartreuse"))))
    `(rainbow-delimiters-depth-3-face ((t (:foreground "deep sky blue"))))

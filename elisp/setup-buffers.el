@@ -189,10 +189,10 @@ Otherwise exit Emacs."
 ;; Movement hydra: Vertical enlarge/shrink is kinda confusing atm
 (defhydra hydra-window (:color red :hint nil)
   "
-Movement^^      ^Split^             ^Resize^
-------------------------------------------------
-_j_ ←           _v_ertical          _J_ X←
-_k_ ↓           _h_orizontal        _K_ X↓
+Movement^^      ^Split^             ^Resize^    ^Winner^
+--------------------------------------------------------
+_j_ ←           _v_ertical          _J_ X←      _u_ndo
+_k_ ↓           _h_orizontal        _K_ X↓      _r_edo
 _i_ ↑           _0_ delete current  _I_ X↑
 _l_ →           _1_ delete others   _L_ X→
 _q_uit
@@ -209,6 +209,8 @@ _q_uit
   ("v" (funcall (global-key-binding "\C-x3")))
   ("h" (funcall (global-key-binding "\C-x2")))
   ("0" delete-window)
+  ("u" winner-undo)
+  ("r" winner-redo)
   ("q" nil))
 
 (global-set-key (kbd "C-c w") 'hydra-window/body)

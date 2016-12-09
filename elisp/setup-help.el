@@ -10,6 +10,10 @@
 (require 'help-fns+)
 (define-key help-map "\M-k" 'describe-keymap)
 
+;; I use `describe-face' quite often, I'd really like a key for it
+(define-key help-map (kbd "C-f") nil)
+(define-key help-map (kbd "C-f") #'counsel-describe-face)
+
 ;; Command-log is useful sometimes, but let's not autoinstall as it
 ;; will only slow first run time.
 (use-package command-log-mode
