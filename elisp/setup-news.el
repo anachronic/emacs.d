@@ -27,7 +27,8 @@
           ("https://www.masteringemacs.org/feed" emacs)
           ("https://www.schneier.com/blog/atom.xml" security)
           ("http://www.muylinux.com/feed/" linux)
-          ("http://feeds.feedburner.com/LinuxAdictos" linux))))
+          ("http://feeds.feedburner.com/LinuxAdictos" linux)))
+  (add-hook 'elfeed-show-mode-hook #'visual-line-mode))
 
 
 
