@@ -218,6 +218,10 @@ _q_uit
 ;; Some people swear by winner mode
 (winner-mode 1)
 
+;; Let's bind it to accesible keys.
+(global-set-key (kbd "C-M-<") #'winner-undo)
+(global-set-key (kbd "C-M->") #'winner-redo)
+
 ;; uniquify. I really got used to IntelliJ idea's way of handling stuff
 (setq uniquify-buffer-name-style 'forward)
 
