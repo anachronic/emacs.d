@@ -43,5 +43,10 @@
   :config
   (add-hook 'prog-mode-hook #'turn-on-diff-hl-mode))
 
+;; Projectile is kind of nothing without perspective. Let's integrate
+;; them both.
+(use-package persp-projectile
+  :ensure t)
+
 (provide 'setup-vc)
 ;;; setup-vc.el ends here

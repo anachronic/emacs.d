@@ -225,6 +225,12 @@ _q_uit
 ;; uniquify. I really got used to IntelliJ idea's way of handling stuff
 (setq uniquify-buffer-name-style 'forward)
 
+;; I hate cluttering buffers. Let's just use perspective.el instead
+(use-package perspective
+  :ensure t
+  :config
+  (persp-mode))
+
 
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here

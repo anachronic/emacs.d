@@ -164,6 +164,7 @@
    `(py-class-name-face ((t (:foreground "deep sky blue"))) t)
    `(py-decorators-face ((t (:foreground "cyan4"))) t)
    `(py-pseudo-keyword-face ((t (:foreground "RosyBrown3"))) t)
+   `(persp-selected-face ((t (:foreground "#48d1cc" :weight bold))))
    `(region ((t (:background "#5b1737" :foreground "white"))))
    `(rst-level-1-face ((t (:background "SlateBlue4"))) t)
    `(rst-level-2-face ((t (:background "grey20"))) t)

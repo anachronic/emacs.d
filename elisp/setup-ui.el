@@ -59,8 +59,6 @@
     "Narrowed"))
 (spaceline-spacemacs-theme 'narrow)
 (setq spaceline-minor-modes-separator " ")
-(spaceline-toggle-buffer-encoding-abbrev-off)
-(spaceline-toggle-buffer-position-off)
 
 ;; no DING!
 (setq visible-bell 1)

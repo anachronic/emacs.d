@@ -27,20 +27,20 @@
   (setq notmuch-search-oldest-first nil)
   (setq notmuch-show-text/html-blocked-images nil))
 
-(display-time-mode)
+;; (display-time-mode)
 
-(with-eval-after-load 'time
-  (setq display-time-use-mail-icon t)
-  (setq display-time-24hr-format t)
-  (setq display-time-load-average-threshold 100)
-  (setq display-time-mail-function
-        (lambda ()
-          (let ((newmail (string-to-number
-                          (shell-command-to-string
-                           "notmuch search tag:unread | wc -l"))))
-            (if (eq 0 newmail)
-                nil
-              newmail)))))
+;; (with-eval-after-load 'time
+;;   (setq display-time-use-mail-icon t)
+;;   (setq display-time-24hr-format t)
+;;   (setq display-time-load-average-threshold 100)
+;;   (setq display-time-mail-function
+;;         (lambda ()
+;;           (let ((newmail (string-to-number
+;;                           (shell-command-to-string
+;;                            "notmuch search tag:unread | wc -l"))))
+;;             (if (eq 0 newmail)
+;;                 nil
+;;               newmail)))))
 
 
 (provide 'setup-mail)
