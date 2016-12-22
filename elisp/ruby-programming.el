@@ -13,5 +13,9 @@
 ;; guide
 (add-hook 'ruby-mode-hook #'indent-guide-mode)
 
+;; yari. Docs are cool. Need to pacman -S ruby-docs for it to work.
+(use-package yari
+  :ensure t)
+
 (provide 'ruby-programming)
 ;;; ruby-programming.el ends here
