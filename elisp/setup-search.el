@@ -10,16 +10,8 @@
          ("C-c j l" . avy-goto-line)
          ("C-:"     . avy-goto-word-1)))
 
-;; So let's use iy-go-up-to-char. I hardly ever use (and this is to be
-;; precautious, because i actually NEVER use it) C-j. It's a really
-;; valuable key that's lost. mainly because I always use Emacs with
-;; Gtk. I tend to use vim while in a terminal. It's also useful for
-;; navegation. I guess I could set it to the "normal" C-j if last
-;; command wasn't an iy-related command. But that's just too much work
-;; and I'll most likely never use that.
-;; It's a shame that it is related to some weird key binding. I had to
-;; look it up. But it all works in the end.
-;; solution: http://stackoverflow.com/a/2253044
+;; I really feel like this package is too good to bind it to a large
+;; key binding.
 (use-package iy-go-to-char
   :ensure t
   :after key-chord
@@ -31,8 +23,10 @@
   (key-chord-define-global "kl" #'iy-go-up-to-char)
   (global-set-key (kbd "C-c j c") #'iy-go-up-to-char)
   (global-set-key (kbd "C-c j b") #'iy-go-to-char-backward)
-  (global-set-key (kbd "C-j") #'iy-go-to-or-up-to-continue)
-  (global-set-key (kbd "C-S-j") #'iy-go-up-to-char-continue-backward))
+
+  ;; Having a cool keyboard layout allows me to do things like these
+  (global-set-key (kbd "ï") #'iy-go-to-or-up-to-continue)
+  (global-set-key (kbd "œ") #'iy-go-up-to-char-continue-backward))
 
 ;; Seems better than ace-link
 (use-package link-hint

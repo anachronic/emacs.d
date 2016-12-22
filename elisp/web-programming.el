@@ -68,9 +68,6 @@
   :ensure t
   :config
   (progn
-    (define-key emmet-mode-keymap (kbd "C-j") nil)
-    (define-key emmet-mode-keymap (kbd "<backtab>") #'emmet-expand-line)
-    (define-key emmet-mode-keymap (kbd "C-;") #'emmet-expand-line)
     (add-hook 'web-mode-hook 'emmet-mode)))
 
 ;; The tabs really get in the way sometimes.

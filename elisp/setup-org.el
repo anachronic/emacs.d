@@ -63,15 +63,7 @@
 
   (setq org-src-fontify-natively t)
 
-  ;; Some org key bindings conflict with mine. Namely C-j. I do like to
-  ;; navigate and move around quickly, but org indentation is also a
-  ;; pain, which is why C-j is so cool.
-
-  ;; Turns out since I write comments constantly when programming, I use
-  ;; M-j quite frequently, and also, org mode really feels like you're
-  ;; commenting stuff rather than programming, so that's a win. Let's
-  ;; use that.
-  (define-key org-mode-map (kbd "C-j") nil)
+  ;; M-j seems better than C-j for org-return-indent...
   (define-key org-mode-map (kbd "M-j") 'org-return-indent))
 
 (provide 'setup-org)

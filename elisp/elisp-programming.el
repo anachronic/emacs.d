@@ -15,14 +15,10 @@
 
 ;; I'll be trying Paredit. Should be quite useful for lisp-like stuff
 ;; Yeah, I've been becoming more fond of paredit every day. It rocks!
-;; However, I don't use C-j for anything, since electric indent does
-;; everything for me, and if I need a key binding for newline, well, I
-;; already have C-m.
 (use-package paredit
   :ensure t
   :diminish "par"
   :config
-  (define-key paredit-mode-map (kbd "C-j") nil)
   (define-key paredit-mode-map (kbd "M-;") nil)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
   (add-hook 'ielm-mode-hook #'enable-paredit-mode)
