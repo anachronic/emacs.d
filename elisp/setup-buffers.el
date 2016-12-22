@@ -2,6 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
+;; The auto revert lighter seems unnecessary.
+(with-eval-after-load 'autorevert
+  (diminish 'auto-revert-mode))
+
 ;; So i was using kill-this-buffer for C-x k. But sometimes I don't really
 ;; want to kill the buffer, I just want it to get it out of the way.
 ;; So let's bury the buffer with the same key when a prefix is specified.
@@ -252,7 +256,6 @@ _q_uit
 
 ;; perspective goto-last
 (define-key perspective-map (kbd "l") #'persp-switch-last)
-
 
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here
