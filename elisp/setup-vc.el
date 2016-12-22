@@ -22,10 +22,13 @@
   (projectile-mode)
   (setq-default projectile-keymap-prefix (kbd "C-c p"))
   (setq projectile-completion-system 'ivy)
-  (setq projectile-switch-project-action 'projectile-dired)
   (setq projectile-mode-line '(:eval
                                (when (not (projectile-project-p))
-                                   " [-]"))))
+                                 " [-]")))
+  (defun projectile-magit-action ()
+    "Switch to magit status action when invoking projectile."
+    (magit-status (projectile-project-root)))
+  (setq projectile-switch-project-action 'projectile-magit-action))
 
 ;; Git ignore modes, and misc stuff major modes.
 (use-package gitignore-mode

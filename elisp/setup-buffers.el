@@ -231,6 +231,17 @@ _q_uit
   :config
   (persp-mode))
 
+(require 'perspective)
+
+;; define a function to kill the current perspective without asking
+(defun persp-kill-current ()
+  "Kill current perspective without asking."
+  (interactive)
+  (persp-kill (persp-name persp-curr)))
+
+;; bind it to C-x x d
+(define-key perspective-map (kbd "d") #'persp-kill-current)
+
 
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here
