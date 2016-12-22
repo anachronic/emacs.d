@@ -6,8 +6,9 @@
 (use-package magit
   :ensure t
   :bind (("<f8>" . magit-status)
-         ("s-t" . magit-status)
-         ("C-x g" . magit-status)))
+         ("C-x g" . magit-status))
+  :config
+  (setq magit-repository-directories '("~/forks")))
 
 ;; This one can't really be up there, because that doesn't load
 ;; anything until you actually fire up Magit.
