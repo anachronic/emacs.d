@@ -176,7 +176,7 @@ is already narrowed."
   (push-mark)
   (move-beginning-of-line 1)
   (newline-and-indent)
-  (previous-line)
+  (forward-line -1)
   (indent-for-tab-command))
 
 (global-set-key (kbd "C-o") 'my/open-line-above)
@@ -225,7 +225,7 @@ point reaches the beginning or end of the buffer, stop there."
     (kill-ring-save (region-beginning) (region-end))
     (newline)
     (yank))
-  (next-line))
+  (forward-line 1))
 
 (global-set-key (kbd "C-c d") 'my/duplicate-the-line)
 
@@ -238,7 +238,7 @@ point reaches the beginning or end of the buffer, stop there."
   (interactive)
   (let ((col (current-column)))
     (transpose-lines 1)
-    (previous-line 2)
+    (forward-line -2)
     (move-beginning-of-line 1)
     (forward-char col)))
 
@@ -249,7 +249,7 @@ point reaches the beginning or end of the buffer, stop there."
   (let ((col (current-column)))
     (forward-line 1)
     (transpose-lines 1)
-    (previous-line 1)
+    (forward-line -1)
     (move-beginning-of-line 1)
     (forward-char col)))
 
@@ -407,10 +407,7 @@ Single Capitals as you type."
 (use-package indent-guide
   :ensure t
   :diminish ""
-  :config
-  (add-hook 'js2-mode-hook #'indent-guide-mode)
-  (add-hook 'web-mode-hook #'indent-guide-mode)
-  (add-hook 'python-mode-hook #'indent-guide-mode))
+  )
 
 ;; I use this all the time
 (use-package rainbow-mode
