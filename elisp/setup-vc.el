@@ -21,9 +21,10 @@
   (projectile-mode)
   (setq-default projectile-keymap-prefix (kbd "C-c p"))
   (setq projectile-completion-system 'ivy)
-  (setq projectile-enable-caching t)
   (setq projectile-switch-project-action 'projectile-dired)
-  (setq projectile-mode-line '(:eval (format " [%s]" (projectile-project-name)))))
+  (setq projectile-mode-line '(:eval
+                               (when (not (projectile-project-p))
+                                   " [-]"))))
 
 ;; Git ignore modes, and misc stuff major modes.
 (use-package gitignore-mode
