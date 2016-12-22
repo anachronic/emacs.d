@@ -242,6 +242,17 @@ _q_uit
 ;; bind it to C-x x d
 (define-key perspective-map (kbd "d") #'persp-kill-current)
 
+;; define a function to jump to the main perspective
+(defun persp-goto-main ()
+  "Switch to main perspective."
+  (interactive)
+  (persp-switch "main"))
+
+(define-key perspective-map (kbd "x") #'persp-goto-main)
+
+;; perspective goto-last
+(define-key perspective-map (kbd "l") #'persp-switch-last)
+
 
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here
