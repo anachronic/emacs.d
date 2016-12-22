@@ -49,9 +49,8 @@
   :bind (("C-." . counsel-imenu)
          ("C-c s" . counsel-grep)
          ("C-c a" . counsel-ag)
-         ("M-G" . counsel-ag)
          ("C-c g" . counsel-git-grep)
-         ("C-S-x C-S-n" . counsel-git)
+         ("C-S-p" . counsel-git)
          ("M-x" . counsel-M-x)))
 
 ;; I had a mix of stuff before. So it's nice to decide on
