@@ -28,5 +28,10 @@
 (use-package epc
   :ensure t)
 
+;; Allow connecting from a terminal or whatever.
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 (provide 'setup-emacs)
 ;;; setup-emacs.el ends here
