@@ -11,10 +11,6 @@
 ;; Agenda is cool
 (global-set-key (kbd "C-c A") 'org-agenda)
 
-;; org keywords. I like having more than the usual TODO/
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "IN-PROGRESS(p!)" "|" "DONE(d!)" "CANCELLED(c@)" "WAITING(w@/!)")))
-
 ;; org-bullets bro!
 (use-package org-bullets
   :ensure t
@@ -24,9 +20,6 @@
 ;; Let's load our agenda file(s)
 (defvar my/org-agenda-file)
 (setq my/org-agenda-file "~/Dropbox/agenda.org")
-
-(when (file-exists-p my/org-agenda-file)
-  (setq org-agenda-files (list my/org-agenda-file)))
 
 ;; reveal.js stuff Thanks to Mike Zamansky
 ;; https://www.youtube.com/watch?v=psDpCpcIVYs
@@ -52,6 +45,7 @@
 
 (add-hook 'org-mode-hook #'auto-fill-mode)
 (add-hook 'org-mode-hook #'visual-line-mode)
+(add-hook 'org-mode-hook #'org-indent-mode)
 
 (with-eval-after-load 'org
   (setenv "PDFLATEX" "pdflatex -shell-escape")
@@ -64,7 +58,13 @@
   (setq org-src-fontify-natively t)
 
   ;; M-j seems better than C-j for org-return-indent...
-  (define-key org-mode-map (kbd "M-j") 'org-return-indent))
+  (define-key org-mode-map (kbd "M-j") 'org-return-indent)
+
+  (when (file-exists-p my/org-agenda-file)
+    (setq org-agenda-files (list my/org-agenda-file)))
+  ;; org keywords. I like having more than the usual TODO/
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "IN-PROGRESS(p!)" "|" "DONE(d!)" "CANCELLED(c@)" "WAITING(w@/!)"))))
 
 (provide 'setup-org)
 ;;; setup-org.el ends here
