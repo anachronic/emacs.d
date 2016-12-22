@@ -197,5 +197,8 @@ python-shell-send-buffer."
 (with-eval-after-load 'ivy
   (add-to-list 'ivy-ignore-buffers "\\*epc con"))
 
+;; Python needs indentation, Emacs should help
+(add-hook 'python-mode-hook #'indent-guide-mode)
+
 (provide 'python-programming)
 ;;; python-programming.el ends here

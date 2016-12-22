@@ -73,5 +73,8 @@
     (define-key emmet-mode-keymap (kbd "C-;") #'emmet-expand-line)
     (add-hook 'web-mode-hook 'emmet-mode)))
 
+;; The tabs really get in the way sometimes.
+(add-hook 'web-mode-hook #'indent-guide-mode)
+
 (provide 'web-programming)
 ;;; web-programming.el ends here

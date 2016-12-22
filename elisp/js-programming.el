@@ -42,5 +42,8 @@
 
 (add-hook 'js2-mode-hook 'my/add-keychords-js2-mode)
 
+;; javascript is a 2-spaces indenting language.
+(add-hook 'js2-mode-hook #'indent-guide-mode)
+
 (provide 'js-programming)
 ;;; js-programming.el ends here
