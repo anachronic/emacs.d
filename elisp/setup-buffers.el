@@ -256,6 +256,7 @@ _q_uit
 
 ;; perspective goto-last
 (define-key perspective-map (kbd "l") #'persp-switch-last)
+(global-set-key (kbd "<f10>") 'persp-next)
 
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here
