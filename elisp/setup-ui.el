@@ -59,6 +59,8 @@
     "Narrowed"))
 (spaceline-spacemacs-theme 'narrow)
 (setq spaceline-minor-modes-separator " ")
+(setq powerline-default-separator 'bar)
+(spaceline-compile)
 
 ;; no DING!
 (setq visible-bell 1)
