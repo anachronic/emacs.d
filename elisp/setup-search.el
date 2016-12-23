@@ -39,9 +39,6 @@
   (add-hook 'package-menu-mode-hook #'my/set-link-hint-key)
   (add-hook 'help-mode-hook #'my/set-link-hint-key))
 
-;; I've been using occur pretty frequently.
-(global-set-key (kbd "C-S-o") 'occur)
-
 ;; I gave it a try. looks pretty cool.
 (use-package anzu
   :ensure t

@@ -28,7 +28,8 @@
   (defun projectile-magit-action ()
     "Switch to magit status action when invoking projectile."
     (magit-status (projectile-project-root)))
-  (setq projectile-switch-project-action 'projectile-magit-action))
+  (setq projectile-switch-project-action 'projectile-magit-action)
+  (global-set-key (kbd "C-S-o") 'projectile-switch-project))
 
 ;; Git ignore modes, and misc stuff major modes.
 (use-package gitignore-mode
