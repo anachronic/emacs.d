@@ -75,5 +75,15 @@
 ;; The tabs really get in the way sometimes.
 (add-hook 'web-mode-hook #'indent-guide-mode)
 
+;; Tagedit sounds fun
+(use-package tagedit
+  :ensure t
+  :config
+  (with-eval-after-load 'web-mode
+    (require 'tagedit)
+    (tagedit-add-paredit-like-keybindings)
+    (tagedit-add-experimental-features)
+    (add-hook 'web-mode-hook 'tagedit-mode)))
+
 (provide 'web-programming)
 ;;; web-programming.el ends here
