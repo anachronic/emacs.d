@@ -21,4 +21,5 @@
       '(
         counsel-M-x
         eval-last-sexp
+        my/scrolldown
         ))

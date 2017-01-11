@@ -23,6 +23,7 @@
   (setq ivy-re-builders-alist
         '((swiper . ivy--regex-plus)
           (counsel-git-grep . ivy--regex-plus)
+          (counsel-ag . ivy--regex-plus)
           (t . ivy--regex-fuzzy)))
   (setq ivy-initial-inputs-alist
         '((counsel-M-x . "^")
