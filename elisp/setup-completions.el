@@ -49,7 +49,6 @@
   :demand
   :bind (("C-." . counsel-imenu)
          ("C-c s" . counsel-grep)
-         ("C-c a" . counsel-ag)
          ("C-c g" . counsel-git-grep)
          ("C-S-p" . counsel-git)
          ("M-x" . counsel-M-x)))
@@ -60,6 +59,7 @@
 (use-package counsel-projectile
   :ensure t
   :after (counsel projectile)
+  :bind (("C-c a" . counsel-projectile-ag))
   :config
   (counsel-projectile-on))
 
