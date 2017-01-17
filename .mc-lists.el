@@ -3,7 +3,9 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        kill-region
         kill-sexp
+        my/python-yank
         org-self-insert-command
         paredit-forward
         paredit-forward-delete

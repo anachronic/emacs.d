@@ -200,5 +200,9 @@ python-shell-send-buffer."
 ;; Python needs indentation, Emacs should help
 (add-hook 'python-mode-hook #'indent-guide-mode)
 
+(with-eval-after-load 'dumb-jump
+  (define-key python-mode-map (kbd "M-.") 'dumb-jump-go)
+  (define-key python-mode-map (kbd "M-,") 'dumb-jump-back))
+
 (provide 'python-programming)
 ;;; python-programming.el ends here
