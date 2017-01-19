@@ -204,5 +204,10 @@ python-shell-send-buffer."
   (define-key python-mode-map (kbd "M-.") 'dumb-jump-go)
   (define-key python-mode-map (kbd "M-,") 'dumb-jump-back))
 
+;; Been using paredit in this thing
+(define-key python-mode-map (kbd "C-)") #'paredit-forward-slurp-sexp)
+
+(add-hook 'python-mode-hook #'rainbow-delimiters-mode)
+
 (provide 'python-programming)
 ;;; python-programming.el ends here
