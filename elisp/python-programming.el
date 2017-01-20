@@ -208,6 +208,7 @@ python-shell-send-buffer."
 (define-key python-mode-map (kbd "C-)") #'paredit-forward-slurp-sexp)
 
 (add-hook 'python-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'python-mode-hook (lambda () (color-identifiers-mode -1)))
 
 (provide 'python-programming)
 ;;; python-programming.el ends here
