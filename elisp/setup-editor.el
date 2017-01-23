@@ -412,7 +412,7 @@ Single Capitals as you type."
 ;; often the line I have to copy
 (use-package whole-line-or-region
   :ensure t
-  :diminish "wlr"
+  :diminish ""
   :config
   (add-hook 'after-init-hook 'whole-line-or-region-mode))
 
