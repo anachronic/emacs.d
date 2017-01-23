@@ -413,5 +413,20 @@ Single Capitals as you type."
 (use-package rainbow-mode
   :ensure t)
 
+;; I often feel the need for this one
+(use-package paredit-everywhere
+  :ensure t
+  :diminish "parev"
+  :config
+  (add-hook 'prog-mode-hook 'paredit-everywhere-mode))
+
+;; Been using M-w quite a while and yes, @purcell is right, it is
+;; often the line I have to copy
+(use-package whole-line-or-region
+  :ensure t
+  :diminish "wlr"
+  :config
+  (add-hook 'after-init-hook 'whole-line-or-region-mode))
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
