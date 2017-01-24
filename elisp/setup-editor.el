@@ -396,13 +396,6 @@ Single Capitals as you type."
                 (and (boundp 'multiple-cursors-mode) multiple-cursors-mode))
       ad-do-it)))
 
-;; More stealing: immortal scratch. I wish I knew about this one
-;; before
-(use-package immortal-scratch
-  :ensure t
-  :config
-  (add-hook 'after-init-hook #'immortal-scratch-mode))
-
 ;; I saw this in purcell's config, looks useful
 (use-package indent-guide
   :ensure t
