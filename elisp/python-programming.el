@@ -200,7 +200,11 @@ python-shell-send-buffer."
 ;; Python needs indentation, Emacs should help
 (add-hook 'python-mode-hook #'indent-guide-mode)
 
-(with-eval-after-load 'dumb-jump
+(with-eval-after-load 'anaconda-mode
+  (define-key anaconda-mode-map (kbd "C-M-g") 'anaconda-mode-find-definitions)
+  (define-key anaconda-mode-map (kbd "C-M-p") 'anaconda-mode-go-back)
+  (define-key anaconda-mode-map (kbd "M-.") nil)
+  (define-key anaconda-mode-map (kbd "M-,") nil)
   (define-key python-mode-map (kbd "M-.") 'dumb-jump-go)
   (define-key python-mode-map (kbd "M-,") 'dumb-jump-back))
 
