@@ -2,14 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Key chord. This mode is absolutely AWESOME. I can't stop thinking about
-;; how much I have needed something like this over the past few years.
-;; I got the idea from -> http://emacsrocks.com/e07.html
-;; The documentation can be found on EmacsWiki:
-;; https://www.emacswiki.org/emacs/KeyChord
-;; Key chord definitions are mainly found on:
-;; - mode programming files (like c-programming.el)
-;; - editor binding files [setup-editor.el] (mainly hj, jk and jj)
+;; Well, this mode seemed like a good idea. But it's not really that
+;; useful. Editing feels really sluggish and I really dislike that. So
+;; let's use just for absolute and NON-INTRUSIVE keys (like semicolor)
 (use-package key-chord
   :ensure t
   :config
