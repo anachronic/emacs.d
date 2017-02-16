@@ -139,7 +139,8 @@
          ("M-y" . helm-show-kill-ring))
   :config
   (require 'helm-config)
-  (global-set-key [remap occur] #'helm-occur))
+  (global-set-key [remap occur] #'helm-occur)
+  (setq helm-buffers-fuzzy-matching t))
 
 
 (provide 'setup-completions)
