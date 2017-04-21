@@ -18,8 +18,9 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; Let's load our agenda file(s)
-(defvar my/org-agenda-file)
-(setq my/org-agenda-file "~/Dropbox/agenda.org")
+(defvar my/org-agenda-files)
+(setq my/org-agenda-files '("~/Dropbox/agenda.org"
+                            "~/Dropbox/orgfiles/gcal.org"))
 
 ;; reveal.js stuff Thanks to Mike Zamansky
 ;; https://www.youtube.com/watch?v=psDpCpcIVYs
@@ -60,11 +61,19 @@
   ;; M-j seems better than C-j for org-return-indent...
   (define-key org-mode-map (kbd "M-j") 'org-return-indent)
 
-  (when (file-exists-p my/org-agenda-file)
-    (setq org-agenda-files (list my/org-agenda-file)))
+  (setq org-agenda-files my/org-agenda-files)
   ;; org keywords. I like having more than the usual TODO/
   (setq org-todo-keywords
         '((sequence "TODO(t)" "IN-PROGRESS(p!)" "|" "DONE(d!)" "CANCELLED(c@)" "WAITING(w@/!)"))))
+
+;; Try this thing
+(use-package org-gcal
+  :ensure t
+  :config
+  (load-file "~/Dropbox/elisp/org-gcal-settings.el"))
+
+;; Need to refresh this thing once in a while
+(add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync)))
 
 (provide 'setup-org)
 ;;; setup-org.el ends here
