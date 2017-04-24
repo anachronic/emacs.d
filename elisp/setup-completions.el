@@ -59,6 +59,12 @@
   :config
   (counsel-projectile-on))
 
+;; I guess this can't hurt
+(use-package ivy-rich
+  :ensure t
+  :config
+  (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
+
 ;; YASnippet, always so handy...
 (use-package yasnippet
   :ensure t
