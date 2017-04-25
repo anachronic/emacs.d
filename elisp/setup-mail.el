@@ -12,11 +12,6 @@
 ;;       send-mail-function    'smtpmail-send-it)
 
 
-;; We want to send mail asynchronously
-(require 'smtpmail-async)
-(setq send-mail-function 'async-smtpmail-send-it
-      message-send-mail-function 'async-smtpmail-send-it)
-
 ;; And finally, Notmuch is really the way to go with mail
 (use-package notmuch
   :ensure t
