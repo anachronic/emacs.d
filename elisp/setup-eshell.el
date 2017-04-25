@@ -134,5 +134,8 @@
 ;; Sometimes a shell is better...
 (define-key meta-m-map (kbd "s") #'shell)
 
+(add-hook 'eshell-preoutput-filter-functions
+          'ansi-color-filter-apply)
+
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here
