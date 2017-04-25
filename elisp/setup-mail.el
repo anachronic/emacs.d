@@ -2,9 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(let ((mailfile "~/elisp/mail.el"))
-  (when (file-exists-p mailfile)
-    (load-file mailfile)))
+(maybe-load-file "~/Dropbox/elisp/mail.el")
 
 ;; The following settings are ~/elisp/mail.el examples.
 ;; (setq user-full-name        "John Doe."

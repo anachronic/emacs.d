@@ -33,5 +33,11 @@
 (unless (server-running-p)
   (server-start))
 
+;; Other generally useful functions
+(defun maybe-load-file (file)
+  "Load FILE only if it exists."
+  (when (file-exists-p file)
+    (load-file file)))
+
 (provide 'setup-emacs)
 ;;; setup-emacs.el ends here

@@ -4,8 +4,7 @@
 
 
 ;; own user related stuff: nick, whatever.
-(when (file-exists-p "~/Dropbox/elisp/chat.el")
-  (load-file "~/Dropbox/elisp/chat.el"))
+(maybe-load-file "~/Dropbox/elisp/chat.el")
 
 (with-eval-after-load 'erc
   (setq erc-prompt (lambda () (concat (buffer-name) " >>>"))))
