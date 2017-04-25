@@ -27,6 +27,14 @@
   (setq notmuch-search-oldest-first nil)
   (setq notmuch-show-text/html-blocked-images nil))
 
+;; Notmuch customization
+(with-eval-after-load 'notmuch
+  (define-key notmuch-show-mode-map (kbd "a")
+    (lambda ()
+      "Archive message (remove INBOX tag)"
+      (interactive)
+      (notmuch-show-tag (list "-INBOX")))))
+
 ;; (display-time-mode)
 
 ;; (with-eval-after-load 'time
