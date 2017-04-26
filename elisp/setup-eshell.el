@@ -35,6 +35,7 @@
                                 (setq eshell-path-env my/userpath)
                                 (setq exec-path (s-split ":" my/userpath)))))
 
+(add-hook 'eshell-mode-hook #'company-mode)
 
 ;; scroll on input
 (setq eshell-scroll-to-bottom-on-input t)
