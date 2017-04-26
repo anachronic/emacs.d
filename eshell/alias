@@ -2,3 +2,5 @@ alias la ls -la $*
 alias ll ls -l $*
 alias l ls -l $*
 alias emacs find-file $1
+alias ff find-file $1
+alias em find-file $1
