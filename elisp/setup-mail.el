@@ -12,37 +12,6 @@
 ;;       send-mail-function    'smtpmail-send-it)
 
 
-;; And finally, Notmuch is really the way to go with mail
-(use-package notmuch
-  :ensure t
-  :config
-  (global-set-key (kbd "C-c m") #'notmuch)
-  (setq notmuch-search-oldest-first nil)
-  (setq notmuch-show-text/html-blocked-images nil))
-
-;; Notmuch customization
-(with-eval-after-load 'notmuch
-  (define-key notmuch-show-mode-map (kbd "a")
-    (lambda ()
-      "Archive message (remove INBOX tag)"
-      (interactive)
-      (notmuch-show-tag (list "-INBOX")))))
-
-;; (display-time-mode)
-
-;; (with-eval-after-load 'time
-;;   (setq display-time-use-mail-icon t)
-;;   (setq display-time-24hr-format t)
-;;   (setq display-time-load-average-threshold 100)
-;;   (setq display-time-mail-function
-;;         (lambda ()
-;;           (let ((newmail (string-to-number
-;;                           (shell-command-to-string
-;;                            "notmuch search tag:unread | wc -l"))))
-;;             (if (eq 0 newmail)
-;;                 nil
-;;               newmail)))))
-
 
 (provide 'setup-mail)
 ;;; setup-mail.el ends here
