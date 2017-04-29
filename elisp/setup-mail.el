@@ -25,7 +25,7 @@
 
 ;; setup some handy shortcuts
 (setq mu4e-maildir-shortcuts
-      '(("/INBOX"             . ?i)
+      '(("/inbox"             . ?i)
         ("/[Gmail].Sent Mail" . ?s)
         ("/[Gmail].Trash"     . ?t)))
 
@@ -53,6 +53,9 @@
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 587
       smtpmail-debug-info t)
+
+;; Invoke mu4e with C-c m
+(global-set-key (kbd "C-c m") 'mu4e)
 
 (provide 'setup-mail)
 ;;; setup-mail.el ends here
