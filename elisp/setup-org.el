@@ -67,10 +67,11 @@
         '((sequence "TODO(t)" "IN-PROGRESS(p!)" "|" "DONE(d!)" "CANCELLED(c@)" "WAITING(w@/!)"))))
 
 ;; Try this thing
-(use-package org-gcal
-  :ensure t
-  :config
-  (maybe-load-file "~/Dropbox/elisp/org-gcal-settings.el"))
+(with-eval-after-load 'org
+  (use-package org-gcal
+    :ensure t
+    :config
+    (maybe-load-file "~/Dropbox/elisp/org-gcal-settings.el")))
 
 ;; Need to refresh this thing once in a while
 (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync)))
