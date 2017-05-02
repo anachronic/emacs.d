@@ -70,6 +70,7 @@
 (with-eval-after-load 'org
   (use-package org-gcal
     :ensure t
+    :defer t
     :config
     (maybe-load-file "~/Dropbox/elisp/org-gcal-settings.el")))
 
