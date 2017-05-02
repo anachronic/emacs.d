@@ -23,6 +23,9 @@
 ;; don't save message to Sent Messages, GMail/IMAP will take care of this
 (setq mu4e-sent-messages-behavior 'delete)
 
+(setq mu4e-html2text-command
+      "lynx -dump -stdin -force_html -width=72 -nolist -nobold -nocolor -display_charset UTF-8")
+
 ;; setup some handy shortcuts
 (setq mu4e-maildir-shortcuts
       '(("/inbox"             . ?i)
