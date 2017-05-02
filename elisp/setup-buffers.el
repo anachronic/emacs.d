@@ -229,34 +229,5 @@ _q_uit
 ;; uniquify. I really got used to IntelliJ idea's way of handling stuff
 (setq uniquify-buffer-name-style 'forward)
 
-;; I hate cluttering buffers. Let's just use perspective.el instead
-(use-package perspective
-  :ensure t
-  :config
-  (persp-mode))
-
-(require 'perspective)
-
-;; define a function to kill the current perspective without asking
-(defun persp-kill-current ()
-  "Kill current perspective without asking."
-  (interactive)
-  (persp-kill (persp-name persp-curr)))
-
-;; bind it to C-x x d
-(define-key perspective-map (kbd "d") #'persp-kill-current)
-
-;; define a function to jump to the main perspective
-(defun persp-goto-main ()
-  "Switch to main perspective."
-  (interactive)
-  (persp-switch "main"))
-
-(define-key perspective-map (kbd "x") #'persp-goto-main)
-
-;; perspective goto-last
-(define-key perspective-map (kbd "l") #'persp-switch-last)
-(global-set-key (kbd "<f10>") 'persp-next)
-
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here
