@@ -55,7 +55,8 @@
 (use-package counsel-projectile
   :ensure t
   :after (counsel projectile)
-  :bind (("C-c a" . counsel-projectile-ag))
+  :bind (("C-c a" . counsel-projectile-ag)
+         ("C-S-m" . counsel-projectile-switch-to-buffer))
   :config
   (counsel-projectile-on))
 
@@ -137,8 +138,7 @@
 (use-package helm
   :ensure t
   :demand
-  :bind (("C-S-m" . helm-mini)
-         ("M-y" . helm-show-kill-ring))
+  :bind (("M-y" . helm-show-kill-ring))
   :config
   (require 'helm-config)
   (global-set-key [remap occur] #'helm-occur)
