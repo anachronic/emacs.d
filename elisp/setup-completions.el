@@ -55,9 +55,15 @@
 (use-package counsel-projectile
   :ensure t
   :after (counsel projectile)
-  :bind (("C-c a" . counsel-projectile-ag)
-         ("C-S-m" . counsel-projectile-switch-to-buffer))
+  :bind (("C-c a" . counsel-projectile-ag))
   :config
+  (defun my/switch-buffer-maybe-on-project ()
+    "Call counsel-projectile-switch-to-buffer if on project, ivy-switch-buffer otherwise"
+    (interactive)
+    (if (projectile-project-p)
+        (call-interactively 'counsel-projectile-switch-to-buffer)
+      (call-interactively 'ivy-switch-buffer)))
+  (global-set-key (kbd "C-S-m") #'my/switch-buffer-maybe-on-project)
   (counsel-projectile-on))
 
 ;; I guess this can't hurt
