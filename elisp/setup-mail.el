@@ -29,7 +29,11 @@
 ;; setup some handy shortcuts
 (setq mu4e-maildir-shortcuts
       '(("/inbox"             . ?i)
-        ("/[Gmail].Sent Mail" . ?s)
+        ("/archlinux"         . ?a)
+        ("/academic"          . ?c)
+        ("/Google Scholar"    . ?s)
+        ("/promos"            . ?p)
+        ("/Accounts"          . ?A)
         ("/[Gmail].Trash"     . ?t)))
 
 ;; allow for updating mail using 'U' in the main view:
