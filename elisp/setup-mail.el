@@ -34,7 +34,8 @@
         ("/Google Scholar"    . ?s)
         ("/promos"            . ?p)
         ("/Accounts"          . ?A)
-        ("/[Gmail].Trash"     . ?t)))
+        ("/Tests"             . ?t)
+        ("/[Gmail].Trash"     . ?T)))
 
 ;; allow for updating mail using 'U' in the main view:
 ;; (setq mu4e-get-mail-command "offlineimap")
