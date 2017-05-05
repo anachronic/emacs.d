@@ -132,35 +132,6 @@ Otherwise exit Emacs."
   (add-hook 'ibuffer-hook #'ibuffer-set-up-preferred-filters))
 
 
-;; This package looks ok
-(use-package window-numbering
-  :ensure t
-  :demand
-  :config
-  (window-numbering-mode)
-  (window-numbering-clear-mode-line)
-  (define-key window-numbering-keymap (kbd "M-0") nil)
-  (define-key window-numbering-keymap (kbd "M-1") nil)
-  (define-key window-numbering-keymap (kbd "M-2") nil)
-  (define-key window-numbering-keymap (kbd "M-3") nil)
-  (define-key window-numbering-keymap (kbd "M-4") nil)
-  (define-key window-numbering-keymap (kbd "M-5") nil)
-  (define-key window-numbering-keymap (kbd "M-6") nil)
-  (define-key window-numbering-keymap (kbd "M-7") nil)
-  (define-key window-numbering-keymap (kbd "M-8") nil)
-  (define-key window-numbering-keymap (kbd "M-9") nil)
-  (define-key window-numbering-keymap (kbd "M-0") nil)
-  (define-key window-numbering-keymap (kbd "C-M-0") 'select-window-0)
-  (define-key window-numbering-keymap (kbd "C-M-1") 'select-window-1)
-  (define-key window-numbering-keymap (kbd "C-M-2") 'select-window-2)
-  (define-key window-numbering-keymap (kbd "C-M-3") 'select-window-3)
-  (define-key window-numbering-keymap (kbd "C-M-4") 'select-window-4)
-  (define-key window-numbering-keymap (kbd "C-M-5") 'select-window-5)
-  (define-key window-numbering-keymap (kbd "C-M-6") 'select-window-6)
-  (define-key window-numbering-keymap (kbd "C-M-7") 'select-window-7)
-  (define-key window-numbering-keymap (kbd "C-M-8") 'select-window-8)
-  (define-key window-numbering-keymap (kbd "C-M-9") 'select-window-9))
-
 ;; I was using ace window, but trying out purcell's config I realized
 ;; switch-window can be better
 (use-package switch-window
@@ -188,7 +159,7 @@ Otherwise exit Emacs."
 
 ;; I've actually not used shift+arrows in a while, so let's bind
 ;; windmove to that
-(windmove-default-keybindings)
+(windmove-default-keybindings 'control)
 
 ;; Movement hydra: Vertical enlarge/shrink is kinda confusing atm
 (defhydra hydra-window (:color red :hint nil)
