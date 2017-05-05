@@ -20,7 +20,7 @@
 
 (require 'hl-line)
 (show-paren-mode 1)
-;; (global-hl-line-mode)
+(global-hl-line-mode)
 
 ;; Enable narrow commands
 (put 'narrow-to-region 'disabled nil)
@@ -28,7 +28,6 @@
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
   :ensure t
-  :diminish "" ;; Errors and warnings appear in the modeline anyway
   :config
   (global-flycheck-mode)
   (setq flycheck-emacs-lisp-load-path 'inherit))
