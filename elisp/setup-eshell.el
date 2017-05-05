@@ -138,5 +138,8 @@
 (add-hook 'eshell-preoutput-filter-functions
           'ansi-color-filter-apply)
 
+;; This is supposed to work with TRAMP and .authinfo.gpg
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here

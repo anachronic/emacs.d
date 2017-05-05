@@ -47,7 +47,11 @@
          ("C-c s" . counsel-grep)
          ("C-c g" . counsel-git-grep)
          ("C-S-p" . counsel-git)
-         ("M-x" . counsel-M-x)))
+         ("M-x" . counsel-M-x))
+  :config
+  ;; Need these key bindings for terminals
+  (define-key meta-m-map (kbd "M-p") #'counsel-git)
+  )
 
 ;; I had a mix of stuff before. So it's nice to decide on
 ;; counsel-projectile after all. I don't even projectile that much,
@@ -55,9 +59,16 @@
 (use-package counsel-projectile
   :ensure t
   :after (counsel projectile)
-  :bind (("C-c a" . counsel-projectile-ag)
-         ("C-S-m" . counsel-projectile-switch-to-buffer))
+  :bind (("C-c a" . counsel-projectile-ag))
   :config
+  (defun my/switch-buffer-maybe-on-project ()
+    "Call counsel-projectile-switch-to-buffer if on project, ivy-switch-buffer otherwise"
+    (interactive)
+    (if (projectile-project-p)
+        (call-interactively 'counsel-projectile-switch-to-buffer)
+      (call-interactively 'ivy-switch-buffer)))
+  (global-set-key (kbd "C-S-m") #'my/switch-buffer-maybe-on-project)
+  (define-key meta-m-map (kbd "M-m") #'my/switch-buffer-maybe-on-project)
   (counsel-projectile-on))
 
 ;; I guess this can't hurt
