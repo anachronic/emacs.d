@@ -3,11 +3,6 @@
 ;;; Code:
 
 
-;; Use org plus contrib
-(use-package org-plus-contrib
-  :ensure t
-  :defer t)
-
 ;; Agenda is cool
 (global-set-key (kbd "C-c A") 'org-agenda)
 
