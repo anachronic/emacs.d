@@ -68,6 +68,8 @@
    `(font-lock-constant-face ((t (:foreground "#81a2be"))))
    `(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "PaleVioletRed3" :weight bold))))
    `(highlight-symbol-face ((t (:background "#2f4f4f"))))
+
+   ;; Helm
    `(helm-buffer-saved-out ((t (:foreground "red"))))
    `(helm-buffer-directory ((t (:inherit helm-ff-dotted-directory :weight ultra-light))))
    `(helm-dired-directory ((t (:inherit dired-directory))))
@@ -83,12 +85,16 @@
    `(helm-source-header ((t (:background "midnight blue" :foreground "gray77" :box (:line-width 2 :color "black" :style pressed-button) :weight bold))))
    `(helm-bookmark-file ((t (:foreground "#06c950"))))
    `(helm-visible-mark ((t (:background "dark green"))))
+
+   ;; ivy faces
    `(ivy-virtual ((t (:inherit helm-ff-file))))
    `(ivy-current-match ((t (:foreground "Navy" :underline t :weight bold :background "DeepSkyBlue"))))
    `(ivy-minibuffer-match-face-1 ((t (:underline t :foreground "dark orange"))))
    `(ivy-minibuffer-match-face-2 ((t (:underline t :foreground "#f44298"))))
    `(ivy-minibuffer-match-face-3 ((t (:underline t :foreground "#Cd5c5c"))))
    `(ivy-minibuffer-match-face-4 ((t (:underline t :foreground "#B8860b"))))
+
+   ;; misc..
    `(highlight ((t (:weight normal :background "gray6"))))
    `(highlight-changes ((((min-colors 88) (class color)) (:background "#00254a"))))
    `(highlight-changes-delete ((((min-colors 88) (class color)) (:background "#8b6969"))))
@@ -105,12 +111,18 @@
    `(lazy-highlight ((((class color) (min-colors 88) (background dark)) (:background "#483d8b" :foreground "white"))))
    `(link ((t (:foreground "#349b98" :underline t))))
    `(match ((((class color) (min-colors 88) (background dark)) (:background "SlateBlue4" :foreground "white"))))
+
+   ;; Messages
    `(message-cited-text ((((class color) (background dark)) (:foreground "SandyBrown"))))
    `(message-header-name ((((class color) (background dark)) (:foreground "DarkGrey"))))
    `(message-header-other ((((class color) (background dark)) (:foreground "LightPink2"))))
    `(message-header-subject ((((class color) (background dark)) (:foreground "yellow2"))))
    `(message-separator ((((class color) (background dark)) (:foreground "thistle"))))
+
+   ;; Minibuffer prompt. heh
    `(minibuffer-prompt ((((background dark)) (:foreground "gold2" :weight bold))))
+
+   ;; Mode line
    `(mode-line ((t (:inverse-video nil :background "#315068"))))
    `(mode-line-inactive ((t (:weight light :inverse-video nil :foreground "gray60" :background "#27313f" :inherit (mode-line)))))
    `(mode-line-read-only-face ((t (:foreground "cyan3"))))
@@ -123,14 +135,20 @@
    `(mode-line-minor-mode-face ((t (:foreground "gray40"))))
    `(mode-line-process-face ((t :(foreground "LimeGreen"))))
    `(mode-line-80col-face ((t (mode-line-position-face :foreground "black" :background "#eab700"))))
+
+   ;; MuMaMo -- I don't really use this
    `(mumamo-background-chunk-major ((((class color) (min-colors 88) (background dark)) (:background "#123a4d"))))
    `(mumamo-background-chunk-submode1 ((((class color) (min-colors 88) (background dark)) (:background "#2e2e51"))))
+
+   ;; notmuch
    `(notmuch-hello-logo-background ((t (:background "#2f4f4f"))))
    `(notmuch-message-summary-face ((t (:inherit font-lock-function-name-face))))
    `(notmuch-search-count ((t (:inherit default :foreground "yellow3"))))
    `(notmuch-search-date ((t (:inherit default :foreground "SpringGreen4"))))
    `(notmuch-search-subject ((t (:foreground "dark turquoise"))))
    `(notmuch-search-unread-face ((t (:weight bold))))
+
+   ;; org mode
    `(org-agenda-clocking ((t (:inherit secondary-selection))) t)
    `(org-agenda-structure ((t (:height 1.4 :foreground "light sky blue"))))
    `(org-archived ((t (:foreground "LemonChiffon4"))))
@@ -183,6 +201,8 @@
    `(whitespace-tab ((t (:background "#03222f"))))
    `(widget-button ((t (:foreground "yellow2"))))
    `(fringe ((t (:background "#1d1f21" :foreground "yellow"))))
+
+   ;; ediff
    `(ediff-current-diff-A ((t (:background "pale green" :foreground "firebrick"))))
    `(ediff-current-diff-Ancestor ((t (:background "VioletRed" :foreground "Black"))))
    `(ediff-current-diff-B ((t (:background "Yellow" :foreground "DarkOrchid"))))
@@ -199,6 +219,8 @@
    `(ediff-odd-diff-Ancestor ((t (:background "gray40" :foreground "cyan3"))))
    `(ediff-odd-diff-B ((t (:background "light grey" :foreground "Black"))))
    `(ediff-odd-diff-C ((t (:background "Grey" :foreground "White"))))
+
+   ;; web mode
    `(web-mode-block-control-face ((t (:foreground "#86caf7"))))
    `(web-mode-block-delimiter-face ((t (:foreground "#4e78f5"))))
    `(web-mode-html-tag-face ((t (:foreground "#de835f"))))
@@ -208,10 +230,12 @@
    `(web-mode-html-attr-name-face ((t (:foreground "#f0c674"))))
    `(web-mode-javascript-string-face ((t (:inherit font-lock-string-face))))
    `(web-mode-current-element-highlight-face ((t (:foreground "white" :background "DarkSlateGray" :weight bold))))
+
+   ;; ERC
    `(erc-default-face ((t (:foreground "white"))))
    `(erc-nick-default-face ((t (:foreground "Goldenrod" :weight bold))))
    `(erc-button ((t (:foreground "DeepSkyBlue" :underline t :weight bold))))
-   `(erc-notice-face ((t (:foreground "DarkSlateBlue" :weight bold))))
+   `(erc-notice-face ((t (:foreground "DarkSlateBlue"))))
    `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))
 
    ;; Hydra faces
