@@ -19,7 +19,12 @@
   :ensure t
   :diminish "par"
   :config
+  ;; First remove some unused keys
   (define-key paredit-mode-map (kbd "M-;") nil)
+  (define-key paredit-mode-map (kbd "C-<left>") nil)
+  (define-key paredit-mode-map (kbd "C-<right>") nil)
+
+  ;; Use paredit
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
   (add-hook 'ielm-mode-hook #'enable-paredit-mode)
 
