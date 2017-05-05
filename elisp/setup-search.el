@@ -46,7 +46,6 @@
   :config
   ;; Spaceline already has the config. So let's remove anzu's modeline toggle.
   (global-anzu-mode +1)
-  (setq anzu-cons-mode-line-p nil)
   (set-face-attribute 'anzu-mode-line nil
                       :foreground "yellow" :weight 'bold)
   (define-key isearch-mode-map [remap isearch-query-replace]  #'anzu-isearch-query-replace)
