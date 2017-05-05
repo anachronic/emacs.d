@@ -32,9 +32,7 @@
 
 ;; On my laptop I'd rather have a bigger text
 (require 's)
-(set-face-attribute 'default nil :height 105)
-(when (s-equals? (system-name) "okinawa")
-  (set-face-attribute 'default nil :height 110))
+(set-face-attribute 'default nil :height 110)
 
 ;; I ran into a VERY weird issue where C-n is the slowest thing
 ;; ever. Fortunately, I found an answer
