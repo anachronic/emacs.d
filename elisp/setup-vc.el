@@ -29,7 +29,9 @@
     "Switch to magit status action when invoking projectile."
     (magit-status (projectile-project-root)))
   (setq projectile-switch-project-action 'projectile-magit-action)
-  (global-set-key (kbd "C-S-o") 'projectile-switch-project))
+  (global-set-key (kbd "C-S-o") 'projectile-switch-project)
+  ;; Need the following for terminal Emacs
+  (define-key meta-m-map (kbd "M-o") #'projectile-switch-project))
 
 ;; Git ignore modes, and misc stuff major modes.
 (use-package gitignore-mode
