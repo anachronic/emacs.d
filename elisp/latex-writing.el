@@ -20,7 +20,7 @@
 ;; The following doesn't play nice with use-package. Whatever.
 (defun my/add-preview-pane-toggle ()
   "Add latex preview pane keybinding."
-  (local-set-key (kbd "C-c M P") 'latex-preview-pane-mode))
+  (local-set-key (kbd "C-x p") 'latex-preview-pane-mode))
 (add-hook 'LaTeX-mode-hook 'my/add-preview-pane-toggle)
 
 ;; Let's try Flyspell with TeX documents.
