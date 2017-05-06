@@ -89,7 +89,7 @@
    ;; ivy faces
    `(ivy-virtual ((t (:inherit helm-ff-file))))
    `(ivy-current-match ((t (:foreground "Navy" :underline t :weight bold :background "DeepSkyBlue"))))
-   `(ivy-minibuffer-match-face-1 ((t (:underline t :foreground "dark orange"))))
+   `(ivy-minibuffer-match-face-1 ((t (:foreground "dark orange"))))
    `(ivy-minibuffer-match-face-2 ((t (:underline t :foreground "#f44298"))))
    `(ivy-minibuffer-match-face-3 ((t (:underline t :foreground "#Cd5c5c"))))
    `(ivy-minibuffer-match-face-4 ((t (:underline t :foreground "#B8860b"))))
