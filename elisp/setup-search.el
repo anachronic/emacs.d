@@ -56,7 +56,8 @@
 ;; Lets use swiper conservatively. I actually like isearch better.
 (use-package swiper
   :ensure t
-  :bind ("C-S-s" . swiper)
+  :bind (("C-c s" . swiper)
+         ("C-S-s" . swiper))
   :config
   ;; I'd like to do something along the lines of isearch-swiper, which
   ;; means to switch my isearch query to swiper
