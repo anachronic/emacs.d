@@ -31,6 +31,7 @@
           (woman . "^")))
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-height 16)
+  (setq ivy-use-virtual-buffers t)
   (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
   (define-key ivy-minibuffer-map [tab] #'ivy-alt-done)
   (define-key ivy-minibuffer-map (kbd "C-l") #'ivy-backward-delete-char)
