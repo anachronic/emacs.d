@@ -37,5 +37,13 @@
 ;; Also, autosave in LaTeX mode
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
 
+;; Been needing company-bibtex lately
+(use-package company-bibtex
+  :ensure t
+  :config
+  (add-hook 'LaTeX-mode-hook #'company-mode)
+  (require 'company-bibtex)
+  (setq company-bibtex-bibliography "~/Dropbox/tesis/referencias.bib"))
+
 (provide 'latex-writing)
 ;;; latex-writing.el ends here
