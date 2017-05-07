@@ -123,9 +123,7 @@ is already narrowed."
   (add-hook 'prog-mode-hook 'color-identifiers-mode)
   :diminish color-identifiers-mode)
 
-
 ;; Deleting stuff backwards
-(global-set-key (kbd "C-S-d") 'delete-backward-char)
 (global-set-key (kbd "M-D") 'backward-kill-word)
 
 ;; Let's use multiple cursors.
@@ -304,10 +302,6 @@ point reaches the beginning or end of the buffer, stop there."
   ("h" nil "quit (insert mode)" :color blue)
   ("q" nil "quit" :color blue))
 
-;; I used to have the key biding in M-t. But that was a crappy choice,
-;; it gets much better with key-chord.
-(key-chord-define-global "kk" #'hydra-text/body)
-
 ;; I found out this code snippet that while it doesn't really work in
 ;; the scratch buffer, it does look useful. We shall see. Should be
 ;; useful when reading long stuff URL:
@@ -402,7 +396,8 @@ Single Capitals as you type."
   :ensure t
   :diminish "parev"
   :config
-  (add-hook 'prog-mode-hook 'paredit-everywhere-mode))
+  (add-hook 'prog-mode-hook #'paredit-everywhere-mode)
+  (add-hook 'LaTeX-mode-hook #'paredit-everywhere-mode))
 
 ;; Been using M-w quite a while and yes, @purcell is right, it is
 ;; often the line I have to copy
