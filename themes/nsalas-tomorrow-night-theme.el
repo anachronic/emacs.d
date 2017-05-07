@@ -71,11 +71,11 @@
    `(flymake-warnline ((t (:background "#3f3f3f"))))
    `(flycheck-error ((t (:background "brown4"))))
    `(flycheck-fringe-error ((t (:inherit (flycheck-error)))))
-   `(font-lock-builtin-face ((((class color) (min-colors 88) (background dark)) (:foreground "#c58fe0"))))
+   `(font-lock-builtin-face ((t (:foreground "#c58fe0"))))
    `(font-lock-comment-delimiter-face ((default (:inherit font-lock-comment-face)) (((class color) (min-colors 16)) nil)))
    `(font-lock-comment-face ((t (:foreground "#696969" :slant italic :weight normal))))
    `(font-lock-function-name-face ((t (:foreground "#00dddd" :weight bold))))
-   `(font-lock-keyword-face ((((class color) (min-colors 88) (background dark)) (:foreground "#dd8339"))))
+   `(font-lock-keyword-face ((t (:foreground "darkorange"))))
    `(font-lock-string-face ((t (:foreground "#8abeb7"))))
    `(font-lock-type-face ((t (:foreground "#b5bd68"))))
    `(font-lock-doc-face ((t (:foreground "#765587"))))
@@ -126,6 +126,16 @@
    `(lazy-highlight ((((class color) (min-colors 88) (background dark)) (:background "#483d8b" :foreground "white"))))
    `(link ((t (:foreground "#349b98" :underline t))))
    `(match ((((class color) (min-colors 88) (background dark)) (:background "SlateBlue4" :foreground "white"))))
+
+   ;; Magit
+   `(magit-section-highlight ((t (:background "grey20"))))
+   `(magit-diff-context ((t (:foreground "grey70"))))
+   `(magit-diff-context-highlight ((t (:background "grey20" :foreground "grey70"))))
+   `(magit-diff-added ((t (:background "#335533" :foreground "#ddffdd"))))
+   `(magit-diff-added-highlight ((t (:background "sea green" :foreground "#cceecc"))))
+   `(magit-diff-removed ((t (:background "#553333" :foreground "#ffdddd"))))
+   `(magit-diff-removed-highlight ((t (:background "brown" :foreground "#eecccc"))))
+
 
    ;; Messages
    `(message-cited-text ((((class color) (background dark)) (:foreground "SandyBrown"))))
