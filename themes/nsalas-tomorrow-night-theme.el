@@ -19,6 +19,17 @@
    `(anything-header ((t (:inherit font-lock-function-name-face))))
    `(bm-face ((t (:background "#460000" :foreground "white" :box (:line-width 2 :color "#460000" :style released-button) :weight bold))))
    `(comint-highlight-input ((t (:foreground "LightSkyBlue1" :weight bold))))
+
+   ;; company
+   `(company-tooltip ((t (:background "#444" :foreground "white"))))
+   `(company-tooltip-selection ((t (:weight bold :background "#2f4f4f"))))
+   `(company-tooltip-common-selection ((t (:weight bold))))
+   `(company-scrollbar-bg ((t (:background "dim gray"))))
+   `(company-scrollbar-fg ((t (:background "silver"))))
+   `(company-tooltip-common ((t (:foreground "#00fa9a"))))
+   `(company-tooltip-annotation ((t (:foreground "#Fa8072"))))
+
+   ;; compilation
    `(compilation-error ((t (:inherit font-lock-warning-face))))
    `(compilation-line-number ((t (:foreground "orange red" :weight bold))))
    `(cursor ((t (:background "#cc6666"))))
@@ -27,6 +38,8 @@
    `(default ((t (:stipple nil :background "#1d1f21" :foreground "#dddddd" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal))))
    `(diff-added ((t (:foreground "lawn green"))))
    `(diff-removed ((t (:foreground "light coral"))))
+
+   ;; dired
    `(dired-directory ((t (:inherit diredp-dir-name))))
    `(dired-header ((t (:inherit font-lock-type-face :weight bold :height 1.2 :family "verdana"))))
    `(dired-mark ((t (:inherit font-lock-constant-face :foreground "VioletRed4"))))
@@ -43,6 +56,8 @@
    `(diredp-deletion ((t (:foreground "#Eedd82" :background "#c40000" :weight bold))))
    `(diredp-file-name ((t (:foreground "white"))))
    `(diredp-compressed-file-suffix ((t (:foreground "#4682b4"))))
+
+
    `(django-tag-face ((t (:background "#092e20" :box (:line-width 1 :color "grey22")))) t)
    `(django-variable-face ((t (:foreground "#479dcc"))) t)
    `(dropdown-list-face ((t (:inherit default :background "gray89" :foreground "black"))))
