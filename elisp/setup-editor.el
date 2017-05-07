@@ -63,19 +63,16 @@ is already narrowed."
 ;; Let's bind it to C-x n
 (define-key ctl-x-map (kbd "n") #'narrow-or-widen-dwim)
 
-;; The last instruction isn't as good without this next instruction
-;; Yes, you guessed it, it deletes all trailing whitespaces and newlines..
+;; Remove any trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Linum relative for good editing
 (use-package nlinum-relative
   :ensure t
   :config
-  ;; something else you want
   (add-hook 'prog-mode-hook 'nlinum-relative-mode)
   (setq nlinum-relative-current-symbol "")
   (setq nlinum-relative-redisplay-delay 0.2))
-
 
 ;; I'm a little bit too young for emacs,
 ;; so I like replacing the region with stuff.
