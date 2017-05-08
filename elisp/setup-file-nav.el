@@ -2,38 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; direx looks like a good alternative. I have tried NeoTree, but it sucks.
-(use-package direx
-  :ensure t)
-
-(defun direx:collapse-current ()
-  "Collapse the current item's parent."
-  (interactive)
-  (direx:up-item)
-  (direx:toggle-item))
-
-;; Jump to directory: I'd like to use direx if there's a projectile
-;; session going on and fallback to dired if there's none.
-(defun nsv/directory-jump ()
-  "Jump to direx on project root if a project is active, dired otherwise."
-  (interactive)
-  (if (projectile-project-p)
-      (direx-project:jump-to-project-root)
-    (dired-jump)))
-
-;; Jump to dired pointing at current direx file
-(defun nsv/dired-jump-from-direx ()
-  "Jump from direx to dired."
-  (interactive)
-  (let ((path (aref (direx:item-tree (direx:item-at-point!)) 2)))
-    (dired-jump nil path)))
-
-(with-eval-after-load 'direx
-  (define-key direx:direx-mode-map (kbd "b") #'direx:collapse-current)
-  ;; I'd also like to go to dired-mode from direx
-  (define-key direx:direx-mode-map (kbd "C-x C-j") #'nsv/dired-jump-from-direx)
-  (define-key direx:direx-mode-map (kbd "s") #'counsel-git))
-
 ;; NeoTree could *sometimes* be better than Dired.
 (use-package neotree
   :ensure t

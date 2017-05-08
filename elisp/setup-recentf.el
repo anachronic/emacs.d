@@ -3,7 +3,8 @@
 ;;; Code:
 (require 'recentf)
 (recentf-mode 1)
-(setq recentf-max-menu-items 35)
+(setq recentf-max-menu-items 1000)
+
 
 ;; Let's define a blacklist
 
