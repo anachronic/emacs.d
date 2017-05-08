@@ -134,10 +134,10 @@
    `(magit-section-highlight ((t (:background "grey20"))))
    `(magit-diff-context ((t (:foreground "grey70"))))
    `(magit-diff-context-highlight ((t (:background "grey20" :foreground "grey70"))))
-   `(magit-diff-added ((t (:background "SpringGreen4" :foreground "#ddffdd"))))
-   `(magit-diff-added-highlight ((t (:background "sea green" :foreground "#cceecc"))))
+   `(magit-diff-added ((t (:background "SpringGreen4" :foreground "#ddd"))))
+   `(magit-diff-added-highlight ((t (:background "SeaGreen" :foreground "#cceecc"))))
    `(magit-diff-removed ((t (:background "brown" :foreground "#ffdddd"))))
-   `(magit-diff-removed-highlight ((t (:background "firebrick" :foreground "#eecccc"))))
+   `(magit-diff-removed-highlight ((t (:background "IndianRed4" :foreground "#eecccc"))))
 
 
    ;; Messages
