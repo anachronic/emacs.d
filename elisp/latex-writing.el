@@ -41,9 +41,15 @@
 (use-package company-bibtex
   :ensure t
   :config
-  (add-hook 'LaTeX-mode-hook #'company-mode)
-  (require 'company-bibtex)
-  (setq company-bibtex-bibliography "~/Dropbox/tesis/referencias.bib"))
+  (defun nsv/load-company-bibtex ()
+    "Add bibtex backend to company."
+    (company-mode 1)
+    (require 'company-bibtex)
+    (setq-local company-backends company-backends)
+    (setq company-bibtex-bibliography "~/Dropbox/tesis/referencias.bib")
+    (add-to-list 'company-backends 'company-bibtex))
+  (add-hook 'LaTeX-mode-hook #'nsv/load-company-bibtex))
+
 
 (provide 'latex-writing)
 ;;; latex-writing.el ends here
