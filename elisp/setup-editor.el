@@ -407,5 +407,9 @@ Single Capitals as you type."
   :config
   (add-hook 'after-init-hook 'whole-line-or-region-mode))
 
+;; This package is super useful with ivy-occur
+(use-package wgrep
+  :ensure t)
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
