@@ -51,6 +51,7 @@
   :config
   ;; Need these key bindings for terminals
   (define-key meta-m-map (kbd "M-p") #'counsel-git)
+  (define-key meta-m-map (kbd "M-r") #'counsel-rhythmbox)
   )
 
 ;; I had a mix of stuff before. So it's nice to decide on
