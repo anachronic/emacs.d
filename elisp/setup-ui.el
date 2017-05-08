@@ -30,7 +30,6 @@
   (when (member pl-font (font-family-list))
     (set-face-attribute 'default nil :font pl-font)))
 
-;; On my laptop I'd rather have a bigger text
 (require 's)
 (set-face-attribute 'default nil :height 110)
 

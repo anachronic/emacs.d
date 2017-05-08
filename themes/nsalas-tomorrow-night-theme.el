@@ -56,6 +56,9 @@
    `(diredp-deletion ((t (:foreground "#Eedd82" :background "#c40000" :weight bold))))
    `(diredp-file-name ((t (:foreground "white"))))
    `(diredp-compressed-file-suffix ((t (:foreground "#4682b4"))))
+   `(diredp-file-suffix ((t (:foreground "MediumSeaGreen"))))
+   `(diredp-number ((t (:foreground "yellow3"))))
+   `(diredp-number ((t (:foreground "DodgerBlue2" :weight bold))))
 
 
    `(django-tag-face ((t (:background "#092e20" :box (:line-width 1 :color "grey22")))) t)
@@ -131,10 +134,10 @@
    `(magit-section-highlight ((t (:background "grey20"))))
    `(magit-diff-context ((t (:foreground "grey70"))))
    `(magit-diff-context-highlight ((t (:background "grey20" :foreground "grey70"))))
-   `(magit-diff-added ((t (:background "#335533" :foreground "#ddffdd"))))
+   `(magit-diff-added ((t (:background "SpringGreen4" :foreground "#ddffdd"))))
    `(magit-diff-added-highlight ((t (:background "sea green" :foreground "#cceecc"))))
-   `(magit-diff-removed ((t (:background "#553333" :foreground "#ffdddd"))))
-   `(magit-diff-removed-highlight ((t (:background "brown" :foreground "#eecccc"))))
+   `(magit-diff-removed ((t (:background "brown" :foreground "#ffdddd"))))
+   `(magit-diff-removed-highlight ((t (:background "firebrick" :foreground "#eecccc"))))
 
 
    ;; Messages

@@ -153,8 +153,9 @@
   :bind (("M-y" . helm-show-kill-ring))
   :config
   (require 'helm-config)
-  (global-set-key [remap occur] #'helm-occur)
-  (setq helm-buffers-fuzzy-matching t))
+  (setq helm-buffers-fuzzy-matching t)
+  (with-eval-after-load 'counsel
+    (define-key helm-command-prefix (kbd "c") #'counsel-colors-emacs)))
 
 
 (provide 'setup-completions)
