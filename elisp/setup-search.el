@@ -34,10 +34,10 @@
   :bind ("C-c j u" . link-hint-open-link)
   :demand
   :config
-  (defun my/set-link-hint-key ()
+  (defun nsv/set-link-hint-key ()
     (local-set-key "o" #'link-hint-open-link))
-  (add-hook 'package-menu-mode-hook #'my/set-link-hint-key)
-  (add-hook 'help-mode-hook #'my/set-link-hint-key))
+  (add-hook 'package-menu-mode-hook #'nsv/set-link-hint-key)
+  (add-hook 'help-mode-hook #'nsv/set-link-hint-key))
 
 ;; I gave it a try. looks pretty cool.
 (use-package anzu

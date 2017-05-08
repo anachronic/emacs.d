@@ -17,14 +17,14 @@
   :config
   (setq markdown-preview-style "http://thomasf.github.io/solarized-css/solarized-light.min.css"))
 
-(defun my/add-markdown-preview-key ()
+(defun nsv/add-markdown-preview-key ()
   "Set a new key for markdown-preview-mode."
   (with-eval-after-load 'markdown-mode
     (with-eval-after-load 'markdown-preview-mode
       (local-set-key (kbd "C-c C-c C-p") #'markdown-preview-mode)
       (local-set-key (kbd "C-c C-c C-o") #'markdown-preview-open-browser))))
 
-(add-hook 'markdown-mode-hook #'my/add-markdown-preview-key)
+(add-hook 'markdown-mode-hook #'nsv/add-markdown-preview-key)
 (add-hook 'markdown-mode-hook #'auto-fill-mode)
 (add-hook 'gfm-mode-hook #'auto-fill-mode)
 (add-hook 'gfm-mode-hook #'visual-line-mode)

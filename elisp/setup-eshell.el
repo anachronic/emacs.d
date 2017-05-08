@@ -31,9 +31,9 @@
 
 ;; Need to set the same value for exec-path and eshell-path-env
 (add-hook 'eshell-mode-hook (lambda ()
-                              (let ((my/userpath (getenv "PATH")))
-                                (setq eshell-path-env my/userpath)
-                                (setq exec-path (s-split ":" my/userpath)))))
+                              (let ((nsv/userpath (getenv "PATH")))
+                                (setq eshell-path-env nsv/userpath)
+                                (setq exec-path (s-split ":" nsv/userpath)))))
 
 (add-hook 'eshell-mode-hook #'company-mode)
 

@@ -18,17 +18,17 @@
   (latex-preview-pane-enable))
 
 ;; The following doesn't play nice with use-package. Whatever.
-(defun my/add-preview-pane-toggle ()
+(defun nsv/add-preview-pane-toggle ()
   "Add latex preview pane keybinding."
   (local-set-key (kbd "C-x p") 'latex-preview-pane-mode))
-(add-hook 'LaTeX-mode-hook 'my/add-preview-pane-toggle)
+(add-hook 'LaTeX-mode-hook 'nsv/add-preview-pane-toggle)
 
 ;; Let's try Flyspell with TeX documents.
-(defun my/add-flyspell ()
+(defun nsv/add-flyspell ()
   "Add Flyspell to a buffer and diminish it to FlyS."
   (flyspell-mode)
   (diminish 'flyspell-mode "FlyS"))
-(add-hook 'LaTeX-mode-hook #'my/add-flyspell)
+(add-hook 'LaTeX-mode-hook #'nsv/add-flyspell)
 
 ;; Enable narrowing. God disabled commands are annoying.
 (put 'LaTeX-narrow-to-environment 'disabled nil)

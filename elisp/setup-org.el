@@ -13,8 +13,8 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; Let's load our agenda file(s)
-(defvar my/org-agenda-files)
-(setq my/org-agenda-files '("~/Dropbox/agenda.org"
+(defvar nsv/org-agenda-files)
+(setq nsv/org-agenda-files '("~/Dropbox/agenda.org"
                             "~/Dropbox/orgfiles/gcal.org"))
 
 ;; reveal.js stuff Thanks to Mike Zamansky
@@ -56,7 +56,7 @@
   ;; M-j seems better than C-j for org-return-indent...
   (define-key org-mode-map (kbd "M-j") 'org-return-indent)
 
-  (setq org-agenda-files my/org-agenda-files)
+  (setq org-agenda-files nsv/org-agenda-files)
   ;; org keywords. I like having more than the usual TODO/
   (setq org-todo-keywords
         '((sequence "TODO(t)" "IN-PROGRESS(p!)" "|" "DONE(d!)" "CANCELLED(c@)" "WAITING(w@/!)"))))

@@ -26,11 +26,11 @@
 (add-hook 'c-mode-common-hook 'helm-gtags-mode)
 
 ;; I hate abbrev when coding c-like languages!!
-(defun my/abbrev-gtfo ()
+(defun nsv/abbrev-gtfo ()
   "Get rid of abbrev."
   (abbrev-mode -1))
 
-(add-hook 'c-mode-common-hook 'my/abbrev-gtfo)
+(add-hook 'c-mode-common-hook 'nsv/abbrev-gtfo)
 
 ;; I'll set the default style to k&r.
 ;; we might want to try out linux. We'll see
@@ -74,31 +74,31 @@
   :ensure t)
 
 
-(defun my/add-irony-to-company ()
+(defun nsv/add-irony-to-company ()
   "Setup company to work with irony mode."
   (setq-local company-backends (delete 'company-semantic company-backends))
   (add-to-list 'company-backends '(company-irony company-irony-c-headers)))
 
-(add-hook 'c-mode-hook 'my/add-irony-to-company)
-(add-hook 'c++-mode-hook 'my/add-irony-to-company)
+(add-hook 'c-mode-hook 'nsv/add-irony-to-company)
+(add-hook 'c++-mode-hook 'nsv/add-irony-to-company)
 
 
-(defun my/add-header-jump ()
+(defun nsv/add-header-jump ()
   "Add a header jump key binding."
   (local-set-key (kbd "C-c j h") 'ff-find-other-file))
 
-(add-hook 'c-mode-common-hook 'my/add-header-jump)
+(add-hook 'c-mode-common-hook 'nsv/add-header-jump)
 
 
 ;; Key chords for C/C++
 (require 'key-chord)
 
 ;; Put every key chord for C mode into this function
-(defun my/add-keychords-c-mode ()
+(defun nsv/add-keychords-c-mode ()
   "Add ;; keystroke to mean insert semicolon at the end of the line."
   (key-chord-define-local ";;" "\C-e;"))
 
-(add-hook 'c-mode-common-hook 'my/add-keychords-c-mode)
+(add-hook 'c-mode-common-hook 'nsv/add-keychords-c-mode)
 
 
 (provide 'c-programming)

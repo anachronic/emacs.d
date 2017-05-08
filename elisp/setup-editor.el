@@ -140,12 +140,12 @@ is already narrowed."
 (electric-pair-mode)
 
 ;; Indent the whole buffer
-(defun my/indent-whole-buffer ()
+(defun nsv/indent-whole-buffer ()
   "Indent the whole buffer according to the defined style."
   (interactive)
   (save-excursion (indent-region (point-min) (point-max) nil)))
 
-(global-set-key (kbd "C-c TAB") 'my/indent-whole-buffer)
+(global-set-key (kbd "C-c TAB") 'nsv/indent-whole-buffer)
 
 ;; =======Inserting lines, duplicating, etcetera.=======
 ;; This one comes directly from ha's config:
@@ -159,7 +159,7 @@ is already narrowed."
 (global-set-key (kbd "M-RET") 'newline-for-code)
 
 ;; C-o's default behaviour is kind of poor, so lets simulate vim's o.
-(defun my/open-line-above ()
+(defun nsv/open-line-above ()
   "Insert a newline before the current line and leave point on it."
   (interactive)
   (push-mark)
@@ -168,7 +168,7 @@ is already narrowed."
   (forward-line -1)
   (indent-for-tab-command))
 
-(global-set-key (kbd "C-o") 'my/open-line-above)
+(global-set-key (kbd "C-o") 'nsv/open-line-above)
 
 ;; I have been using M-m lately, and I have to say I'm able to remember
 ;; stuff rather easily. But it is always better when stuff gets simpler.
@@ -204,7 +204,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; This should be a macro, but let's define it as a function
 ;; I want it to behave exactly like PyCharm or IntelliJ Idea's C-d
-(defun my/duplicate-the-line ()
+(defun nsv/duplicate-the-line ()
   "Duplicate the current line below and set the point in the same column in the new line."
   (interactive)
   (save-excursion
@@ -216,13 +216,13 @@ point reaches the beginning or end of the buffer, stop there."
     (yank))
   (forward-line 1))
 
-(global-set-key (kbd "C-c d") 'my/duplicate-the-line)
+(global-set-key (kbd "C-c d") 'nsv/duplicate-the-line)
 
 ;; My version of transpose lines. While emacs' transpose lines does the job,
 ;; I like the IntelliJ/Pycharm implementation better. It's cleaner. So let's
 ;; do that
 
-(defun my/move-line-up ()
+(defun nsv/move-line-up ()
   "Transpose the current line with the one above leaving the cursor in the first line."
   (interactive)
   (let ((col (current-column)))
@@ -232,7 +232,7 @@ point reaches the beginning or end of the buffer, stop there."
     (forward-char col)))
 
 
-(defun my/move-line-down ()
+(defun nsv/move-line-down ()
   "Transpose the current line with the one below leaving the cursor in the first line."
   (interactive)
   (let ((col (current-column)))
@@ -242,12 +242,12 @@ point reaches the beginning or end of the buffer, stop there."
     (move-beginning-of-line 1)
     (forward-char col)))
 
-(global-set-key (kbd "M-P") 'my/move-line-up)
-(global-set-key (kbd "M-N") 'my/move-line-down)
+(global-set-key (kbd "M-P") 'nsv/move-line-up)
+(global-set-key (kbd "M-N") 'nsv/move-line-down)
 
 ;; Kill to beginning of line
 ;; not sure about binding this one yet.
-(defun my/kill-to-line-beg ()
+(defun nsv/kill-to-line-beg ()
   "Kill to beginning of line."
   (interactive)
   (set-mark-command nil)
@@ -289,7 +289,7 @@ point reaches the beginning or end of the buffer, stop there."
   ("l" forward-char "forward")
   ("dd" kill-whole-line "kill the whole line")
   ("de" kill-line "kill until the end of the line")
-  ("da" my/kill-to-line-beg "kill until beginning of line")
+  ("da" nsv/kill-to-line-beg "kill until beginning of line")
   ("a" beginning-of-line "beginning of line")
   ("e" end-of-line "end of line")
   ("x" delete-char "kill char at point")

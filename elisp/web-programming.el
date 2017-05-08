@@ -27,7 +27,7 @@
 ;; This function should return t when chr is {, mode is web-mode
 ;; and the next character _before_ point (without spaces and/or newlines)
 ;; is __NOT__ a closing paren
-(defun my/web-mode-before-function-p (chr)
+(defun nsv/web-mode-before-function-p (chr)
   "True if CHR is {, mode is web-mode and previous character is NOT a closing paren."
   (if (not (eq major-mode 'web-mode))
       nil
@@ -39,7 +39,7 @@
                      ")")))))
 
 (setq electric-pair-inhibit-predicate
-      'my/web-mode-before-function-p)
+      'nsv/web-mode-before-function-p)
 
 ;; A great package. Not only does it complete HTML stuff, but it also
 ;; displays documentation with company-quickhelp
@@ -50,20 +50,20 @@
 (use-package ac-html-bootstrap
   :ensure t)
 
-(defun my/add-company-backends-webmode ()
+(defun nsv/add-company-backends-webmode ()
   "Add Tern, webmode and bootstrap backends to company."
   (setq-local company-backends company-backends)
   (add-to-list 'company-backends 'company-web-html)
   (add-to-list 'company-backends 'company-tern)
   (company-web-bootstrap+))
 
-(add-hook 'web-mode-hook 'my/add-company-backends-webmode)
+(add-hook 'web-mode-hook 'nsv/add-company-backends-webmode)
 
-(defun my/add-keychords-web-mode ()
+(defun nsv/add-keychords-web-mode ()
   "Add ;; keystroke to mean insert semicolon at the end of the line."
   (key-chord-define-local ";;" "\C-e;"))
 
-(add-hook 'web-mode-hook 'my/add-keychords-web-mode)
+(add-hook 'web-mode-hook 'nsv/add-keychords-web-mode)
 
 ;; Emmet!!!
 (use-package emmet-mode

@@ -7,8 +7,8 @@
 
 ;; Let's define a blacklist
 
-(defvar my/recentf-blacklist)
-(setq my/recentf-blacklist
+(defvar nsv/recentf-blacklist)
+(setq nsv/recentf-blacklist
       '("company-statistics-cache.el"
         "-autoloads.el"
         ".elfeed/index"))
@@ -17,19 +17,19 @@
 ;; Get rid of the files we don't want to see in the recentf list
 (require 'dash)
 
-(defun my/recentf-ban-from-blacklist ()
-  "Remove all matching substrings in my/recentf-blacklist from recentf."
+(defun nsv/recentf-ban-from-blacklist ()
+  "Remove all matching substrings in nsv/recentf-blacklist from recentf."
   (mapc
    (lambda (banned-elem)
      (setq recentf-list
            (-filter (lambda (total-elem)
                       (not (string-match-p banned-elem total-elem)))
                     recentf-list)))
-   my/recentf-blacklist))
+   nsv/recentf-blacklist))
 
-(my/recentf-ban-from-blacklist)
+(nsv/recentf-ban-from-blacklist)
 
-(add-hook 'kill-emacs-hook 'my/recentf-ban-from-blacklist)
+(add-hook 'kill-emacs-hook 'nsv/recentf-ban-from-blacklist)
 
 (provide 'setup-recentf)
 ;;; setup-recentf.el ends here

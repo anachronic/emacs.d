@@ -9,26 +9,26 @@
 ;; So i was using kill-this-buffer for C-x k. But sometimes I don't really
 ;; want to kill the buffer, I just want it to get it out of the way.
 ;; So let's bury the buffer with the same key when a prefix is specified.
-(defun my/kill-buffer-or-bury-dwim (&optional arg)
+(defun nsv/kill-buffer-or-bury-dwim (&optional arg)
   "If ARG, bury buffer, otherwise kill the buffer."
   (interactive "P")
   (if arg
       (bury-buffer)
     (kill-this-buffer)))
 
-(define-key ctl-x-map (kbd "k") 'my/kill-buffer-or-bury-dwim)
+(define-key ctl-x-map (kbd "k") 'nsv/kill-buffer-or-bury-dwim)
 
 ;; According to http://oremacs.com/2015/02/18/undo-nonsense/, find-file-read-only
 ;; is a trashy command. Whatever. Who cares about useless commands, we don't even use
 ;; the useful ones sometimes, right?
 ;; That's right. But hold on. This trashy command is bound to C-x C-r. Let's get
 ;; rid of it and bind it to a useful command: revert buffer
-(defun my/revert-buffer ()
+(defun nsv/revert-buffer ()
   "Revert buffer without asking if you really want to."
   (interactive)
   (revert-buffer nil t))
 
-(global-set-key (kbd "C-x C-r") #'my/revert-buffer)
+(global-set-key (kbd "C-x C-r") #'nsv/revert-buffer)
 
 ;; I've been burying buffers like crazy lately because it feels more
 ;; natural than killing them. However, I'd like to have the
@@ -36,7 +36,7 @@
 ;; buffer with a prefix argument. This will override quoted insert,
 ;; but that's ok since i hardly ever use it. Let's just rebind that to
 ;; C-c q
-(defun my/bury-buffer-dwim (arg)
+(defun nsv/bury-buffer-dwim (arg)
   "Bury current buffer, if ARG is not nil, bury other-window's buffer instead."
   (interactive "P")
   (if arg
@@ -46,7 +46,7 @@
         (other-window -1))
     (bury-buffer)))
 
-(global-set-key (kbd "C-q") 'my/bury-buffer-dwim)
+(global-set-key (kbd "C-q") 'nsv/bury-buffer-dwim)
 (global-set-key (kbd "C-c q") 'quoted-insert)
 
 
@@ -61,7 +61,7 @@
 ;; So if there's more than one frame active. Just close it
 ;; If there's only one, shut down emacs. And hell, don't ask
 ;; to save buffers, just do it.
-(defun my/emacs-close-dwim ()
+(defun nsv/emacs-close-dwim ()
   "Close current frame if there's more than one active.
 Otherwise exit Emacs."
   (interactive)
@@ -70,7 +70,7 @@ Otherwise exit Emacs."
     (save-buffers-kill-emacs)))
 
 ;; rebind it to C-x C-c
-(define-key ctl-x-map (kbd "C-c") 'my/emacs-close-dwim)
+(define-key ctl-x-map (kbd "C-c") 'nsv/emacs-close-dwim)
 
 ;; use ibuffer instead of default C-x C-b
 (define-key ctl-x-map (kbd "C-b") 'ibuffer)

@@ -26,21 +26,21 @@
   :after (company tern js2-mode)
   :defer t
   :config
-  (defun my/add-tern-company ()
+  (defun nsv/add-tern-company ()
     (setq-local company-backends company-backends)
     (add-to-list 'company-backends 'company-tern))
-  (add-hook 'js2-mode-hook #'my/add-tern-company))
+  (add-hook 'js2-mode-hook #'nsv/add-tern-company))
 
 
 ;; Been using this one for work lately
 (use-package json-reformat
   :ensure t)
 
-(defun my/add-keychords-js2-mode ()
+(defun nsv/add-keychords-js2-mode ()
   "Add ;; keystroke to mean insert semicolon at the end of the line."
   (key-chord-define-local ";;" "\C-e;"))
 
-(add-hook 'js2-mode-hook 'my/add-keychords-js2-mode)
+(add-hook 'js2-mode-hook 'nsv/add-keychords-js2-mode)
 
 ;; javascript is a 2-spaces indenting language.
 (add-hook 'js2-mode-hook #'indent-guide-mode)

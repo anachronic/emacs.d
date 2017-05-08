@@ -14,7 +14,7 @@
 
 ;; Jump to directory: I'd like to use direx if there's a projectile
 ;; session going on and fallback to dired if there's none.
-(defun my/directory-jump ()
+(defun nsv/directory-jump ()
   "Jump to direx on project root if a project is active, dired otherwise."
   (interactive)
   (if (projectile-project-p)
@@ -22,7 +22,7 @@
     (dired-jump)))
 
 ;; Jump to dired pointing at current direx file
-(defun my/dired-jump-from-direx ()
+(defun nsv/dired-jump-from-direx ()
   "Jump from direx to dired."
   (interactive)
   (let ((path (aref (direx:item-tree (direx:item-at-point!)) 2)))
@@ -31,14 +31,14 @@
 (with-eval-after-load 'direx
   (define-key direx:direx-mode-map (kbd "b") #'direx:collapse-current)
   ;; I'd also like to go to dired-mode from direx
-  (define-key direx:direx-mode-map (kbd "C-x C-j") #'my/dired-jump-from-direx)
+  (define-key direx:direx-mode-map (kbd "C-x C-j") #'nsv/dired-jump-from-direx)
   (define-key direx:direx-mode-map (kbd "s") #'counsel-git))
 
 ;; NeoTree could *sometimes* be better than Dired.
 (use-package neotree
   :ensure t
   :config
-  (defun my/neotree-toggle ()
+  (defun nsv/neotree-toggle ()
     "If there's a projectile project going on, open neotree at project root."
     (interactive)
     (if (neo-global--window-exists-p)
@@ -53,8 +53,8 @@
             (neotree-dir this-project)
           (when this-file
             (neotree-dir this-path))))))
-  (global-set-key (kbd "<f7>") #'my/neotree-toggle)
-  (define-key meta-m-map (kbd "M-d") #'my/neotree-toggle))
+  (global-set-key (kbd "<f7>") #'nsv/neotree-toggle)
+  (define-key meta-m-map (kbd "M-d") #'nsv/neotree-toggle))
 
 ;; This package is cool, I like coloring stuff around
 (use-package dired-k

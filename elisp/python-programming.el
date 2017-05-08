@@ -13,10 +13,10 @@
   :ensure t
   :after anaconda-mode
   :config
-  (defun my/add-company-anaconda ()
+  (defun nsv/add-company-anaconda ()
     (setq-local company-backends company-backends)
     (add-to-list 'company-backends 'company-anaconda))
-  (add-hook 'python-mode-hook #'my/add-company-anaconda))
+  (add-hook 'python-mode-hook #'nsv/add-company-anaconda))
 
 ;; Since linters are more clever than me at formatting code, let's use
 ;; a tool for that, but let's not be too aggresive, just bind it to a
@@ -24,9 +24,9 @@
 (use-package py-yapf
   :ensure t
   :config
-  (defun my/redef-indent-python ()
+  (defun nsv/redef-indent-python ()
     (local-set-key (kbd "C-c TAB") #'py-yapf-buffer))
-  (add-hook 'python-mode-hook #'my/redef-indent-python))
+  (add-hook 'python-mode-hook #'nsv/redef-indent-python))
 
 ;; I liked the pyvenv tool from Elpy. So let's use that. Also, I
 ;; pretty much use (and will continue to do so) virtualenvwrapper.sh,
@@ -35,10 +35,10 @@
 (use-package pyvenv
   :ensure t
   :config
-  (defun my/set-pyvenv-workon ()
+  (defun nsv/set-pyvenv-workon ()
     (local-set-key (kbd "C-c C-d") #'pyvenv-deactivate)
     (local-set-key (kbd "C-c C-w") #'pyvenv-workon))
-  (add-hook 'python-mode-hook #'my/set-pyvenv-workon))
+  (add-hook 'python-mode-hook #'nsv/set-pyvenv-workon))
 
 ;; The warning message is very annoying, let's get rid of it
 ;; Solution found at:
@@ -60,7 +60,7 @@
 
 ;; Let's get rid of the region/buffer keybindings by making -yet
 ;; again- a dwim command. Bind it to C-c C-c
-(defun my/python-shell-send-dwim (&optional send-main msg)
+(defun nsv/python-shell-send-dwim (&optional send-main msg)
   "If region is active, send region to buffer, otherwise send the entire buffer.
 The SEND-MAIN and MSG arguments are the same as in python-shell-send-region and
 python-shell-send-buffer."
@@ -90,10 +90,10 @@ python-shell-send-buffer."
 (defun python-shell-send-dwim (&optional send-main msg)
   (interactive (list current-prefix-arg t))
   (condition-case nil
-      (call-interactively 'my/python-shell-send-dwim)
+      (call-interactively 'nsv/python-shell-send-dwim)
     (error (progn
              (run-python (python-shell-calculate-command) nil t)
-             (call-interactively 'my/python-shell-send-dwim)))))
+             (call-interactively 'nsv/python-shell-send-dwim)))))
 
 ;; There's a great approach to the "run project" problem in Spacemacs
 ;; that I thought is very valuable. Just set a hotkey to run the
@@ -118,7 +118,7 @@ python-shell-send-buffer."
 ;; C-c C-z (which is python-shell-switch-to-shell) without having to
 ;; C-c C-p before. If it's not there, well, start it, why wouldn't we
 ;; do that?
-(defun my/python-switch-to-shell ()
+(defun nsv/python-switch-to-shell ()
   "Switch to Python shell in other window, create a Python shell if it doesn't exist."
   (interactive)
   (condition-case nil
@@ -131,7 +131,7 @@ python-shell-send-buffer."
 ;; function for it. It's really hard to infer how one should do the
 ;; indentation. This functions assumes that you hit C-y at the level
 ;; you want.
-(defun my/python-yank (arg)
+(defun nsv/python-yank (arg)
   "Yank and reindent python code, with ARG, dont reindent."
   (interactive "P")
   (yank)
@@ -148,12 +148,12 @@ python-shell-send-buffer."
 
 
 ;; Add tweaks to standard python.el defined in this file.
-(defun my/python-rebinds ()
+(defun nsv/python-rebinds ()
   "Add the functions defined in python-programming.el to Python buffer locally."
   ;; Basic commands
-  (define-key python-mode-map (kbd "C-y") #'my/python-yank)
+  (define-key python-mode-map (kbd "C-y") #'nsv/python-yank)
   ;; Shell related commands
-  (local-set-key (kbd "C-c C-z") #'my/python-switch-to-shell)
+  (local-set-key (kbd "C-c C-z") #'nsv/python-switch-to-shell)
   (local-set-key (kbd "C-c C-r") #'spacemacs/python-execute-file)
   (local-set-key (kbd "C-c C-c") #'python-shell-send-dwim)
   ;; I don't know why these are not defaults
@@ -162,16 +162,16 @@ python-shell-send-buffer."
   (local-set-key (kbd "C-M-a") #'python-nav-backward-defun)
   (local-set-key (kbd "C-M-e") #'python-nav-forward-defun))
 
-(add-hook 'python-mode-hook #'my/python-rebinds)
+(add-hook 'python-mode-hook #'nsv/python-rebinds)
 
 ;; Debugging
-(defun my/python-debug ()
+(defun nsv/python-debug ()
   "Insert import ipdb; ipdb.set_trace() in the buffer."
   (interactive)
   (insert "import ipdb; ipdb.set_trace()")
   (newline-and-indent))
 
-(define-key python-mode-map (kbd "C-c C-e") 'my/python-debug)
+(define-key python-mode-map (kbd "C-c C-e") 'nsv/python-debug)
 
 ;; Try out fakegir
 (when (file-exists-p "~/.cache/fakegir")

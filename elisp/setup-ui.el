@@ -74,7 +74,7 @@
 
 ;; Some bindings from https://www.masteringemacs.org/article/my-emacs-keybindings
 ;; Let's combine it with window-numbering
-(defun my/other-window (arg)
+(defun nsv/other-window (arg)
   "Switch to ARGth window (as in window-numbered), if not arg, regular `other-window'."
   (interactive "P")
   (if (or (not arg)
@@ -84,13 +84,13 @@
       (other-window 1)
     (select-window-by-number arg)))
 
-(global-set-key (kbd "M-o") 'my/other-window)
+(global-set-key (kbd "M-o") 'nsv/other-window)
 
 ;; I want to be able to scroll without moving the point source:
 ;; https://www.emacswiki.org/emacs/Scrolling Actually, I'll make these
 ;; interactive "P", so that C-u prefix will behave like a normal C-v
 ;; and same with M-v
-(defun my/scrolldown (n)
+(defun nsv/scrolldown (n)
   "Scroll down N lines without moving the point.
 
 With an unnumbered prefix, do a normal call to scroll up command."
@@ -101,7 +101,7 @@ With an unnumbered prefix, do a normal call to scroll up command."
     (dotimes (i n)
       (scroll-up-command 1))))
 
-(defun my/scrollup (n)
+(defun nsv/scrollup (n)
   "Scroll up N lines without moving the point.
 
 With unnumbered prefix do normal call to scroll down command."
@@ -112,8 +112,8 @@ With unnumbered prefix do normal call to scroll down command."
     (dotimes (i n)
       (scroll-down-command 1))))
 
-(global-set-key (kbd "C-v") 'my/scrolldown)
-(global-set-key (kbd "M-v") 'my/scrollup)
+(global-set-key (kbd "C-v") 'nsv/scrolldown)
+(global-set-key (kbd "M-v") 'nsv/scrollup)
 
 ;; This one was recommended by Steve Purcell. Looked pretty good
 ;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY

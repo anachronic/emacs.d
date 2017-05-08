@@ -61,14 +61,14 @@
   :after (counsel projectile)
   :bind (("C-c a" . counsel-projectile-ag))
   :config
-  (defun my/switch-buffer-maybe-on-project ()
+  (defun nsv/switch-buffer-maybe-on-project ()
     "Call counsel-projectile-switch-to-buffer if on project, ivy-switch-buffer otherwise"
     (interactive)
     (if (projectile-project-p)
         (call-interactively 'counsel-projectile-switch-to-buffer)
       (call-interactively 'ivy-switch-buffer)))
-  (global-set-key (kbd "C-S-m") #'my/switch-buffer-maybe-on-project)
-  (define-key meta-m-map (kbd "M-m") #'my/switch-buffer-maybe-on-project)
+  (global-set-key (kbd "C-S-m") #'nsv/switch-buffer-maybe-on-project)
+  (define-key meta-m-map (kbd "M-m") #'nsv/switch-buffer-maybe-on-project)
   (counsel-projectile-on))
 
 ;; I guess this can't hurt
@@ -97,7 +97,7 @@
   :after yasnippet
   :demand
   :config
-  (defun my/company-complete-if-only-one ()
+  (defun nsv/company-complete-if-only-one ()
     "Complete candidate if there's only one option, otherwise yas-expand"
     (interactive)
     (if (eq 1 company-candidates-length)
@@ -106,8 +106,8 @@
   (add-hook 'prog-mode-hook #'company-mode)
   (add-hook 'comint-mode-hook #'company-mode)
   (setq company-idle-delay 0.5)
-  (define-key company-active-map (kbd "TAB") #'my/company-complete-if-only-one)
-  (define-key company-active-map (kbd "<tab>") #'my/company-complete-if-only-one)
+  (define-key company-active-map (kbd "TAB") #'nsv/company-complete-if-only-one)
+  (define-key company-active-map (kbd "<tab>") #'nsv/company-complete-if-only-one)
   :diminish "comp"  ;; I'm really hating company in non-programming modes
   :bind (("C-S-<SPC>" . company-complete)))
 
