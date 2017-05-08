@@ -126,6 +126,13 @@
    `(jabber-chat-prompt-foreign ((t (:inherit custom-face-tag))))
    `(jabber-chat-prompt-local ((t (:inherit org-level-4))))
    `(jabber-roster-user-online ((t (:inherit font-lock-string-face))))
+
+   ;; latex
+   `(font-latex-sectioning-2-face ((t (:foreground "yellow" :weight bold :underline t))))
+   `(font-latex-sectioning-3-face ((t (:foreground "yellow" :weight bold :underline t))))
+   `(font-latex-sectioning-4-face ((t (:foreground "yellow" :weight bold :underline t))))
+
+
    `(lazy-highlight ((((class color) (min-colors 88) (background dark)) (:background "#483d8b" :foreground "white"))))
    `(link ((t (:foreground "#349b98" :underline t))))
    `(match ((((class color) (min-colors 88) (background dark)) (:background "SlateBlue4" :foreground "white"))))
