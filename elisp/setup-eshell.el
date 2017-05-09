@@ -29,6 +29,8 @@
               (concat (s-chop-prefix "export PATH=" (s-chop-suffix "$PATH" thestring))
                       (getenv "PATH"))))))
 
+(require 'eshell)
+
 ;; Need to set the same value for exec-path and eshell-path-env
 (add-hook 'eshell-mode-hook (lambda ()
                               (let ((nsv/userpath (getenv "PATH")))
@@ -124,22 +126,32 @@
   (interactive "p")
   (if (and (eolp) (looking-back eshell-prompt-regexp))
       (progn
-        (eshell-life-is-too-much) ; Why not? (eshell/exit)
-        (delete-window))
+        (eshell-life-is-too-much))
     (delete-forward-char arg)))
 
-(add-hook 'eshell-mode-hook (lambda ()
-                              (define-key eshell-mode-map (kbd "C-d")
-                                'ha/eshell-quit-or-delete-char)))
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (define-key eshell-mode-map (kbd "C-d")
+              'ha/eshell-quit-or-delete-char)))
 
 ;; Sometimes a shell is better...
 (define-key meta-m-map (kbd "s") #'shell)
 
-(add-hook 'eshell-preoutput-filter-functions
-          'ansi-color-filter-apply)
+;; Need color, mainly for python and shell coloring
+(use-package xterm-color
+  :ensure t
+  :config
+  ;; eshell color
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (setq xterm-color-preserve-properties t)))
 
-;; This is supposed to work with TRAMP and .authinfo.gpg
-(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+  (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+  (setq eshell-output-filter-functions '())
+
+  ;; comint color
+  (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
+  (setq comint-output-filter-functions '()))
 
 (provide 'setup-eshell)
 ;;; setup-eshell.el ends here
