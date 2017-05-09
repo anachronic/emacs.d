@@ -78,6 +78,9 @@ is already narrowed."
 ;; so I like replacing the region with stuff.
 (delete-selection-mode 1)
 
+;; Recenter positions
+(setq-default recenter-positions '(top middle bottom))
+
 ;; expand region. An *excellent* tool.
 (use-package expand-region
   :ensure t
