@@ -65,6 +65,12 @@ You're free to do **whatever** you want with these files with absolutely no rest
 I've taken a lot of ideas from other people's files. But have, for the most part, written the code myself.
 
 The big exceptions here are:
-* The file `setup-eshell.el` under the `elisp` directory. I literally copied it from [this](https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org) file, which is under Creative Commons License. I do want to thank Howard, because I have learned so much from his files, and that process has absolutely helped me understand more about Emacs.
+* The file `setup-shell.el` under the `elisp` directory. I copied the
+  majority of it
+  from
+  [this](https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org) file,
+  which is under Creative Commons License. I do want to thank Howard,
+  because I have learned so much from his files, and that process has
+  absolutely helped me understand more about Emacs.
 * The `snippets` directory, which i got from [here](https://github.com/AndreaCrotti/yasnippet-snippets). The license is pretty permissive, but I thought I should mention it since the majority of the snippets come from there.
 * The **ibuffer** configurations in `setup-ui.el` for `ibuffer` and `ibuffer-vc` as well as the Travis CI build scripts. I directly copied from [Steve Purcell's](https://github.com/purcell/emacs.d) repository. I got some ideas out if it too, but I mostly wrote the code myself and added my own customizations for those packages. Everything is commented in the files, though.

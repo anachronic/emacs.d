@@ -1,33 +1,14 @@
-;;; setup-eshell.el --- Set up eshell related stuff.
+;;; setup-shell.el --- Set up shell related stuff.
 ;;; Commentary:
 ;;;                This code is mainly a replica of the Howard Abrams' setup.
 ;;; Code:
 
-;; I don't mind putting this in here since I do use shell-pop with
-;; eshell
+;; Popping an eshell is pretty useful
 (use-package shell-pop
   :ensure t
   :demand
   :config
   (define-key meta-m-map (kbd "M-z") 'shell-pop))
-
-
-;; Set the PATH. Should determine between bash and zsh configs atm.
-(require 's)
-(setenv "PATH"
-        (let ((thepath (getenv "PATH"))
-              (thefile (cond ((file-exists-p "~/.zshrc") "~/.zshrc")
-                             ((file-exists-p "~/.bashrc") "~/.bashrc")
-                             (t ""))))
-          (if (s-equals? thefile "")
-              thepath
-            (let ((thestring
-                   (s-chomp (shell-command-to-string
-                             (concat "cat "
-                                     thefile
-                                     " | grep \"^[^#\]\" | grep \"export PATH\"")))))
-              (concat (s-chop-prefix "export PATH=" (s-chop-suffix "$PATH" thestring))
-                      (getenv "PATH"))))))
 
 (require 'eshell)
 
@@ -49,7 +30,7 @@
 ;; This part is entirely copied from Howard Abrams' config.
 ;; I'll make a reference in the README.md file.
 (defun curr-dir-git-branch-string (pwd)
-  "Returns current git branch as a string, or the empty string if PWD is not in a git repo (or the git command is not found)."
+  "Return current git branch as a string, or the empty string if PWD is not in a git repo (or the git command is not found)."
   (interactive)
   (when (and (eshell-search-path "git")
              (locate-dominating-file pwd ".git"))
@@ -153,5 +134,5 @@
   (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
   (setq comint-output-filter-functions '()))
 
-(provide 'setup-eshell)
-;;; setup-eshell.el ends here
+(provide 'setup-shell)
+;;; setup-shell.el ends here

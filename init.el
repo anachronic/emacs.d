@@ -105,8 +105,8 @@
 ;; Recentf config.
 (require 'setup-recentf)
 
-;; Eshell config.
-(require 'setup-eshell)
+;; Shell config
+(require 'setup-shell)
 
 ;; Elisp programming
 (require 'elisp-programming)
