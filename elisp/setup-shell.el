@@ -56,7 +56,7 @@
     (if (> (length p-lst) 2)
         (concat
          (mapconcat (lambda (elm) (if (zerop (length elm)) ""
-                                    (substring elm 0 1)))
+                               (substring elm 0 1)))
                     (butlast p-lst 2)
                     "/")
          "/"
@@ -133,6 +133,14 @@
   ;; comint color
   (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
   (setq comint-output-filter-functions '()))
+
+;; Exec path from shell. Mainly to get PATH out of my shell into
+;; eshell and whatnot
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
 
 (provide 'setup-shell)
 ;;; setup-shell.el ends here
