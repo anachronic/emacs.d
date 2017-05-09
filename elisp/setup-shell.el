@@ -128,11 +128,10 @@
               (setq xterm-color-preserve-properties t)))
 
   (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-  (setq eshell-output-filter-functions '())
+  ;; (setq eshell-output-filter-functions '())
 
   ;; comint color
-  (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter)
-  (setq comint-output-filter-functions '()))
+  (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter));; (setq comint-output-filter-functions '()))
 
 ;; Exec path from shell. Mainly to get PATH out of my shell into
 ;; eshell and whatnot
