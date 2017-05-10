@@ -139,7 +139,9 @@
   :ensure t
   :config
   (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
+    (exec-path-from-shell-initialize))
+  (setenv "SHELL" "/usr/bin/zsh")
+  (setenv "TERM" "xterm-256color"))
 
 (provide 'setup-shell)
 ;;; setup-shell.el ends here
