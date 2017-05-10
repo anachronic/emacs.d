@@ -12,12 +12,6 @@
 
 (require 'eshell)
 
-;; Need to set the same value for exec-path and eshell-path-env
-(add-hook 'eshell-mode-hook (lambda ()
-                              (let ((nsv/userpath (getenv "PATH")))
-                                (setq eshell-path-env nsv/userpath)
-                                (setq exec-path (s-split ":" nsv/userpath)))))
-
 (add-hook 'eshell-mode-hook #'company-mode)
 
 ;; scroll on input
@@ -128,10 +122,9 @@
               (setq xterm-color-preserve-properties t)))
 
   (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-  ;; (setq eshell-output-filter-functions '())
 
   ;; comint color
-  (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter));; (setq comint-output-filter-functions '()))
+  (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter))
 
 ;; Exec path from shell. Mainly to get PATH out of my shell into
 ;; eshell and whatnot
@@ -141,7 +134,16 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize))
   (setenv "SHELL" "/usr/bin/zsh")
-  (setenv "TERM" "xterm-256color"))
+
+  ;; jesus this was horrible to track
+  ;; http://chat.stackexchange.com/rooms/30591/discussion-between-tom-hunt-and-random832
+  (setenv "COLORTERM" "rxvt"))
+
+;; Struggled until I found
+;; http://stackoverflow.com/questions/13763912/emacs-how-to-change-some-colors-in-m-x-shell
+(setq ansi-color-names-vector ["#657b83" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"])
+(setq ansi-color-map (ansi-color-make-color-map))
+
 
 (provide 'setup-shell)
 ;;; setup-shell.el ends here
