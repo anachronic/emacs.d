@@ -272,6 +272,7 @@
    `(erc-button ((t (:foreground "DeepSkyBlue" :underline t :weight bold))))
    `(erc-notice-face ((t (:foreground "DarkSlateBlue"))))
    `(erc-timestamp-face ((t (:foreground "orange red" :weight bold))))
+   `(erc-input-face ((t (:foreground "DarkTurquoise"))))
 
    ;; Hydra faces
    `(hydra-face-red ((t (:foreground "#f44256" :weight bold))))
