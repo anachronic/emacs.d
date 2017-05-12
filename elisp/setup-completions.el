@@ -46,7 +46,6 @@
   :demand
   :bind (("C-." . counsel-imenu)
          ("C-c g" . counsel-git-grep)
-         ("C-S-p" . counsel-git)
          ("M-x" . counsel-M-x))
   :config
   ;; Need these key bindings for terminals
@@ -60,7 +59,8 @@
 (use-package counsel-projectile
   :ensure t
   :after (counsel projectile)
-  :bind (("C-c a" . counsel-projectile-ag))
+  :bind (("C-c a" . counsel-projectile-ag)
+         ("C-S-p" . counsel-projectile-find-file))
   :config
   (defun nsv/switch-buffer-maybe-on-project ()
     "Call counsel-projectile-switch-to-buffer if on project, ivy-switch-buffer otherwise"
