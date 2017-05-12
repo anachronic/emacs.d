@@ -86,30 +86,46 @@
 (global-set-key (kbd "M-o") 'nsv/other-window)
 
 ;; I want to be able to scroll without moving the point source:
-;; https://www.emacswiki.org/emacs/Scrolling Actually, I'll make these
-;; interactive "P", so that C-u prefix will behave like a normal C-v
-;; and same with M-v
+;; https://www.emacswiki.org/emacs/Scrolling
+
+;; First, define a variable that decides if movement is per line or
+;; per "page"
+(defvar nsv/scroll-per-line t
+  "Set to t if scroll should be per line instead of per page.")
+
+;; The next 2 functions will default scrolling to 1 line per key
+;; hit. Calling with unnumbered prefix will change their scrolling
+;; style to page/line depending on the previous value.
 (defun nsv/scrolldown (n)
   "Scroll down N lines without moving the point.
 
-With an unnumbered prefix, do a normal call to scroll up command."
+With an unnumbered prefix, toggle between scrolling style."
   (interactive "P")
-  (if (and n (listp n))
-      (scroll-up-command)
-    (when (not n) (setq n 1))
-    (dotimes (i n)
-      (scroll-up-command 1))))
+  (when (and n (listp n))
+    (setq nsv/scroll-per-line (not nsv/scroll-per-line)))
+  (if nsv/scroll-per-line
+      (progn
+        (when (or (listp n) (not n))
+          (setq n 1))
+        (dotimes (i n)
+          (scroll-up-command 1)))
+    (scroll-up-command)))
 
 (defun nsv/scrollup (n)
   "Scroll up N lines without moving the point.
 
-With unnumbered prefix do normal call to scroll down command."
+With an unnumbered prefix, toggle between scrolling style."
   (interactive "P")
-  (if (and n (listp n))
-      (scroll-down-command)
-    (when (not n) (setq n 1))
-    (dotimes (i n)
-      (scroll-down-command 1))))
+  (when (and n (listp n))
+    (setq nsv/scroll-per-line (not nsv/scroll-per-line)))
+  (if nsv/scroll-per-line
+      (progn
+        (when (or (listp n) (not n))
+          (setq n 1))
+        (dotimes (i n)
+          (scroll-down-command 1)))
+    (scroll-down-command)))
+
 
 (global-set-key (kbd "C-v") 'nsv/scrolldown)
 (global-set-key (kbd "M-v") 'nsv/scrollup)
