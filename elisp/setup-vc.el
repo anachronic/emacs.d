@@ -49,7 +49,9 @@
 (use-package diff-hl
   :ensure t
   :config
-  (add-hook 'prog-mode-hook #'turn-on-diff-hl-mode))
+  (add-hook 'prog-mode-hook #'turn-on-diff-hl-mode)
+  (with-eval-after-load 'magit
+    (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
 
 (provide 'setup-vc)
 ;;; setup-vc.el ends here
