@@ -27,7 +27,7 @@
                                  " [-]")))
   (defun projectile-magit-action ()
     "Switch to magit status action when invoking projectile."
-    (magit-status (projectile-project-root)))
+    (magit-status-internal (projectile-project-root)))
   (setq projectile-switch-project-action 'projectile-magit-action)
   (global-set-key (kbd "C-S-o") 'projectile-switch-project)
   ;; Need the following for terminal Emacs

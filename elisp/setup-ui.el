@@ -137,6 +137,7 @@ With an unnumbered prefix, toggle between scrolling style."
   :after magit
   :config
   (fullframe magit-status magit-mode-quit-window)
+  (fullframe magit-status-internal magit-mode-quit-window)
   (fullframe ibuffer ibuffer-quit)
   (fullframe package-list-packages quit-window)
   (fullframe list-packages quit-window))
