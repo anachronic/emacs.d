@@ -51,10 +51,14 @@
 
 
 ;; Frame commands
-(global-set-key (kbd "C-c n") 'make-frame)
-
-;; Switch frames.
+(global-set-key (kbd "C-`") 'other-frame)
 (global-set-key (kbd "C-c o") 'other-frame)
+
+(global-set-key (kbd "C-c n")
+                (lambda ()
+                  (interactive)
+                  (make-frame)
+                  (other-frame)))
 
 ;; emacs-close-dwim
 ;; I want to C-x C-c out of a frame without closing emacs.
