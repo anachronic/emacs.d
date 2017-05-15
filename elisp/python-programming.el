@@ -87,6 +87,10 @@ python-shell-send-buffer."
 ;; with that. I'd rather not have to hit C-c C-p before C-c. Elpy
 ;; really got a lot of this right.
 (defun python-shell-send-dwim (&optional send-main msg)
+  "Send the current region or buffer to shell.
+
+Start the shell if it's not up, SEND-MAIN and MSG are the same
+arguments that `nsv/python-shell-swnd-dwim' takes."
   (interactive (list current-prefix-arg t))
   (condition-case nil
       (call-interactively 'nsv/python-shell-send-dwim)
@@ -99,7 +103,9 @@ python-shell-send-buffer."
 ;; current file in a Shell buffer. Quite simple, huh?  It also works
 ;; with pyvenv out of the box. Could this be more wonderful?
 (defun spacemacs/python-execute-file (arg)
-  "Execute a python script in a shell."
+  "Execute a python script in a shell.
+
+If ARG is present, ask for a command to run."
   (interactive "P")
   ;; set compile command to buffer-file-name
   ;; universal argument put compile buffer in comint mode
