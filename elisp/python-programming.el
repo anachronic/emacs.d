@@ -126,31 +126,9 @@ python-shell-send-buffer."
              (run-python)
              (python-shell-switch-to-shell)))))
 
-;; Default yanking in python sucks ballz. I had to rewrite my own
-;; function for it. It's really hard to infer how one should do the
-;; indentation. This functions assumes that you hit C-y at the level
-;; you want.
-(defun nsv/python-yank (arg)
-  "Yank and reindent python code, with ARG, dont reindent."
-  (interactive "P")
-  (yank)
-  (when arg
-    (save-excursion
-      (exchange-point-and-mark)
-      (forward-line 1)
-      (let ((times (count-lines (region-beginning) (region-end))))
-        (deactivate-mark)
-        (dotimes (i times)
-          (indent-for-tab-command)
-          (when (< i times)
-            (forward-line 1)))))))
-
-
 ;; Add tweaks to standard python.el defined in this file.
 (defun nsv/python-rebinds ()
   "Add the functions defined in python-programming.el to Python buffer locally."
-  ;; Basic commands
-  (define-key python-mode-map (kbd "C-y") #'nsv/python-yank)
   ;; Shell related commands
   (local-set-key (kbd "C-c C-z") #'nsv/python-switch-to-shell)
   (local-set-key (kbd "C-c C-r") #'spacemacs/python-execute-file)
@@ -172,23 +150,13 @@ python-shell-send-buffer."
 
 (define-key python-mode-map (kbd "C-c C-e") 'nsv/python-debug)
 
-;; Try out fakegir
-(when (file-exists-p "~/.cache/fakegir")
-  (add-to-list 'python-shell-extra-pythonpaths "~/.cache/fakegir"))
-
-;; python-django seems to work quite ok with it.
-(use-package python-django
-  :ensure t)
-
 ;; Trying out my new package
 (when (file-exists-p "/home/nsalas/forks/importmagic.el")
   (require 'importmagic)
   (add-hook 'python-mode-hook 'importmagic-mode)
   (define-key python-mode-map (kbd "C-c C-f") nil)
-  (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports))
-
-;; Diminish it to free up mode line space.
-(diminish 'importmagic-mode)
+  (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
+  (diminish 'importmagic-mode))
 
 ;; Also get rid of the annoying buffers for ivy and helm.
 (with-eval-after-load 'helm
@@ -198,14 +166,6 @@ python-shell-send-buffer."
 
 ;; Python needs indentation, Emacs should help
 (add-hook 'python-mode-hook #'indent-guide-mode)
-
-(with-eval-after-load 'anaconda-mode
-  (define-key anaconda-mode-map (kbd "C-M-g") 'anaconda-mode-find-definitions)
-  (define-key anaconda-mode-map (kbd "C-M-p") 'anaconda-mode-go-back)
-  (define-key anaconda-mode-map (kbd "M-.") nil)
-  (define-key anaconda-mode-map (kbd "M-,") nil)
-  (define-key python-mode-map (kbd "M-.") 'dumb-jump-go)
-  (define-key python-mode-map (kbd "M-,") 'dumb-jump-back))
 
 ;; Been using paredit in this thing
 (define-key python-mode-map (kbd "C-)") #'paredit-forward-slurp-sexp)
