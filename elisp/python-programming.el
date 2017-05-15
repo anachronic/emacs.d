@@ -2,21 +2,20 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Switch to anaconda-mode from Elpy
-(use-package anaconda-mode
-  :ensure t
-  :config
-  (add-hook 'python-mode-hook #'anaconda-mode))
+(require 'python)
 
-;; Use company anaconda for completions. capf seems REALLY slow
-(use-package company-anaconda
+;; Anaconda feels sluggish and ultimately useless.
+;; I'll be trying jedi.
+(use-package company-jedi
   :ensure t
-  :after anaconda-mode
   :config
-  (defun nsv/add-company-anaconda ()
-    (setq-local company-backends company-backends)
-    (add-to-list 'company-backends 'company-anaconda))
-  (add-hook 'python-mode-hook #'nsv/add-company-anaconda))
+  (defun nsv/python-mode-hook ()
+    (add-to-list 'company-backends 'company-jedi))
+
+  (add-hook 'python-mode-hook 'nsv/python-mode-hook)
+  (define-key python-mode-map (kbd "M-.") 'jedi:goto-definition)
+  (define-key python-mode-map (kbd "M-,") 'jedi:goto-definition-pop-marker)
+  (define-key python-mode-map (kbd "C-c ?") 'jedi:show-doc))
 
 ;; Since linters are more clever than me at formatting code, let's use
 ;; a tool for that, but let's not be too aggresive, just bind it to a
