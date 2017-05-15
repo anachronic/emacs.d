@@ -72,7 +72,7 @@ is already narrowed."
   :config
   (add-hook 'prog-mode-hook 'nlinum-relative-mode)
   (setq nlinum-relative-current-symbol "")
-  (setq nlinum-relative-redisplay-delay 0.2))
+  (setq nlinum-relative-redisplay-delay 0))
 
 ;; I'm a little bit too young for emacs,
 ;; so I like replacing the region with stuff.

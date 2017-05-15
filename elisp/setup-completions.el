@@ -45,14 +45,11 @@
   :after (ivy flx smex)
   :demand
   :bind (("C-." . counsel-imenu)
-         ("C-c g" . counsel-git-grep)
          ("M-x" . counsel-M-x)
          ("C-x f" . counsel-recentf))
   :config
   ;; Need these key bindings for terminals
-  (define-key meta-m-map (kbd "M-p") #'counsel-git)
-  (define-key meta-m-map (kbd "M-r") #'counsel-rhythmbox)
-  )
+  (define-key meta-m-map (kbd "M-r") #'counsel-rhythmbox))
 
 ;; I had a mix of stuff before. So it's nice to decide on
 ;; counsel-projectile after all. I don't even projectile that much,
@@ -71,6 +68,7 @@
       (call-interactively 'ivy-switch-buffer)))
   (global-set-key (kbd "C-S-m") #'nsv/switch-buffer-maybe-on-project)
   (define-key meta-m-map (kbd "M-m") #'nsv/switch-buffer-maybe-on-project)
+  (define-key meta-m-map (kbd "M-p") #'counsel-projectile-find-file)
   (counsel-projectile-on))
 
 ;; I guess this can't hurt
@@ -110,7 +108,7 @@
   (setq company-idle-delay 0.5)
   (define-key company-active-map (kbd "TAB") #'nsv/company-complete-if-only-one)
   (define-key company-active-map (kbd "<tab>") #'nsv/company-complete-if-only-one)
-  :diminish "comp"  ;; I'm really hating company in non-programming modes
+  :diminish "comp"
   :bind (("C-S-<SPC>" . company-complete)))
 
 ;; Help is cool
