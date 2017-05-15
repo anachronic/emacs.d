@@ -42,7 +42,7 @@
   ;; lets bind that to dired-up-directory
   (with-eval-after-load 'dired+
     (define-key dired-mode-map (kbd "b") #'dired-up-directory)
-    (define-key dired-mode-map (kbd "/") #'isearch)))
+    (define-key dired-mode-map (kbd "/") #'isearch-forward)))
 
 ;; We want to be able to toggle dot files in dired
 (add-hook 'dired-mode-hook (lambda ()
