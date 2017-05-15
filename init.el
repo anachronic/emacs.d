@@ -146,6 +146,9 @@
 ;; Ediff
 (require 'setup-ediff)
 
+;; Mode line. This should be after everything.
+(require 'setup-modeline)
+
 ;;; Set garbage collection back to a normal value
 ;; I hope it doesn't make it hang again..
 (setq gc-cons-threshold 128000000)
