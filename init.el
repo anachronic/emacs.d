@@ -29,10 +29,6 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
-;; For some reason I find it hard to navigate package list without
-;; highlighting the line.
-(add-hook 'package-menu-mode-hook #'hl-line-mode)
-
 ;; I DO NOT LIKE TYPING YES!!!!
 (fset 'yes-or-no-p 'y-or-n-p)
 
