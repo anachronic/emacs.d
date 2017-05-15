@@ -156,13 +156,18 @@ If ARG is present, ask for a command to run."
 
 (define-key python-mode-map (kbd "C-c C-e") 'nsv/python-debug)
 
-;; Trying out my new package
+;; Keep it like so for developing purposes
 (when (file-exists-p "/home/nsalas/forks/importmagic.el")
   (require 'importmagic)
   (add-hook 'python-mode-hook 'importmagic-mode)
   (define-key python-mode-map (kbd "C-c C-f") nil)
   (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
   (diminish 'importmagic-mode))
+
+;; Another package of mine: projectile-django
+(when (file-exists-p "/home/nsalas/forks/projectile-django/projectile-django.el")
+  (require 'projectile-django)
+  (define-key python-mode-map (kbd "M-m d") 'projectile-django-map))
 
 ;; Also get rid of the annoying buffers for ivy and helm.
 (with-eval-after-load 'helm
