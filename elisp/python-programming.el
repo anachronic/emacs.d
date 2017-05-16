@@ -167,7 +167,7 @@ If ARG is present, ask for a command to run."
 ;; Another package of mine: projectile-django
 (when (file-exists-p "/home/nsalas/forks/projectile-django/projectile-django.el")
   (require 'projectile-django)
-  (define-key python-mode-map (kbd "M-m d") 'projectile-django-map))
+  (projectile-django-set-keys "M-m d" 'python-mode))
 
 ;; Also get rid of the annoying buffers for ivy and helm.
 (with-eval-after-load 'helm
