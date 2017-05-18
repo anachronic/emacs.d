@@ -40,6 +40,18 @@
   "Add ;; keystroke to mean insert semicolon at the end of the line."
   (key-chord-define-local ";;" "\C-e;"))
 
+;; js-comint. I have the need for this now
+(use-package js-comint
+  :ensure t
+  :config
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-x C-e") 'js-send-last-sexp)
+              (local-set-key (kbd "C-M-x") 'js-send-last-sexp-and-go)
+              (local-set-key (kbd "C-c b") 'js-send-buffer)
+              (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go)
+              (local-set-key (kbd "C-c l") 'js-load-file-and-go))))
+
 (add-hook 'js2-mode-hook 'nsv/add-keychords-js2-mode)
 
 ;; javascript is a 2-spaces indenting language.
