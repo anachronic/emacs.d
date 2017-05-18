@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         TeX-insert-backslash
+        electric-pair-delete-pair
         kill-region
         kill-sexp
         my/python-yank
@@ -18,6 +19,9 @@
         paredit-wrap-round
         smarter-move-beginning-of-line
         tab-to-tab-stop
+        whole-line-or-region-kill-region
+        whole-line-or-region-kill-ring-save
+        whole-line-or-region-yank
         ))
 
 (setq mc/cmds-to-run-once
