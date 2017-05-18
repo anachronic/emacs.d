@@ -36,10 +36,6 @@
 (use-package json-reformat
   :ensure t)
 
-(defun nsv/add-keychords-js2-mode ()
-  "Add ;; keystroke to mean insert semicolon at the end of the line."
-  (key-chord-define-local ";;" "\C-e;"))
-
 ;; js-comint. I have the need for this now
 (use-package js-comint
   :ensure t
@@ -51,8 +47,6 @@
               (local-set-key (kbd "C-c b") 'js-send-buffer)
               (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go)
               (local-set-key (kbd "C-c l") 'js-load-file-and-go))))
-
-(add-hook 'js2-mode-hook 'nsv/add-keychords-js2-mode)
 
 ;; javascript is a 2-spaces indenting language.
 (add-hook 'js2-mode-hook #'indent-guide-mode)

@@ -59,12 +59,6 @@
 
 (add-hook 'web-mode-hook 'nsv/add-company-backends-webmode)
 
-(defun nsv/add-keychords-web-mode ()
-  "Add ;; keystroke to mean insert semicolon at the end of the line."
-  (key-chord-define-local ";;" "\C-e;"))
-
-(add-hook 'web-mode-hook 'nsv/add-keychords-web-mode)
-
 ;; Emmet!!!
 (use-package emmet-mode
   :ensure t

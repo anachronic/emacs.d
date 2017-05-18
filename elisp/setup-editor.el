@@ -2,14 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Well, this mode seemed like a good idea. But it's not really that
-;; useful. Editing feels really sluggish and I really dislike that. So
-;; let's use just for absolute and NON-INTRUSIVE keys (like semicolor)
-(use-package key-chord
-  :ensure t
-  :config
-  (key-chord-mode 1))
-
 ;; Visual fill column for text-only buffers, like mail and feeds. and maybe org..
 (use-package visual-fill-column
   :ensure t)
@@ -281,9 +273,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; For zapping backwards needs negative prefix. Need a lot of muscle
 ;; memory for that.
 
-;; Navigating hydra. This turned out to be very useful with key-chord
-;; when you want to navigate a text. Cool stuff. I actually like 'kk'
-;; better for it rather than jj
 (defhydra hydra-text (:columns 3)
   "Movement and text manipulation hydra"
   ("i" (forward-line -1) "up")

@@ -89,17 +89,5 @@
 
 (add-hook 'c-mode-common-hook 'nsv/add-header-jump)
 
-
-;; Key chords for C/C++
-(require 'key-chord)
-
-;; Put every key chord for C mode into this function
-(defun nsv/add-keychords-c-mode ()
-  "Add ;; keystroke to mean insert semicolon at the end of the line."
-  (key-chord-define-local ";;" "\C-e;"))
-
-(add-hook 'c-mode-common-hook 'nsv/add-keychords-c-mode)
-
-
 (provide 'c-programming)
 ;;; c-programming.el ends here

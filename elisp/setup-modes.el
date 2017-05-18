@@ -15,7 +15,6 @@
   ("k" which-key-mode "Which key")
   ("h" hl-line-mode "Highlight line")
   ("a" artist-mode "Artist mode")
-  ("s" key-chord-mode "Key chord mode")
   ("q" nil "quit"))
 
 (define-key meta-m-map (kbd "m") 'mode-toggle/body)

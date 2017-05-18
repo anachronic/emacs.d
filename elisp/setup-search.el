@@ -14,11 +14,9 @@
 ;; key binding.
 (use-package iy-go-to-char
   :ensure t
-  :after key-chord
   :bind (("C-c j c" . iy-go-up-to-char)
          ("C-c j b" . iy-go-to-char-backward))
   :config
-  (require 'key-chord)
   (global-set-key (kbd "¥") #'iy-go-to-char-backward)
   (global-set-key (kbd "×") #'iy-go-up-to-char)
   (global-set-key (kbd "C-c j c") #'iy-go-up-to-char)
