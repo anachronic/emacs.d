@@ -377,7 +377,8 @@ Single Capitals as you type."
 (use-package indent-guide
   :ensure t
   :diminish ""
-  )
+  :config
+  (setq-default indent-guide-delay 1))
 
 ;; I use this all the time
 (use-package rainbow-mode

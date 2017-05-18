@@ -49,5 +49,7 @@
               (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go)
               (local-set-key (kbd "C-c l") 'js-load-file-and-go))))
 
+(add-hook 'js2-mode-hook #'indent-guide-mode)
+
 (provide 'js-programming)
 ;;; js-programming.el ends here
