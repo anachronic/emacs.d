@@ -11,7 +11,8 @@
   :config
   (setq js2-basic-offset 2)
   (setq-default js2-mode-show-parse-errors nil
-                js2-mode-show-strict-warnings nil)
+                js2-mode-show-strict-warnings nil
+                js2-idle-timer-delay 0.6)
   (add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode)))
 
 (use-package tern
@@ -47,9 +48,6 @@
               (local-set-key (kbd "C-c b") 'js-send-buffer)
               (local-set-key (kbd "C-c C-b") 'js-send-buffer-and-go)
               (local-set-key (kbd "C-c l") 'js-load-file-and-go))))
-
-;; javascript is a 2-spaces indenting language.
-(add-hook 'js2-mode-hook #'indent-guide-mode)
 
 (provide 'js-programming)
 ;;; js-programming.el ends here
