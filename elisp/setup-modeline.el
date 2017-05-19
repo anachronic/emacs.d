@@ -3,7 +3,12 @@
 ;;; Code:
 
 (defvar nsv/valid-pyvenv-modes
-  '(python-mode projectile-django-server-mode projectile-django-migration-mode)
+  '(python-mode
+    projectile-django-server-mode
+    projectile-django-migration-mode
+    web-mode
+    js2-mode
+    js2-jsx-mode)
   "Valid modes where we should display the current virtual environment.")
 
 ;; A customized mode line. For now it has pyvenv bindings. This was
