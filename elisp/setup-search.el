@@ -27,7 +27,7 @@
 ;; Seems better than ace-link
 (use-package link-hint
   :ensure t
-  :bind ("C-c j u" . link-hint-open-link)
+  :bind ("C-c v" . link-hint-open-link)
   :demand
   :config
   (defun nsv/set-link-hint-key ()
