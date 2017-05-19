@@ -171,7 +171,7 @@ If ARG is present, ask for a command to run."
   )
 
 ;; Also get rid of the annoying buffers for ivy and helm.
-(with-eval-after-load 'helm
+(with-eval-after-load 'helm-buffers
   (add-to-list 'helm-boring-buffer-regexp-list "\\*epc con"))
 (with-eval-after-load 'ivy
   (add-to-list 'ivy-ignore-buffers "\\*epc con"))

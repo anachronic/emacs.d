@@ -6,9 +6,7 @@
 ;; it would be. I'd much rather use isearch and iy-go-up-to-char
 (use-package avy
   :ensure t
-  :bind (("C-c j w" . avy-goto-word-1)
-         ("C-c j l" . avy-goto-line)
-         ("C-:"     . avy-goto-word-1)))
+  :bind (("C-t" . avy-goto-char)))
 
 ;; I really feel like this package is too good to bind it to a large
 ;; key binding.

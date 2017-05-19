@@ -2,8 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; We do love GTAGS.
-
 ;; I hate abbrev when coding c-like languages!!
 (defun nsv/abbrev-gtfo ()
   "Get rid of abbrev."
