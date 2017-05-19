@@ -53,5 +53,17 @@
 ;; Using "a" in dired is way more sensible than f.
 (put 'dired-find-alternate-file 'disabled nil)
 
+;; ffap seemed cool but i wanna use the guess
+(require 'ffap)
+(defun nsv/go-to-file-at-point ()
+  "Jump to file at point."
+  (interactive)
+  (let ((guess (ffap-guesser)))
+    (unless guess
+      (error "No file at point"))
+    (find-file guess)))
+
+(global-set-key (kbd "C-c g") 'nsv/go-to-file-at-point)
+
 (provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here
