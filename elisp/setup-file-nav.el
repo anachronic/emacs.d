@@ -76,6 +76,14 @@
       (error "No file found"))
     (set-file-modes this-file (string-to-number "755" 8))))
 
+;; Jump to init.el
+(defun nsv/jump-to-init ()
+  "Jump directly to init.el in current buffer."
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+(global-set-key (kbd "C-c I") 'nsv/jump-to-init)
+
 
 (provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here
