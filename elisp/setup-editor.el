@@ -82,8 +82,10 @@ is already narrowed."
 (use-package undo-tree
   :ensure t
   :diminish ""
+  :demand
   :config
   (global-undo-tree-mode 1)
+  (define-key undo-tree-map (kbd "C-/") nil)
   :bind
   (("C-z" . undo)
    ("C-S-z" . undo-tree-redo)))
