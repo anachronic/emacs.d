@@ -122,5 +122,7 @@
                                   (company-mode 1)
                                   (local-set-key (kbd "TAB") #'company-complete))))
 
+(add-to-list 'auto-mode-alist '(".offlineimaprc" . conf-mode))
+
 (provide 'setup-mail)
 ;;; setup-mail.el ends here
