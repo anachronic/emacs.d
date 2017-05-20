@@ -164,6 +164,7 @@ is already narrowed."
   (indent-for-tab-command))
 
 (global-set-key (kbd "C-o") 'nsv/open-line-above)
+(global-set-key [(shift return)] 'nsv/open-line-above)
 
 ;; I have been using M-m lately, and I have to say I'm able to remember
 ;; stuff rather easily. But it is always better when stuff gets simpler.
