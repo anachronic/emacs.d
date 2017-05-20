@@ -110,7 +110,19 @@ is already narrowed."
   :bind (("C-c f" . origami-recursively-toggle-node)
          ("C-c F" . origami-toggle-all-nodes))
   :config
-  (add-hook 'prog-mode-hook #'origami-mode))
+  (add-hook 'prog-mode-hook #'origami-mode)
+  (defun origami-closed-here-p ()
+    (let* ((path (origami-search-forward-for-path (current-buffer) (point)))
+           (node (-last-item path)))
+      (origami-fold-node-recursively-closed? node)))
+
+  (defun origami-expand-or-TAB (&optional ARG)
+    (interactive)
+    (if (origami-closed-here-p)
+        (origami-show-node (current-buffer) (point))
+      (call-interactively 'indent-for-tab-command)))
+
+  (global-set-key [remap indent-for-tab-command] 'origami-expand-or-TAB))
 
 ;; I've always liked coloring the buffer, because it makes easier to identify stuff around
 ;; So let's test this mode
@@ -242,16 +254,6 @@ point reaches the beginning or end of the buffer, stop there."
 
 (global-set-key (kbd "M-P") 'nsv/move-line-up)
 (global-set-key (kbd "M-N") 'nsv/move-line-down)
-
-;; Kill to beginning of line
-;; not sure about binding this one yet.
-(defun nsv/kill-to-line-beg ()
-  "Kill to beginning of line."
-  (interactive)
-  (set-mark-command nil)
-  (back-to-indentation)
-  (kill-region (region-beginning) (region-end)))
-
 
 ;; ==================== END of line manipulation functions =====
 
