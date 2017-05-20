@@ -18,14 +18,8 @@
   :bind (("C-c j c" . iy-go-up-to-char)
          ("C-c j b" . iy-go-to-char-backward))
   :config
-  (global-set-key (kbd "¥") #'iy-go-to-char-backward)
-  (global-set-key (kbd "×") #'iy-go-up-to-char)
   (global-set-key (kbd "C-c j c") #'iy-go-up-to-char)
-  (global-set-key (kbd "C-c j b") #'iy-go-to-char-backward)
-
-  ;; Having a cool keyboard layout allows me to do things like these
-  (global-set-key (kbd "ï") #'iy-go-to-or-up-to-continue)
-  (global-set-key (kbd "œ") #'iy-go-up-to-char-continue-backward))
+  (global-set-key (kbd "C-c j b") #'iy-go-to-char-backward))
 
 ;; Seems better than ace-link
 (use-package link-hint
