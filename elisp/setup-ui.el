@@ -140,7 +140,8 @@ With an unnumbered prefix, toggle between scrolling style."
   (fullframe magit-status-internal magit-mode-quit-window)
   (fullframe ibuffer ibuffer-quit)
   (fullframe package-list-packages quit-window)
-  (fullframe list-packages quit-window))
+  (fullframe list-packages quit-window)
+  (fullframe shell bury-buffer))
 
 ;; From https://www.emacswiki.org/emacs/TransposeWindows
 ;; and crux.
