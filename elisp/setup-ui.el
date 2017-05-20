@@ -142,5 +142,25 @@ With an unnumbered prefix, toggle between scrolling style."
   (fullframe package-list-packages quit-window)
   (fullframe list-packages quit-window))
 
+;; From https://www.emacswiki.org/emacs/TransposeWindows
+;; and crux.
+(defun transpose-windows (arg)
+  "Transpose the buffers shown in two windows.
+
+Prefix ARG determines if the current windows buffer is swapped
+with the next or previous window, and the number of
+transpositions to execute in sequence."
+  (interactive "p")
+  (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
+    (while (/= arg 0)
+      (let ((this-win (window-buffer))
+            (next-win (window-buffer (funcall selector))))
+        (set-window-buffer (selected-window) next-win)
+        (set-window-buffer (funcall selector) this-win)
+        (select-window (funcall selector)))
+      (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
+
+(define-key meta-m-map (kbd "t") 'transpose-windows)
+
 (provide 'setup-ui)
 ;;; setup-ui.el ends here

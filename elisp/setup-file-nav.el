@@ -65,5 +65,17 @@
 
 (global-set-key (kbd "C-c g") 'nsv/go-to-file-at-point)
 
+;; I want a function to chmod 755 this file
+;; No hotkey for it, just M-x it
+(defun chmod-755-this-file ()
+  "Chmod 755 this file."
+  (interactive)
+  (let ((this-file (buffer-file-name)))
+    (when (or (not this-file)
+              (not (file-exists-p this-file)))
+      (error "No file found"))
+    (set-file-modes this-file (string-to-number "755" 8))))
+
+
 (provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here
