@@ -73,6 +73,23 @@ is already narrowed."
 ;; Recenter positions
 (setq-default recenter-positions '(top middle bottom))
 
+(defvar nsv/recenter-offset 6
+  "Number of lines to offset from limit when recentering.")
+
+;; Advice `recenter-top-bottom' for offset
+(defun nsv/recenter-advice (orig-fun &rest args)
+  "Advice to offset `recenter-top-bottom' (ORIG-FUN) called with ARGS."
+  (apply orig-fun args)
+  (let ((top (or (eq recenter-last-op 'top)
+                 (eq recenter-last-op (car recenter-positions))))
+        (bottom (eq recenter-last-op 'bottom)))
+    (when nsv/recenter-offset
+      (cond
+       (top (scroll-down nsv/recenter-offset))
+       (bottom (scroll-up nsv/recenter-offset))))))
+
+(advice-add 'recenter-top-bottom :around #'nsv/recenter-advice)
+
 ;; expand region. An *excellent* tool.
 (use-package expand-region
   :ensure t
