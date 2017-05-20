@@ -37,13 +37,10 @@
 ;; but that's ok since i hardly ever use it. Let's just rebind that to
 ;; C-c q
 (defun nsv/bury-buffer-dwim (arg)
-  "Bury current buffer, if ARG is not nil, bury other-window's buffer instead."
+  "Bury current buffer, if ARG is not nil, switch to last buffer."
   (interactive "P")
   (if arg
-      (progn
-        (other-window 1)
-        (bury-buffer)
-        (other-window -1))
+      (previous-buffer)
     (bury-buffer)))
 
 (global-set-key (kbd "C-q") 'nsv/bury-buffer-dwim)
