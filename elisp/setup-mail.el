@@ -11,15 +11,29 @@
 ;;       smtpmail-smtp-service 587
 ;;       send-mail-function    'smtpmail-send-it)
 
-(setq message-citation-line-format "On %D %I:%M %p, %N wrote:"
-      mail-from-style 'angles
-      message-cite-style 'message-cite-style-gmail
-      message-citation-line-function 'message-insert-formatted-citation-line)
+(require 'message)
+
+(setq mail-from-style 'angles
+      message-cite-style 'message-cite-style-gmail)
 
 ;; We'll be using gnus
 (setq-default gnus-init-file
               (concat user-emacs-directory
                       "gnus/.gnus"))
+
+;; Sometimes, thunderbird reply is better. I still get a lot of gmail
+;; mails, so that will be de default.
+(defun nsv/gnus-use-thunderbird-reply ()
+  "Set `message-cite-style' equal to `message-cite-style-thunderbird' and reset message buffer."
+  (interactive)
+  (set (make-local-variable 'message-cite-style)
+       message-cite-style-thunderbird)
+  (delete-region (point) (point-max))
+  (message-yank-original))
+
+;; C-c C-s is kind of a lousy key in message-mode-map. Rebind it to
+;; our function.
+(define-key message-mode-map (kbd "C-c C-s") 'nsv/gnus-use-thunderbird-reply)
 
 ;; sending mail -- replace USERNAME with your gmail username
 ;; also, make sure the gnutls command line utils are installed
@@ -38,8 +52,8 @@
       smtpmail-smtp-service 587
       smtpmail-debug-info t)
 
-;; Invoke mu4e with C-c m
-(global-set-key (kbd "C-c m") 'mu4e)
+;; Invoke gnus with C-c m
+(global-set-key (kbd "C-c m") 'gnus)
 
 ;; BBDB
 (use-package gmail2bbdb
