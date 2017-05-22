@@ -108,6 +108,7 @@
   (setq company-idle-delay 0.5)
   (define-key company-active-map (kbd "TAB") #'nsv/company-complete-if-only-one)
   (define-key company-active-map (kbd "<tab>") #'nsv/company-complete-if-only-one)
+  (define-key company-active-map (kbd "C-j") 'company-complete-common-or-cycle)
   :diminish "comp"
   :bind (("C-S-<SPC>" . company-complete)))
 
