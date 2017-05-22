@@ -6,7 +6,7 @@
 
 ;; Formatting
 (setq-default
- gnus-summary-line-format "%U%R%z %(%&user-date;  %2{%-15,15f%}  %B%s%)\n"
+ gnus-summary-line-format "%U%R%z %(%&user-date;  %2{%-30,30f%}  %B%s%)\n"
  gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M"))
  gnus-summary-thread-gathering-function 'gnus-gather-threads-by-references
  gnus-sum-thread-tree-false-root ""
