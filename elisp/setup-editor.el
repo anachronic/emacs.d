@@ -192,7 +192,8 @@ is already narrowed."
   (move-beginning-of-line 1)
   (newline-and-indent)
   (forward-line -1)
-  (indent-for-tab-command))
+  (unless (eq major-mode 'message-mode)
+    (indent-for-tab-command)))
 
 (global-set-key (kbd "C-o") 'nsv/open-line-above)
 (global-set-key [(shift return)] 'nsv/open-line-above)

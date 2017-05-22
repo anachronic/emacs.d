@@ -11,38 +11,29 @@
 ;;       smtpmail-smtp-service 587
 ;;       send-mail-function    'smtpmail-send-it)
 
-(when (require 'mu4e nil 'noerror)
-  ;; default
-  (setq mu4e-maildir (expand-file-name "~/Mail"))
+(require 'message)
 
-  (setq mu4e-drafts-folder "/[Gmail].Drafts")
-  (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
-  (setq mu4e-trash-folder  "/[Gmail].Trash")
+(setq mail-from-style 'angles
+      message-cite-style 'message-cite-style-gmail)
 
-  ;; don't save message to Sent Messages, GMail/IMAP will take care of this
-  (setq mu4e-sent-messages-behavior 'delete)
+;; We'll be using gnus
+(setq-default gnus-init-file
+              (concat user-emacs-directory
+                      "gnus/.gnus"))
 
-  (setq mu4e-html2text-command
-        "lynx -dump -stdin -force_html -width=72 -nolist -nobold -nocolor -display_charset UTF-8")
+;; Sometimes, thunderbird reply is better. I still get a lot of gmail
+;; mails, so that will be de default.
+(defun nsv/gnus-use-thunderbird-reply ()
+  "Set `message-cite-style' equal to `message-cite-style-thunderbird' and reset message buffer."
+  (interactive)
+  (set (make-local-variable 'message-cite-style)
+       message-cite-style-thunderbird)
+  (delete-region (point) (point-max))
+  (message-yank-original))
 
-  ;; setup some handy shortcuts
-  (setq mu4e-maildir-shortcuts
-        '(("/inbox"             . ?i)
-          ("/archlinux"         . ?a)
-          ("/academic"          . ?c)
-          ("/Google Scholar"    . ?s)
-          ("/promos"            . ?p)
-          ("/Accounts"          . ?A)
-          ("/Tests"             . ?t)
-          ("/[Gmail].Trash"     . ?T))))
-
-;; allow for updating mail using 'U' in the main view:
-;; (setq mu4e-get-mail-command "offlineimap")
-
-(setq message-citation-line-format "On %D %I:%M %p, %N wrote:"
-      mail-from-style 'angles
-      message-cite-style 'message-cite-style-gmail
-      message-citation-line-function 'message-insert-formatted-citation-line)
+;; C-c C-s is kind of a lousy key in message-mode-map. Rebind it to
+;; our function.
+(define-key message-mode-map (kbd "C-c C-s") 'nsv/gnus-use-thunderbird-reply)
 
 ;; sending mail -- replace USERNAME with your gmail username
 ;; also, make sure the gnutls command line utils are installed
@@ -61,8 +52,8 @@
       smtpmail-smtp-service 587
       smtpmail-debug-info t)
 
-;; Invoke mu4e with C-c m
-(global-set-key (kbd "C-c m") 'mu4e)
+;; Invoke gnus with C-c m
+(global-set-key (kbd "C-c m") 'gnus)
 
 ;; BBDB
 (use-package gmail2bbdb
