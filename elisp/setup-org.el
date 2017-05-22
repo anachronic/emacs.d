@@ -6,16 +6,10 @@
 ;; Agenda is cool
 (global-set-key (kbd "C-c A") 'org-agenda)
 
-;; org-bullets bro!
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
 ;; Let's load our agenda file(s)
 (defvar nsv/org-agenda-files)
 (setq nsv/org-agenda-files '("~/Dropbox/agenda.org"
-                            "~/Dropbox/orgfiles/gcal.org"))
+                             "~/Dropbox/orgfiles/gcal.org"))
 
 ;; reveal.js stuff Thanks to Mike Zamansky
 ;; https://www.youtube.com/watch?v=psDpCpcIVYs
