@@ -87,6 +87,17 @@
    `(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "PaleVioletRed3" :weight bold))))
    `(highlight-symbol-face ((t (:background "#2f4f4f"))))
 
+   ;; Gnus
+   `(gnus-summary-normal-ancient ((t (:foreground "grey" :background nil))))
+   `(gnus-summary-normal-read ((t (:foreground "PaleGreen" :background nil))))
+   `(gnus-summary-normal-unread ((t (:foreground "orchid1" :background nil))))
+   `(gnus-cite-1 ((t (:foreground "CadetBlue1" :background nil))))
+   `(gnus-cite-2 ((t (:foreground "burlywood1" :background nil))))
+   `(gnus-cite-3 ((t (:foreground "PaleGreen" :background nil))))
+   `(gnus-group-mail-3 ((t (:foreground "DeepSkyBlue" :weight bold :background nil))))
+   `(gnus-group-mail-3-empty ((t (:foreground "MediumTurquoise" :background nil))))
+
+
    ;; Helm
    `(helm-buffer-saved-out ((t (:foreground "red"))))
    `(helm-buffer-directory ((t (:inherit helm-ff-dotted-directory :weight ultra-light))))

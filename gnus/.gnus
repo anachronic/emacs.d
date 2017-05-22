@@ -26,5 +26,11 @@
   (add-to-list 'mm-discouraged-alternatives "text/html")
   (add-to-list 'mm-discouraged-alternatives "text/richtext"))
 
+;; We like gnus topics, don't we? From
+;; https://www.gnu.org/software/emacs/manual/html_node/gnus/Group-Topics.html
+;; And, of course, John Wiegley and Sacha Chua chat. It's wonderful.
+;; https://www.youtube.com/watch?v=nUjgKoOYxos
+(add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
+
 ;; Customizations
 (setq gnus-permanently-visible-groups "INBOX")
