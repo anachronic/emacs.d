@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sd
+# key: sd
+# --
+(setq-default $0)
