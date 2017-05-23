@@ -169,8 +169,8 @@
    `(minibuffer-prompt ((((background dark)) (:foreground "gold2" :weight bold))))
 
    ;; Mode line
-   `(mode-line ((t (:inverse-video nil :background "#315068"))))
-   `(mode-line-inactive ((t (:weight light :inverse-video nil :foreground "gray60" :background "#27313f" :inherit (mode-line)))))
+   `(mode-line ((t (:inverse-video nil :background "DodgerBlue4"))))
+   `(mode-line-inactive ((t (:weight light :foreground "gray40" :background "MidnightBlue" :inherit (mode-line)))))
    `(mode-line-read-only-face ((t (:foreground "cyan3"))))
    `(mode-line-modified-face ((t (:foreground "white smoke" :background "#007400"))))
    `(mode-line-folder-face ((t (:foreground "gray60"))))
