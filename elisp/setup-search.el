@@ -70,6 +70,12 @@
   :ensure t
   :diminish (dumb-jump-mode . "Dumb")
   :config
+  (define-key dumb-jump-mode-map (kbd "C-M-g") nil)
+  (define-key dumb-jump-mode-map (kbd "C-M-p") nil)
+  (define-key dumb-jump-mode-map (kbd "C-M-q") nil)
+  (define-key dumb-jump-mode-map (kbd "M-g j") 'dumb-jump-go)
+  (define-key dumb-jump-mode-map (kbd "M-g b") 'dumb-jump-back)
+  (define-key dumb-jump-mode-map (kbd "M-g q") 'dumb-jump-quick-look)
   (add-hook 'prog-mode-hook 'dumb-jump-mode))
 
 
