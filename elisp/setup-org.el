@@ -98,7 +98,7 @@
     :immediate-finish t)
   `("w" "Tarea" entry
     (file+headline ,nsv/org-tasks "Tareas")
-    "* %?\nDEADLINE: %^t\n\n")
+    "* TODO %?\nDEADLINE: %^t\n\n")
   `("r" "Reunión" entry
     (file+headline ,nsv/org-tasks "Reuniones")
     "* TODO %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar}\n:Personas: %^{Participantes}\n:END:\n\n"))

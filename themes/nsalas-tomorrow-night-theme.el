@@ -85,7 +85,9 @@
    `(font-lock-variable-name-face ((t (:foreground "#6897d1"))))
    `(font-lock-constant-face ((t (:foreground "#81a2be"))))
    `(font-lock-warning-face ((((class color) (min-colors 88) (background dark)) (:foreground "PaleVioletRed3" :weight bold))))
-   `(highlight-symbol-face ((t (:background "#2f4f4f"))))
+
+   ;; hl-symbol
+   `(highlight-symbol-face ((t (:background "Darkslategray"))));;DarkSlateGray
 
    ;; Gnus
    `(gnus-summary-normal-ancient ((t (:foreground "grey" :background nil))))
@@ -166,11 +168,11 @@
    `(message-separator ((((class color) (background dark)) (:foreground "thistle"))))
 
    ;; Minibuffer prompt. heh
-   `(minibuffer-prompt ((((background dark)) (:foreground "gold2" :weight bold))))
+   `(minibuffer-prompt ((t (:foreground "gold2" :weight bold))))
 
    ;; Mode line
-   `(mode-line ((t (:inverse-video nil :background "DodgerBlue4"))))
-   `(mode-line-inactive ((t (:weight light :foreground "gray40" :background "MidnightBlue" :inherit (mode-line)))))
+   `(mode-line ((t (:inverse-video nil :background "DodgerBlue4" :foreground "gray"))))
+   `(mode-line-inactive ((t (:weight light :foreground "gray90" :background "grey31" :inherit (mode-line)))))
    `(mode-line-read-only-face ((t (:foreground "cyan3"))))
    `(mode-line-modified-face ((t (:foreground "white smoke" :background "#007400"))))
    `(mode-line-folder-face ((t (:foreground "gray60"))))
