@@ -4,6 +4,7 @@
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 1000)
+(setq recentf-max-saved-items 100)
 
 
 ;; Let's define a blacklist

@@ -23,6 +23,7 @@
   (define-key paredit-mode-map (kbd "M-;") nil)
   (define-key paredit-mode-map (kbd "C-<left>") nil)
   (define-key paredit-mode-map (kbd "C-<right>") nil)
+  (define-key paredit-mode-map (kbd "M-?") nil)
 
   ;; Use paredit
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)

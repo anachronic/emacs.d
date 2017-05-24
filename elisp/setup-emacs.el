@@ -39,5 +39,7 @@
   (when (file-exists-p file)
     (load-file file)))
 
+(global-set-key (kbd "M-?") 'xref-find-references)
+
 (provide 'setup-emacs)
 ;;; setup-emacs.el ends here
