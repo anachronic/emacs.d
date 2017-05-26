@@ -71,19 +71,7 @@
 (global-set-key (kbd "<f12>") 'other-window)
 (global-set-key (kbd "C-<f12>") (lambda () (interactive) (other-window -1)))
 
-;; Some bindings from https://www.masteringemacs.org/article/my-emacs-keybindings
-;; Let's combine it with window-numbering
-(defun nsv/other-window (arg)
-  "Switch to ARGth window (as in window-numbered), if not arg, regular `other-window'."
-  (interactive "P")
-  (if (or (not arg)
-          (listp arg)
-          (< arg 0)
-          (> arg 9))
-      (other-window 1)
-    (select-window-by-number arg)))
-
-(global-set-key (kbd "M-o") 'nsv/other-window)
+(global-set-key (kbd "M-o") 'other-window)
 
 ;; I want to be able to scroll without moving the point source:
 ;; https://www.emacswiki.org/emacs/Scrolling

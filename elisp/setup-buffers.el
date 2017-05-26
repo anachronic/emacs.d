@@ -6,17 +6,7 @@
 (with-eval-after-load 'autorevert
   (diminish 'auto-revert-mode))
 
-;; So i was using kill-this-buffer for C-x k. But sometimes I don't really
-;; want to kill the buffer, I just want it to get it out of the way.
-;; So let's bury the buffer with the same key when a prefix is specified.
-(defun nsv/kill-buffer-or-bury-dwim (&optional arg)
-  "If ARG, bury buffer, otherwise kill the buffer."
-  (interactive "P")
-  (if arg
-      (bury-buffer)
-    (kill-this-buffer)))
-
-(define-key ctl-x-map (kbd "k") 'nsv/kill-buffer-or-bury-dwim)
+(define-key ctl-x-map (kbd "k") 'kill-this-buffer)
 
 ;; According to http://oremacs.com/2015/02/18/undo-nonsense/, find-file-read-only
 ;; is a trashy command. Whatever. Who cares about useless commands, we don't even use
