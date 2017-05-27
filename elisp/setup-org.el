@@ -114,5 +114,11 @@
     ;; Need to refresh this thing once in a while
     (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync)))))
 
+(with-eval-after-load 'org
+  (use-package ox-gfm
+    :ensure t
+    :init
+    (require 'ox-gfm nil t)))
+
 (provide 'setup-org)
 ;;; setup-org.el ends here

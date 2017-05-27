@@ -361,11 +361,18 @@ Single Capitals as you type."
 
 ;; This minor mode is useful with Org and LaTeX. Maybe others as we
 ;; write
-(add-hook 'LaTeX-mode-hook #'dubcaps-mode)
-(add-hook 'org-mode-hook #'dubcaps-mode)
-(add-hook 'markdown-mode-hook #'dubcaps-mode)
-(add-hook 'gfm-mode-hook #'dubcaps-mode)
+
 (add-hook 'text-mode-hook #'dubcaps-mode)
+
+(with-eval-after-load 'markdown-mode
+  (add-hook 'markdown-mode-hook #'dubcaps-mode)
+  (add-hook 'gfm-mode-hook #'dubcaps-mode))
+
+(with-eval-after-load 'tex-mode
+  (add-hook 'LaTeX-mode-hook #'dubcaps-mode))
+
+(with-eval-after-load 'org
+  (add-hook 'org-mode-hook #'dubcaps-mode))
 
 ;; I've ran into this situation where I really need to insert some paragraphs or
 ;; stuff, so let's use lorem-ipsum
