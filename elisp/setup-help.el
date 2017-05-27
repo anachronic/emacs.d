@@ -27,5 +27,8 @@
   :demand
   :diminish which-key-mode)
 
+;; I've been using woman
+(define-key help-map (kbd "C-w") 'woman)
+
 (provide 'setup-help)
 ;;; setup-help.el ends here
