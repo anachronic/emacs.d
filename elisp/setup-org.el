@@ -2,7 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-
 ;; Agenda is cool
 (global-set-key (kbd "C-c A") 'org-agenda)
 
@@ -17,19 +16,6 @@
 (setq nsv/org-agenda-files '("~/Dropbox/orgfiles/personal.org"
                              "~/Dropbox/orgfiles/tasks.org"
                              "~/Dropbox/orgfiles/gcal.org"))
-
-;; reveal.js stuff Thanks to Mike Zamansky
-;; https://www.youtube.com/watch?v=psDpCpcIVYs
-;; I had a LOT of trouble
-;; when installing for the first time. :defer t for this and
-;; org-plus-contrib solved it
-(use-package ox-reveal
-  :ensure ox-reveal
-  :defer t
-  :config
-  (with-eval-after-load 'org
-    (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
-    (setq org-reveal-mathjax t)))
 
 (use-package htmlize
   :ensure t
@@ -103,22 +89,6 @@
     (file+headline ,nsv/org-tasks "Reuniones")
     "* TODO %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar}\n:Personas: %^{Participantes}\n:END:\n\n"))
  )
-
-;; Try this thing
-(with-eval-after-load 'org
-  (use-package org-gcal
-    :ensure t
-    :defer t
-    :config
-    (maybe-load-file "~/Dropbox/elisp/org-gcal-settings.el")
-    ;; Need to refresh this thing once in a while
-    (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync)))))
-
-(with-eval-after-load 'org
-  (use-package ox-gfm
-    :ensure t
-    :init
-    (require 'ox-gfm nil t)))
 
 (provide 'setup-org)
 ;;; setup-org.el ends here
