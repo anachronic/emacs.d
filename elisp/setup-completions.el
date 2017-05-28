@@ -37,6 +37,11 @@
   (define-key ivy-minibuffer-map (kbd "C-l") #'ivy-backward-delete-char)
   (ivy-mode 1))
 
+;; ivy-hydra is not too horrible
+(use-package ivy-hydra
+  :ensure t
+  :defer t)
+
 ;; I've come to think helm is not really good with files anymore. So let's
 ;; use counsel. It also has some nice builtin functionality:
 ;; http://oremacs.com/2015/04/19/git-grep-ivy/
