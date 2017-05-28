@@ -5,6 +5,7 @@
       '(
         TeX-insert-backslash
         electric-pair-delete-pair
+        end-of-visual-line
         kill-region
         kill-sexp
         my/python-yank
