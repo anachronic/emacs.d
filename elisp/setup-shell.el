@@ -111,6 +111,7 @@
 
 ;; Sometimes a shell is better...
 (define-key meta-m-map (kbd "s") #'shell)
+(define-key meta-m-map (kbd "z") #'eshell)
 
 ;; Need color, mainly for python and shell coloring
 (use-package xterm-color

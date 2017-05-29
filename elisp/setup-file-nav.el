@@ -41,8 +41,13 @@
   ;; Since b is unbound in dired and ^ is a very annoying key to press,
   ;; lets bind that to dired-up-directory
   (with-eval-after-load 'dired+
-    (define-key dired-mode-map (kbd "b") #'dired-up-directory)
-    (define-key dired-mode-map (kbd "/") #'isearch-forward)))
+    (define-key dired-mode-map (kbd "b") #'dired-up-directory))
+  (defun nsv/dired-search ()
+    (interactive)
+    (goto-char (point-min))
+    (call-interactively 'isearch-forward))
+  (with-eval-after-load 'dired+
+    (define-key dired-mode-map (kbd "/") #'nsv/dired-search)))
 
 ;; We want to be able to toggle dot files in dired
 (add-hook 'dired-mode-hook (lambda ()
