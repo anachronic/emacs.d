@@ -165,7 +165,7 @@ If ARG is present, prompt for the file instead."
       (find-file guess))))
 
 (global-set-key (kbd "C-c Z") 'nsv/jump-to-zshrc)
-
+(nsv/define-bookmark "~/.zshrc" "z" "zshrc")
 
 (provide 'setup-shell)
 ;;; setup-shell.el ends here
