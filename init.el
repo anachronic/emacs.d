@@ -45,6 +45,13 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(defun maybe-install-packages (&rest packages)
+  "Install all packages defined in PACKAGES."
+  (when packages
+    (dolist (pkg packages)
+      (unless (package-installed-p pkg)
+        (package-install pkg)))))
+
 ;; Paradox is quite nice. I love it! Thanks @malabarba!
 (use-package paradox
   :ensure t

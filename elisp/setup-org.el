@@ -90,5 +90,11 @@
     "* TODO %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar}\n:Personas: %^{Participantes}\n:END:\n\n"))
  )
 
+;; Exporters don't seem to go well with use-package and org
+(maybe-install-packages 'ox-gfm 'ox-reveal)
+
+(with-eval-after-load 'org
+  (require 'ox-gfm nil t))
+
 (provide 'setup-org)
 ;;; setup-org.el ends here
