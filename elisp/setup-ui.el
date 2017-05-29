@@ -12,6 +12,11 @@
 (when (fboundp 'blink-cursor-mode)
   (blink-cursor-mode -1))
 
+;; For EWW buffers to actually be visible
+;; Source: https://emacs.stackexchange.com/a/3523
+(with-eval-after-load 'shr-color
+  (setq shr-color-visible-luminance-min 70))
+
 ;; these two come from: https://www.emacswiki.org/emacs/SmoothScrolling
 ;; (setq scroll-step 1)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
