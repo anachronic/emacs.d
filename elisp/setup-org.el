@@ -21,34 +21,35 @@
   :ensure t
   :defer t)
 
+(maybe-install-packages 'org)
+
 ;; Ensure we can get out of org-src with C-x C-s
 ;; god narrow-or-widen-dwim is cool
 (with-eval-after-load 'org-src
+  (setq org-src-fontify-natively t)
   (define-key org-src-mode-map "\C-x\C-s" #'org-edit-src-exit))
 
 (add-hook 'org-mode-hook #'auto-fill-mode)
 (add-hook 'org-mode-hook #'visual-line-mode)
 (add-hook 'org-mode-hook #'org-indent-mode)
 
-;; This needs to change some time.
-(with-eval-after-load 'org
+(with-eval-after-load 'org-agenda
+  (setq org-agenda-files nsv/org-agenda-files))
+
+(with-eval-after-load 'ox-latex
   (setenv "PDFLATEX" "pdflatex -shell-escape")
   (setq org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
   (setq org-latex-listings 'minted)
   (add-to-list 'org-latex-packages-alist '("" "minted"))
 
-  (setq org-latex-create-formula-image-program 'imagemagick)
+  (setq org-latex-create-formula-image-program 'imagemagick))
 
-  (setq org-src-fontify-natively t)
-
+;; This needs to change some time.
+(with-eval-after-load 'org
   ;; M-j seems better than C-j for org-return-indent...
   (define-key org-mode-map (kbd "M-j") 'org-return-indent)
-
-  (setq org-agenda-files nsv/org-agenda-files)
-
   (setq org-todo-keywords
         '((sequence "TODO(t)" "|" "CLOSED(d!)" "CANCELLED (c@/!)")))
-
 
   ;; We want to log into drawers.
   ;; https://www.youtube.com/watch?v=nUvdddKZQzs
@@ -60,8 +61,7 @@
   (setq-default org-log-reschedule 'time)
 
   ;; Kill a subtree. This looks very useful
-  (define-key org-mode-map (kbd "C-M-k") 'org-cut-subtree)
-  )
+  (define-key org-mode-map (kbd "C-M-k") 'org-cut-subtree))
 
 ;; Org capture
 (global-set-key (kbd "C-c c") 'org-capture)
