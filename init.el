@@ -65,14 +65,8 @@
 ;; Emacs core stuff
 (require 'setup-emacs)
 
-;; I'd like to have a cool prefix key to do my own things without
-;; having to worry that anyone overrides its key binding and, as you
-;; know, C-c is quite cluttered. So, let's rebind C-a to combine M-m
-;; and C-a and voilà!, we get a free cool key to bind to a prefix.
-;; The rebinding happens in setup-editor.el
-(global-unset-key (kbd "M-m"))
-(define-prefix-command 'meta-m-map)
-(global-set-key (kbd "M-m") 'meta-m-map)
+;; Custom keymaps
+(require 'setup-keymaps)
 
 ;; Add stuff to text so you get visual aid when coding
 (require 'setup-editor)

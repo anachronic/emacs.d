@@ -23,6 +23,9 @@
 
 (maybe-install-packages 'org)
 
+(nsv/define-bookmark nsv/org-personal "p" "personal-todo")
+(nsv/define-bookmark nsv/org-tasks "t" "work-todo")
+
 ;; Ensure we can get out of org-src with C-x C-s
 ;; god narrow-or-widen-dwim is cool
 (with-eval-after-load 'org-src
