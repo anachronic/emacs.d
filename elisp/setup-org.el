@@ -79,6 +79,9 @@
   `("v" "Viaje" entry
     (file+headline ,nsv/org-personal "Viajes")
     "* [VIAJE] %^{Destino}\nSCHEDULED: %^T\n\n")
+  `("p" "Proyecto" entry
+    (file+headline ,nsv/org-personal "Proyectos personales")
+    "* PROYECTO %?\n\n")
 
   ;; Work/Uni/TODO stuff
   `("m" "Responder mail" entry
