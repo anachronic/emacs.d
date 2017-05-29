@@ -40,7 +40,7 @@
 ;; ivy-hydra is not too horrible
 (use-package ivy-hydra
   :ensure t
-  :defer t)
+  :demand)
 
 ;; I've come to think helm is not really good with files anymore. So let's
 ;; use counsel. It also has some nice builtin functionality:

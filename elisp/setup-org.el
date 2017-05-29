@@ -94,7 +94,11 @@
 (maybe-install-packages 'ox-gfm 'ox-reveal)
 
 (with-eval-after-load 'org
-  (require 'ox-gfm nil t))
+  (require 'ox-gfm nil t)
+  (require 'ox-reveal nil t)
+  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+  (setq org-reveal-mathjax t)
+  )
 
 (provide 'setup-org)
 ;;; setup-org.el ends here
