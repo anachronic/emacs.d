@@ -87,7 +87,10 @@
     "* TODO %?\nDEADLINE: %^t\n\n")
   `("r" "Reunión" entry
     (file+headline ,nsv/org-tasks "Reuniones")
-    "* TODO %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar}\n:Personas: %^{Participantes}\n:END:\n\n"))
+    "* TODO %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar}\n:Personas: %^{Participantes}\n:END:\n\n")
+  `("a" "Work assignment" entry
+    (file+headline ,nsv/org-tasks "Work/calce")
+    "* TODO %?\n"))
  )
 
 ;; Exporters don't seem to go well with use-package and org

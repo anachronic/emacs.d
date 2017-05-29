@@ -198,7 +198,8 @@
 
    ;; org mode
    `(org-agenda-clocking ((t (:inherit secondary-selection))) t)
-   `(org-agenda-structure ((t (:height 1.4 :foreground "light sky blue"))))
+   `(org-agenda-date-today ((t (:foreground "PaleVioletRed1" :weight bold))))
+   `(org-agenda-structure ((t (:foreground "DimGrey" :weight bold))))
    `(org-archived ((t (:foreground "LemonChiffon4"))))
    `(org-column ((t (:weight normal :slant normal :inherit default))))
    `(org-checkbox ((t (:inherit font-lock-function-name-face))))
@@ -215,7 +216,7 @@
    `(org-level-4 ((t (:foreground "yellow" :weight bold))))
    `(org-link ((t (:foreground "#329ba3" :underline "IndianRed3" :weight bold))))
    `(org-mode-line-clock ((t (:inherit modeline))) t)
-   `(org-scheduled ((t (:foreground "thistle4" :slant italic))))
+   `(org-scheduled ((t (:foreground "CadetBlue1" :slant italic))))
    `(org-todo ((t (:foreground "#Cd5c5c" :weight bold))))
    `(org-done ((t (:foreground "DodgerBlue" :weight bold))))
    `(org-tag ((t (:foreground "#20b2aa" :height 105 :weight semi-light))))
