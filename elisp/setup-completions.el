@@ -114,6 +114,18 @@
   (define-key company-active-map (kbd "TAB") #'nsv/company-complete-if-only-one)
   (define-key company-active-map (kbd "<tab>") #'nsv/company-complete-if-only-one)
   (define-key company-active-map (kbd "C-j") 'company-complete-common-or-cycle)
+
+  ;; default backends
+  (setq-default company-backends
+                '(company-bbdb
+                  company-nxml company-css
+                  company-eclim company-semantic company-clang
+                  company-xcode company-cmake
+                  company-capf
+                  company-files
+                  (company-dabbrev-code company-gtags company-etags
+                                        company-keywords)
+                  company-oddmuse))
   :diminish "comp"
   :bind (("C-S-<SPC>" . company-complete)))
 
