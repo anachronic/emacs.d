@@ -6,7 +6,7 @@
 ;; it would be. I'd much rather use isearch and iy-go-up-to-char
 (use-package avy
   :ensure t
-  :bind (("C-t" . avy-goto-char))
+  :bind (("C-c f" . avy-goto-char))
   :config
   (setq-default avy-keys
                 '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p)))
@@ -15,11 +15,10 @@
 ;; key binding.
 (use-package iy-go-to-char
   :ensure t
-  :bind (("C-c j c" . iy-go-up-to-char)
-         ("C-c j b" . iy-go-to-char-backward))
-  :config
-  (global-set-key (kbd "C-c j c") #'iy-go-up-to-char)
-  (global-set-key (kbd "C-c j b") #'iy-go-to-char-backward))
+  :bind (("C-t"   . iy-go-up-to-char)
+         ("C-,"   . iy-go-to-or-up-to-continue)
+         ("C-c b" . iy-go-to-char-backward))
+  :config)
 
 ;; Seems better than ace-link
 (use-package link-hint

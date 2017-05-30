@@ -124,8 +124,7 @@ is already narrowed."
 ;; Folding seems way better with origami
 (use-package origami
   :ensure t
-  :bind (("C-c f" . origami-recursively-toggle-node)
-         ("C-c F" . origami-toggle-all-nodes))
+  :bind (("C-c F" . origami-toggle-all-nodes))
   :config
   (add-hook 'prog-mode-hook #'origami-mode)
   (defun origami-closed-here-p ()
