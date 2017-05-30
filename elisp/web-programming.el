@@ -32,17 +32,21 @@
 ;; is __NOT__ a closing paren
 (defun nsv/web-mode-before-function-p (chr)
   "True if CHR is {, mode is web-mode and previous character is NOT a closing paren."
-  (if (not (eq major-mode 'web-mode))
-      nil
-    (and (eq major-mode 'web-mode)
-         (eq ?\{ chr)
-         (not (equal (progn (save-excursion
-                              (backward-char)
-                              (string (preceding-char))))
-                     ")")))))
+  (let ((lookback-p (looking-back ")\\s-*{")))
+    (not (and (eq ?\{ chr)
+              lookback-p))))
 
-(setq electric-pair-inhibit-predicate
-      'nsv/web-mode-before-function-p)
+(require 'elec-pair)
+(add-hook 'web-mode-hook
+          (lambda () (setq-local electric-pair-inhibit-predicate
+                            'nsv/web-mode-before-function-p)))
+
+;; Single quotes don't pair in web mode
+(defun nsv/web-mode-single-quote-pair ()
+  "Define single quote pair in web mode."
+  (setq-local electric-pair-pairs
+              (append electric-pair-pairs '((39 . 39)))))
+(add-hook 'web-mode-hook 'nsv/web-mode-single-quote-pair)
 
 ;; A great package. Not only does it complete HTML stuff, but it also
 ;; displays documentation with company-quickhelp
