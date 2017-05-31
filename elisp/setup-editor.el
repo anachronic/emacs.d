@@ -124,21 +124,27 @@ is already narrowed."
 ;; Folding seems way better with origami
 (use-package origami
   :ensure t
-  :bind (("C-c F" . origami-toggle-all-nodes))
+  :bind (("C-c F" . origami-toggle-all-nodes)
+         ("C-c t" . origami-toggle-node))
   :defer t
   :init
   (add-hook 'prog-mode-hook #'origami-mode)
 
   ;; Expand origami folded nodes with TAB!
   (defun origami-closed-here-p ()
-    (let* ((path (origami-search-forward-for-path (current-buffer) (point)))
-           (node (-last-item path)))
-      (origami-fold-node-recursively-closed? node)))
+    (save-excursion
+      (move-end-of-line 1)
+      (backward-char 1)
+      (let* ((path (origami-search-forward-for-path (current-buffer) (point)))
+             (node (-last-item path)))
+        (origami-fold-node-recursively-closed? node))))
 
   (defun origami-expand-or-TAB (&optional ARG)
     (interactive)
     (if (origami-closed-here-p)
-        (origami-show-node (current-buffer) (point))
+        (save-excursion
+          (move-end-of-line 1)
+          (origami-show-node (current-buffer) (1- (point))))
       (call-interactively 'indent-for-tab-command)))
 
   (global-set-key [remap indent-for-tab-command] 'origami-expand-or-TAB))
