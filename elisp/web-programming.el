@@ -32,9 +32,8 @@
 ;; is __NOT__ a closing paren
 (defun nsv/web-mode-before-function-p (chr)
   "True if CHR is {, mode is web-mode and previous character is NOT a closing paren."
-  (let ((lookback-p (looking-back ")\\s-*{")))
-    (not (and (eq ?\{ chr)
-              lookback-p))))
+  (when (eq ?\{ chr)
+    (not (looking-back ")\\s-*{"))))
 
 (require 'elec-pair)
 (add-hook 'web-mode-hook
