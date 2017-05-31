@@ -459,8 +459,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line
      ((,class (:inverse-video unspecified
                               :underline unspecified
-                              :foreground "DarkSlateGrey"
-                              :background ,concrete
+                              :foreground ,silver
+                              :background ,wet-asphalt
                               :box (:line-width 1
                                                 :color ,wet-asphalt
                                                 :style unspecified)))
@@ -469,11 +469,11 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((t (:inverse-video unspecified
                          :underline unspecified
                          :foreground "DarkSlateGrey"
-                         :background ,silver
+                         :background ,peter-river
                          :box (:line-width 1
                                            :color ,wet-asphalt
                                            :style unspecified)))))
-   `(mode-line-buffer-id ((t (:foreground ,midnight-blue :weight bold))))
+   `(mode-line-buffer-id ((t (:foreground ,sun-flower :weight bold))))
    `(sml/global ((t (:foreground ,concrete))))
    `(sml/modes ((t (:foreground ,nephritis))))
    `(sml/filename ((t (:foreground ,nephritis))))
