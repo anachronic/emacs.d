@@ -404,7 +404,8 @@ Also bind `class' to ((class color) (min-colors 89))."
                                                   :box (:line-width 1 :color ,orange)))))
    `(magit-log-head-label-tags ((t (:foreground ,wisteria :weight bold))))
 ;;;;; org-mode
-   `(org-agenda-date-today ((t (:foreground ,silver :slant italic :weight bold))) t)
+   `(org-agenda-date-weekend ((t (:foreground ,silver :slant italic :weight bold))) t)
+   `(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))) t)
    `(org-agenda-structure ((t (:inherit font-lock-comment-face))))
    `(org-archived ((t (:foreground ,midnight-blue :weight bold))))
    `(org-checkbox ((t (:background ,silver :foreground ,wet-asphalt

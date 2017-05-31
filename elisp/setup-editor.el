@@ -16,6 +16,7 @@
 (require 'hl-line)
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'package-menu-mode-hook 'hl-line-mode)
+(add-hook 'org-agenda-mode-hook 'hl-line-mode)
 
 ;; Enable narrow commands
 (put 'narrow-to-region 'disabled nil)
