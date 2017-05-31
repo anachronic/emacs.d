@@ -18,17 +18,17 @@
   (latex-preview-pane-enable))
 
 ;; The following doesn't play nice with use-package. Whatever.
-(defun nsv/add-preview-pane-toggle ()
+(defun ach-add-preview-pane-toggle ()
   "Add latex preview pane keybinding."
   (local-set-key (kbd "C-x p") 'latex-preview-pane-mode))
-(add-hook 'LaTeX-mode-hook 'nsv/add-preview-pane-toggle)
+(add-hook 'LaTeX-mode-hook 'ach-add-preview-pane-toggle)
 
 ;; Let's try Flyspell with TeX documents.
-(defun nsv/add-flyspell ()
+(defun ach-add-flyspell ()
   "Add Flyspell to a buffer and diminish it to FlyS."
   (flyspell-mode)
   (diminish 'flyspell-mode "FlyS"))
-(add-hook 'LaTeX-mode-hook #'nsv/add-flyspell)
+(add-hook 'LaTeX-mode-hook #'ach-add-flyspell)
 
 ;; Enable narrowing. God disabled commands are annoying.
 (put 'LaTeX-narrow-to-environment 'disabled nil)
@@ -41,14 +41,14 @@
 (use-package company-bibtex
   :ensure t
   :config
-  (defun nsv/load-company-bibtex ()
+  (defun ach-load-company-bibtex ()
     "Add bibtex backend to company."
     (company-mode 1)
     (require 'company-bibtex)
     (setq-local company-backends company-backends)
     (setq company-bibtex-bibliography "~/Dropbox/tesis/referencias.bib")
     (add-to-list 'company-backends 'company-bibtex))
-  (add-hook 'LaTeX-mode-hook #'nsv/load-company-bibtex))
+  (add-hook 'LaTeX-mode-hook #'ach-load-company-bibtex))
 
 
 (provide 'latex-writing)

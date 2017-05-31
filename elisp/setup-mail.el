@@ -23,7 +23,7 @@
 
 ;; Sometimes, thunderbird reply is better. I still get a lot of gmail
 ;; mails, so that will be de default.
-(defun nsv/gnus-use-thunderbird-reply ()
+(defun ach-gnus-use-thunderbird-reply ()
   "Set `message-cite-style' equal to `message-cite-style-thunderbird' and reset message buffer."
   (interactive)
   (set (make-local-variable 'message-cite-style)
@@ -33,7 +33,7 @@
 
 ;; C-c C-s is kind of a lousy key in message-mode-map. Rebind it to
 ;; our function.
-(define-key message-mode-map (kbd "C-c C-s") 'nsv/gnus-use-thunderbird-reply)
+(define-key message-mode-map (kbd "C-c C-s") 'ach-gnus-use-thunderbird-reply)
 
 ;; sending mail -- replace USERNAME with your gmail username
 ;; also, make sure the gnutls command line utils are installed

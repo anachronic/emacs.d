@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(defvar nsv/valid-pyvenv-modes
+(defvar ach-valid-pyvenv-modes
   '(python-mode
     projectile-django-server-mode
     projectile-django-migration-mode
@@ -32,7 +32,7 @@
                 (vc-mode vc-mode)
                 "  "
                 (pyvenv-virtual-env-name
-                 (:eval (list (if (and (member major-mode nsv/valid-pyvenv-modes)
+                 (:eval (list (if (and (member major-mode ach-valid-pyvenv-modes)
                                        (bound-and-true-p pyvenv-virtual-env-name))
                                   (propertize (concat "[" pyvenv-virtual-env-name "] ")
                                               'face '(:foreground "SandyBrown"))

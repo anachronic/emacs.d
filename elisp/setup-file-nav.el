@@ -6,7 +6,7 @@
 (use-package neotree
   :ensure t
   :config
-  (defun nsv/neotree-toggle ()
+  (defun ach-neotree-toggle ()
     "If there's a projectile project going on, open neotree at project root."
     (interactive)
     (if (neo-global--window-exists-p)
@@ -21,8 +21,8 @@
             (neotree-dir this-project)
           (when this-file
             (neotree-dir this-path))))))
-  (global-set-key (kbd "<f7>") #'nsv/neotree-toggle)
-  (define-key meta-m-map (kbd "M-d") #'nsv/neotree-toggle))
+  (global-set-key (kbd "<f7>") #'ach-neotree-toggle)
+  (define-key meta-m-map (kbd "M-d") #'ach-neotree-toggle))
 
 ;; This package is cool, I like coloring stuff around
 (use-package dired-k
@@ -42,12 +42,12 @@
   ;; lets bind that to dired-up-directory
   (with-eval-after-load 'dired+
     (define-key dired-mode-map (kbd "b") #'dired-up-directory))
-  (defun nsv/dired-search ()
+  (defun ach-dired-search ()
     (interactive)
     (goto-char (point-min))
     (call-interactively 'isearch-forward))
   (with-eval-after-load 'dired+
-    (define-key dired-mode-map (kbd "/") #'nsv/dired-search)))
+    (define-key dired-mode-map (kbd "/") #'ach-dired-search)))
 
 ;; We want to be able to toggle dot files in dired
 (add-hook 'dired-mode-hook (lambda ()
@@ -60,7 +60,7 @@
 
 ;; ffap seemed cool but i wanna use the guess
 (require 'ffap)
-(defun nsv/go-to-file-at-point ()
+(defun ach-go-to-file-at-point ()
   "Jump to file at point."
   (interactive)
   (let ((guess (ffap-guesser)))
@@ -68,7 +68,7 @@
       (error "No file at point"))
     (find-file guess)))
 
-(global-set-key (kbd "C-c g") 'nsv/go-to-file-at-point)
+(global-set-key (kbd "C-c g") 'ach-go-to-file-at-point)
 
 ;; I want a function to chmod 755 this file
 ;; No hotkey for it, just M-x it
@@ -82,13 +82,13 @@
     (set-file-modes this-file (string-to-number "755" 8))))
 
 ;; Jump to init.el
-(defun nsv/jump-to-init ()
+(defun ach-jump-to-init ()
   "Jump directly to init.el in current buffer."
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
-(global-set-key (kbd "C-c I") 'nsv/jump-to-init)
-(nsv/define-bookmark "~/.emacs.d/init.el" "i" "emacs-init")
+(global-set-key (kbd "C-c I") 'ach-jump-to-init)
+(ach-define-bookmark "~/.emacs.d/init.el" "i" "emacs-init")
 
 (provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here

@@ -84,20 +84,20 @@
 
 ;; First, define a variable that decides if movement is per line or
 ;; per "page"
-(defvar nsv/scroll-per-line t
+(defvar ach-scroll-per-line t
   "Set to t if scroll should be per line instead of per page.")
 
 ;; The next 2 functions will default scrolling to 1 line per key
 ;; hit. Calling with unnumbered prefix will change their scrolling
 ;; style to page/line depending on the previous value.
-(defun nsv/scrolldown (n)
+(defun ach-scrolldown (n)
   "Scroll down N lines without moving the point.
 
 With an unnumbered prefix, toggle between scrolling style."
   (interactive "P")
   (when (and n (listp n))
-    (setq nsv/scroll-per-line (not nsv/scroll-per-line)))
-  (if nsv/scroll-per-line
+    (setq ach-scroll-per-line (not ach-scroll-per-line)))
+  (if ach-scroll-per-line
       (progn
         (when (or (listp n) (not n))
           (setq n 1))
@@ -105,14 +105,14 @@ With an unnumbered prefix, toggle between scrolling style."
           (scroll-up-command 1)))
     (scroll-up-command)))
 
-(defun nsv/scrollup (n)
+(defun ach-scrollup (n)
   "Scroll up N lines without moving the point.
 
 With an unnumbered prefix, toggle between scrolling style."
   (interactive "P")
   (when (and n (listp n))
-    (setq nsv/scroll-per-line (not nsv/scroll-per-line)))
-  (if nsv/scroll-per-line
+    (setq ach-scroll-per-line (not ach-scroll-per-line)))
+  (if ach-scroll-per-line
       (progn
         (when (or (listp n) (not n))
           (setq n 1))
@@ -121,8 +121,8 @@ With an unnumbered prefix, toggle between scrolling style."
     (scroll-down-command)))
 
 
-(global-set-key (kbd "C-v") 'nsv/scrolldown)
-(global-set-key (kbd "M-v") 'nsv/scrollup)
+(global-set-key (kbd "C-v") 'ach-scrolldown)
+(global-set-key (kbd "M-v") 'ach-scrollup)
 
 ;; This one was recommended by Steve Purcell. Looked pretty good
 ;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY

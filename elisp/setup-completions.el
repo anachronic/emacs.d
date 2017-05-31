@@ -65,14 +65,14 @@
   :bind (("C-c a" . counsel-projectile-ag)
          ("C-S-p" . counsel-projectile-find-file))
   :config
-  (defun nsv/switch-buffer-maybe-on-project ()
+  (defun ach-switch-buffer-maybe-on-project ()
     "Call counsel-projectile-switch-to-buffer if on project, ivy-switch-buffer otherwise"
     (interactive)
     (if (projectile-project-p)
         (call-interactively 'counsel-projectile-switch-to-buffer)
       (call-interactively 'ivy-switch-buffer)))
-  (global-set-key (kbd "C-S-m") #'nsv/switch-buffer-maybe-on-project)
-  (define-key meta-m-map (kbd "M-m") #'nsv/switch-buffer-maybe-on-project)
+  (global-set-key (kbd "C-S-m") #'ach-switch-buffer-maybe-on-project)
+  (define-key meta-m-map (kbd "M-m") #'ach-switch-buffer-maybe-on-project)
   (define-key meta-m-map (kbd "M-p") #'counsel-projectile-find-file)
   (counsel-projectile-on))
 
@@ -102,7 +102,7 @@
   :after yasnippet
   :demand
   :config
-  (defun nsv/company-complete-if-only-one ()
+  (defun ach-company-complete-if-only-one ()
     "Complete candidate if there's only one option, otherwise yas-expand"
     (interactive)
     (if (eq 1 company-candidates-length)
@@ -111,8 +111,8 @@
   (add-hook 'prog-mode-hook #'company-mode)
   (add-hook 'comint-mode-hook #'company-mode)
   (setq company-idle-delay 0.5)
-  (define-key company-active-map (kbd "TAB") #'nsv/company-complete-if-only-one)
-  (define-key company-active-map (kbd "<tab>") #'nsv/company-complete-if-only-one)
+  (define-key company-active-map (kbd "TAB") #'ach-company-complete-if-only-one)
+  (define-key company-active-map (kbd "<tab>") #'ach-company-complete-if-only-one)
   (define-key company-active-map (kbd "C-j") 'company-complete-common-or-cycle)
 
   ;; default backends

@@ -26,10 +26,10 @@
   :after (company tern js2-mode)
   :defer t
   :config
-  (defun nsv/add-tern-company ()
+  (defun ach-add-tern-company ()
     (setq-local company-backends company-backends)
     (add-to-list 'company-backends 'company-tern))
-  (add-hook 'js2-mode-hook #'nsv/add-tern-company))
+  (add-hook 'js2-mode-hook #'ach-add-tern-company))
 
 
 ;; Been using this one for work lately

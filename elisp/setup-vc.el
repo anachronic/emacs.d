@@ -64,7 +64,7 @@
 
 ;; Bookmarks
 ;; The most important one is probably my forks directory.
-(nsv/define-bookmark "~/forks/." "f" "forks")
+(ach-define-bookmark "~/forks/." "f" "forks")
 
 (provide 'setup-vc)
 ;;; setup-vc.el ends here

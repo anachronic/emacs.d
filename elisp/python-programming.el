@@ -9,10 +9,10 @@
 (use-package company-jedi
   :ensure t
   :config
-  (defun nsv/python-mode-hook ()
+  (defun ach-python-mode-hook ()
     (add-to-list 'company-backends 'company-jedi))
 
-  (add-hook 'python-mode-hook 'nsv/python-mode-hook)
+  (add-hook 'python-mode-hook 'ach-python-mode-hook)
   (define-key python-mode-map (kbd "M-.") 'jedi:goto-definition)
   (define-key python-mode-map (kbd "M-,") 'jedi:goto-definition-pop-marker)
   (define-key python-mode-map (kbd "C-c ?") 'jedi:show-doc))
@@ -23,9 +23,9 @@
 (use-package py-yapf
   :ensure t
   :config
-  (defun nsv/redef-indent-python ()
+  (defun ach-redef-indent-python ()
     (local-set-key (kbd "C-c TAB") #'py-yapf-buffer))
-  (add-hook 'python-mode-hook #'nsv/redef-indent-python))
+  (add-hook 'python-mode-hook #'ach-redef-indent-python))
 
 ;; I liked the pyvenv tool from Elpy. So let's use that. Also, I
 ;; pretty much use (and will continue to do so) virtualenvwrapper.sh,
@@ -34,10 +34,10 @@
 (use-package pyvenv
   :ensure t
   :config
-  (defun nsv/set-pyvenv-workon ()
+  (defun ach-set-pyvenv-workon ()
     (local-set-key (kbd "C-c C-d") #'pyvenv-deactivate)
     (local-set-key (kbd "C-c C-w") #'pyvenv-workon))
-  (add-hook 'python-mode-hook #'nsv/set-pyvenv-workon))
+  (add-hook 'python-mode-hook #'ach-set-pyvenv-workon))
 
 ;; The warning message is very annoying, let's get rid of it
 ;; Solution found at:
@@ -59,7 +59,7 @@
 
 ;; Let's get rid of the region/buffer keybindings by making -yet
 ;; again- a dwim command. Bind it to C-c C-c
-(defun nsv/python-shell-send-dwim (&optional send-main msg)
+(defun ach-python-shell-send-dwim (&optional send-main msg)
   "If region is active, send region to buffer, otherwise send the entire buffer.
 The SEND-MAIN and MSG arguments are the same as in python-shell-send-region and
 python-shell-send-buffer."
@@ -90,13 +90,13 @@ python-shell-send-buffer."
   "Send the current region or buffer to shell.
 
 Start the shell if it's not up, SEND-MAIN and MSG are the same
-arguments that `nsv/python-shell-swnd-dwim' takes."
+arguments that `ach-python-shell-swnd-dwim' takes."
   (interactive (list current-prefix-arg t))
   (condition-case nil
-      (call-interactively 'nsv/python-shell-send-dwim)
+      (call-interactively 'ach-python-shell-send-dwim)
     (error (progn
              (run-python (python-shell-calculate-command) nil t)
-             (call-interactively 'nsv/python-shell-send-dwim)))))
+             (call-interactively 'ach-python-shell-send-dwim)))))
 
 ;; There's a great approach to the "run project" problem in Spacemacs
 ;; that I thought is very valuable. Just set a hotkey to run the
@@ -123,7 +123,7 @@ If ARG is present, ask for a command to run."
 ;; C-c C-z (which is python-shell-switch-to-shell) without having to
 ;; C-c C-p before. If it's not there, well, start it, why wouldn't we
 ;; do that?
-(defun nsv/python-switch-to-shell ()
+(defun ach-python-switch-to-shell ()
   "Switch to Python shell in other window, create a Python shell if it doesn't exist."
   (interactive)
   (condition-case nil
@@ -133,10 +133,10 @@ If ARG is present, ask for a command to run."
              (python-shell-switch-to-shell)))))
 
 ;; Add tweaks to standard python.el defined in this file.
-(defun nsv/python-rebinds ()
+(defun ach-python-rebinds ()
   "Add the functions defined in python-programming.el to Python buffer locally."
   ;; Shell related commands
-  (local-set-key (kbd "C-c C-z") #'nsv/python-switch-to-shell)
+  (local-set-key (kbd "C-c C-z") #'ach-python-switch-to-shell)
   (local-set-key (kbd "C-c C-r") #'spacemacs/python-execute-file)
   (local-set-key (kbd "C-c C-c") #'python-shell-send-dwim)
   ;; I don't know why these are not defaults
@@ -145,16 +145,16 @@ If ARG is present, ask for a command to run."
   (local-set-key (kbd "C-M-a") #'python-nav-backward-defun)
   (local-set-key (kbd "C-M-e") #'python-nav-forward-defun))
 
-(add-hook 'python-mode-hook #'nsv/python-rebinds)
+(add-hook 'python-mode-hook #'ach-python-rebinds)
 
 ;; Debugging
-(defun nsv/python-debug ()
+(defun ach-python-debug ()
   "Insert import ipdb; ipdb.set_trace() in the buffer."
   (interactive)
   (insert "import ipdb; ipdb.set_trace()")
   (newline-and-indent))
 
-(define-key python-mode-map (kbd "C-c C-e") 'nsv/python-debug)
+(define-key python-mode-map (kbd "C-c C-e") 'ach-python-debug)
 
 ;; Keep it like so for developing purposes
 (when (file-exists-p "/home/nsalas/forks/importmagic.el")

@@ -17,7 +17,7 @@
 (define-key ctl-x-map (kbd "j") 'file-bookmark-map)
 
 (require 'f)
-(defmacro nsv/define-bookmark (file key &optional name)
+(defmacro ach-define-bookmark (file key &optional name)
   "Define a bookmark to FILE with KEY in `file-bookmark-map' and give it NAME.
 
 If NAME is not present, infer from FILE instead."

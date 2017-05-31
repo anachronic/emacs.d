@@ -30,7 +30,7 @@
 ;; This function should return t when chr is {, mode is web-mode
 ;; and the next character _before_ point (without spaces and/or newlines)
 ;; is __NOT__ a closing paren
-(defun nsv/web-mode-before-function-p (chr)
+(defun ach-web-mode-before-function-p (chr)
   "True if CHR is {, mode is web-mode and previous character is NOT a closing paren."
   (when (eq ?\{ chr)
     (not (looking-back ")\\s-*{"))))
@@ -38,14 +38,14 @@
 (require 'elec-pair)
 (add-hook 'web-mode-hook
           (lambda () (setq-local electric-pair-inhibit-predicate
-                            'nsv/web-mode-before-function-p)))
+                            'ach-web-mode-before-function-p)))
 
 ;; Single quotes don't pair in web mode
-(defun nsv/web-mode-single-quote-pair ()
+(defun ach-web-mode-single-quote-pair ()
   "Define single quote pair in web mode."
   (setq-local electric-pair-pairs
               (append electric-pair-pairs '((39 . 39)))))
-(add-hook 'web-mode-hook 'nsv/web-mode-single-quote-pair)
+(add-hook 'web-mode-hook 'ach-web-mode-single-quote-pair)
 
 ;; A great package. Not only does it complete HTML stuff, but it also
 ;; displays documentation with company-quickhelp
@@ -56,14 +56,14 @@
 (use-package ac-html-bootstrap
   :ensure t)
 
-(defun nsv/add-company-backends-webmode ()
+(defun ach-add-company-backends-webmode ()
   "Add Tern, webmode and bootstrap backends to company."
   (setq-local company-backends company-backends)
   (add-to-list 'company-backends 'company-web-html)
   (add-to-list 'company-backends 'company-tern)
   (company-web-bootstrap+))
 
-(add-hook 'web-mode-hook 'nsv/add-company-backends-webmode)
+(add-hook 'web-mode-hook 'ach-add-company-backends-webmode)
 
 ;; Emmet!!!
 (use-package emmet-mode

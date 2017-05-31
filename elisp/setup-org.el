@@ -2,15 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
-(defvar nsv/org-personal "~/Dropbox/orgfiles/personal.org"
+(defvar ach-org-personal "~/Dropbox/orgfiles/personal.org"
   "Personal stuff `org-mode' file.")
 
-(defvar nsv/org-tasks "~/Dropbox/orgfiles/tasks.org"
+(defvar ach-org-tasks "~/Dropbox/orgfiles/tasks.org"
   "University/Work related tasks.")
 
 ;; Let's load our agenda file(s)
-(defvar nsv/org-agenda-files)
-(setq nsv/org-agenda-files '("~/Dropbox/orgfiles/personal.org"
+(defvar ach-org-agenda-files)
+(setq ach-org-agenda-files '("~/Dropbox/orgfiles/personal.org"
                              "~/Dropbox/orgfiles/tasks.org"
                              "~/Dropbox/orgfiles/gcal.org"))
 
@@ -20,8 +20,8 @@
 
 (maybe-install-packages 'org)
 
-(nsv/define-bookmark nsv/org-personal "p" "personal-todo")
-(nsv/define-bookmark nsv/org-tasks "t" "work-todo")
+(ach-define-bookmark ach-org-personal "p" "personal-todo")
+(ach-define-bookmark ach-org-tasks "t" "work-todo")
 
 ;; Ensure we can get out of org-src with C-x C-s
 ;; god narrow-or-widen-dwim is cool
@@ -38,7 +38,7 @@
 (define-key meta-m-map (kbd "a") 'org-agenda)
 
 (with-eval-after-load 'org-agenda
-  (setq org-agenda-files nsv/org-agenda-files)
+  (setq org-agenda-files ach-org-agenda-files)
   (setq org-agenda-custom-commands
         '(("e" "Both agenda and TODO items"
            ((alltodo "")
@@ -79,28 +79,28 @@
  (list
   ;; Personal stuff
   `("t" "Teatro" entry
-    (file+headline ,nsv/org-personal "Funciones teatrales")
+    (file+headline ,ach-org-personal "Funciones teatrales")
     "* %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar|U. de Chile|Municipal|Otro}\n:END:\n")
   `("v" "Viaje" entry
-    (file+headline ,nsv/org-personal "Viajes")
+    (file+headline ,ach-org-personal "Viajes")
     "* [VIAJE] %^{Destino}\nSCHEDULED: %^T\n\n")
   `("p" "Proyecto" entry
-    (file+headline ,nsv/org-personal "Proyectos personales")
+    (file+headline ,ach-org-personal "Proyectos personales")
     "* PROYECTO %?\n\n")
 
   ;; Work/Uni/TODO stuff
   `("m" "Responder mail" entry
-    (file+headline ,nsv/org-tasks "Mail")
+    (file+headline ,ach-org-tasks "Mail")
     "* TODO Responder (%a)"
     :immediate-finish t)
   `("w" "Tarea" entry
-    (file+headline ,nsv/org-tasks "Tareas")
+    (file+headline ,ach-org-tasks "Tareas")
     "* TODO %?\nDEADLINE: %^t\n\n")
   `("r" "Reunión" entry
-    (file+headline ,nsv/org-tasks "Reuniones")
+    (file+headline ,ach-org-tasks "Reuniones")
     "* TODO %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar}\n:Personas: %^{Participantes}\n:END:\n\n")
   `("a" "Work assignment" entry
-    (file+headline ,nsv/org-tasks "Work/calce")
+    (file+headline ,ach-org-tasks "Work/calce")
     "* TODO %?\n"))
  )
 

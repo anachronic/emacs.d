@@ -3,11 +3,11 @@
 ;;; Code:
 
 ;; I hate abbrev when coding c-like languages!!
-(defun nsv/abbrev-gtfo ()
+(defun ach-abbrev-gtfo ()
   "Get rid of abbrev."
   (abbrev-mode -1))
 
-(add-hook 'c-mode-common-hook 'nsv/abbrev-gtfo)
+(add-hook 'c-mode-common-hook 'ach-abbrev-gtfo)
 
 ;; I'll set the default style to k&r.
 ;; we might want to try out linux. We'll see
@@ -51,20 +51,20 @@
   :ensure t)
 
 
-(defun nsv/add-irony-to-company ()
+(defun ach-add-irony-to-company ()
   "Setup company to work with irony mode."
   (setq-local company-backends (delete 'company-semantic company-backends))
   (add-to-list 'company-backends '(company-irony company-irony-c-headers)))
 
-(add-hook 'c-mode-hook 'nsv/add-irony-to-company)
-(add-hook 'c++-mode-hook 'nsv/add-irony-to-company)
+(add-hook 'c-mode-hook 'ach-add-irony-to-company)
+(add-hook 'c++-mode-hook 'ach-add-irony-to-company)
 
 
-(defun nsv/add-header-jump ()
+(defun ach-add-header-jump ()
   "Add a header jump key binding."
   (local-set-key (kbd "C-c j h") 'ff-find-other-file))
 
-(add-hook 'c-mode-common-hook 'nsv/add-header-jump)
+(add-hook 'c-mode-common-hook 'ach-add-header-jump)
 
 (provide 'c-programming)
 ;;; c-programming.el ends here

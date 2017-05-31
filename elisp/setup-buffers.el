@@ -13,12 +13,12 @@
 ;; the useful ones sometimes, right?
 ;; That's right. But hold on. This trashy command is bound to C-x C-r. Let's get
 ;; rid of it and bind it to a useful command: revert buffer
-(defun nsv/revert-buffer ()
+(defun ach-revert-buffer ()
   "Revert buffer without asking if you really want to."
   (interactive)
   (revert-buffer nil t))
 
-(global-set-key (kbd "C-x C-r") #'nsv/revert-buffer)
+(global-set-key (kbd "C-x C-r") #'ach-revert-buffer)
 
 ;; I've been burying buffers like crazy lately because it feels more
 ;; natural than killing them. However, I'd like to have the
@@ -26,14 +26,14 @@
 ;; buffer with a prefix argument. This will override quoted insert,
 ;; but that's ok since i hardly ever use it. Let's just rebind that to
 ;; C-c q
-(defun nsv/bury-buffer-dwim (arg)
+(defun ach-bury-buffer-dwim (arg)
   "Bury current buffer, if ARG is not nil, switch to last buffer."
   (interactive "P")
   (if arg
       (previous-buffer)
     (bury-buffer)))
 
-(global-set-key (kbd "C-q") 'nsv/bury-buffer-dwim)
+(global-set-key (kbd "C-q") 'ach-bury-buffer-dwim)
 (global-set-key (kbd "C-c q") 'quoted-insert)
 
 
@@ -52,7 +52,7 @@
 ;; So if there's more than one frame active. Just close it
 ;; If there's only one, shut down emacs. And hell, don't ask
 ;; to save buffers, just do it.
-(defun nsv/emacs-close-dwim ()
+(defun ach-emacs-close-dwim ()
   "Close current frame if there's more than one active.
 Otherwise exit Emacs."
   (interactive)
@@ -61,7 +61,7 @@ Otherwise exit Emacs."
     (save-buffers-kill-emacs)))
 
 ;; rebind it to C-x C-c
-(define-key ctl-x-map (kbd "C-c") 'nsv/emacs-close-dwim)
+(define-key ctl-x-map (kbd "C-c") 'ach-emacs-close-dwim)
 
 ;; use ibuffer instead of default C-x C-b
 (define-key ctl-x-map (kbd "C-b") 'ibuffer)

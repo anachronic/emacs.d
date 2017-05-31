@@ -82,7 +82,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(compilation-info ((t (:foreground ,nephritis :underline t))))
    `(compilation-leave-directory-face ((t (:foreground ,wisteria))))
    `(compilation-line-face ((t (:foreground ,sun-flower))))
-   `(compilation-line-number ((t (:foreground ,sun-flower))))
+   `(compilation-line-number ((t (:foreground ,orange))))
    `(compilation-message-face ((t (:foreground ,wet-asphalt))))
    `(compilation-warning-face ((t (:foreground ,pumpkin :weight bold :underline t))))
    `(compilation-mode-line-exit ((t (:foreground ,turquoise :weight bold))))

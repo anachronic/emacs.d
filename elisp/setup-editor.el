@@ -78,22 +78,22 @@ is already narrowed."
 ;; Recenter positions
 (setq-default recenter-positions '(top middle bottom))
 
-(defvar nsv/recenter-offset 6
+(defvar ach-recenter-offset 6
   "Number of lines to offset from limit when recentering.")
 
 ;; Advice `recenter-top-bottom' for offset
-(defun nsv/recenter-advice (orig-fun &rest args)
+(defun ach-recenter-advice (orig-fun &rest args)
   "Advice to offset `recenter-top-bottom' (ORIG-FUN) called with ARGS."
   (apply orig-fun args)
   (let ((top (or (eq recenter-last-op 'top)
                  (eq recenter-last-op (car recenter-positions))))
         (bottom (eq recenter-last-op 'bottom)))
-    (when nsv/recenter-offset
+    (when ach-recenter-offset
       (cond
-       (top (scroll-down nsv/recenter-offset))
-       (bottom (scroll-up nsv/recenter-offset))))))
+       (top (scroll-down ach-recenter-offset))
+       (bottom (scroll-up ach-recenter-offset))))))
 
-(advice-add 'recenter-top-bottom :around #'nsv/recenter-advice)
+(advice-add 'recenter-top-bottom :around #'ach-recenter-advice)
 
 ;; expand region. An *excellent* tool.
 (use-package expand-region
@@ -179,12 +179,12 @@ is already narrowed."
 (electric-pair-mode)
 
 ;; Indent the whole buffer
-(defun nsv/indent-whole-buffer ()
+(defun ach-indent-whole-buffer ()
   "Indent the whole buffer according to the defined style."
   (interactive)
   (save-excursion (indent-region (point-min) (point-max) nil)))
 
-(global-set-key (kbd "C-c TAB") 'nsv/indent-whole-buffer)
+(global-set-key (kbd "C-c TAB") 'ach-indent-whole-buffer)
 
 ;; =======Inserting lines, duplicating, etcetera.=======
 ;; This one comes directly from ha's config:
@@ -198,7 +198,7 @@ is already narrowed."
 (global-set-key (kbd "M-RET") 'newline-for-code)
 
 ;; C-o's default behaviour is kind of poor, so lets simulate vim's o.
-(defun nsv/open-line-above ()
+(defun ach-open-line-above ()
   "Insert a newline before the current line and leave point on it."
   (interactive)
   (push-mark)
@@ -208,8 +208,8 @@ is already narrowed."
   (unless (eq major-mode 'message-mode)
     (indent-for-tab-command)))
 
-(global-set-key (kbd "C-o") 'nsv/open-line-above)
-(global-set-key [(shift return)] 'nsv/open-line-above)
+(global-set-key (kbd "C-o") 'ach-open-line-above)
+(global-set-key [(shift return)] 'ach-open-line-above)
 
 ;; I have been using M-m lately, and I have to say I'm able to remember
 ;; stuff rather easily. But it is always better when stuff gets simpler.
@@ -245,7 +245,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; This should be a macro, but let's define it as a function
 ;; I want it to behave exactly like PyCharm or IntelliJ Idea's C-d
-(defun nsv/duplicate-the-line ()
+(defun ach-duplicate-the-line ()
   "Duplicate the current line below and set the point in the same column in the new line."
   (interactive)
   (save-excursion
@@ -257,13 +257,13 @@ point reaches the beginning or end of the buffer, stop there."
     (yank))
   (forward-line 1))
 
-(global-set-key (kbd "C-c d") 'nsv/duplicate-the-line)
+(global-set-key (kbd "C-c d") 'ach-duplicate-the-line)
 
 ;; My version of transpose lines. While emacs' transpose lines does the job,
 ;; I like the IntelliJ/Pycharm implementation better. It's cleaner. So let's
 ;; do that
 
-(defun nsv/move-line-up ()
+(defun ach-move-line-up ()
   "Transpose the current line with the one above leaving the cursor in the first line."
   (interactive)
   (let ((col (current-column)))
@@ -273,7 +273,7 @@ point reaches the beginning or end of the buffer, stop there."
     (forward-char col)))
 
 
-(defun nsv/move-line-down ()
+(defun ach-move-line-down ()
   "Transpose the current line with the one below leaving the cursor in the first line."
   (interactive)
   (let ((col (current-column)))
@@ -283,8 +283,8 @@ point reaches the beginning or end of the buffer, stop there."
     (move-beginning-of-line 1)
     (forward-char col)))
 
-(global-set-key (kbd "M-P") 'nsv/move-line-up)
-(global-set-key (kbd "M-N") 'nsv/move-line-down)
+(global-set-key (kbd "M-P") 'ach-move-line-up)
+(global-set-key (kbd "M-N") 'ach-move-line-down)
 
 ;; ==================== END of line manipulation functions =====
 
@@ -317,7 +317,7 @@ point reaches the beginning or end of the buffer, stop there."
   ("l" forward-char "forward")
   ("dd" kill-whole-line "kill the whole line")
   ("de" kill-line "kill until the end of the line")
-  ("da" nsv/kill-to-line-beg "kill until beginning of line")
+  ("da" ach-kill-to-line-beg "kill until beginning of line")
   ("a" beginning-of-line "beginning of line")
   ("e" end-of-line "end of line")
   ("x" delete-char "kill char at point")
