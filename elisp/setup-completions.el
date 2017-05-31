@@ -175,6 +175,22 @@
   (with-eval-after-load 'counsel
     (define-key helm-command-prefix (kbd "c") #'counsel-colors-emacs)))
 
+;; Hippie expand
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "C-/") 'hippie-expand)
+
+;; I saw this talk and it blew my mind about some vim completions.
+;; https://youtu.be/3TX3kV3TICU
+;; Hippie expand can do something similar
+;; Source: https://stackoverflow.com/a/17928654/2066658
+(defun expand-line ()
+  "Expand current line using `hippie-expand'."
+  (interactive)
+  (let ((hippie-expand-try-functions-list
+         '(try-expand-line)))
+    (call-interactively 'hippie-expand)))
+
+(define-key ctl-x-map (kbd "C-l") 'expand-line)
 
 (provide 'setup-completions)
 ;;; setup-completions.el ends here

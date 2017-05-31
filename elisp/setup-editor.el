@@ -380,10 +380,6 @@ Single Capitals as you type."
   :config
   (lorem-ipsum-use-default-bindings))
 
-;; Hippie expand
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-/") 'hippie-expand)
-
 ;; I asked a question on reddit about how to make links clickable and
 ;; got an answer quite quickly. Thank you reddit!
 ;; https://www.reddit.com/r/emacs/comments/5e94pg/have_links_in_comments_like_spacemacs/
@@ -420,7 +416,8 @@ Single Capitals as you type."
   :diminish "parev"
   :config
   (add-hook 'prog-mode-hook #'paredit-everywhere-mode)
-  (add-hook 'LaTeX-mode-hook #'paredit-everywhere-mode))
+  (add-hook 'LaTeX-mode-hook #'paredit-everywhere-mode)
+  (add-hook 'web-mode-hook #'paredit-everywhere-mode))
 
 ;; Been using M-w quite a while and yes, @purcell is right, it is
 ;; often the line I have to copy

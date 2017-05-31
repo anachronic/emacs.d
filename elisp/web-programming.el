@@ -75,11 +75,6 @@
 
 ;; The tabs really get in the way sometimes.
 (add-hook 'web-mode-hook #'indent-guide-mode)
-
-;; Been using some paredit stuff lately
-(with-eval-after-load 'web-mode
-  (define-key web-mode-map (kbd "C-)") #'paredit-forward-slurp-sexp))
-
 ;; get rid of color identifiers
 (add-hook 'web-mode-hook (lambda () (color-identifiers-mode -1)))
 
