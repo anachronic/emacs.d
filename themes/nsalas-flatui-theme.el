@@ -1,10 +1,6 @@
-;;; nsalas-flatui.el --- A color theme for Emacs based on flatuicolors.com
+;;; nsalas-flatui-theme.el --- A color theme for Emacs based on flatuicolors.com
 
-;; Copied from flatui
-;;; Credits:
-
-;; This theme was modified from zenburn-theme.el by Bozhidar Batsov
-;; https://github.com/bbatsov/zenburn-emacs
+;;; Commentary:
 
 ;;; Code:
 
@@ -30,7 +26,7 @@
     ("belize-hole"     . "#0a74b9")
 
     ("amethyst"        . "#9b59b6")
-    ("wisteria"        . "#8e44ad")
+    ("wisteria"        . "DeepPink")
 
     ("sun-flower"      . "#f1c40f")
     ("orange"          . "#d98c10")
@@ -109,17 +105,17 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-builtin-face ((t (:foreground ,green-sea))))
    `(font-lock-comment-face ((t (:foreground ,asbestos))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,concrete))))
-   `(font-lock-constant-face ((t (:foreground ,carrot))))
+   `(font-lock-constant-face ((t (:foreground ,green-sea))))
    `(font-lock-doc-face ((t (:foreground ,asbestos))))
    `(font-lock-function-name-face ((t (:foreground ,wet-asphalt :weight bold))))
-   `(font-lock-keyword-face ((t (:foreground ,orange))))
+   `(font-lock-keyword-face ((t (:foreground "DeepPink"))))
    `(font-lock-negation-char-face ((t (:foreground ,peter-river :weight bold))))
    `(font-lock-preprocessor-face ((t (:foreground ,alizarin :weight bold))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,orange :weight bold))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,amethyst :weight bold))))
    `(font-lock-string-face ((t (:foreground ,belize-hole))))
    `(font-lock-type-face ((t (:foreground ,peter-river))))
-   `(font-lock-variable-name-face ((t (:foreground ,wisteria))))
+   `(font-lock-variable-name-face ((t (:foreground ,pumpkin))))
    `(font-lock-warning-face ((t (:foreground ,pumpkin :weight bold))))
 
    `(c-annotation-face ((t (:inherit font-lock-constant-face))))
@@ -337,7 +333,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-moccur-buffer ((t (:foreground ,asbestos))))
 
 ;;;;; highlight-symbol
-   `(highlight-symbol-face ((t (:background "gray88" :underline t))))
+   `(highlight-symbol-face ((t (:background "DarkGrey"))))
 
 ;;;;; hl-line-mode
    `(hl-line-face ((,class (:background ,silver))
@@ -352,6 +348,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ido-only-match ((t (:foreground ,carrot :weight bold))))
    `(ido-subdir ((t (:foreground ,orange))))
    `(ido-indicator ((t (:foreground ,sun-flower :background ,pumpkin))))
+
+;;;;; ivy-mode
+   `(ivy-virtual ((t (:foreground ,pumpkin))))
+   `(ivy-current-match ((t (:foreground "white" :background "#1a4b77"))))
+   `(ivy-minibuffer-match-face-1 ((t (:background "#d3d3d3"))))
+   `(ivy-minibuffer-match-face-2 ((t (:background "#e99ce8" :weight bold))))
+   `(ivy-minibuffer-match-face-3 ((t (:background "#bbbbff" :weight bold))))
+   `(ivy-minibuffer-match-face-4 ((t (:background "#ffbbff" :weight bold))))
 ;;;;; indent-guide
    `(indent-guide-face ((t (:foreground ,concrete))))
 ;;;;; js2-mode
@@ -448,9 +452,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line
      ((,class (:inverse-video unspecified
                               :underline unspecified
-                              :foreground ,peter-river
+                              :foreground "grey"
                               :background ,wet-asphalt
-                              :weight bold
                               :box (:line-width 1
                                                 :color ,wet-asphalt
                                                 :style unspecified)))
@@ -458,12 +461,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line-inactive
      ((t (:inverse-video unspecified
                          :underline unspecified
-                         :foreground ,peter-river
-                         :background ,silver
+                         :foreground "DarkSlateGrey"
+                         :background ,concrete
                          :box (:line-width 1
                                            :color ,silver
                                            :style unspecified)))))
-   `(mode-line-buffer-id ((t (:foreground ,alizarin :weight bold))))
+   `(mode-line-buffer-id ((t (:foreground "IndianRed3" :weight bold))))
    `(sml/global ((t (:foreground ,concrete))))
    `(sml/modes ((t (:foreground ,nephritis))))
    `(sml/filename ((t (:foreground ,nephritis))))
@@ -527,9 +530,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(web-mode-constant-face ((t (:inherit ,font-lock-constant-face))))
    `(web-mode-css-at-rule-face ((t (:foreground ,pumpkin ))))
    `(web-mode-css-prop-face ((t (:foreground ,pumpkin))))
-   `(web-mode-css-pseudo-class-face ((t (:foreground ,100 32500  100 32500    0     0  19300      0  0:00:01  0:00:01 --:--:-- 19299
-orange :weight bold))))
+   `(web-mode-css-pseudo-class-face ((t (:foreground ,orange :weight bold))))
    `(web-mode-css-rule-face ((t (:foreground ,belize-hole))))
+   `(web-mode-css-selector-face ((t (:foreground "MediumOrchid"))))
    `(web-mode-doctype-face ((t (:inherit ,font-lock-comment-face))))
    `(web-mode-folded-face ((t (:underline t))))
    `(web-mode-function-name-face ((t (:foreground ,midnight-blue :weight bold))))
@@ -548,6 +551,7 @@ orange :weight bold))))
    `(web-mode-warning-face ((t (:inherit font-lock-warning-face))))
    `(web-mode-whitespaces-face ((t (:background ,alizarin))))
    `(web-mode-block-face ((t (:background "gray88"))))
+   `(web-mode-block-control-face ((t (:foreground ,alizarin))))
    `(web-mode-current-element-highlight-face ((t (:inverse-video t))))
 ;;;;; whitespace-mode
    `(whitespace-space ((t (:background ,clouds :foreground ,sun-flower))))
@@ -570,7 +574,7 @@ orange :weight bold))))
 ;;; Theme Variables
 (flatui/with-color-variables
   (custom-theme-set-variables
-   'flatui
+   'nsalas-flatui
 ;;;;; ansi-color
    `(ansi-color-names-vector [,clouds ,alizarin ,emerald ,sun-flower
                                       ,peter-river ,amethyst ,turquoise ,midnight-blue])
@@ -614,8 +618,4 @@ orange :weight bold))))
 
 (provide-theme 'nsalas-flatui)
 
-;; Local Variables:
-;; no-byte-compile: t
-;; indent-tabs-mode: nil
-;; End:
-;;; flatui-theme.el ends here
+;;; nsalas-flatui-theme.el ends here
