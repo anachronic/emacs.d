@@ -28,7 +28,8 @@
 (setq initial-scratch-message nil)
 
 ;; load the latest theme.
-(load-theme 'nsalas-tomorrow-night t)
+;; (load-theme 'nsalas-tomorrow-night t)
+(load-theme 'nsalas-flatui t)
 
 ;; If powerline fonts are installed, use that
 (let ((pl-font "DejaVu Sans Mono for Powerline"))
