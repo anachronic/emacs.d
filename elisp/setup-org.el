@@ -2,9 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Agenda is cool
-(global-set-key (kbd "C-c A") 'org-agenda)
-
 (defvar nsv/org-personal "~/Dropbox/orgfiles/personal.org"
   "Personal stuff `org-mode' file.")
 
@@ -36,8 +33,16 @@
 (add-hook 'org-mode-hook #'visual-line-mode)
 (add-hook 'org-mode-hook #'org-indent-mode)
 
+;; Agenda config
+(global-set-key (kbd "C-c A") 'org-agenda)
+(define-key meta-m-map (kbd "a") 'org-agenda)
+
 (with-eval-after-load 'org-agenda
-  (setq org-agenda-files nsv/org-agenda-files))
+  (setq org-agenda-files nsv/org-agenda-files)
+  (setq org-agenda-custom-commands
+        '(("e" "Both agenda and TODO items"
+           ((alltodo "")
+            (agenda ""))))))
 
 (with-eval-after-load 'ox-latex
   (setenv "PDFLATEX" "pdflatex -shell-escape")
