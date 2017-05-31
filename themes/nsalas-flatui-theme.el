@@ -62,8 +62,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(cursor ((t (:foreground ,midnight-blue :background ,wet-asphalt))))
    `(escape-glyph ((t (:foreground ,sun-flower :bold t))))
    `(fringe ((t (:foreground ,wet-asphalt :background ,silver))))
-   `(header-line ((t (:foreground ,green-sea
-                                  :background ,wet-asphalt
+   `(header-line ((t (:foreground ,midnight-blue
+                                  :background "LightSkyBlue1"
                                   :box (:line-width -1 :style released-button)))))
    `(highlight ((t (:background ,silver))))
    `(success ((t (:foreground ,nephritis :weight bold))))
@@ -370,6 +370,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(linum ((t (:foreground ,wet-asphalt :background ,silver))))
 ;;;;; magit
    `(magit-header ((t (:foreground ,midnight-blue :background nil :weight bold))))
+   `(magit-header-line ((t (:inherit magit-section-heading :foreground ,wet-asphalt))))
    `(magit-section-title ((t (:foreground ,midnight-blue :background nil :weight bold))))
    `(magit-section-highlight ((t (:background "grey85"))))
    `(magit-branch ((t (:foreground ,midnight-blue :background ,turquoise
