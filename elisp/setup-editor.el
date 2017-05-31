@@ -10,9 +10,12 @@
 (use-package hydra
   :ensure t)
 
-(require 'hl-line)
 (show-paren-mode 1)
-(global-hl-line-mode)
+
+;; Highlight line.
+(require 'hl-line)
+(add-hook 'prog-mode-hook 'hl-line-mode)
+(add-hook 'package-menu-mode-hook 'hl-line-mode)
 
 ;; Enable narrow commands
 (put 'narrow-to-region 'disabled nil)
@@ -22,7 +25,8 @@
   :ensure t
   :config
   (global-flycheck-mode)
-  (setq flycheck-emacs-lisp-load-path 'inherit))
+  (setq flycheck-emacs-lisp-load-path 'inherit)
+  (setq flycheck-global-modes '(not org-mode comint-mode text-mode)))
 
 ;; This is a beautiful command from endlessparentheses
 ;; url: http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
