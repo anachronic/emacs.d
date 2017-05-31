@@ -125,8 +125,11 @@ is already narrowed."
 (use-package origami
   :ensure t
   :bind (("C-c F" . origami-toggle-all-nodes))
-  :config
+  :defer t
+  :init
   (add-hook 'prog-mode-hook #'origami-mode)
+
+  ;; Expand origami folded nodes with TAB!
   (defun origami-closed-here-p ()
     (let* ((path (origami-search-forward-for-path (current-buffer) (point)))
            (node (-last-item path)))
@@ -398,13 +401,6 @@ Single Capitals as you type."
     (unless (or isearch-mode
                 (and (boundp 'multiple-cursors-mode) multiple-cursors-mode))
       ad-do-it)))
-
-;; I saw this in purcell's config, looks useful
-(use-package indent-guide
-  :ensure t
-  :diminish ""
-  :config
-  (setq-default indent-guide-delay 1))
 
 ;; I use this all the time
 (use-package rainbow-mode

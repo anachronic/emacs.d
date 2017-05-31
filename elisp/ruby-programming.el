@@ -9,10 +9,6 @@
   :config
   (setq ruby-end-insert-newline nil))
 
-;; Ruby is one of those annoying 2-space indent languages. Let's use a
-;; guide
-(add-hook 'ruby-mode-hook #'indent-guide-mode)
-
 ;; yari. Docs are cool. Need to pacman -S ruby-docs for it to work.
 (use-package yari
   :ensure t)

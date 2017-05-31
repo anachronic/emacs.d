@@ -176,9 +176,6 @@ If ARG is present, ask for a command to run."
 (with-eval-after-load 'ivy
   (add-to-list 'ivy-ignore-buffers "\\*epc con"))
 
-;; Python needs indentation, Emacs should help
-(add-hook 'python-mode-hook #'indent-guide-mode)
-
 ;; Been using paredit in this thing
 (define-key python-mode-map (kbd "C-)") #'paredit-forward-slurp-sexp)
 

@@ -73,8 +73,6 @@
   (progn
     (add-hook 'web-mode-hook 'emmet-mode)))
 
-;; The tabs really get in the way sometimes.
-(add-hook 'web-mode-hook #'indent-guide-mode)
 ;; get rid of color identifiers
 (add-hook 'web-mode-hook (lambda () (color-identifiers-mode -1)))
 
