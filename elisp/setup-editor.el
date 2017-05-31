@@ -380,8 +380,9 @@ Single Capitals as you type."
   :config
   (lorem-ipsum-use-default-bindings))
 
-;; Let's use hippie expand.
-(global-set-key (kbd "M-/") #'hippie-expand)
+;; Hippie expand
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "C-/") 'hippie-expand)
 
 ;; I asked a question on reddit about how to make links clickable and
 ;; got an answer quite quickly. Thank you reddit!

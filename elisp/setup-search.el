@@ -16,7 +16,7 @@
 (use-package iy-go-to-char
   :ensure t
   :bind (("C-t"   . iy-go-up-to-char)
-         ("C-,"   . iy-go-to-or-up-to-continue)
+         ("C-'"   . iy-go-to-or-up-to-continue)
          ("C-c b" . iy-go-to-char-backward))
   :config)
 
