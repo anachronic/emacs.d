@@ -50,5 +50,8 @@
   :config
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
+;; Eval buffer is nice.
+(define-key emacs-lisp-mode-map (kbd "C-c C-e") 'eval-buffer)
+
 (provide 'elisp-programming)
 ;;; elisp-programming.el ends here
