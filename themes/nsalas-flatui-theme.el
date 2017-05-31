@@ -174,7 +174,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; diff-hl
    `(diff-hl-insert ((t (:foreground ,green-sea :background ,nephritis))))
    `(diff-hl-delete ((t (:foreground ,pomegranate :background ,alizarin))))
-   `(diff-hl-change ((t (:foreground ,pumpkin :background ,carrot))))
+   `(diff-hl-change ((t (:foreground ,belize-hole :background ,peter-river))))
 
 ;;;;; dired/dired+/dired-subtree
    `(diredp-display-msg ((t (:foreground ,belize-hole))))
@@ -371,8 +371,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-jsdoc-value ((t (:foreground ,peter-river))))
    `(js2-function-param ((t (:foreground, wet-asphalt))))
    `(js2-external-variable ((t (:foreground ,pumpkin))))
-;;;;; linum-mode
+;;;;; linum-mode and nlinum-mode
    `(linum ((t (:foreground ,wet-asphalt :background ,silver))))
+   `(nlinum-relative-current-face ((t (:foreground ,pomegranate :weight bold :background "grey75"))))
 ;;;;; magit
    `(magit-header ((t (:foreground ,midnight-blue :background nil :weight bold))))
    `(magit-header-line ((t (:inherit magit-section-heading :foreground ,wet-asphalt))))
