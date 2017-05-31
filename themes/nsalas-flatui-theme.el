@@ -371,10 +371,16 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; magit
    `(magit-header ((t (:foreground ,midnight-blue :background nil :weight bold))))
    `(magit-section-title ((t (:foreground ,midnight-blue :background nil :weight bold))))
+   `(magit-section-highlight ((t (:background "grey85"))))
    `(magit-branch ((t (:foreground ,midnight-blue :background ,turquoise
                                    :weight bold
                                    :box (:line-width 1 :color ,green-sea)))))
    `(magit-item-highlight ((t (:background ,silver))))
+
+   ;; magit-diff
+   `(magit-diff-context-highlight ((t (:foreground "grey50" :background "grey85"))))
+
+   ;; magit log
    `(magit-log-author ((t (:foreground ,belize-hole))))
    `(magit-log-sha1 ((t (:foreground ,carrot :weight bold))))
    `(magit-tag ((t (:foreground ,wisteria :weight bold))))
