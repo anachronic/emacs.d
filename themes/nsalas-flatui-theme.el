@@ -2,6 +2,11 @@
 
 ;;; Commentary:
 
+;; This theme is based on https://github.com/john2x/flatui-theme.el
+;; and considering the FlatUI colors. However, this theme is by no
+;; means strict on its colors, which means some colors will change,
+;; but the spirit of the theme is to follow the FlatUI design
+
 ;;; Code:
 
 (deftheme nsalas-flatui "FlatUI based color theme.")
