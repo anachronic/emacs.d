@@ -333,7 +333,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-moccur-buffer ((t (:foreground ,asbestos))))
 
 ;;;;; highlight-symbol
-   `(highlight-symbol-face ((t (:background "DarkGrey"))))
+   `(highlight-symbol-face ((t (:background "grey88"))))
 
 ;;;;; hl-line-mode
    `(hl-line-face ((,class (:background ,silver))
@@ -442,7 +442,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(rainbow-delimiters-depth-3-face ((t (:foreground ,emerald))))
    `(rainbow-delimiters-depth-4-face ((t (:foreground ,peter-river))))
    `(rainbow-delimiters-depth-5-face ((t (:foreground ,amethyst))))
-   `(rainbow-delimiters-depth-6-face ((t (:foreground ,sun-flower))))
+   `(rainbow-delimiters-depth-6-face ((t (:foreground ,orange))))
    `(rainbow-delimiters-depth-7-face ((t (:foreground ,carrot))))
    `(rainbow-delimiters-depth-8-face ((t (:foreground ,alizarin))))
    `(rainbow-delimiters-depth-9-face ((t (:foreground ,green-sea))))
