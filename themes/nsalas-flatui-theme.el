@@ -407,7 +407,8 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; org-mode
    `(org-agenda-date-weekend ((t (:foreground ,silver :slant italic :weight bold))) t)
    `(org-agenda-date-today ((t (:inherit org-agenda-date :weight bold))) t)
-   `(org-agenda-structure ((t (:inherit font-lock-comment-face))))
+   `(org-agenda-date ((t (:inherit font-lock-comment-face))) t)
+   `(org-agenda-structure ((t (:foreground ,green-sea))))
    `(org-archived ((t (:foreground ,midnight-blue :weight bold))))
    `(org-checkbox ((t (:background ,silver :foreground ,wet-asphalt
                                    :box (:line-width 1 :style unspecified)))))
