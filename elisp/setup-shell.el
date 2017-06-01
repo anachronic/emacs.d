@@ -113,6 +113,18 @@
 (define-key meta-m-map (kbd "s") #'shell)
 (define-key meta-m-map (kbd "z") #'eshell)
 
+;; I'd like to completely quit shell with C-c C-k
+(defun ach-kill-shell ()
+  "Kill the current shell process and buffer."
+  (interactive)
+  (let ((process (get-buffer-process (current-buffer))))
+    (when process
+      (delete-process process))
+    (kill-this-buffer)))
+
+(with-eval-after-load 'shell
+  (define-key shell-mode-map (kbd "C-c C-k") 'ach-kill-shell))
+
 ;; Need color, mainly for python and shell coloring
 (use-package xterm-color
   :ensure t
