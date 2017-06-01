@@ -34,8 +34,19 @@
 (add-hook 'org-mode-hook #'org-indent-mode)
 
 ;; Agenda config
+;; Most of it comes from an excellent post by Aaron Bieber.
+;; https://blog.aaronbieber.com/2016/09/25/agenda-interactions-primer.html
 (global-set-key (kbd "C-c A") 'org-agenda)
 (define-key meta-m-map (kbd "a") 'org-agenda)
+
+(defun air-pop-to-org-agenda (&optional close)
+  "Visit the org agenda, CLOSE other buffers if that value is non-nil."
+  (interactive "P")
+  (org-agenda nil "e")
+  (when close
+    (delete-other-windows)))
+
+(global-set-key (kbd "S-SPC") 'air-pop-to-org-agenda)
 
 ;; Not urgent TODO keywords for agenda
 (defvar ach-org-unimportant-keywords
