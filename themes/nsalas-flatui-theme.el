@@ -369,7 +369,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-jsdoc-tag ((t (:foreground ,amethyst))))
    `(js2-jsdoc-type ((t (:foreground ,wisteria))))
    `(js2-jsdoc-value ((t (:foreground ,peter-river))))
-   `(js2-function-param ((t (:foreground, wet-asphalt))))
+   `(js2-function-call ((t (:foreground ,peter-river))))
+   `(js2-function-param ((t (:foreground ,wet-asphalt))))
    `(js2-external-variable ((t (:foreground ,pumpkin))))
    ;; linum-mode and nlinum-mode
    `(linum ((t (:foreground ,wet-asphalt :background ,silver))))
@@ -476,7 +477,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line-inactive
      ((t (:inverse-video unspecified
                          :underline unspecified
-                         :foreground "DarkSlateGrey"
+                         :foreground ,silver
                          :background ,peter-river
                          :box (:line-width 1
                                            :color ,wet-asphalt

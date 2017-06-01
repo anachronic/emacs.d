@@ -140,6 +140,9 @@
    `(jabber-chat-prompt-local ((t (:inherit org-level-4))))
    `(jabber-roster-user-online ((t (:inherit font-lock-string-face))))
 
+   ;; js2-mode
+   `(js2-function-call ((t (:foreground "#e9aafa"))))
+
    ;; latex
    `(font-latex-sectioning-2-face ((t (:foreground "yellow" :weight bold :underline t))))
    `(font-latex-sectioning-3-face ((t (:foreground "yellow" :weight bold :underline t))))
