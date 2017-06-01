@@ -37,12 +37,23 @@
 (global-set-key (kbd "C-c A") 'org-agenda)
 (define-key meta-m-map (kbd "a") 'org-agenda)
 
+;; Not urgent TODO keywords for agenda
+(defvar ach-org-unimportant-keywords
+  '("FUNCION" "VIAJE" "PROYECTO")
+  "Skip these org mode keywords in alltodo agenda.")
+
 (with-eval-after-load 'org-agenda
   (setq org-agenda-files ach-org-agenda-files)
   (setq org-agenda-custom-commands
         '(("e" "Both agenda and TODO items"
-           ((alltodo "")
-            (agenda ""))))))
+           ((alltodo ""
+                     ((org-agenda-skip-function
+                       '(org-agenda-skip-entry-if 'todo ach-org-unimportant-keywords))
+                      (org-agenda-overriding-header "Deberes generales")))
+            (agenda ""
+                    ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))))
+            (todo "FUNCION"
+                  ((org-agenda-overriding-header "Funciones teatrales y musicales"))))))))
 
 (with-eval-after-load 'ox-latex
   (setenv "PDFLATEX" "pdflatex -shell-escape")
@@ -80,10 +91,10 @@
   ;; Personal stuff
   `("t" "Teatro" entry
     (file+headline ,ach-org-personal "Funciones teatrales")
-    "* %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar|U. de Chile|Municipal|Otro}\n:END:\n")
+    "* FUNCION %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar|U. de Chile|Municipal|Otro}\n:END:\n")
   `("v" "Viaje" entry
     (file+headline ,ach-org-personal "Viajes")
-    "* [VIAJE] %^{Destino}\nSCHEDULED: %^T\n\n")
+    "* VIAJE %^{Destino}\nSCHEDULED: %^T\n\n")
   `("p" "Proyecto" entry
     (file+headline ,ach-org-personal "Proyectos personales")
     "* PROYECTO %?\n\n")
@@ -95,13 +106,13 @@
     :immediate-finish t)
   `("w" "Tarea" entry
     (file+headline ,ach-org-tasks "Tareas")
-    "* TODO %?\nDEADLINE: %^t\n\n")
+    "* TAREA %?\nDEADLINE: %^t\n\n")
   `("r" "Reunión" entry
     (file+headline ,ach-org-tasks "Reuniones")
-    "* TODO %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar}\n:Personas: %^{Participantes}\n:END:\n\n")
+    "* REUNION %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar}\n:Personas: %^{Participantes}\n:END:\n\n")
   `("a" "Work assignment" entry
     (file+headline ,ach-org-tasks "Work/calce")
-    "* TODO %?\n"))
+    "* ISSUE %?\n"))
  )
 
 ;; Exporters don't seem to go well with use-package and org
