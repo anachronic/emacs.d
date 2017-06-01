@@ -2,5 +2,4 @@
 #key: defvar
 # --
 (defvar ${1:name}
-${0:initvalue}
-"${2:docstring}")
+$0)
