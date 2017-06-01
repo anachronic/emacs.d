@@ -136,7 +136,7 @@ With an unnumbered prefix, toggle between scrolling style."
   (fullframe package-list-packages quit-window)
   (fullframe list-packages quit-window)
   (fullframe shell bury-buffer)
-  (fullframe air-pop-to-org-agenda org-agenda-quit))
+  )
 
 ;; From https://www.emacswiki.org/emacs/TransposeWindows
 ;; and crux.

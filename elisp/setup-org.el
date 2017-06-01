@@ -46,7 +46,8 @@
   (when close
     (delete-other-windows)))
 
-(global-set-key (kbd "S-SPC") 'air-pop-to-org-agenda)
+
+(global-set-key (kbd "M-SPC") 'air-pop-to-org-agenda)
 
 ;; Not urgent TODO keywords for agenda
 (defvar ach-org-unimportant-keywords
