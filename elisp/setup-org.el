@@ -124,8 +124,10 @@
     "* REUNION %?\nSCHEDULED: %^T\n:PROPERTIES:\n:Lugar: %^{Lugar}\n:Personas: %^{Participantes}\n:END:\n\n")
   `("a" "Work assignment" entry
     (file+headline ,ach-org-tasks "Work/calce")
-    "* ISSUE %?\n"))
- )
+    "* ISSUE %?\n")
+  `("g" "General TODO" entry
+    (file+headline ,ach-org-tasks "General")
+    "* TODO %?\n")))
 
 ;; Exporters don't seem to go well with use-package and org
 (maybe-install-packages 'ox-gfm 'ox-reveal)
