@@ -34,10 +34,8 @@
 (use-package pyvenv
   :ensure t
   :config
-  (defun ach-set-pyvenv-workon ()
-    (local-set-key (kbd "C-c C-d") #'pyvenv-deactivate)
-    (local-set-key (kbd "C-c C-w") #'pyvenv-workon))
-  (add-hook 'python-mode-hook #'ach-set-pyvenv-workon))
+  (define-key python-mode-map (kbd "C-c C-d") #'pyvenv-deactivate)
+  (define-key python-mode-map (kbd "C-c C-w") #'pyvenv-workon))
 
 ;; The warning message is very annoying, let's get rid of it
 ;; Solution found at:
@@ -133,26 +131,43 @@ If ARG is present, ask for a command to run."
              (python-shell-switch-to-shell)))))
 
 ;; Add tweaks to standard python.el defined in this file.
-(defun ach-python-rebinds ()
-  "Add the functions defined in python-programming.el to Python buffer locally."
-  ;; Shell related commands
-  (local-set-key (kbd "C-c C-z") #'ach-python-switch-to-shell)
-  (local-set-key (kbd "C-c C-r") #'spacemacs/python-execute-file)
-  (local-set-key (kbd "C-c C-c") #'python-shell-send-dwim)
-  ;; I don't know why these are not defaults
-  (local-set-key (kbd "C-M-f") #'python-nav-forward-sexp)
-  (local-set-key (kbd "C-M-b") #'python-nav-backward-sexp)
-  (local-set-key (kbd "C-M-a") #'python-nav-backward-defun)
-  (local-set-key (kbd "C-M-e") #'python-nav-forward-defun))
+;; Shell related commands
+(define-key python-mode-map (kbd "C-c C-z") #'ach-python-switch-to-shell)
+(define-key python-mode-map (kbd "C-c C-r") #'spacemacs/python-execute-file)
+(define-key python-mode-map (kbd "C-c C-c") #'python-shell-send-dwim)
+;; I don't know why these are not defaults
+(define-key python-mode-map (kbd "C-M-f") #'python-nav-forward-sexp)
+(define-key python-mode-map (kbd "C-M-b") #'python-nav-backward-sexp)
+(define-key python-mode-map (kbd "C-M-a") #'python-nav-backward-defun)
+(define-key python-mode-map (kbd "C-M-e") #'python-nav-forward-defun)
 
-(add-hook 'python-mode-hook #'ach-python-rebinds)
+;; Debugging stuff
+(defvar ach-python-debug-string
+  "import ipdb; ipdb.set_trace()"
+  "Python debugging string to insert in buffers.")
 
-;; Debugging
-(defun ach-python-debug ()
-  "Insert import ipdb; ipdb.set_trace() in the buffer."
-  (interactive)
-  (insert "import ipdb; ipdb.set_trace()")
+(defun ach--python-insert-debug ()
+  "Insert `ach-python-debug-string' in a line before this one."
+  (back-to-indentation)
+  (insert ach-python-debug-string)
   (newline-and-indent))
+
+(defun ach--python-remove-debug-calls ()
+  "Remove every line containing `ach-python-debug-string' in buffer."
+  (save-excursion
+    (save-restriction
+      (widen)
+      (goto-char (point-min))
+      (let ((re (concat "^\\s-*" ach-python-debug-string "$")))
+        (while (re-search-forward re nil t)
+          (kill-whole-line))))))
+
+(defun ach-python-debug (&optional arg)
+  "Insert `ach-python-debug-string' in line above, remove all of them with ARG prefix."
+  (interactive "P")
+  (if arg
+      (ach--python-remove-debug-calls)
+    (ach--python-insert-debug)))
 
 (define-key python-mode-map (kbd "C-c C-e") 'ach-python-debug)
 
@@ -162,6 +177,7 @@ If ARG is present, ask for a command to run."
   (add-hook 'python-mode-hook 'importmagic-mode)
   (define-key python-mode-map (kbd "C-c C-f") nil)
   (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
+  (define-key importmagic-mode-map (kbd "C-c C-l") nil)
   (diminish 'importmagic-mode))
 
 ;; Another package of mine: projectile-django
@@ -175,9 +191,6 @@ If ARG is present, ask for a command to run."
   (add-to-list 'helm-boring-buffer-regexp-list "\\*epc con"))
 (with-eval-after-load 'ivy
   (add-to-list 'ivy-ignore-buffers "\\*epc con"))
-
-;; Been using paredit in this thing
-(define-key python-mode-map (kbd "C-)") #'paredit-forward-slurp-sexp)
 
 (add-hook 'python-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'python-mode-hook (lambda () (color-identifiers-mode -1)))
