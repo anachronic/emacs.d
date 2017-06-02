@@ -129,6 +129,33 @@
     (file+headline ,ach-org-tasks "General")
     "* TODO %?\n")))
 
+;; Capturing from the OS
+;; Thank you Mike Zamansky
+;; http://cestlaz.github.io/posts/using-emacs-24-capture-2/
+(use-package noflet
+  :ensure t)
+
+(defadvice org-capture-finalize
+    (after delete-capture-frame activate)
+  "Advise capture-finalize to close the frame."
+  (if (equal "capture" (frame-parameter nil 'name))
+      (delete-frame)))
+
+(defadvice org-capture-destroy
+    (after delete-capture-frame activate)
+  "Advise capture-destroy to close the frame."
+  (if (equal "capture" (frame-parameter nil 'name))
+      (delete-frame)))
+
+(defun make-capture-frame ()
+  "Create a new frame and run `org-capture'."
+  (interactive)
+  (make-frame '((name . "capture")))
+  (select-frame-by-name "capture")
+  (delete-other-windows)
+  (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
+          (org-capture)))
+
 ;; Exporters don't seem to go well with use-package and org
 (maybe-install-packages 'ox-gfm 'ox-reveal)
 
