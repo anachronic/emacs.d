@@ -421,10 +421,15 @@ Single Capitals as you type."
 (use-package paredit-everywhere
   :ensure t
   :diminish "parev"
-  :config
+  :init
   (add-hook 'prog-mode-hook #'paredit-everywhere-mode)
   (add-hook 'LaTeX-mode-hook #'paredit-everywhere-mode)
-  (add-hook 'web-mode-hook #'paredit-everywhere-mode))
+  (add-hook 'web-mode-hook #'paredit-everywhere-mode)
+  :config
+  (define-key paredit-everywhere-mode-map (kbd "C-(") 'paredit-backward-slurp-sexp)
+  (define-key paredit-everywhere-mode-map (kbd "C-{") 'paredit-backward-barf-sexp)
+  (define-key paredit-everywhere-mode-map (kbd "C-<backspace>") 'paredit-backward-kill-word)
+  )
 
 ;; Been using M-w quite a while and yes, @purcell is right, it is
 ;; often the line I have to copy

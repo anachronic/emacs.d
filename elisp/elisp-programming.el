@@ -20,6 +20,7 @@
   :diminish "par"
   :config
   ;; First remove some unused keys
+  (define-key paredit-mode-map (kbd "C-<backspace>") 'paredit-backward-kill-word)
   (define-key paredit-mode-map (kbd "M-;") nil)
   (define-key paredit-mode-map (kbd "C-<left>") nil)
   (define-key paredit-mode-map (kbd "C-<right>") nil)
