@@ -171,7 +171,7 @@ If ARG is present, ask for a command to run."
 
 (define-key python-mode-map (kbd "C-c C-e") 'ach-python-debug)
 
-;; Keep it like so for developing purposes
+;; Dealing with imports is a pain in Python
 (when (file-exists-p "/home/nsalas/forks/importmagic.el")
   (require 'importmagic)
   (add-hook 'python-mode-hook 'importmagic-mode)
@@ -179,6 +179,30 @@ If ARG is present, ask for a command to run."
   (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
   (define-key importmagic-mode-map (kbd "C-c C-l") nil)
   (diminish 'importmagic-mode))
+
+;; Use autoflake to remove unused crap. This idea comes from spacemacs
+;; and the following URL
+;; https://www.snip2code.com/Snippet/127022/Emacs-auto-remove-unused-import-statemen
+(defun python-remove-unused-imports ()
+  "Use Autoflake to remove unused imports.
+
+Runs autoflake --remove-all-unused-imports -i file"
+  (interactive)
+  (shell-command
+   (format "autoflake --remove-all-unused-imports -i %s"
+           (shell-quote-argument (buffer-file-name))))
+  (revert-buffer t t t))
+
+;; Bind it to C-c C-a (mnemonic is [a]utoflake)
+(define-key python-mode-map (kbd "C-c C-a") 'python-remove-unused-imports)
+
+;; Ok. Now that we have gotten rid of unused imports, need to sort
+;; them. py-isort lets us do that
+(use-package py-isort
+  :ensure t
+  :defer t
+  :init
+  (define-key python-mode-map (kbd "C-c C-s") 'py-isort-buffer))
 
 ;; Another package of mine: projectile-django
 (when (file-exists-p "/home/nsalas/forks/projectile-django/projectile-django.el")
