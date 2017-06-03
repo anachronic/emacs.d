@@ -10,6 +10,7 @@
         kill-sexp
         my/python-yank
         org-self-insert-command
+        paredit-doublequote
         paredit-forward
         paredit-forward-delete
         paredit-forward-kill-word

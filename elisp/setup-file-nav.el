@@ -90,6 +90,7 @@
   (find-file "~/.emacs.d/init.el"))
 
 (ach-define-bookmark "~/.emacs.d/init.el" "i" "emacs-init")
+(ach-define-bookmark "~/dotfiles" "d" "dotfiles")
 
 (provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here

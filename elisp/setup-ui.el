@@ -33,6 +33,8 @@
   :ensure t
   :demand
   :bind (("C-x =" . beacon-blink))
+  :init
+  (add-hook 'comint-mode-hook (lambda () (beacon-mode -1)))
   :config
   (beacon-mode)
   (setq beacon-push-mark 35)
