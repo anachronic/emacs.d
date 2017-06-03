@@ -161,10 +161,6 @@
 ;; but it has grown in such a way that many packages use helm for
 ;; useful stuff. Seriously, I've seen from controlling spotify to
 ;; chrome. It seems like waste not to have that.
-
-;; The only one thing i really miss about helm when using ivy is
-;; helm-mini. I mean, to have recentf is such a cool feature you don't
-;; have to set any weird keybindings for anything anymore.
 (use-package helm
   :ensure t
   :demand
@@ -178,6 +174,15 @@
 ;; Hippie expand
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-/") 'hippie-expand)
+
+;; Hippie expand can be very annoying with list expanding and
+;; abbrevs. Config taken from purcell's
+(setq hippie-expand-try-functions-list
+      '(try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill))
 
 ;; I saw this talk and it blew my mind about some vim completions.
 ;; https://youtu.be/3TX3kV3TICU
