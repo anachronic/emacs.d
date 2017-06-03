@@ -18,6 +18,8 @@
 (use-package paredit
   :ensure t
   :diminish "par"
+  :init
+  (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
   :config
   ;; First remove some unused keys
   (define-key paredit-mode-map (kbd "C-<backspace>") 'paredit-backward-kill-word)
