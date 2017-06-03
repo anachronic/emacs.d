@@ -183,6 +183,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(diredp-deletion ((t (:foreground ,alizarin))))
    `(diredp-deletion-file-name ((t (:foreground ,alizarin))))
    `(diredp-dir-heading ((t (:foreground ,peter-river :background ,silver :weight bold))))
+   `(diredp-dir-name ((t (:foreground "DarkRed" :weight bold))))
    `(diredp-dir-priv ((t (:foreground ,peter-river))))
    `(diredp-exec-priv ((t (:foreground ,carrot))))
    `(diredp-executable-tag ((t (:foreground ,pumpkin))))

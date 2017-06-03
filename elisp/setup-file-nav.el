@@ -91,6 +91,7 @@
 
 (ach-define-bookmark "~/.emacs.d/init.el" "i" "emacs-init")
 (ach-define-bookmark "~/dotfiles" "d" "dotfiles")
+(ach-define-bookmark "~/Dropbox/tesis/." "T" "tesis")
 
 (provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here

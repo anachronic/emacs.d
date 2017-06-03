@@ -17,6 +17,7 @@
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'package-menu-mode-hook 'hl-line-mode)
 (add-hook 'org-agenda-mode-hook 'hl-line-mode)
+(add-hook 'dired-mode-hook 'hl-line-mode)
 
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
