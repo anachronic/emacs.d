@@ -443,5 +443,31 @@ Single Capitals as you type."
 (use-package wgrep
   :ensure t)
 
+;; Edit current file as sudo
+;; From spacemacs, which took this from magnars:
+(defun ach-sudo-edit (&optional arg)
+  "Edit current file as sudo, prompt for file instead if ARG is present."
+  (interactive "P")
+  (let ((fname (if (or arg (not buffer-file-name))
+                   (read-file-name "File: ")
+                 buffer-file-name)))
+    (find-file
+     (cond ((string-match-p "^/ssh:" fname)
+            (with-temp-buffer
+              (insert fname)
+              (search-backward ":")
+              (let ((last-match-end nil)
+                    (last-ssh-hostname nil))
+                (while (string-match "@\\\([^:|]+\\\)" fname last-match-end)
+                  (setq last-ssh-hostname (or (match-string 1 fname)
+                                              last-ssh-hostname))
+                  (setq last-match-end (match-end 0)))
+                (insert (format "|sudo:%s" (or last-ssh-hostname "localhost"))))
+              (buffer-string)))
+           (t (concat "/sudo:root@localhost:" fname))))))
+
+(global-set-key (kbd "C-c E") 'sudo-edit)
+
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
