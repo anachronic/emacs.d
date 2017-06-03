@@ -135,11 +135,39 @@ If ARG is present, ask for a command to run."
 (define-key python-mode-map (kbd "C-c C-z") #'ach-python-switch-to-shell)
 (define-key python-mode-map (kbd "C-c C-r") #'spacemacs/python-execute-file)
 (define-key python-mode-map (kbd "C-c C-c") #'python-shell-send-dwim)
-;; I don't know why these are not defaults
+
+;; Navigation
+(use-package indent-tools
+  :ensure t)
+
+(add-hook 'python-mode-hook (lambda () (require 'indent-tools)))
+
+(with-eval-after-load 'indent-tools
+  (define-key python-mode-map (kbd "C-M-n") 'indent-tools-goto-next-sibling)
+  (define-key python-mode-map (kbd "C-M-p") 'indent-tools-goto-previous-sibling)
+  (define-key python-mode-map (kbd "M-k") 'indent-tools-kill-level)
+  (define-key python-mode-map (kbd "C-M-d") 'indent-tools-goto-child)
+
+  ;; Evaluate the possibility to bind this to a key
+  (defun ach-raise-current-indent-level ()
+    "Raise current indent level."
+    (interactive)
+    (save-excursion
+      (indent-tools-goto-parent)
+      (indent-tools-demote)
+      (kill-whole-line)
+      (move-beginning-of-line 1)
+      (newline-and-indent)))
+
+  ;; Promoting and demoting
+  (define-key python-mode-map (kbd "C-c ]") 'indent-tools-indent)
+  (define-key python-mode-map (kbd "C-c [") 'indent-tools-demote)
+  )
+
 (define-key python-mode-map (kbd "C-M-f") #'python-nav-forward-sexp)
 (define-key python-mode-map (kbd "C-M-b") #'python-nav-backward-sexp)
 (define-key python-mode-map (kbd "C-M-a") #'python-nav-backward-defun)
-(define-key python-mode-map (kbd "C-M-e") #'python-nav-forward-defun)
+(define-key python-mode-map (kbd "C-M-e") #'python-nav-end-of-defun)
 
 ;; Debugging stuff
 (defvar ach-python-debug-string
