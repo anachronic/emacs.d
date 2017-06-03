@@ -18,9 +18,6 @@
 (add-hook 'package-menu-mode-hook 'hl-line-mode)
 (add-hook 'org-agenda-mode-hook 'hl-line-mode)
 
-;; Enable narrow commands
-(put 'narrow-to-region 'disabled nil)
-
 ;; Flycheck. What's an editor without error checking?
 (use-package flycheck
   :ensure t
@@ -104,9 +101,9 @@ is already narrowed."
 (use-package undo-tree
   :ensure t
   :diminish ""
-  :demand
-  :config
+  :init
   (global-undo-tree-mode 1)
+  :config
   (define-key undo-tree-map (kbd "C-/") nil)
   :bind
   (("C-z" . undo)
@@ -117,9 +114,6 @@ is already narrowed."
 
 ;; diminish visual-line-mode
 (diminish 'visual-line-mode)
-
-;; might as well explicitly tell emacs we don't like tabs
-(setq-default indent-tabs-mode nil)
 
 ;; smart comment was crap. Let's stick to the good ol' evil-nerd-commenter
 (use-package evil-nerd-commenter
@@ -145,6 +139,7 @@ is already narrowed."
         (origami-fold-node-recursively-closed? node))))
 
   (defun origami-expand-or-TAB (&optional ARG)
+    "Expand folded node if possible, otherwise do a regular <tab>, with prefix ARG don't unfold."
     (interactive)
     (if (origami-closed-here-p)
         (save-excursion

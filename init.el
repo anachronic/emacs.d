@@ -89,9 +89,6 @@
 ;; Buffer moving/killing defuns
 (require 'setup-buffers)
 
-;; Renaming an open buffer file.
-(require 'renamefile)
-
 ;; File navigation
 (require 'setup-file-nav)
 

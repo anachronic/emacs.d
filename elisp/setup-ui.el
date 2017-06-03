@@ -2,15 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; get rid of everything other than the title at the top.
-(when (fboundp 'menu-bar-mode)
-  (menu-bar-mode -1))
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode)
-  (scroll-bar-mode -1))
-(when (fboundp 'blink-cursor-mode)
-  (blink-cursor-mode -1))
 
 ;; For EWW buffers to actually be visible
 ;; Source: https://emacs.stackexchange.com/a/3523
@@ -18,14 +9,7 @@
   (setq shr-color-visible-luminance-min 70))
 
 ;; these two come from: https://www.emacswiki.org/emacs/SmoothScrolling
-;; (setq scroll-step 1)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-
-;; get rid of the annoying GNU Emacs buffer
-(setq inhibit-startup-screen t)
-
-;; also get rid of the scratch buffer message
-(setq initial-scratch-message nil)
 
 ;; load the latest theme.
 ;; (load-theme 'nsalas-tomorrow-night t)
@@ -38,16 +22,6 @@
 
 (require 's)
 (set-face-attribute 'default nil :height 110)
-
-;; I ran into a VERY weird issue where C-n is the slowest thing
-;; ever. Fortunately, I found an answer
-;; https://lists.gnu.org/archive/html/emacs-devel/2006-09/msg00634.html
-;; Actually this, for some reason, makes the C-n be very fast even in
-;; very large buffers. Weird
-(setq auto-window-vscroll nil)
-
-;; no DING!
-(setq visible-bell 1)
 
 ;; This has been driving me crazy. So new key binding.
 (global-set-key (kbd "<f9>") 'split-window-right)
@@ -78,9 +52,6 @@
 (global-set-key (kbd "C-<f12>") (lambda () (interactive) (other-window -1)))
 
 (global-set-key (kbd "M-o") 'other-window)
-
-;; I want to be able to scroll without moving the point source:
-;; https://www.emacswiki.org/emacs/Scrolling
 
 ;; First, define a variable that decides if movement is per line or
 ;; per "page"
