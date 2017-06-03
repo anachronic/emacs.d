@@ -176,7 +176,6 @@ If ARG is present, prompt for the file instead."
       (setq guess (file-truename guess))
       (find-file guess))))
 
-(global-set-key (kbd "C-c Z") 'ach-jump-to-zshrc)
 (ach-define-bookmark "~/.zshrc" "z" "zshrc")
 
 (provide 'setup-shell)

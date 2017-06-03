@@ -87,7 +87,6 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
-(global-set-key (kbd "C-c I") 'ach-jump-to-init)
 (ach-define-bookmark "~/.emacs.d/init.el" "i" "emacs-init")
 
 (provide 'setup-file-nav)

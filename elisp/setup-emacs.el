@@ -71,8 +71,5 @@
 ;; Enable narrow commands
 (put 'narrow-to-region 'disabled nil)
 
-;; Move this to setup-editor.el
-(global-set-key (kbd "M-?") 'xref-find-references)
-
 (provide 'setup-emacs)
 ;;; setup-emacs.el ends here

@@ -445,6 +445,8 @@ Single Capitals as you type."
 
 (global-set-key (kbd "C-c E") 'sudo-edit)
 
+;; xref-find-references
+(global-set-key (kbd "M-?") 'xref-find-references)
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
