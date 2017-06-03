@@ -449,5 +449,9 @@ Single Capitals as you type."
 ;; xref-find-references
 (global-set-key (kbd "M-?") 'xref-find-references)
 
+;; Highlighting. I kind of like this feature
+(global-hi-lock-mode)
+(diminish 'hi-lock-mode)
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here

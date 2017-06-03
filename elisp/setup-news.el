@@ -2,11 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Let's read some news, shall we?
-;; Note that this does NOT ensure elfeed is installed
+;; Elfeed. No key bound
 (use-package elfeed
+  :ensure t
   :commands elfeed
-  :bind ("C-x w" . elfeed)
   :defer t
   :config
   (progn
