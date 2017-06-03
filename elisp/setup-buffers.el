@@ -45,20 +45,33 @@
                 (lambda ()
                   (interactive)
                   (make-frame)
-                  (other-frame)))
+                  (other-frame 1)))
 
 ;; emacs-close-dwim
 ;; I want to C-x C-c out of a frame without closing emacs.
 ;; So if there's more than one frame active. Just close it
 ;; If there's only one, shut down emacs. And hell, don't ask
 ;; to save buffers, just do it.
+(defun ach--count-active-gui-frames ()
+  "Return count of active gui frames."
+  (let ((count 0))
+    (dolist (f (frame-list))
+      (unless (cdr (assq 'tty (frame-parameters f)))
+        (setq count (1+ count))))
+    count))
+
 (defun ach-emacs-close-dwim ()
-  "Close current frame if there's more than one active.
-Otherwise exit Emacs."
+  "Close current frame if there's more than one visible frame active.
+
+Close Emacs only if there's no more open frames (like terminal frames)."
   (interactive)
-  (if (> (length (frame-list)) 1)
+  (if (> (ach--count-active-gui-frames) 1)
       (delete-frame)
-    (save-buffers-kill-emacs)))
+    (if (= 1 (length (frame-list)))
+        (save-buffers-kill-emacs)
+      (ding)
+      (message
+       "There are terminal frames open. Close them or call save-buffers-kill-emacs directly"))))
 
 ;; rebind it to C-x C-c
 (define-key ctl-x-map (kbd "C-c") 'ach-emacs-close-dwim)
