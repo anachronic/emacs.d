@@ -295,10 +295,6 @@ Mark is not set when calling this function."
 (global-set-key (kbd "M-N") 'ach-move-line-down)
 
 ;; ==================== END of line manipulation functions =====
-
-;; occur next-prev. Actually it can be used with errors too
-(global-set-key (kbd "M-s M-p") 'previous-error)
-
 ;; I've ran into the situation where I want to zap stuff (specially
 ;; with paredit). And I was trying zzz-up-to-char. But the extra key
 ;; press isn't quite the right solution for the job: you see, if the
@@ -316,27 +312,6 @@ Mark is not set when calling this function."
 
 ;; For zapping backwards needs negative prefix. Need a lot of muscle
 ;; memory for that.
-
-(defhydra hydra-text (:columns 3)
-  "Movement and text manipulation hydra"
-  ("i" (forward-line -1) "up")
-  ("k" (forward-line 1) "down")
-  ("j" backward-char "back")
-  ("l" forward-char "forward")
-  ("dd" kill-whole-line "kill the whole line")
-  ("de" kill-line "kill until the end of the line")
-  ("da" ach-kill-to-line-beg "kill until beginning of line")
-  ("a" beginning-of-line "beginning of line")
-  ("e" end-of-line "end of line")
-  ("x" delete-char "kill char at point")
-  ("z" zap-up-to-char "zap up to char")
-  ("u" undo-tree-undo "undo")
-  ("r" undo-tree-redo "redo")
-  ("wc" capitalize-word "capitalize word")
-  ("wd" downcase-word "downcase word")
-  ("wu" upcase-word "uppercase word")
-  ("h" nil "quit (insert mode)" :color blue)
-  ("q" nil "quit" :color blue))
 
 ;; I found out this code snippet that while it doesn't really work in
 ;; the scratch buffer, it does look useful. We shall see. Should be
@@ -395,13 +370,6 @@ Single Capitals as you type."
 (with-eval-after-load 'org
   (add-hook 'org-mode-hook #'dubcaps-mode))
 
-;; I've ran into this situation where I really need to insert some paragraphs or
-;; stuff, so let's use lorem-ipsum
-(use-package lorem-ipsum
-  :ensure t
-  :config
-  (lorem-ipsum-use-default-bindings))
-
 ;; I asked a question on reddit about how to make links clickable and
 ;; got an answer quite quickly. Thank you reddit!
 ;; https://www.reddit.com/r/emacs/comments/5e94pg/have_links_in_comments_like_spacemacs/
@@ -412,9 +380,10 @@ Single Capitals as you type."
 (use-package highlight-symbol
   :ensure t
   :diminish ""
-  :config
+  :init
   (add-hook 'prog-mode-hook #'highlight-symbol-mode)
   (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
+  :config
   (defadvice highlight-symbol-temp-highlight (around sanityinc/maybe-suppress activate)
     "Suppress symbol highlighting while isearching."
     (unless (or isearch-mode
