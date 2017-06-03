@@ -192,11 +192,11 @@ is already narrowed."
 
 (global-set-key (kbd "M-RET") 'newline-for-code)
 
-;; C-o's default behaviour is kind of poor, so lets simulate vim's o.
+;; C-o's default behaviour is kind of poor, so lets simulate vim's
+;; capital o.
 (defun ach-open-line-above ()
   "Insert a newline before the current line and leave point on it."
   (interactive)
-  (push-mark)
   (move-beginning-of-line 1)
   (newline-and-indent)
   (forward-line -1)
@@ -240,19 +240,32 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; This should be a macro, but let's define it as a function
 ;; I want it to behave exactly like PyCharm or IntelliJ Idea's C-d
-(defun ach-duplicate-the-line ()
-  "Duplicate the current line below and set the point in the same column in the new line."
-  (interactive)
-  (save-excursion
-    (move-beginning-of-line 1)
-    (set-mark-command nil)
-    (move-end-of-line 1)
-    (kill-ring-save (region-beginning) (region-end))
-    (newline)
-    (yank))
-  (forward-line 1))
+(defun ach-duplicate-line (times)
+  "Duplicate the current line TIMES times.
 
-(global-set-key (kbd "C-c d") 'ach-duplicate-the-line)
+Line is duplicated below and point is set in the last line.
+
+Negative prefix duplicates line above and sets point in the first (new) line.
+
+Mark is not set when calling this function."
+  (interactive "p")
+  (cl-letf ((column (current-column))
+            ((symbol-function 'push-mark) (lambda (&optional l n a) t)))
+    (save-excursion
+      (kill-ring-save (line-beginning-position) (line-end-position))
+      (dotimes (i (abs times))
+        (if (> times 0)
+            (progn
+              (move-end-of-line 1)
+              (newline))
+          (move-beginning-of-line 1)
+          (open-line 1))
+        (yank)))
+    (forward-line times)
+    (move-beginning-of-line 1)
+    (forward-char column)))
+
+(global-set-key (kbd "C-c d") 'ach-duplicate-line)
 
 ;; My version of transpose lines. While emacs' transpose lines does the job,
 ;; I like the IntelliJ/Pycharm implementation better. It's cleaner. So let's
