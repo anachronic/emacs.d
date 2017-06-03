@@ -16,7 +16,7 @@
 (defun ach-revert-buffer ()
   "Revert buffer without asking if you really want to."
   (interactive)
-  (revert-buffer nil t))
+  (revert-buffer t t))
 
 (global-set-key (kbd "C-x C-r") #'ach-revert-buffer)
 

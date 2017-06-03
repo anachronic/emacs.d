@@ -71,5 +71,10 @@
 ;; Enable narrow commands
 (put 'narrow-to-region 'disabled nil)
 
+;; From purcell's config
+(global-auto-revert-mode)
+(setq-default global-auto-revert-non-file-buffers t
+              auto-revert-verbose nil)
+
 (provide 'setup-emacs)
 ;;; setup-emacs.el ends here
