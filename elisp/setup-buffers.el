@@ -135,7 +135,6 @@ Close Emacs only if there's no more open frames (like terminal frames)."
       (ibuffer-do-sort-by-filename/process)))
   (add-hook 'ibuffer-hook #'ibuffer-set-up-preferred-filters))
 
-
 ;; I was using ace window, but trying out purcell's config I realized
 ;; switch-window can be better
 (use-package switch-window
@@ -150,12 +149,14 @@ Close Emacs only if there's no more open frames (like terminal frames)."
 (defun split-window-func-with-other-buffer (split-function)
   (lexical-let ((s-f split-function))
     (lambda (&optional arg)
-      "Split this window and switch to the new window unless ARG is provided."
+      "Split this window and switch to the new window unless ARG is provided.
+
+If ARG is provided, preserve original behavior."
       (interactive "P")
       (funcall s-f)
-      (let ((target-window (next-window)))
-        (set-window-buffer target-window (other-buffer))
-        (unless arg
+      (unless arg
+        (let ((target-window (next-window)))
+          (set-window-buffer target-window (other-buffer))
           (select-window target-window))))))
 
 (global-set-key (kbd "C-x 2") (split-window-func-with-other-buffer 'split-window-vertically))
