@@ -25,12 +25,14 @@
   (define-key meta-m-map (kbd "M-d") #'ach-neotree-toggle))
 
 ;; This package is cool, I like coloring stuff around
-(use-package dired-k
-  :ensure t
-  :config
-  (progn
-    (add-hook 'dired-initial-position-hook 'dired-k)
-    (add-hook 'dired-after-readin-hook #'dired-k-no-revert)))
+;; Dired-k seems to kill git processes. It's actually very annoying.
+;; see https://github.com/syohex/emacs-dired-k/issues/45
+;; (use-package dired-k
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (add-hook 'dired-initial-position-hook 'dired-k)
+;;     (add-hook 'dired-after-readin-hook #'dired-k-no-revert)))
 
 ;; it seems sensible to hide every detail by default and use ) when I
 ;; have to show more info, like file size or permissions
