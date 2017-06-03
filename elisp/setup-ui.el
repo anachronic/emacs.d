@@ -144,5 +144,9 @@ transpositions to execute in sequence."
   :config
   (setq indent-guide-delay 0.1))
 
+;; Highlighting. I kind of like this feature
+(global-hi-lock-mode)
+(diminish 'hi-lock-mode)
+
 (provide 'setup-ui)
 ;;; setup-ui.el ends here
