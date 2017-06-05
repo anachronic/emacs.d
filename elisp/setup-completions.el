@@ -99,7 +99,6 @@
 ;; mature in Emacs.
 (use-package company
   :ensure t
-  :after yasnippet
   :demand
   :config
   (defun ach-company-complete-if-only-one ()
@@ -110,7 +109,7 @@
       (yas-expand)))
   (add-hook 'prog-mode-hook #'company-mode)
   (add-hook 'comint-mode-hook #'company-mode)
-  (setq company-idle-delay 0.5)
+  (setq company-idle-delay nil)
   (define-key company-active-map (kbd "TAB") #'ach-company-complete-if-only-one)
   (define-key company-active-map (kbd "<tab>") #'ach-company-complete-if-only-one)
   (define-key company-active-map (kbd "C-j") 'company-complete-common-or-cycle)
@@ -126,6 +125,25 @@
                   (company-dabbrev-code company-gtags company-etags
                                         company-keywords)
                   company-oddmuse))
+
+  ;; The following comes from
+  ;; https://github.com/company-mode/company-mode/issues/94#issuecomment-40884387
+  ;; This means no idle completion and no annoying C-S-SPC
+  (define-key company-mode-map [remap indent-for-tab-command]
+    'company-indent-for-tab-command)
+
+  (setq tab-always-indent 'complete)
+
+  (defvar completion-at-point-functions-saved nil)
+  (defun company-indent-for-tab-command (&optional arg)
+    (interactive "P")
+    (let ((completion-at-point-functions-saved completion-at-point-functions)
+          (completion-at-point-functions '(company-complete-common-wrapper)))
+      (indent-for-tab-command arg)))
+
+  (defun company-complete-common-wrapper ()
+    (let ((completion-at-point-functions completion-at-point-functions-saved))
+      (company-complete-common)))
   :diminish "comp"
   :bind (("C-S-<SPC>" . company-complete)))
 

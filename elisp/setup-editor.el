@@ -146,9 +146,9 @@ is already narrowed."
         (save-excursion
           (move-end-of-line 1)
           (origami-show-node (current-buffer) (1- (point))))
-      (call-interactively 'indent-for-tab-command)))
+      (call-interactively 'company-indent-for-tab-command)))
 
-  (global-set-key [remap indent-for-tab-command] 'origami-expand-or-TAB))
+  (global-set-key [remap company-indent-for-tab-command] 'origami-expand-or-TAB))
 
 ;; I've always liked coloring the buffer, because it makes easier to identify stuff around
 ;; So let's test this mode
