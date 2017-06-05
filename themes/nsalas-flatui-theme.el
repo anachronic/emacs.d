@@ -101,7 +101,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    `(menu ((t (:foreground ,midnight-blue :background ,silver))))
    `(minibuffer-prompt ((t (:foreground ,wet-asphalt :weight bold))))
-   `(region ((,class (:background ,sun-flower :foreground ,midnight-blue))
+   `(region ((,class (:background ,sun-flower))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,turquoise))))
    `(trailing-whitespace ((t (:background ,alizarin))))
@@ -470,7 +470,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(shm-quarantine-face ((t (:inherit font-lock-error))))
    ;; show-paren
    `(show-paren-mismatch ((t (:foreground ,sun-flower :background ,pomegranate :weight bold))))
-   `(show-paren-match ((t (:foreground ,clouds :background ,amethyst :weight bold))))
+   `(show-paren-match ((t (:weight bold :inverse-video t))))
    ;; mode-line/sml-mode-line
    `(mode-line
      ((,class (:inverse-video unspecified
