@@ -83,6 +83,12 @@ PRIORITY may be one of the characters ?A, ?B, or ?C."
                       (org-agenda-overriding-header "Todo el resto de tareas por hacer")))
             )))))
 
+;; These are the defaults I like for exporting.
+(with-eval-after-load 'ox
+  (setq org-export-with-toc nil)
+  (setq org-export-preserve-breaks t)
+  (setq org-export-with-section-numbers t))
+
 (with-eval-after-load 'ox-latex
   (setenv "PDFLATEX" "pdflatex -shell-escape")
   (setq org-latex-pdf-process '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
