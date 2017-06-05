@@ -42,7 +42,7 @@
     ("alizarin"        . "#e74c3c")
     ("pomegranate"     . "#c0392b"))
   "List of FlatUI colors.
-Each element has the form (NAME . HEX). ")
+Each element has the form (NAME . HEX).")
 
 (defmacro flatui/with-color-variables (&rest body)
   "`let' bind all colors defined in `flatui-colors-alist' around BODY.

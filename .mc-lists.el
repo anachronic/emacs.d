@@ -16,8 +16,10 @@
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
         paredit-kill
+        paredit-meta-doublequote
         paredit-open-round
         paredit-semicolon
+        paredit-splice-sexp
         paredit-wrap-round
         smarter-move-beginning-of-line
         tab-to-tab-stop
