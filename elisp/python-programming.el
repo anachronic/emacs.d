@@ -33,6 +33,9 @@
 ;; will also need a deactivate key, C-c C-d makes sense.
 (use-package pyvenv
   :ensure t
+  :defer t
+  :init
+  (define-key meta-m-map (kbd "w") 'pyvenv-workon)
   :config
   (define-key python-mode-map (kbd "C-c C-d") #'pyvenv-deactivate)
   (define-key python-mode-map (kbd "C-c C-w") #'pyvenv-workon))
