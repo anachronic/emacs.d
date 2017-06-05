@@ -138,6 +138,9 @@
 ;; IRC config. Using ERC for now
 (require 'setup-chat)
 
+;; More GUI stuff: images, pdfs, svgs, etc..
+(require 'setup-docviews)
+
 ;; Load UI stuff last
 (require 'setup-ui)
 
