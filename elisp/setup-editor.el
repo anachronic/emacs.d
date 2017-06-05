@@ -508,5 +508,23 @@ Single Capitals as you type."
          ("M-]" . bm-next))
   )
 
+;; This thing can be very useful in some modes.
+(use-package smartparens
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'js2-mode-hook 'smartparens-strict-mode)
+  :config
+  (setq sp-highlight-pair-overlay nil)
+  (setq sp-highlight-wrap-overlay nil)
+  (setq sp-highlight-wrap-tag-overlay nil)
+  )
+
+;; Hungry delete mode seems very good
+(use-package hungry-delete
+  :ensure t
+  :init
+  (global-hungry-delete-mode))
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here

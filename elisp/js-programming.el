@@ -16,9 +16,8 @@
 
 (use-package tern
   :ensure t
-  :after js2
   :defer t
-  :config
+  :init
   (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
 
 (use-package company-tern
