@@ -448,6 +448,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(outline-4 ((t (:foreground ,orange))))
    `(outline-5 ((t (:foreground ,pumpkin))))
    `(outline-6 ((t (:foreground ,pomegranate))))
+
+   ;; Paradox
+   `(paradox-mode-line-face ((t (:foreground "DarkKhaki"))))
+
    ;; rainbow-delimiters
    `(rainbow-delimiters-depth-1-face ((t (:foreground ,wet-asphalt))))
    `(rainbow-delimiters-depth-2-face ((t (:foreground ,turquoise))))
@@ -472,7 +476,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((,class (:inverse-video unspecified
                               :underline unspecified
                               :foreground ,silver
-                              :background ,wet-asphalt
+                              :background "grey30"
                               :box (:line-width 1
                                                 :color ,wet-asphalt
                                                 :style unspecified)))
@@ -481,7 +485,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((t (:inverse-video unspecified
                          :underline unspecified
                          :foreground ,silver
-                         :background ,peter-river
+                         :background "grey50"
                          :box (:line-width 1
                                            :color ,wet-asphalt
                                            :style unspecified)))))
