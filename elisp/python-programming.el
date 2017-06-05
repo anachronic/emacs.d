@@ -239,6 +239,7 @@ Runs autoflake --remove-all-unused-imports -i file"
 (when (file-exists-p "/home/nsalas/forks/projectile-django/projectile-django.el")
   (require 'projectile-django)
   (global-set-key (kbd "M-m d") 'projectile-django-map)
+  (setq projectile-django-default-port 8001)
   )
 
 ;; Also get rid of the annoying buffers for ivy and helm.
