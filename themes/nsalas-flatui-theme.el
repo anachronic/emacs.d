@@ -64,7 +64,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(link ((t (:foreground ,peter-river :underline t :weight bold))))
    `(link-visited ((t (:foreground ,amethyst :underline t :weight normal))))
    `(default ((t (:foreground ,midnight-blue :background ,clouds))))
-   `(cursor ((t (:foreground ,midnight-blue :background ,wet-asphalt))))
+   `(cursor ((t (:foreground ,midnight-blue :background "RoyalBlue"))))
    `(escape-glyph ((t (:foreground ,sun-flower :bold t))))
    `(fringe ((t (:foreground ,wet-asphalt :background ,silver))))
    `(header-line ((t (:foreground ,midnight-blue
@@ -430,7 +430,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-level-6 ((t (:foreground ,pomegranate))))
    `(org-level-7 ((t (:foreground ,turquoise))))
    `(org-level-8 ((t (:foreground ,emerald))))
-   `(org-link ((t (:foreground ,peter-river :weight bold))))
+   `(org-link ((t (:foreground ,peter-river :weight bold :underline t))))
    `(org-scheduled ((t (:foreground ,nephritis))))
    `(org-special-keyword ((t (:inherit font-lock-comment-face))))
    `(org-table ((t (:foreground ,asbestos))))

@@ -55,17 +55,33 @@
   "Skip these org mode keywords in alltodo agenda.")
 
 (with-eval-after-load 'org-agenda
+  ;; Thanks to Aaron Bieber
+  ;; https://blog.aaronbieber.com/2016/09/24/an-agenda-for-life-with-org-mode.html
+  (defun air-org-skip-subtree-if-priority (priority)
+    "Skip an agenda subtree if it has a priority of PRIORITY.
+
+PRIORITY may be one of the characters ?A, ?B, or ?C."
+    (let ((subtree-end (save-excursion (org-end-of-subtree t)))
+          (pri-value (* 1000 (- org-lowest-priority priority)))
+          (pri-current (org-get-priority (thing-at-point 'line t))))
+      (if (= pri-value pri-current)
+          subtree-end
+        nil)))
+
   (setq org-agenda-files ach-org-agenda-files)
   (setq org-agenda-custom-commands
         '(("e" "Both agenda and TODO items"
-           ((alltodo ""
-                     ((org-agenda-skip-function
-                       '(org-agenda-skip-entry-if 'todo ach-org-unimportant-keywords))
-                      (org-agenda-overriding-header "Deberes generales")))
+           ((tags "PRIORITY=\"A\""
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Para hoy:")))
             (agenda ""
                     ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))))
-            (todo "FUNCION"
-                  ((org-agenda-overriding-header "Funciones teatrales y musicales"))))))))
+            (alltodo ""
+                     ((org-agenda-skip-function
+                       '(or (org-agenda-skip-if nil '(scheduled deadline))
+                            (air-org-skip-subtree-if-priority ?A)))
+                      (org-agenda-overriding-header "Todo el resto de tareas por hacer")))
+            )))))
 
 (with-eval-after-load 'ox-latex
   (setenv "PDFLATEX" "pdflatex -shell-escape")
@@ -127,7 +143,11 @@
     "* ISSUE %?\n")
   `("g" "General TODO" entry
     (file+headline ,ach-org-tasks "General")
-    "* TODO %?\n")))
+    "* TODO %?\n")
+  `("G" "General TODO with link" entry
+    (file+headline ,ach-org-tasks "General")
+    "* TODO %A\n"
+    :immediate-finish t)))
 
 ;; Capturing from the OS
 ;; Thank you Mike Zamansky
@@ -154,7 +174,7 @@
   (select-frame-by-name "capture")
   (delete-other-windows)
   (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
-          (org-capture)))
+    (org-capture)))
 
 ;; Exporters don't seem to go well with use-package and org
 (maybe-install-packages 'ox-gfm 'ox-reveal)
