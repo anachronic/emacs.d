@@ -178,6 +178,13 @@ If ARG is present, prompt for the file instead."
 
 (ach-define-bookmark "~/.zshrc" "z" "zshrc")
 
+(use-package nginx-mode
+  :ensure t
+  :mode (("/nginx/sites-\\(?:available\\|enabled\\)/" . nginx-mode)
+         ("^nginx.conf\\'"                            . nginx-mode))
+  :defer t
+  :commands (nginx-mode))
+
 ;; =============================== TRAMP
 (with-eval-after-load 'tramp
   (setq tramp-default-method "ssh"))
