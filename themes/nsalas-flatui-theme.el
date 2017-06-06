@@ -86,7 +86,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(compilation-message-face ((t (:foreground ,wet-asphalt))))
    `(compilation-warning-face ((t (:foreground ,pumpkin :weight bold :underline t))))
    `(compilation-mode-line-exit ((t (:foreground ,turquoise :weight bold))))
-   `(compilation-mode-line-fail ((t (:foreground ,pomegranate :weight bold))))
+   `(compilation-mode-line-fail ((t (:foreground "LightSalmon" :weight bold))))
    `(compilation-mode-line-run ((t (:foreground ,orange :weight bold))))
    ;; grep
    `(grep-context-face ((t (:foreground ,wet-asphalt))))

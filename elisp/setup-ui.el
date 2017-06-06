@@ -15,13 +15,25 @@
 ;; (load-theme 'nsalas-tomorrow-night t)
 (load-theme 'nsalas-flatui t)
 
-;; If powerline fonts are installed, use that
-(let ((pl-font "DejaVu Sans Mono for Powerline"))
+;; If powerline fonts are izstalled, use that
+(let ((pl-font "Droid Sans Mono for Powerline"))
   (when (member pl-font (font-family-list))
     (set-face-attribute 'default nil :font pl-font)))
 
-(require 's)
-(set-face-attribute 'default nil :height 110)
+(defun ach--get-font-height-for-host (host)
+  "Return a sensible font size for HOST."
+  (cond
+   ((string= host "okinawa") 110)
+   (t 110)))
+
+(defun ach-set-font-height-125 ()
+  "Set font height to 125."
+  (interactive)
+  (set-face-attribute 'default nil :height 125))
+
+(set-face-attribute 'default nil
+                    :height (ach--get-font-height-for-host
+                             (system-name)))
 
 ;; This has been driving me crazy. So new key binding.
 (global-set-key (kbd "<f9>") 'split-window-right)
