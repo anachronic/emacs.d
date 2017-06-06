@@ -444,7 +444,7 @@ Single Capitals as you type."
               (buffer-string)))
            (t (concat "/sudo:root@localhost:" fname))))))
 
-(global-set-key (kbd "C-c E") 'sudo-edit)
+(global-set-key (kbd "C-c E") 'ach-sudo-edit)
 
 ;; xref-find-references
 (global-set-key (kbd "M-?") 'xref-find-references)

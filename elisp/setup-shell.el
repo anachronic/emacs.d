@@ -178,5 +178,9 @@ If ARG is present, prompt for the file instead."
 
 (ach-define-bookmark "~/.zshrc" "z" "zshrc")
 
+;; =============================== TRAMP
+(with-eval-after-load 'tramp
+  (setq tramp-default-method "ssh"))
+
 (provide 'setup-shell)
 ;;; setup-shell.el ends here
