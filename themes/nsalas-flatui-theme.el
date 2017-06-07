@@ -369,6 +369,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-error ((t (:foreground ,alizarin :weight bold))))
    `(js2-jsdoc-tag ((t (:foreground ,amethyst))))
    `(js2-jsdoc-type ((t (:foreground ,wisteria))))
+   `(js2-object-property ((t (:foreground ,amethyst))))
    `(js2-jsdoc-value ((t (:foreground ,peter-river))))
    `(js2-function-call ((t (:foreground ,peter-river))))
    `(js2-function-param ((t (:foreground ,wet-asphalt))))
@@ -392,7 +393,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; magit log
    `(magit-log-author ((t (:foreground ,belize-hole))))
    `(magit-log-sha1 ((t (:foreground ,carrot :weight bold))))
-   `(magit-tag ((t (:foreground ,wisteria :weight bold))))
+   `(magit-tag ((t (:foreground ,alizarin :weight bold))))
    `(magit-log-head-label-head ((t (:foreground ,midnight-blue :background ,turquoise
                                                 :weight bold
                                                 :box (:line-width 1 :color ,green-sea)))))
@@ -559,6 +560,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(web-mode-doctype-face ((t (:inherit ,font-lock-comment-face))))
    `(web-mode-folded-face ((t (:underline t))))
    `(web-mode-function-name-face ((t (:foreground ,midnight-blue :weight bold))))
+   `(web-mode-function-call-face ((t (:foreground ,peter-river))))
    `(web-mode-html-attr-name-face ((t (:foreground ,wisteria))))
    `(web-mode-html-attr-value-face ((t (:inherit ,font-lock-string-face))))
    `(web-mode-html-tag-face ((t (:foreground ,turquoise :weight bold))))
@@ -575,7 +577,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(web-mode-whitespaces-face ((t (:background ,alizarin))))
    `(web-mode-block-face ((t (:background "gray88"))))
    `(web-mode-block-control-face ((t (:foreground ,alizarin))))
-   `(web-mode-current-element-highlight-face ((t (:inverse-video t))))
+   `(web-mode-current-element-highlight-face ((t (:background "grey79"))))
    ;; whitespace-mode
    `(whitespace-space ((t (:background ,clouds :foreground ,sun-flower))))
    `(whitespace-hspace ((t (:background ,clouds :foreground ,sun-flower))))

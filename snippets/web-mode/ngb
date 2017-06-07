@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ngb
+# key: ngb
+# --
+{{$0}}
