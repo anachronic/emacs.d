@@ -65,13 +65,12 @@
   :bind (("C-c a" . counsel-projectile-ag)
          ("C-S-p" . counsel-projectile-find-file))
   :config
-  (defun ach-switch-buffer-maybe-on-project ()
-    "Call counsel-projectile-switch-to-buffer if on project, ivy-switch-buffer otherwise"
+  (defun ach-switch-buffers-no-virtual ()
+    "Call ivy-swtich-buffer without virtual-buffers."
     (interactive)
-    (if (projectile-project-p)
-        (call-interactively 'counsel-projectile-switch-to-buffer)
+    (let ((ivy-use-virtual-buffers nil))
       (call-interactively 'ivy-switch-buffer)))
-  (global-set-key (kbd "C-S-m") #'ach-switch-buffer-maybe-on-project)
+  (global-set-key (kbd "C-S-m") #'ach-switch-buffers-no-virtual)
   (define-key meta-m-map (kbd "M-m") #'ach-switch-buffer-maybe-on-project)
   (define-key meta-m-map (kbd "M-p") #'counsel-projectile-find-file)
   (counsel-projectile-on))
