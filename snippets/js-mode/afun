@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: afun
+# key: afun
+# --
+function ($1) {
+  $0
+}
