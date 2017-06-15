@@ -121,34 +121,16 @@ is already narrowed."
   :ensure t
   :bind ("M-;" . evilnc-comment-or-uncomment-lines))
 
-;; Folding seems way better with origami
-(use-package origami
+;; For folding we're gonna use the good old hideshow
+(use-package hideshow
   :ensure t
-  :bind (("C-c F" . origami-toggle-all-nodes)
-         ("C-c t" . origami-toggle-node))
   :defer t
+  :diminish hs-minor-mode
   :init
-  (add-hook 'prog-mode-hook #'origami-mode)
-
-  ;; Expand origami folded nodes with TAB!
-  (defun origami-closed-here-p ()
-    (save-excursion
-      (move-end-of-line 1)
-      (backward-char 1)
-      (let* ((path (origami-search-forward-for-path (current-buffer) (point)))
-             (node (-last-item path)))
-        (origami-fold-node-recursively-closed? node))))
-
-  (defun origami-expand-or-TAB (&optional ARG)
-    "Expand folded node if possible, otherwise do a regular <tab>, with prefix ARG don't unfold."
-    (interactive)
-    (if (origami-closed-here-p)
-        (save-excursion
-          (move-end-of-line 1)
-          (origami-show-node (current-buffer) (1- (point))))
-      (call-interactively 'company-indent-for-tab-command)))
-
-  (global-set-key [remap company-indent-for-tab-command] 'origami-expand-or-TAB))
+  (add-hook 'prog-mode-hook 'hs-minor-mode)
+  :config
+  (global-set-key (kbd "C-c F") 'hs-hide-all)
+  (global-set-key (kbd "C-c h") 'hs-toggle-hiding))
 
 ;; I've always liked coloring the buffer, because it makes easier to identify stuff around
 ;; So let's test this mode
@@ -546,6 +528,7 @@ Single Capitals as you type."
 ;; Hungry delete mode seems very good
 (use-package hungry-delete
   :ensure t
+  :diminish hungry-delete-mode
   :init
   (global-hungry-delete-mode))
 
