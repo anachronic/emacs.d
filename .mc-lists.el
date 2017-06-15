@@ -6,10 +6,13 @@
         TeX-insert-backslash
         electric-pair-delete-pair
         end-of-visual-line
+        hungry-delete-backward
+        hungry-delete-forward
         kill-region
         kill-sexp
         my/python-yank
         org-self-insert-command
+        paredit-backward-kill-word
         paredit-doublequote
         paredit-forward
         paredit-forward-delete
@@ -22,10 +25,12 @@
         paredit-splice-sexp
         paredit-wrap-round
         smarter-move-beginning-of-line
+        sp-delete-char
         tab-to-tab-stop
         whole-line-or-region-kill-region
         whole-line-or-region-kill-ring-save
         whole-line-or-region-yank
+        sp-backward-delete-char
         ))
 
 (setq mc/cmds-to-run-once
