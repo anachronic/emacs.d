@@ -175,6 +175,11 @@ is already narrowed."
 
 (global-set-key (kbd "M-RET") 'newline-for-code)
 
+(defvar ach-no-indent-after-open
+  '(message-mode
+    makefile-mode
+    makefile-gmake-mode))
+
 ;; C-o's default behaviour is kind of poor, so lets simulate vim's
 ;; capital o.
 (defun ach-open-line-above ()
@@ -183,7 +188,7 @@ is already narrowed."
   (move-beginning-of-line 1)
   (newline-and-indent)
   (forward-line -1)
-  (unless (eq major-mode 'message-mode)
+  (unless (member major-mode ach-no-indent-after-open)
     (indent-for-tab-command)))
 
 (global-set-key (kbd "C-o") 'ach-open-line-above)
