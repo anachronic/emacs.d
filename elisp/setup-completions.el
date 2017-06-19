@@ -108,10 +108,13 @@
       (yas-expand)))
   (add-hook 'prog-mode-hook #'company-mode)
   (add-hook 'comint-mode-hook #'company-mode)
-  (setq company-idle-delay nil)
   (define-key company-active-map (kbd "TAB") #'ach-company-complete-if-only-one)
   (define-key company-active-map (kbd "<tab>") #'ach-company-complete-if-only-one)
   (define-key company-active-map (kbd "C-j") 'company-complete-common-or-cycle)
+
+  ;; Default settings
+  (setq company-idle-delay nil
+        company-tooltip-align-annotations t)
 
   ;; default backends
   (setq-default company-backends
