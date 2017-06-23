@@ -29,9 +29,6 @@
   (define-key paredit-mode-map (kbd "C-<right>") nil)
   (define-key paredit-mode-map (kbd "M-?") nil)
 
-  ;; This thing is so freaking useful it freaks me out a little.
-  (global-set-key (kbd "M-K") #'paredit-kill)
-
   ;; Try to make it play well with hungry delete
   ;; forward delete
   (defvar ach-whitespace-eol-re "\\(\\s-\\|$\\)+")

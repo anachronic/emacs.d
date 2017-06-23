@@ -398,6 +398,10 @@ Single Capitals as you type."
   (define-key paredit-everywhere-mode-map (kbd "C-{") 'paredit-backward-barf-sexp)
   (define-key paredit-everywhere-mode-map (kbd "C-<backspace>") 'paredit-backward-kill-word)
 
+  ;; paredit-kill in M-k and kill-sentence in M-K
+  (define-key paredit-everywhere-mode-map (kbd "M-k") 'paredit-kill)
+  (define-key paredit-everywhere-mode-map (kbd "M-K") 'kill-sentence)
+
   ;; interfering with bm hotkeys
   (define-key paredit-everywhere-mode-map (kbd "M-]") nil)
   )
