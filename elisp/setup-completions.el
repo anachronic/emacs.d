@@ -24,6 +24,7 @@
         '((swiper . ivy--regex-plus)
           (counsel-git-grep . ivy--regex-plus)
           (counsel-ag . ivy--regex-plus)
+          (counsel-rg . ivy--regex-plus)
           (t . ivy--regex-fuzzy)))
   (setq ivy-initial-inputs-alist
         '((counsel-M-x . "^")
@@ -62,7 +63,7 @@
 (use-package counsel-projectile
   :ensure t
   :after (counsel projectile)
-  :bind (("C-c a" . counsel-projectile-ag)
+  :bind (("C-c a" . counsel-projectile-rg)
          ("C-S-p" . counsel-projectile-find-file))
   :config
   (defun ach-switch-buffers-no-virtual ()

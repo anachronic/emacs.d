@@ -21,21 +21,23 @@
         paredit-kill
         paredit-meta-doublequote
         paredit-open-round
+        paredit-raise-sexp
         paredit-semicolon
         paredit-splice-sexp
         paredit-wrap-round
         smarter-move-beginning-of-line
+        sp-backward-delete-char
         sp-delete-char
         tab-to-tab-stop
         whole-line-or-region-kill-region
         whole-line-or-region-kill-ring-save
         whole-line-or-region-yank
-        sp-backward-delete-char
         ))
 
 (setq mc/cmds-to-run-once
       '(
         counsel-M-x
+        describe-key
         eval-last-sexp
         my/scrolldown
         ))
