@@ -17,29 +17,40 @@
 ;; https://github.com/jorgenschaefer/Config/blob/master/emacs.el
 ;; https://emacs.stackexchange.com/questions/7863/show-colors-in-mode-line-for-minor-modes
 ;; Thanks everyone!
-(setq-default mode-line-format
-              `("%e"
-                mode-line-front-space
-                mode-line-mule-info
-                mode-line-client
-                mode-line-modified
-                mode-line-remote
-                mode-line-frame-identification
+;; (setq-default mode-line-format
+;;               `("%e"
+;;                 mode-line-front-space
+;;                 mode-line-mule-info
+;;                 mode-line-client
+;;                 mode-line-modified
+;;                 mode-line-remote
+;;                 mode-line-frame-identification
 
-                mode-line-buffer-identification
-                "   "
-                mode-line-position
-                (vc-mode vc-mode)
-                "  "
-                (pyvenv-virtual-env-name
-                 (:eval (list (if (and (member major-mode ach-valid-pyvenv-modes)
-                                       (bound-and-true-p pyvenv-virtual-env-name))
-                                  (propertize (concat "[" pyvenv-virtual-env-name "] ")
-                                              'face '(:foreground "SandyBrown"))
-                                ""))))
-                mode-line-modes
-                mode-line-misc-info
-                mode-line-end-spaces))
+;;                 mode-line-buffer-identification
+;;                 "   "
+;;                 mode-line-position
+;;                 (vc-mode vc-mode)
+;;                 "  "
+;;                 (pyvenv-virtual-env-name
+;;                  (:eval (list (if (and (member major-mode ach-valid-pyvenv-modes)
+;;                                        (bound-and-true-p pyvenv-virtual-env-name))
+;;                                   (propertize (concat "[" pyvenv-virtual-env-name "] ")
+;;                                               'face '(:foreground "SandyBrown"))
+;;                                 ""))))
+;;                 mode-line-modes
+;;                 mode-line-misc-info
+
+;; mode-line-end-spaces))
+
+(use-package smart-mode-line
+  :ensure t
+  :demand
+  :init
+  (sml/setup)
+  :config
+  (setq sml/modified-char "*")
+  (setq sml/numbers-separator ",")
+  (setq sml/read-only-char "%%"))
 
 (provide 'setup-modeline)
 ;;; setup-modeline.el ends here

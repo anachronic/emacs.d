@@ -29,3 +29,4 @@ image-dired
 /.#recentf
 emms
 /bm-repository
+/elisp/.tern-port

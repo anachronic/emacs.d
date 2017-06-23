@@ -69,6 +69,9 @@ is already narrowed."
   (setq nlinum-relative-current-symbol "")
   (setq nlinum-relative-redisplay-delay 0))
 
+;; Also show column numbers
+(column-number-mode)
+
 ;; I'm a little bit too young for emacs,
 ;; so I like replacing the region with stuff.
 (delete-selection-mode 1)

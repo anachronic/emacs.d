@@ -477,7 +477,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((,class (:inverse-video unspecified
                               :underline unspecified
                               :foreground ,silver
-                              :background "grey30"
+                              :background "grey20"
                               :box (:line-width 1
                                                 :color ,wet-asphalt
                                                 :style unspecified)))
@@ -486,25 +486,39 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((t (:inverse-video unspecified
                          :underline unspecified
                          :foreground ,silver
-                         :background "grey50"
+                         :background "grey35"
                          :box (:line-width 1
                                            :color ,wet-asphalt
                                            :style unspecified)))))
    `(mode-line-buffer-id ((t (:foreground ,sun-flower :weight bold))))
-   `(sml/global ((t (:foreground ,concrete))))
-   `(sml/modes ((t (:foreground ,nephritis))))
-   `(sml/filename ((t (:foreground ,nephritis))))
-   `(sml/folder ((t (:foreground ,carrot))))
-   `(sml/prefix ((t (:foreground ,carrot))))
-   `(sml/read-only ((t (:foreground ,wisteria))))
-   `(sml/modified ((t (:foreground ,pumpkin :weight bold))))
-   `(sml/outside-modified ((t (:background ,pomegranate
-                                           :foreground ,sun-flower :weight bold))))
-   `(sml/line-number ((t (:foreground ,turquoise :weight bold))))
-   `(sml/col-number ((t (:foreground ,turquoise :weight bold))))
-   `(sml/vc ((t (:foreground ,peter-river :weight bold))))
-   `(sml/vc-edited ((t (:foreground ,pumpkin :weight bold))))
-   `(sml/git ((t (:foreground ,peter-river :weight bold))))
+   `(sml/global    ((t :foreground "gray80" :inverse-video nil)))
+   `(sml/modes     ((t :inherit sml/global :foreground "White")))
+   `(sml/minor-modes ((t :inherit sml/global)))
+   `(sml/filename  ((t :inherit sml/global :foreground ,sun-flower :weight bold)))
+   `(sml/prefix    ((t :inherit sml/global :foreground "LightCoral")))
+   `(sml/read-only ((t :inherit sml/not-modified :foreground "DeepSkyBlue")))
+   `(sml/modified ((t :inherit sml/not-modified :foreground ,emerald :weight bold)))
+   `(sml/outside-modified ((t :inherit sml/not-modified :foreground "#ffffff" :background ,pomegranate)))
+
+   `(sml/line-number ((t :inherit sml/modes :weight bold)))
+   `(sml/remote ((t :inherit sml/global)))
+   `(sml/name-filling ((t :inherit sml/position-percentage)))
+   `(sml/position-percentage ((t :inherit sml/prefix :weight normal)))
+   `(sml/col-number ((t :inherit sml/global)))
+   `(sml/numbers-separator ((t :inherit sml/col-number)))
+   `(sml/client ((t :inherit sml/prefix)))
+   `(sml/not-modified ((t :inherit sml/global)))
+   `(sml/mule-info ((t :inherit sml/global)))
+   `(sml/sudo ((t :inherit sml/outside-modified)))
+   `(sml/git ((t :inherit (sml/read-only sml/prefix))))
+   `(sml/folder ((t :inherit sml/global :weight normal)))
+   `(sml/process ((t :inherit sml/prefix)))
+   `(sml/vc ((t :inherit sml/git)))
+   `(sml/vc-edited ((t :inherit sml/prefix)))
+   `(sml/charging ((t :inherit sml/global :foreground "ForestGreen")))
+   `(sml/discharging ((t :inherit sml/global :foreground "Red")))
+   `(sml/time ((t :inherit sml/modes)))
+
    ;; SLIME
    `(slime-repl-output-face ((t (:foreground ,midnight-blue))))
    `(slime-repl-inputed-output-face ((t (:foreground ,wet-asphalt))))
