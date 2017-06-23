@@ -397,6 +397,9 @@ Single Capitals as you type."
   (define-key paredit-everywhere-mode-map (kbd "C-(") 'paredit-backward-slurp-sexp)
   (define-key paredit-everywhere-mode-map (kbd "C-{") 'paredit-backward-barf-sexp)
   (define-key paredit-everywhere-mode-map (kbd "C-<backspace>") 'paredit-backward-kill-word)
+
+  ;; interfering with bm hotkeys
+  (define-key paredit-everywhere-mode-map (kbd "M-]") nil)
   )
 
 ;; Been using M-w quite a while and yes, @purcell is right, it is
@@ -496,41 +499,6 @@ Single Capitals as you type."
   :bind (("M-m M-b" . bm-toggle)
          ("M-[" . bm-previous)
          ("M-]" . bm-next))
-  )
-
-;; This thing can be very useful in some modes.
-(use-package smartparens
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'js2-mode-hook 'smartparens-strict-mode)
-  :config
-  (setq sp-highlight-pair-overlay nil)
-  (setq sp-highlight-wrap-overlay nil)
-  (setq sp-highlight-wrap-tag-overlay nil)
-
-
-  ;; Make it compatible with hungry-delete-mode
-  ;; src: https://emacs.stackexchange.com/a/29484
-  (dolist (key '( [remap delete-char]
-                  [remap delete-forward-char]))
-
-    (define-key smartparens-strict-mode-map key
-      '(menu-item "maybe-sp-delete-char" nil
-                  :filter (lambda (&optional _)
-                            (unless (looking-at-p "[[:space:]\n]")
-                              #'sp-delete-char)))))
-
-
-  (dolist (key '([remap backward-delete-char-untabify]
-                 [remap backward-delete-char]
-                 [remap delete-backward-char]))
-
-    (define-key smartparens-strict-mode-map key
-      '(menu-item "maybe-sp-backward-delete-char" nil
-                  :filter (lambda (&optional _)
-                            (unless (looking-back "[[:space:]\n]" 1)
-                              #'sp-backward-delete-char)))))
   )
 
 ;; Hungry delete mode seems very good
