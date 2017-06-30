@@ -11,7 +11,7 @@
   (setq js2-basic-offset 2)
   (setq-default js2-mode-show-parse-errors nil
                 js2-mode-show-strict-warnings nil
-                js2-idle-timer-delay 0.2)
+                js2-idle-timer-delay 0.4)
   (add-hook 'js2-mode-hook (lambda () (color-identifiers-mode -1)))
   (with-eval-after-load 'dumb-jump
     (define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)

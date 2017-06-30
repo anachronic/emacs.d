@@ -16,7 +16,7 @@
 (load-theme 'nsalas-flatui t)
 
 ;; If powerline fonts are izstalled, use that
-(let ((pl-font "Droid Sans Mono for Powerline"))
+(let ((pl-font "DejaVu Sans Mono"))
   (when (member pl-font (font-family-list))
     (set-face-attribute 'default nil :font pl-font)))
 
