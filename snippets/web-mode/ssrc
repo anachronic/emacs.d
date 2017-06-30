@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sc
+# key: sc
+# --
+<script src="$0" charset="UTF-8"></script>
