@@ -1,12 +1,11 @@
-alias la ls -la $*
-alias ll ls -l $*
-alias l ls -l $*
-
-alias emacs find-file $1
-alias ff find-file $1
-alias em find-file $1
-
-alias gcl git clone $*
-alias gst magit-status
-
 alias dired dired .
+alias gst magit-status
+alias gcl git clone $*
+alias em find-file $1
+alias ff find-file $1
+alias emacs find-file $1
+alias l ls -la $*
+alias ll ls -l $*
+alias la ls -la $*
+alias workon pyvenv-workon $1
+alias deactivate pyvenv-deactivate
