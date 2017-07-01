@@ -2,4 +2,4 @@
 # name: link
 # key: link
 # --
-[${1:Texto}]($2) $0
+[${1:Texto}]($2)$0

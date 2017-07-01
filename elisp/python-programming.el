@@ -251,5 +251,15 @@ Runs autoflake --remove-all-unused-imports -i file"
 (add-hook 'python-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'python-mode-hook (lambda () (color-identifiers-mode -1)))
 
+;; pip requirements. Looks like a very good package
+(use-package pip-requirements
+  :ensure t
+  :defer t
+  :config
+  (defun ach--setup-company-pip-requirements ()
+    (setq-local company-idle-delay 0.3)
+    (setq-local company-backends '(company-capf)))
+  (add-hook 'pip-requirements-mode-hook 'ach--setup-company-pip-requirements))
+
 (provide 'python-programming)
 ;;; python-programming.el ends here
