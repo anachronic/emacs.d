@@ -15,17 +15,21 @@
    ("\\.djhtml\\'" . web-mode)
    ("\\.html?\\'" . web-mode))
   :config
-  (progn
-    (setq web-mode-comment-style 2)
-    (setq web-mode-enable-current-element-highlight t)
-    (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-code-indent-offset 2)
-    (setq web-mode-css-indent-offset 2)
-    (setq web-mode-style-padding 2)
-    (setq web-mode-script-padding 2)
-    (setq web-mode-engines-alist
-          '(("django"    . "\\.html\\'"))
-          )))
+  (setq web-mode-comment-style 2)
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-style-padding 2)
+  (setq web-mode-script-padding 2)
+  (setq web-mode-engines-alist
+        '(("django"    . "\\.html\\'"))
+        )
+
+  (defvar web-mode-inhibit-control-block-strings
+    '("stylesheet" "endstylesheet" "javascript" "endjavascript"))
+  (dolist (str web-mode-inhibit-control-block-strings)
+    (delete str web-mode-django-control-blocks)))
 
 ;; This function should return t when chr is {, mode is web-mode
 ;; and the next character _before_ point (without spaces and/or newlines)
