@@ -73,5 +73,5 @@
 ;; Eval buffer is nice.
 (define-key emacs-lisp-mode-map (kbd "C-c C-e") 'eval-buffer)
 
-(provide 'elisp-programming)
-;;; elisp-programming.el ends here
+(provide 'init-elisp)
+;;; init-elisp.el ends here

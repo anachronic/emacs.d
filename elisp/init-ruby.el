@@ -13,5 +13,5 @@
 (use-package yari
   :ensure t)
 
-(provide 'ruby-programming)
-;;; ruby-programming.el ends here
+(provide 'init-ruby)
+;;; init-ruby.el ends here

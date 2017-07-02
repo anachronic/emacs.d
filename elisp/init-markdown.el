@@ -31,5 +31,5 @@
 (add-hook 'gfm-mode-hook #'visual-line-mode)
 (add-hook 'markdown-mode-hook #'visual-line-mode)
 
-(provide 'markdown-writing)
-;;; markdown-writing.el ends here
+(provide 'init-markdown)
+;;; init-markdown.el ends here

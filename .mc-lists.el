@@ -29,6 +29,7 @@
         sp-backward-delete-char
         sp-delete-char
         tab-to-tab-stop
+        transpose-words
         whole-line-or-region-kill-region
         whole-line-or-region-kill-ring-save
         whole-line-or-region-yank
@@ -39,5 +40,6 @@
         counsel-M-x
         describe-key
         eval-last-sexp
+        ivy-wgrep-change-to-wgrep-mode
         my/scrolldown
         ))

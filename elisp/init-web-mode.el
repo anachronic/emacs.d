@@ -79,5 +79,5 @@
   (define-key web-mode-map (kbd "M-.") #'dumb-jump-go)
   (define-key web-mode-map (kbd "M-,") #'dumb-jump-back))
 
-(provide 'web-programming)
-;;; web-programming.el ends here
+(provide 'init-web-mode)
+;;; init-web-mode.el ends here

@@ -51,5 +51,5 @@
   (add-hook 'LaTeX-mode-hook #'ach-load-company-bibtex))
 
 
-(provide 'latex-writing)
-;;; latex-writing.el ends here
+(provide 'init-latex)
+;;; init-latex.el ends here

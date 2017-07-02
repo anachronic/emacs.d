@@ -103,28 +103,28 @@
 (require 'setup-shell)
 
 ;; Elisp programming
-(require 'elisp-programming)
+(require 'init-elisp)
 
 ;; C programming requires a special section
-(require 'c-programming)
+(require 'init-c)
 
 ;; Python programming should be in another file.
-(require 'python-programming)
+(require 'init-python)
 
 ;; Web programming
-(require 'web-programming)
+(require 'init-web-mode)
 
 ;; Ruby programming
-(require 'ruby-programming)
+(require 'init-ruby)
 
 ;; js programming. God this is annoying
-(require 'js-programming)
+(require 'init-javascript)
 
 ;; LaTeX writing.
-(require 'latex-writing)
+(require 'init-latex)
 
 ;; Markdown writing
-(require 'markdown-writing)
+(require 'init-markdown)
 
 ;; Misc modes that don't need a separate file: (yaml, markdown)
 (require 'setup-modes)

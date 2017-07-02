@@ -261,5 +261,5 @@ Runs autoflake --remove-all-unused-imports -i file"
     (setq-local company-backends '(company-capf)))
   (add-hook 'pip-requirements-mode-hook 'ach--setup-company-pip-requirements))
 
-(provide 'python-programming)
-;;; python-programming.el ends here
+(provide 'init-python)
+;;; init-python.el ends here

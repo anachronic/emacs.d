@@ -313,5 +313,5 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
   :config
   (js2r-add-keybindings-with-prefix "C-c C-r"))
 
-(provide 'js-programming)
-;;; js-programming.el ends here
+(provide 'init-javascript)
+;;; init-javascript.el ends here

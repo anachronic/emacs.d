@@ -416,7 +416,9 @@ Single Capitals as you type."
 
 ;; This package is super useful with ivy-occur
 (use-package wgrep
-  :ensure t)
+  :ensure t
+  :config
+  (setq wgrep-auto-save-buffer t))
 
 ;; Edit current file as sudo
 ;; From spacemacs, which took this from magnars:
