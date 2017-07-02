@@ -2,24 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; While I once thought avy was cool, it isn't really what I thought
-;; it would be. I'd much rather use isearch and iy-go-up-to-char
-(use-package avy
-  :ensure t
-  :bind (("C-c f" . avy-goto-char))
-  :config
-  (setq-default avy-keys
-                '(?a ?s ?d ?f ?g ?h ?j ?k ?l ?q ?w ?e ?r ?u ?i ?o ?p)))
-
-;; I really feel like this package is too good to bind it to a large
-;; key binding.
-(use-package iy-go-to-char
-  :ensure t
-  :bind (("C-t"   . iy-go-up-to-char)
-         ("C-'"   . iy-go-to-or-up-to-continue)
-         ("C-c b" . iy-go-to-char-backward))
-  :config)
-
 ;; Seems better than ace-link
 (use-package link-hint
   :ensure t
@@ -61,6 +43,7 @@
     (swiper isearch-string))
   (define-key isearch-mode-map (kbd "C-S-s") #'isearch-swiper)
   (define-key isearch-mode-map (kbd "C-S-r") #'isearch-swiper)
+  (define-key isearch-mode-map (kbd "C-c s") #'isearch-swiper)
   ;; Terminal key bindings
   (define-key meta-m-map (kbd "M-s") #'swiper))
 
@@ -76,8 +59,6 @@
   (define-key dumb-jump-mode-map (kbd "M-g b") 'dumb-jump-back)
   (define-key dumb-jump-mode-map (kbd "M-g q") 'dumb-jump-quick-look)
   (add-hook 'prog-mode-hook 'dumb-jump-mode))
-
-
 
 (provide 'setup-search)
 ;;; setup-search.el ends here
