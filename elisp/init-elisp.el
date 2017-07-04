@@ -22,8 +22,8 @@
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)
   (add-hook 'ielm-mode-hook #'enable-paredit-mode)
   :config
-  ;; First remove some unused keys
   (define-key paredit-mode-map (kbd "C-<backspace>") 'paredit-backward-kill-word)
+  ;; First remove some unused keys
   (define-key paredit-mode-map (kbd "M-;") nil)
   (define-key paredit-mode-map (kbd "C-<left>") nil)
   (define-key paredit-mode-map (kbd "C-<right>") nil)
@@ -72,6 +72,16 @@
 
 ;; Eval buffer is nice.
 (define-key emacs-lisp-mode-map (kbd "C-c C-e") 'eval-buffer)
+
+;; From Endless Parentheses
+;; http://endlessparentheses.com/eval-result-overlays-in-emacs-lisp.html
+
+;; Someone decided to implement it, which is cool, since CIDER is
+;; quite a heavy package
+(use-package eros
+  :ensure t
+  :init
+  (add-hook 'emacs-lisp-mode-hook 'eros-mode))
 
 (provide 'init-elisp)
 ;;; init-elisp.el ends here

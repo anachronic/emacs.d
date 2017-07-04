@@ -512,7 +512,7 @@ Single Capitals as you type."
   :ensure t
   :diminish hungry-delete-mode
   :init
-  (global-hungry-delete-mode))
+  (add-hook 'prog-mode-hook 'hungry-delete-mode))
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here

@@ -11,9 +11,11 @@
    ("\\.[agj]sp\\'" . web-mode)
    ("\\.as[cp]x\\'" . web-mode)
    ("\\.erb\\'" . web-mode)
+   ("\\.ejs\\'" . web-mode)
    ("\\.mustache\\'" . web-mode)
    ("\\.djhtml\\'" . web-mode)
-   ("\\.html?\\'" . web-mode))
+   ("\\.html?\\'" . web-mode)
+   )
   :config
   (setq web-mode-comment-style 2)
   (setq web-mode-enable-current-element-highlight t)
