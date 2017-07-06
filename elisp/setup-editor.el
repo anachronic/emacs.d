@@ -191,8 +191,9 @@ is already narrowed."
   (move-beginning-of-line 1)
   (newline-and-indent)
   (forward-line -1)
-  (unless (member major-mode ach-no-indent-after-open)
-    (indent-for-tab-command)))
+  (unless (or (member major-mode ach-no-indent-after-open)
+              (not (derived-mode-p 'prog-mode)))
+    (indent-according-to-mode)))
 
 (global-set-key (kbd "C-o") 'ach-open-line-above)
 (global-set-key [(shift return)] 'ach-open-line-above)
