@@ -261,7 +261,6 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
 (use-package tern
   :ensure t
   :defer t
-  :diminish ""
   :init
   (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
   :config
@@ -272,9 +271,8 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
 ;; See above
 (use-package company-tern
   :ensure t
-  :after (company tern js2-mode)
   :defer t
-  :config
+  :init
   (add-hook 'js2-mode-hook (lambda ()
                              (setq-local company-backends company-backends)
                              (add-to-list 'company-backends 'company-tern))))

@@ -33,5 +33,10 @@
 (use-package camcorder
   :defer t)
 
+;; this one is builtin
+(use-package subword
+  :defer t
+  :diminish "")
+
 (provide 'setup-modes)
 ;;; setup-modes.el ends here
