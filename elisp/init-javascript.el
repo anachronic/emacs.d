@@ -312,7 +312,7 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
   :init
   (add-hook 'js2-mode-hook 'js2-refactor-mode)
   :config
-  (add-hook 'js2-mode-hook (lambda () (local-set-key (kbd "C-k") 'js2r-kill)))
+  (define-key js2-mode-map (kbd "C-k") 'js2r-kill)
 
   ;; This thing is very hard to use without a hydra or discover
   (require 'hydra)

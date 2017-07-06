@@ -62,12 +62,16 @@ is already narrowed."
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Linum relative for good editing
-(use-package nlinum-relative
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'nlinum-relative-mode)
-  (setq nlinum-relative-current-symbol "")
-  (setq nlinum-relative-redisplay-delay 0))
+(if (not (boundp 'display-line-numbers))
+    (use-package nlinum-relative
+      :ensure t
+      :config
+      (add-hook 'prog-mode-hook 'nlinum-relative-mode)
+      (setq nlinum-relative-current-symbol "")
+      (setq nlinum-relative-redisplay-delay 0))
+  (add-hook 'prog-mode-hook (lambda ()
+                              (setq-local display-line-numbers 'visual)
+                              (setq-local display-line-number-width 1))))
 
 ;; Also show column numbers
 (column-number-mode)

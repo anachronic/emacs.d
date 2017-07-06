@@ -377,6 +377,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; linum-mode and nlinum-mode
    `(linum ((t (:foreground ,wet-asphalt :background ,silver))))
    `(nlinum-relative-current-face ((t (:foreground ,pomegranate :weight bold :background "grey75"))))
+   `(line-number-current-line ((t (:foreground ,pomegranate :weight bold :background "grey75"))))
    ;; magit
    `(magit-header ((t (:foreground ,midnight-blue :background nil :weight bold))))
    `(magit-header-line ((t (:inherit magit-section-heading :foreground ,wet-asphalt))))
