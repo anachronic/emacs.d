@@ -18,6 +18,7 @@
         paredit-forward-delete
         paredit-forward-kill-word
         paredit-forward-slurp-sexp
+        paredit-forward-up
         paredit-kill
         paredit-meta-doublequote
         paredit-open-round
@@ -41,5 +42,6 @@
         describe-key
         eval-last-sexp
         ivy-wgrep-change-to-wgrep-mode
+        js2-refactor-hydra/js2r-extract-var-and-exit
         my/scrolldown
         ))
