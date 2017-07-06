@@ -209,6 +209,8 @@ If ARG is present, ask for a command to run."
   (define-key python-mode-map (kbd "C-c C-f") nil)
   (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
   (define-key importmagic-mode-map (kbd "C-c C-l") nil)
+  (setq importmagic-style-configuration-alist '((multiline . backslash)
+                                                (max_columns . 2000)))
   (diminish 'importmagic-mode))
 
 ;; Use autoflake to remove unused crap. This idea comes from spacemacs

@@ -17,6 +17,10 @@
    ("\\.html?\\'" . web-mode)
    )
   :config
+  ;; I feel like subword mode in web mode is sensible
+  (add-hook 'web-mode-hook 'subword-mode)
+
+  ;; Web mode defaults: every indent to 2 spaces
   (setq web-mode-comment-style 2)
   (setq web-mode-enable-current-element-highlight t)
   (setq web-mode-markup-indent-offset 2)

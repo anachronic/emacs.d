@@ -21,6 +21,9 @@
   (add-hook 'js2-mode-hook (lambda () (setq-local mode-name "Javascript")))
   (add-hook 'js2-jsx-mode-hook (lambda () (setq-local mode-name "JSX")))
 
+  ;; I tend to write javascript in camelCase.
+  (add-hook 'js2-mode-hook 'subword-mode)
+
   ;; The following comes from:
   ;; https://github.com/redguardtoo/emacs.d/blob/master/lisp/init-javascript.el
 
