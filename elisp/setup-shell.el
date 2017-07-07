@@ -119,6 +119,7 @@
 ;; Sometimes a shell is better...
 (define-key meta-m-map (kbd "s") #'shell)
 (define-key meta-m-map (kbd "z") #'eshell)
+(global-set-key (kbd "<f10>") 'eshell)
 
 ;; I'd like to completely quit shell with C-c C-k
 (defun ach-kill-shell ()

@@ -359,5 +359,9 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
 ;; (js2r-add-keybindings-with-prefix "C-c C-r")
 )
 
+;; React
+(use-package rjsx-mode
+  :ensure t)
+
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
