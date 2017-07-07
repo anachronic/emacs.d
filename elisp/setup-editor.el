@@ -519,5 +519,9 @@ Single Capitals as you type."
   :init
   (add-hook 'prog-mode-hook 'hungry-delete-mode))
 
+;; This is from site-lisp
+(require 'emacs-surround)
+(global-set-key (kbd "C-c i") 'emacs-surround)
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
