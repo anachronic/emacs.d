@@ -7,5 +7,3 @@ alias emacs find-file $1
 alias l ls -la $*
 alias ll ls -l $*
 alias la ls -la $*
-alias workon pyvenv-workon $1
-alias deactivate pyvenv-deactivate

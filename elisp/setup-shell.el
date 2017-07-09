@@ -70,8 +70,8 @@
 
 (defun ach--pyvenv-prompt ()
   "Get virtualenv prompt if its running."
-  (when (bound-and-true-p pyvenv-virtual-env-name)
-    (concat "(" pyvenv-virtual-env-name ") ")))
+  (when (bound-and-true-p venv-current-name)
+    (concat "(" venv-current-name ") ")))
 
 (setq eshell-prompt-function
       (lambda ()

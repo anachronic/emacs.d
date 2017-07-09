@@ -22,35 +22,22 @@
 ;; key
 (use-package py-yapf
   :ensure t
-  :config
-  (defun ach-redef-indent-python ()
-    (local-set-key (kbd "C-c TAB") #'py-yapf-buffer))
-  (add-hook 'python-mode-hook #'ach-redef-indent-python))
-
-;; I liked the pyvenv tool from Elpy. So let's use that. Also, I
-;; pretty much use (and will continue to do so) virtualenvwrapper.sh,
-;; Thus, the binding that will be used is pyvenv-workon in C-c C-w. We
-;; will also need a deactivate key, C-c C-d makes sense.
-(use-package pyvenv
-  :ensure t
-  :defer t
   :init
-  (define-key meta-m-map (kbd "w") 'pyvenv-workon)
-  :config
-  (define-key python-mode-map (kbd "C-c C-d") #'pyvenv-deactivate)
-  (define-key python-mode-map (kbd "C-c C-w") #'pyvenv-workon))
+  (define-key python-mode-map (kbd "C-c TAB") 'py-yapf-buffer))
 
-;; The warning message is very annoying, let's get rid of it
-;; Solution found at:
-;; https://github.com/jorgenschaefer/elpy/issues/887#issuecomment-261696405
-(defun python-shell-completion-native-try ()
-  "Return non-nil if can trigger native completion."
-  (let ((python-shell-completion-native-enable t)
-        (python-shell-completion-native-output-timeout
-         python-shell-completion-native-try-output-timeout))
-    (python-shell-completion-native-get-completions
-     (get-buffer-process (current-buffer))
-     nil "_")))
+;; I was using pyvenv for virtualenvwrappers, but it does not work
+;; with eshell, so i had to look something else
+(use-package virtualenvwrapper
+  :ensure t
+  :init
+  (define-key python-mode-map (kbd "C-c C-w") 'venv-workon)
+  (define-key python-mode-map (kbd "C-c C-d") 'venv-deactivate)
+  (define-key meta-m-map (kbd "w") 'venv-workon)
+  :config
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell)
+  (setq venv-location "~/.virtualenvs/")
+  )
 
 ;; They say IPython rocks. I guess it does.
 (when (executable-find "ipython")
