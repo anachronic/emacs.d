@@ -6,8 +6,10 @@
         TeX-insert-backslash
         electric-pair-delete-pair
         end-of-visual-line
+        forward-sexp
         hungry-delete-backward
         hungry-delete-forward
+        indent-for-tab-command
         kill-region
         kill-sexp
         my/python-yank
