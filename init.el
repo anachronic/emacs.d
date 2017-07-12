@@ -97,9 +97,6 @@
 ;; get bigger.
 (require 'setup-org)
 
-;; Recentf config.
-(require 'setup-recentf)
-
 ;; Shell config
 (require 'setup-shell)
 
