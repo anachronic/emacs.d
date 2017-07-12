@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: iferr
+# key: iferr
+# --
+if (${1:err}) throw $1;$0
