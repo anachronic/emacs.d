@@ -144,17 +144,15 @@ transpositions to execute in sequence."
 (define-key meta-m-map (kbd "t") 'transpose-windows)
 
 ;; Indent guide. Looks like the best option without breaking the UI
-(use-package indent-guide
-  :ensure t
-  :defer t
-  :diminish ""
-  :init
-  (add-hook 'python-mode-hook 'indent-guide-mode)
-  (add-hook 'ruby-mode-hook 'indent-guide-mode)
-  (add-hook 'js2-mode-hook 'indent-guide-mode)
-  (add-hook 'web-mode-hook 'indent-guide-mode)
-  :config
-  (setq indent-guide-delay 0.1))
+(autoload 'indent-guide-mode "indent-guide")
+(add-hook 'python-mode-hook 'indent-guide-mode)
+(add-hook 'ruby-mode-hook 'indent-guide-mode)
+(add-hook 'js2-mode-hook 'indent-guide-mode)
+(add-hook 'web-mode-hook 'indent-guide-mode)
+
+(with-eval-after-load 'indent-guide
+  (setq indent-guide-delay 0.1)
+  (diminish 'indent-guide-mode))
 
 ;; Highlighting. I kind of like this feature
 (global-hi-lock-mode)
