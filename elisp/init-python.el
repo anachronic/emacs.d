@@ -29,6 +29,8 @@
 ;; with eshell, so i had to look something else
 (use-package virtualenvwrapper
   :ensure t
+  :defer t
+  :commands (venv-workon venv-deactivate)
   :init
   (define-key python-mode-map (kbd "C-c C-w") 'venv-workon)
   (define-key python-mode-map (kbd "C-c C-d") 'venv-deactivate)
@@ -190,10 +192,10 @@ If ARG is present, ask for a command to run."
 (define-key python-mode-map (kbd "C-c C-e") 'ach-python-debug)
 
 ;; Dealing with imports is a pain in Python
-(when (file-exists-p "/home/nsalas/forks/importmagic.el")
-  (require 'importmagic)
-  (add-hook 'python-mode-hook 'importmagic-mode)
-  (define-key python-mode-map (kbd "C-c C-f") nil)
+(autoload 'importmagic-mode "importmagic")
+(add-hook 'python-mode-hook 'importmagic-mode)
+(define-key python-mode-map (kbd "C-c C-f") nil)
+(with-eval-after-load 'importmagic
   (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
   (define-key importmagic-mode-map (kbd "C-c C-l") nil)
   (setq importmagic-style-configuration-alist '((multiline . backslash)
