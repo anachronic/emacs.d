@@ -363,5 +363,11 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
 (use-package rjsx-mode
   :ensure t)
 
+;; CoffeeScript
+(use-package coffee-mode
+  :ensure t
+  :config
+  (add-hook 'coffee-mode-hook (lambda () (color-identifiers-mode -1))))
+
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

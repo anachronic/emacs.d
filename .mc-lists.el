@@ -44,4 +44,5 @@
         ivy-wgrep-change-to-wgrep-mode
         js2-refactor-hydra/js2r-extract-var-and-exit
         my/scrolldown
+        js2-refactor-hydra/js2r-rename-var-and-exit
         ))
