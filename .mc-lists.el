@@ -6,6 +6,9 @@
         TeX-insert-backslash
         electric-pair-delete-pair
         end-of-visual-line
+        evil-force-normal-state
+        evil-insert
+        evil-normal-state
         forward-sexp
         hungry-delete-backward
         hungry-delete-forward
@@ -45,6 +48,6 @@
         eval-last-sexp
         ivy-wgrep-change-to-wgrep-mode
         js2-refactor-hydra/js2r-extract-var-and-exit
-        my/scrolldown
         js2-refactor-hydra/js2r-rename-var-and-exit
+        my/scrolldown
         ))
