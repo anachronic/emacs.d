@@ -15,6 +15,7 @@
    ("\\.mustache\\'" . web-mode)
    ("\\.djhtml\\'" . web-mode)
    ("\\.html?\\'" . web-mode)
+   ("\\.hbs\\'" . web-mode)
    )
   :config
   ;; I feel like subword mode in web mode is sensible
@@ -29,7 +30,8 @@
   (setq web-mode-style-padding 2)
   (setq web-mode-script-padding 2)
   (setq web-mode-engines-alist
-        '(("django"    . "\\.html\\'"))
+        '(("django"     . "\\.html\\'")
+          ("ctemplate"  . "\\.hbs\\'"))
         )
 
   (defvar web-mode-inhibit-control-block-strings
@@ -47,8 +49,9 @@
 
 (require 'elec-pair)
 (add-hook 'web-mode-hook
-          (lambda () (setq-local electric-pair-inhibit-predicate
-                            'ach-web-mode-before-function-p)))
+          (lambda () (when (string= "django" web-mode-engine)
+                  (setq-local electric-pair-inhibit-predicate
+                              'ach-web-mode-before-function-p))))
 
 ;; Single quotes don't pair in web mode
 (defun ach-web-mode-single-quote-pair ()

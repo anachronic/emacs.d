@@ -4,11 +4,11 @@
 
 ;; Looking for a way to explore a keymap I found a pretty cool package:
 (use-package help-fns+
-  :ensure t)
-
-;; Apparently it doesn't have autoload, so let's do this
-(require 'help-fns+)
-(define-key help-map "\M-k" 'describe-keymap)
+  :ensure t
+  :init
+  (require 'help-fns+)
+  :config
+  (define-key help-map "\M-k" 'describe-keymap))
 
 ;; I use `describe-face' quite often, I'd really like a key for it
 (define-key help-map (kbd "C-f") nil)
@@ -26,9 +26,6 @@
   (which-key-mode)
   :demand
   :diminish which-key-mode)
-
-;; I've been using woman
-(define-key help-map (kbd "C-w") 'woman)
 
 (provide 'setup-help)
 ;;; setup-help.el ends here
