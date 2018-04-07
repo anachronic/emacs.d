@@ -43,9 +43,8 @@
     (swiper isearch-string))
   (define-key isearch-mode-map (kbd "C-S-s") #'isearch-swiper)
   (define-key isearch-mode-map (kbd "C-S-r") #'isearch-swiper)
-  (define-key isearch-mode-map (kbd "C-c s") #'isearch-swiper)
-  ;; Terminal key bindings
-  (define-key meta-m-map (kbd "M-s") #'swiper))
+  (define-key isearch-mode-map (kbd "C-c s") #'isearch-swiper))
+
 
 ;; This is GREAT when tags don't really cut it
 (use-package dumb-jump

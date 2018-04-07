@@ -3,13 +3,6 @@
 ;;;                This code is mainly a replica of the Howard Abrams' setup.
 ;;; Code:
 
-;; Popping an eshell is pretty useful
-(use-package shell-pop
-  :ensure t
-  :demand
-  :config
-  (define-key meta-m-map (kbd "M-z") 'shell-pop))
-
 (require 'eshell)
 
 (add-hook 'eshell-mode-hook #'company-mode)
@@ -117,8 +110,8 @@
               'ha/eshell-quit-or-delete-char)))
 
 ;; Sometimes a shell is better...
-(define-key meta-m-map (kbd "s") #'shell)
-(define-key meta-m-map (kbd "z") #'eshell)
+
+
 (global-set-key (kbd "<f10>") 'eshell)
 
 ;; I'd like to completely quit shell with C-c C-k
@@ -183,8 +176,6 @@ If ARG is present, prompt for the file instead."
     (when (file-symlink-p ach-zshrc-path)
       (setq guess (file-truename guess))
       (find-file guess))))
-
-(ach-define-bookmark "~/.zshrc" "z" "zshrc")
 
 (use-package nginx-mode
   :ensure t

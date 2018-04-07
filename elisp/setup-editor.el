@@ -61,44 +61,8 @@ is already narrowed."
 ;; Remove any trailing whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Linum relative for good editing
-(if (not (boundp 'display-line-numbers))
-    (use-package nlinum-relative
-      :ensure t
-      :config
-      (add-hook 'prog-mode-hook 'nlinum-relative-mode)
-      (setq nlinum-relative-current-symbol "")
-      (setq nlinum-relative-redisplay-delay 0))
-  (add-hook 'prog-mode-hook (lambda ()
-                              (setq-local display-line-numbers 'visual)
-                              (setq-local display-line-number-width 1))))
-
 ;; Also show column numbers
 (column-number-mode)
-
-;; I'm a little bit too young for emacs,
-;; so I like replacing the region with stuff.
-(delete-selection-mode 1)
-
-;; Recenter positions
-(setq-default recenter-positions '(top middle bottom))
-
-(defvar ach-recenter-offset 6
-  "Number of lines to offset from limit when recentering.")
-
-;; Advice `recenter-top-bottom' for offset
-(defun ach-recenter-advice (orig-fun &rest args)
-  "Advice to offset `recenter-top-bottom' (ORIG-FUN) called with ARGS."
-  (apply orig-fun args)
-  (let ((top (or (eq recenter-last-op 'top)
-                 (eq recenter-last-op (car recenter-positions))))
-        (bottom (eq recenter-last-op 'bottom)))
-    (when ach-recenter-offset
-      (cond
-       (top (scroll-down ach-recenter-offset))
-       (bottom (scroll-up ach-recenter-offset))))))
-
-(advice-add 'recenter-top-bottom :around #'ach-recenter-advice)
 
 ;; expand region. An *excellent* tool.
 (use-package expand-region
@@ -128,17 +92,6 @@ is already narrowed."
   :ensure t
   :bind ("M-;" . evilnc-comment-or-uncomment-lines))
 
-;; For folding we're gonna use the good old hideshow
-(use-package hideshow
-  :ensure t
-  :defer t
-  :diminish hs-minor-mode
-  :init
-  (add-hook 'prog-mode-hook 'hs-minor-mode)
-  :config
-  (global-set-key (kbd "C-c F") 'hs-hide-all)
-  (global-set-key (kbd "C-c h") 'hs-toggle-hiding))
-
 ;; I've always liked coloring the buffer, because it makes easier to identify stuff around
 ;; So let's test this mode
 (use-package color-identifiers-mode
@@ -146,9 +99,6 @@ is already narrowed."
   :config
   (add-hook 'prog-mode-hook 'color-identifiers-mode)
   :diminish color-identifiers-mode)
-
-;; Deleting stuff backwards
-(global-set-key (kbd "M-D") 'backward-kill-word)
 
 ;; Let's use multiple cursors.
 (use-package multiple-cursors
@@ -171,40 +121,6 @@ is already narrowed."
 
 (global-set-key (kbd "C-c TAB") 'ach-indent-whole-buffer)
 
-;; =======Inserting lines, duplicating, etcetera.=======
-;; This one comes directly from ha's config:
-;; https://github.com/howardabrams/dot-files/blob/master/emacs-fixes.org
-(defun newline-for-code ()
-  "Insert a newline as if RET was pressed on the end of this line."
-  (interactive)
-  (move-end-of-line 1)
-  (newline-and-indent))
-
-(global-set-key (kbd "M-RET") 'newline-for-code)
-
-(defvar ach-no-indent-after-open
-  '(message-mode
-    makefile-mode
-    makefile-gmake-mode))
-
-;; C-o's default behaviour is kind of poor, so lets simulate vim's
-;; capital o.
-(defun ach-open-line-above ()
-  "Insert a newline before the current line and leave point on it."
-  (interactive)
-  (move-beginning-of-line 1)
-  (newline-and-indent)
-  (forward-line -1)
-  (unless (or (member major-mode ach-no-indent-after-open)
-              (not (derived-mode-p 'prog-mode)))
-    (indent-according-to-mode)))
-
-(global-set-key (kbd "C-o") 'ach-open-line-above)
-(global-set-key [(shift return)] 'ach-open-line-above)
-
-;; I have been using M-m lately, and I have to say I'm able to remember
-;; stuff rather easily. But it is always better when stuff gets simpler.
-;; Once again, browsing ha's config, I came across this function.
 ;; Author's URL: http://emacsredux.com/blog/2013/05/22/smarter-navigation-to-the-beginning-of-a-line/
 ;; With this we can remap M-m to something else. We'll see
 (defun smarter-move-beginning-of-line (arg)
@@ -233,6 +149,9 @@ point reaches the beginning or end of the buffer, stop there."
 ;; remap C-a to `smarter-move-beginning-of-line'
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
+
+;; and unbind M-m
+(global-unset-key (kbd "M-m"))
 
 ;; This should be a macro, but let's define it as a function
 ;; I want it to behave exactly like PyCharm or IntelliJ Idea's C-d
@@ -308,24 +227,6 @@ Mark is not set when calling this function."
 
 ;; For zapping backwards needs negative prefix. Need a lot of muscle
 ;; memory for that.
-
-;; I found out this code snippet that while it doesn't really work in
-;; the scratch buffer, it does look useful. We shall see. Should be
-;; useful when reading long stuff URL:
-;; http://endlessparentheses.com/fill-and-unfill-paragraphs-with-a-single-key.html
-(defun endless/fill-or-unfill ()
-  "Like `fill-paragraph', but unfill if used twice."
-  (interactive)
-  (let ((fill-column
-         (if (eq last-command 'endless/fill-or-unfill)
-             (progn (setq this-command nil)
-                    (point-max))
-           fill-column)))
-    (call-interactively #'fill-paragraph)))
-
-(global-set-key [remap fill-paragraph]
-                #'endless/fill-or-unfill)
-
 
 ;; Another useful one. COnvert DOuble CAps to Single Caps minor mode.
 ;; Source 1: http://endlessparentheses.com/fixing-double-capitals-as-you-type.html
@@ -416,8 +317,10 @@ Single Capitals as you type."
 (use-package whole-line-or-region
   :ensure t
   :diminish ""
+  :init
+  (add-hook 'after-init-hook 'whole-line-or-region-mode)
   :config
-  (add-hook 'after-init-hook 'whole-line-or-region-mode))
+  (diminish 'whole-line-or-region-local-mode ""))
 
 ;; This package is super useful with ivy-occur
 (use-package wgrep
@@ -453,75 +356,12 @@ Single Capitals as you type."
 ;; xref-find-references
 (global-set-key (kbd "M-?") 'xref-find-references)
 
-;; This thing can be useful. Not really sure though
-(use-package bm
-  :ensure t
-  :demand t
-  :init
-  ;; restore on load (even before you require bm)
-  (setq bm-restore-repository-on-load t)
-
-  :config
-  ;; Allow cross-buffer 'next'
-  (setq bm-cycle-all-buffers t)
-
-  ;; where to store persistant files
-  (setq bm-repository-file "~/.emacs.d/bm-repository")
-
-  ;; save bookmarks
-  (setq-default bm-buffer-persistence t)
-
-  ;; Loading the repository from file when on start up.
-  (add-hook' after-init-hook 'bm-repository-load)
-
-  ;; Restoring bookmarks when on file find.
-  (add-hook 'find-file-hooks 'bm-buffer-restore)
-
-  ;; Saving bookmarks
-  (add-hook 'kill-buffer-hook #'bm-buffer-save)
-
-  ;; Saving the repository to file when on exit.
-  ;; kill-buffer-hook is not called when Emacs is killed, so we
-  ;; must save all bookmarks first.
-  (add-hook 'kill-emacs-hook #'(lambda nil
-                                 (bm-buffer-save-all)
-                                 (bm-repository-save)))
-
-  ;; The `after-save-hook' is not necessary to use to achieve persistence,
-  ;; but it makes the bookmark data in repository more in sync with the file
-  ;; state.
-  (add-hook 'after-save-hook #'bm-buffer-save)
-
-  ;; Restoring bookmarks
-  (add-hook 'find-file-hooks   #'bm-buffer-restore)
-  (add-hook 'after-revert-hook #'bm-buffer-restore)
-
-  ;; The `after-revert-hook' is not necessary to use to achieve persistence,
-  ;; but it makes the bookmark data in repository more in sync with the file
-  ;; state. This hook might cause trouble when using packages
-  ;; that automatically reverts the buffer (like vc after a check-in).
-  ;; This can easily be avoided if the package provides a hook that is
-  ;; called before the buffer is reverted (like `vc-before-checkin-hook').
-  ;; Then new bookmarks can be saved before the buffer is reverted.
-  ;; Make sure bookmarks is saved before check-in (and revert-buffer)
-  (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
-
-
-  :bind (("M-m M-b" . bm-toggle)
-         ("M-[" . bm-previous)
-         ("M-]" . bm-next))
-  )
-
 ;; Hungry delete mode seems very good
 (use-package hungry-delete
   :ensure t
   :diminish hungry-delete-mode
   :init
   (add-hook 'prog-mode-hook 'hungry-delete-mode))
-
-;; This is from site-lisp
-(require 'emacs-surround)
-(global-set-key (kbd "C-c i") 'emacs-surround)
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here

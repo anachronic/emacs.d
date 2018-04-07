@@ -141,7 +141,7 @@ transpositions to execute in sequence."
         (select-window (funcall selector)))
       (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
 
-(define-key meta-m-map (kbd "t") 'transpose-windows)
+
 
 ;; Indent guide. Looks like the best option without breaking the UI
 (autoload 'indent-guide-mode "indent-guide")

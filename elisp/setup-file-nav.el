@@ -2,28 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; NeoTree could *sometimes* be better than Dired.
-(use-package neotree
-  :ensure t
-  :config
-  (defun ach-neotree-toggle ()
-    "If there's a projectile project going on, open neotree at project root."
-    (interactive)
-    (if (neo-global--window-exists-p)
-        (neotree-hide)
-      (let* ((this-file (f-this-file))
-             (this-path (when this-file
-                          (f-dirname (f-this-file))))
-             (this-project (when (projectile-project-p)
-                             (projectile-project-root))))
-        (neotree-show)
-        (if this-project
-            (neotree-dir this-project)
-          (when this-file
-            (neotree-dir this-path))))))
-  (global-set-key (kbd "<f7>") #'ach-neotree-toggle)
-  (define-key meta-m-map (kbd "M-d") #'ach-neotree-toggle))
-
 ;; This package is cool, I like coloring stuff around
 ;; Dired-k seems to kill git processes. It's actually very annoying.
 ;; see https://github.com/syohex/emacs-dired-k/issues/45
@@ -94,16 +72,6 @@
               (not (file-exists-p this-file)))
       (error "No file found"))
     (set-file-modes this-file (string-to-number "755" 8))))
-
-;; Jump to init.el
-(defun ach-jump-to-init ()
-  "Jump directly to init.el in current buffer."
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
-
-(ach-define-bookmark "~/.emacs.d/init.el" "i" "emacs-init")
-(ach-define-bookmark "~/dotfiles" "d" "dotfiles")
-(ach-define-bookmark "~/Dropbox/tesis/." "T" "tesis")
 
 (provide 'setup-file-nav)
 ;;; setup-file-nav.el ends here

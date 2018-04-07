@@ -17,7 +17,7 @@
   ("a" artist-mode "Artist mode")
   ("q" nil "quit"))
 
-(define-key meta-m-map (kbd "m") 'mode-toggle/body)
+
 
 ;; yaml-mode. mainly for syntax highlighting
 (use-package yaml-mode

@@ -52,10 +52,7 @@
   :demand
   :bind (("C-." . counsel-imenu)
          ("M-x" . counsel-M-x)
-         ("C-x f" . counsel-recentf))
-  :config
-  ;; Need these key bindings for terminals
-  (define-key meta-m-map (kbd "M-r") #'counsel-rhythmbox))
+         ("C-x f" . counsel-recentf)))
 
 ;; I had a mix of stuff before. So it's nice to decide on
 ;; counsel-projectile after all. I don't even projectile that much,
@@ -72,8 +69,8 @@
     (let ((ivy-use-virtual-buffers nil))
       (call-interactively 'ivy-switch-buffer)))
   (global-set-key (kbd "C-S-m") #'ach-switch-buffers-no-virtual)
-  (define-key meta-m-map (kbd "M-m") #'ach-switch-buffer-maybe-on-project)
-  (define-key meta-m-map (kbd "M-p") #'counsel-projectile-find-file)
+
+
   (counsel-projectile-on))
 
 ;; I guess this can't hurt

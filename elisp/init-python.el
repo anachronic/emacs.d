@@ -34,7 +34,7 @@
   :init
   (define-key python-mode-map (kbd "C-c C-w") 'venv-workon)
   (define-key python-mode-map (kbd "C-c C-d") 'venv-deactivate)
-  (define-key meta-m-map (kbd "w") 'venv-workon)
+
   :config
   (venv-initialize-interactive-shells)
   (venv-initialize-eshell)
