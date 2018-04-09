@@ -63,15 +63,7 @@
   :bind (("C-c a" . counsel-projectile-rg)
          ("C-S-p" . counsel-projectile-find-file))
   :config
-  (defun ach-switch-buffers-no-virtual ()
-    "Call ivy-swtich-buffer without virtual-buffers."
-    (interactive)
-    (let ((ivy-use-virtual-buffers nil))
-      (call-interactively 'ivy-switch-buffer)))
-  (global-set-key (kbd "C-S-m") #'ach-switch-buffers-no-virtual)
-
-
-  (counsel-projectile-on))
+  (counsel-projectile-mode))
 
 ;; I guess this can't hurt
 (use-package ivy-rich

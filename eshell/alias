@@ -3,6 +3,7 @@ alias gst magit-status
 alias gcl git clone $*
 alias em find-file $1
 alias ff find-file $1
+alias e find-file $1
 alias emacs find-file $1
 alias l ls -la $*
 alias ll ls -l $*
