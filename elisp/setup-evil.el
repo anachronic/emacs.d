@@ -21,6 +21,8 @@
 
     ;; buffers
     "bb" 'ivy-switch-buffer
+    "bk" 'kill-this-buffer
+    "bs" 'save-buffer
 
     ;; misc
     "g" 'ffap
