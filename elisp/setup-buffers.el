@@ -20,32 +20,8 @@
 
 (global-set-key (kbd "C-x C-r") #'ach-revert-buffer)
 
-;; I've been burying buffers like crazy lately because it feels more
-;; natural than killing them. However, I'd like to have the
-;; possibility to bury the current buffer with C-q and bury the other
-;; buffer with a prefix argument. This will override quoted insert,
-;; but that's ok since i hardly ever use it. Let's just rebind that to
-;; C-c q
-(defun ach-bury-buffer-dwim (arg)
-  "Bury current buffer, if ARG is not nil, switch to last buffer."
-  (interactive "P")
-  (if arg
-      (previous-buffer)
-    (bury-buffer)))
-
-(global-set-key (kbd "C-q") 'ach-bury-buffer-dwim)
+(global-set-key (kbd "C-q") 'bury-buffer)
 (global-set-key (kbd "C-c q") 'quoted-insert)
-
-
-;; Frame commands
-(global-set-key (kbd "C-`") 'other-frame)
-(global-set-key (kbd "C-c o") 'other-frame)
-
-(global-set-key (kbd "C-c n")
-                (lambda ()
-                  (interactive)
-                  (make-frame)
-                  (other-frame 1)))
 
 ;; emacs-close-dwim
 ;; I want to C-x C-c out of a frame without closing emacs.
@@ -165,35 +141,6 @@ If ARG is provided, preserve original behavior."
 ;; I've actually not used shift+arrows in a while, so let's bind
 ;; windmove to that
 (windmove-default-keybindings 'control)
-
-;; Movement hydra: Vertical enlarge/shrink is kinda confusing atm
-(defhydra hydra-window (:color red :hint nil)
-  "
-Movement^^      ^Split^             ^Resize^    ^Winner^
---------------------------------------------------------
-_j_ ←           _v_ertical          _J_ X←      _u_ndo
-_k_ ↓           _h_orizontal        _K_ X↓      _r_edo
-_i_ ↑           _0_ delete current  _I_ X↑
-_l_ →           _1_ delete others   _L_ X→
-_q_uit
-"
-  ("j" windmove-left)
-  ("k" windmove-down)
-  ("i" windmove-up)
-  ("l" windmove-right)
-  ("I" enlarge-window)
-  ("L" enlarge-window-horizontally)
-  ("J" shrink-window-horizontally)
-  ("K" shrink-window)
-  ("1" delete-other-windows)
-  ("v" (funcall (global-key-binding "\C-x3")))
-  ("h" (funcall (global-key-binding "\C-x2")))
-  ("0" delete-window)
-  ("u" winner-undo)
-  ("r" winner-redo)
-  ("q" nil))
-
-(global-set-key (kbd "C-c w") 'hydra-window/body)
 
 ;; Some people swear by winner mode
 (winner-mode 1)
