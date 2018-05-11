@@ -11,13 +11,9 @@
          ("C-x g" . magit-status))
   :config
   (setq magit-repository-directories '("~/forks"))
-  (defun magit-kill-git-index-lock ()
-    "Kill index.lock in current Git repository."
-    (interactive)
-    (let* ((wanted-dir (f-join (magit-toplevel) ".git"))
-           (wanted-file (f-join wanted-dir "index.lock")))
-      (when (file-exists-p wanted-file)
-        (delete-file wanted-file)))))
+  (evil-leader/set-key
+    "gg" 'magit-status)
+  )
 
 ;; This one can't really be up there, because that doesn't load
 ;; anything until you actually fire up Magit.

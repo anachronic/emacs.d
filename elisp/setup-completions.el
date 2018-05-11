@@ -35,7 +35,6 @@
   (setq ivy-use-virtual-buffers t)
   (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
   (define-key ivy-minibuffer-map [tab] #'ivy-alt-done)
-  (define-key ivy-minibuffer-map (kbd "C-l") #'ivy-backward-delete-char)
   (ivy-mode 1))
 
 ;; ivy-hydra is not too horrible
@@ -165,21 +164,6 @@
   :config
   (company-flx-mode +1)
   (setq company-flx-limit 75))
-
-
-;; Now that ivy is set up, let's have helm. I'd rather not have it,
-;; but it has grown in such a way that many packages use helm for
-;; useful stuff. Seriously, I've seen from controlling spotify to
-;; chrome. It seems like waste not to have that.
-(use-package helm
-  :ensure t
-  :demand
-  :bind (("M-y" . helm-show-kill-ring))
-  :config
-  (require 'helm-config)
-  (setq helm-buffers-fuzzy-matching t)
-  (with-eval-after-load 'counsel
-    (define-key helm-command-prefix (kbd "c") #'counsel-colors-emacs)))
 
 ;; Hippie expand
 (global-set-key (kbd "M-/") 'hippie-expand)

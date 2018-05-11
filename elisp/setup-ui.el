@@ -35,21 +35,6 @@
                     :height (ach--get-font-height-for-host
                              (system-name)))
 
-;; This mode looks way cool. Let's use it
-;; We shall never lose the cursor again.!
-;; URL: http://endlessparentheses.com/beacon-never-lose-your-cursor-again.html
-(use-package beacon
-  :ensure t
-  :demand
-  :bind (("C-x =" . beacon-blink))
-  :init
-  (add-hook 'comint-mode-hook (lambda () (beacon-mode -1)))
-  :config
-  (beacon-mode)
-  (setq beacon-push-mark 35)
-  (setq beacon-color "#32e006")
-  :diminish 'beacon-mode)
-
 ;; This one was recommended by Steve Purcell. Looked pretty good
 ;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY
 (use-package fullframe
