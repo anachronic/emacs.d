@@ -12,23 +12,6 @@
 ;;     (add-hook 'dired-initial-position-hook 'dired-k)
 ;;     (add-hook 'dired-after-readin-hook #'dired-k-no-revert)))
 
-;; it seems sensible to hide every detail by default and use ) when I
-;; have to show more info, like file size or permissions
-(use-package dired+
-  :ensure t
-  :config
-  (global-dired-hide-details-mode 1)
-  ;; Since b is unbound in dired and ^ is a very annoying key to press,
-  ;; lets bind that to dired-up-directory
-  (with-eval-after-load 'dired+
-    (define-key dired-mode-map (kbd "b") #'dired-up-directory))
-  (defun ach-dired-search ()
-    (interactive)
-    (goto-char (point-min))
-    (call-interactively 'isearch-forward))
-  (with-eval-after-load 'dired+
-    (define-key dired-mode-map (kbd "/") #'ach-dired-search)))
-
 (defun dired-xdg-open ()
   "In dired, open the file named on this line."
   (interactive)
@@ -42,23 +25,13 @@
 (define-key dired-mode-map (kbd "M-RET") 'dired-xdg-open)
 
 ;; We want to be able to toggle dot files in dired
-(add-hook 'dired-mode-hook (lambda ()
-                             (require 'dired-x)
-                             (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
-                             (define-key dired-mode-map "h" #'dired-omit-mode)))
+;; (add-hook 'dired-mode-hook (lambda ()
+;;                              (require 'dired-x)
+;;                              (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+;;                              (define-key dired-mode-map "h" #'dired-omit-mode)))
 
 ;; Using "a" in dired is way more sensible than f.
 (put 'dired-find-alternate-file 'disabled nil)
-
-;; ffap seemed cool but i wanna use the guess
-(require 'ffap)
-(defun ach-go-to-file-at-point ()
-  "Jump to file at point."
-  (interactive)
-  (let ((guess (ffap-guesser)))
-    (unless guess
-      (error "No file at point"))
-    (find-file guess)))
 
 (global-set-key (kbd "C-c g") 'ach-go-to-file-at-point)
 

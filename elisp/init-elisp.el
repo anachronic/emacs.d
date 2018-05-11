@@ -60,11 +60,6 @@
   :config
   (add-hook 'emacs-lisp-mode-hook #'highlight-quoted-mode))
 
-
-;; We continue the stealing: hl-sexp. Useful sometimes
-(use-package hl-sexp
-  :ensure t)
-
 (use-package rainbow-delimiters
   :ensure t
   :config

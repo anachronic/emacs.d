@@ -31,3 +31,4 @@ emms
 /bm-repository
 /elisp/.tern-port
 /.edbi-ds-history
+/smex-items
