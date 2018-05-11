@@ -2,14 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; Looking for a way to explore a keymap I found a pretty cool package:
-(use-package help-fns+
-  :ensure t
-  :init
-  (require 'help-fns+)
-  :config
-  (define-key help-map "\M-k" 'describe-keymap))
-
 ;; I use `describe-face' quite often, I'd really like a key for it
 (define-key help-map (kbd "C-f") nil)
 (define-key help-map (kbd "C-f") #'counsel-describe-face)

@@ -48,11 +48,13 @@
 ;; http://oremacs.com/2015/04/19/git-grep-ivy/
 (use-package counsel
   :ensure t
-  :after (ivy flx smex)
   :demand
-  :bind (("C-." . counsel-imenu)
-         ("M-x" . counsel-M-x)
-         ("C-x f" . counsel-recentf)))
+  :bind (("M-x" . counsel-M-x)
+         ("C-x f" . counsel-recentf))
+  :config
+
+  ;; For some reason evil hijacks C-.
+  (define-key evil-normal-state-map (kbd "C-.") 'counsel-imenu))
 
 ;; I had a mix of stuff before. So it's nice to decide on
 ;; counsel-projectile after all. I don't even projectile that much,
@@ -80,9 +82,7 @@
   (setq-default yas-snippet-dirs `(,(expand-file-name
                                      (concat user-emacs-directory
                                              "snippets"))))
-  (yas-global-mode 1)
-  (define-key yas-minor-mode-map (kbd "C-<return>") 'yas-exit-snippet)
-  (define-key yas-minor-mode-map (kbd "<escape>") 'yas-exit-snippet))
+  (yas-global-mode 1))
 
 ;; I do like an autocompletion system, even though this really has to
 ;; mature in Emacs.
