@@ -76,5 +76,9 @@
 (setq-default global-auto-revert-non-file-buffers t
               auto-revert-verbose nil)
 
+;; It would seem that we need to explicitly install diminish
+(use-package diminish
+  :ensure t)
+
 (provide 'setup-emacs)
 ;;; setup-emacs.el ends here

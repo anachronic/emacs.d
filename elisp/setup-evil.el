@@ -17,22 +17,17 @@
   (evil-leader/set-leader "<SPC>")
   (evil-define-key 'normal global-map (kbd "C-p") 'counsel-projectile-find-file)
   (evil-leader/set-key
-    "<SPC>" 'counsel-M-x
+    "<SPC>" 'ivy-switch-buffer
 
     ;; buffers
-    "bb" 'ivy-switch-buffer
-    "bk" 'kill-this-buffer
-    "bs" 'save-buffer
-
-    ;; misc
-    "g" 'ffap
+    "k" 'kill-this-buffer
+    "w" 'save-buffer
 
     ;; rg
     "a" 'counsel-projectile-rg
 
     ;; projectile
     "pp" 'projectile-switch-project
-    "pf" 'counsel-projectile-find-file
     )
   (evil-mode 1))
 
