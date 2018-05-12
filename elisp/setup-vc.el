@@ -7,12 +7,14 @@
 ;; Magit is critical for any developer
 (use-package magit
   :ensure t
+  :init
+  ;; magit-status is autoloaded
+  (evil-leader/set-key
+    "gg" 'magit-status)
   :bind (("<f8>" . magit-status)
          ("C-x g" . magit-status))
   :config
   (setq magit-repository-directories '("~/forks"))
-  (evil-leader/set-key
-    "gg" 'magit-status)
   )
 
 ;; This one can't really be up there, because that doesn't load

@@ -14,6 +14,7 @@
   :init
   (global-evil-leader-mode)
   :config
+  (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "gnus-.*-mode"))
   (evil-leader/set-leader "<SPC>")
   (evil-define-key 'normal global-map (kbd "C-p") 'counsel-projectile-find-file)
   (evil-leader/set-key
