@@ -144,13 +144,6 @@
   :config
   (company-quickhelp-mode 1))
 
-;; Company statistics. I do use this a lot, maybe i should't be coding
-;; like I do...
-(use-package company-statistics
-  :ensure t
-  :config
-  (company-statistics-mode))
-
 ;; flx is a dependency for company-flx and ivy's M-x (or any ivy
 ;; actually).
 (use-package flx
