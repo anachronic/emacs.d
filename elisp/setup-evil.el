@@ -22,6 +22,7 @@
     ;; buffers
     "k" 'kill-this-buffer
     "w" 'save-buffer
+    "br" 'rename-buffer
 
     ;; rg
     "a" 'counsel-projectile-rg

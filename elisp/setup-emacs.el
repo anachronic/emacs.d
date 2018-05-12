@@ -63,7 +63,7 @@
 ;; https://lists.gnu.org/archive/html/emacs-devel/2006-09/msg00634.html
 ;; Actually this, for some reason, makes the C-n be very fast even in
 ;; very large buffers. Weird
-(setq auto-window-vscroll nil)
+;; (setq auto-window-vscroll nil)
 
 ;; no DING!
 (setq visible-bell 1)
