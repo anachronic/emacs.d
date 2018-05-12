@@ -128,12 +128,6 @@ If ARG is present, ask for a command to run."
 (define-key python-mode-map (kbd "C-c C-r") #'spacemacs/python-execute-file)
 (define-key python-mode-map (kbd "C-c C-c") #'python-shell-send-dwim)
 
-;; Navigation
-(use-package indent-tools
-  :ensure t)
-
-(add-hook 'python-mode-hook (lambda () (require 'indent-tools)))
-
 (with-eval-after-load 'indent-tools
   (define-key python-mode-map (kbd "C-M-n") 'indent-tools-goto-next-sibling)
   (define-key python-mode-map (kbd "C-M-p") 'indent-tools-goto-previous-sibling)

@@ -8,21 +8,14 @@
 (use-package restart-emacs
   :ensure t)
 
-;; s.el is useful for our own functions
-(use-package s
-  :ensure t)
+;; libs
+(use-package s :ensure t)
+(use-package dash :ensure t)
+(use-package f :ensure t)
+(use-package epc :ensure t)
+(use-package diminish :ensure t)
 
-;; we need the filter function!!
-(use-package dash
-  :ensure t)
-
-;; I've been using f.el lately
-(use-package f
-  :ensure t)
-
-;; Misc crap that i don't know where to put
-(use-package epc
-  :ensure t)
+(diminish 'eldoc-mode)
 
 ;; Allow connecting from a terminal or whatever.
 (require 'server)
@@ -51,19 +44,10 @@
 ;; also get rid of the scratch buffer message
 (setq initial-scratch-message nil)
 
-;; might as well explicitly tell emacs we don't like tabs
-(setq-default indent-tabs-mode nil)
 
 ;; From Mathieu Marques (@angrybacon at github)
 ;; This should make it a little less sluggish
 (add-hook 'focus-out-hook #'garbage-collect)
-
-;; I ran into a VERY weird issue where C-n is the slowest thing
-;; ever. Fortunately, I found an answer
-;; https://lists.gnu.org/archive/html/emacs-devel/2006-09/msg00634.html
-;; Actually this, for some reason, makes the C-n be very fast even in
-;; very large buffers. Weird
-;; (setq auto-window-vscroll nil)
 
 ;; no DING!
 (setq visible-bell 1)
@@ -75,10 +59,6 @@
 (global-auto-revert-mode)
 (setq-default global-auto-revert-non-file-buffers t
               auto-revert-verbose nil)
-
-;; It would seem that we need to explicitly install diminish
-(use-package diminish
-  :ensure t)
 
 (provide 'setup-emacs)
 ;;; setup-emacs.el ends here

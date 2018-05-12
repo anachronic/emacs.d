@@ -158,35 +158,12 @@
 (setq ansi-color-names-vector ["#657b83" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"])
 (setq ansi-color-map (ansi-color-make-color-map))
 
-;; Getting zshrc and and jumping to it
-;; Idea comes from CRUX.
-(defvar ach-zshrc-path "~/.zshrc"
-  "Zshrc file path.")
-
-(defun ach-jump-to-zshrc (arg)
-  "Jump to zshrc instantly.
-
-If ARG is present, prompt for the file instead."
-  (interactive "P")
-  (let* ((guess ach-zshrc-path))
-    (unless (file-exists-p ach-zshrc-path)
-      (error "No zshrc file found"))
-    (when arg
-      (setq guess (read-file-name ".zshrc location: " "~/")))
-    (when (file-symlink-p ach-zshrc-path)
-      (setq guess (file-truename guess))
-      (find-file guess))))
-
 (use-package nginx-mode
   :ensure t
   :mode (("/nginx/sites-\\(?:available\\|enabled\\)/" . nginx-mode)
          ("^nginx.conf\\'"                            . nginx-mode))
   :defer t
   :commands (nginx-mode))
-
-;; =============================== TRAMP
-(with-eval-after-load 'tramp
-  (setq tramp-default-method "ssh"))
 
 (provide 'setup-shell)
 ;;; setup-shell.el ends here

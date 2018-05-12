@@ -55,13 +55,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(defun maybe-install-packages (&rest packages)
-  "Install all packages defined in PACKAGES."
-  (when packages
-    (dolist (pkg packages)
-      (unless (package-installed-p pkg)
-        (package-install pkg)))))
-
 ;; We'll be using evil
 (require 'setup-evil)
 

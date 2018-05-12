@@ -33,8 +33,6 @@
 ;; Using "a" in dired is way more sensible than f.
 (put 'dired-find-alternate-file 'disabled nil)
 
-(global-set-key (kbd "C-c g") 'ach-go-to-file-at-point)
-
 ;; I want a function to chmod 755 this file
 ;; No hotkey for it, just M-x it
 (defun chmod-755-this-file ()
