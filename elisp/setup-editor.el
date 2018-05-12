@@ -12,8 +12,10 @@
 
 (show-paren-mode 1)
 
-;; Highlight line.
-(require 'hl-line)
+;; No tabs
+(setq-default indent-tabs-mode nil)
+
+;; Highlight line. Just add hooks since hl-line is autoloaded
 (add-hook 'prog-mode-hook 'hl-line-mode)
 (add-hook 'package-menu-mode-hook 'hl-line-mode)
 (add-hook 'org-agenda-mode-hook 'hl-line-mode)
@@ -32,7 +34,7 @@
 (defun narrow-or-widen-dwim (p)
   "Widen if buffer is narrowed, narrow-dwim otherwise.
 Dwim means: region, org-src-block, org-subtree, or
-defun, whichever applies first. Narrowing to
+defun, whichever applies first, narrowing to
 org-src-block actually calls `org-edit-src-code'.
 
 With prefix P, don't widen, just narrow even if buffer
@@ -66,15 +68,13 @@ is already narrowed."
     (use-package nlinum-relative
       :ensure t
       :config
-      (add-hook 'prog-mode-hook 'nlinum-relative-mode)
+      (nlinum-relative-setup-evil)
       (setq nlinum-relative-current-symbol "")
-      (setq nlinum-relative-redisplay-delay 0))
-  (add-hook 'prog-mode-hook (lambda ()
-                              (setq-local display-line-numbers 'visual)
-                              (setq-local display-line-number-width 1))))
-
-;; Also show column numbers
-(column-number-mode)
+      (setq nlinum-relative-redisplay-delay 0.2))
+  (defun ach/set-line-numbers ()
+    (setq-default display-line-numbers 'visual))
+  (add-hook 'prog-mode-hook 'ach/set-line-numbers)
+  (add-hook 'prog-mode-hook 'ach/set-line-numbers))
 
 ;; expand region. An *excellent* tool.
 (use-package expand-region
@@ -82,37 +82,26 @@ is already narrowed."
   :bind ("C-=" . er/expand-region))
 
 ;; Undo-Tree for real undo/redo commands
+;; Also required by evil
 (use-package undo-tree
   :ensure t
   :diminish ""
   :init
   (global-undo-tree-mode 1)
   :config
-  (define-key undo-tree-map (kbd "C-/") nil)
-  :bind
-  (("C-z" . undo)
-   ("C-S-z" . undo-tree-redo)))
+  (define-key undo-tree-map (kbd "C-/") nil))
 
-
-(add-hook 'Man-mode-hook 'visual-line-mode)
+;; Same as in vim: lightweight and great
+(use-package evil-commentary
+  :ensure t
+  :config
+  (evil-commentary-mode))
 
 ;; diminish visual-line-mode
 (diminish 'visual-line-mode)
+(add-hook 'Man-mode-hook 'visual-line-mode)
 
-;; smart comment was crap. Let's stick to the good ol' evil-nerd-commenter
-(use-package evil-nerd-commenter
-  :ensure t
-  :bind ("M-;" . evilnc-comment-or-uncomment-lines))
-
-;; I've always liked coloring the buffer, because it makes easier to identify stuff around
-;; So let's test this mode
-(use-package color-identifiers-mode
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'color-identifiers-mode)
-  :diminish color-identifiers-mode)
-
-;; Let's use multiple cursors.
+;; Might need to change this
 (use-package multiple-cursors
   :ensure t
   :bind
@@ -161,6 +150,9 @@ point reaches the beginning or end of the buffer, stop there."
 ;; remap C-a to `smarter-move-beginning-of-line'
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
+
+;; Needs some testing
+(evil-redirect-digit-argument evil-motion-state-map "0" 'smarter-move-beginning-of-line)
 
 ;; and unbind M-m
 (global-unset-key (kbd "M-m"))
