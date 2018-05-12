@@ -8,11 +8,8 @@
 
 (define-key ctl-x-map (kbd "k") 'kill-this-buffer)
 
-;; According to http://oremacs.com/2015/02/18/undo-nonsense/, find-file-read-only
-;; is a trashy command. Whatever. Who cares about useless commands, we don't even use
-;; the useful ones sometimes, right?
-;; That's right. But hold on. This trashy command is bound to C-x C-r. Let's get
-;; rid of it and bind it to a useful command: revert buffer
+;; http://oremacs.com/2015/02/18/undo-nonsense/
+;; C-x C-r => revert buffer without asking
 (defun ach-revert-buffer ()
   "Revert buffer without asking if you really want to."
   (interactive)
@@ -23,124 +20,8 @@
 (global-set-key (kbd "C-q") 'bury-buffer)
 (global-set-key (kbd "C-c q") 'quoted-insert)
 
-;; emacs-close-dwim
-;; I want to C-x C-c out of a frame without closing emacs.
-;; So if there's more than one frame active. Just close it
-;; If there's only one, shut down emacs. And hell, don't ask
-;; to save buffers, just do it.
-(defun ach--count-active-gui-frames ()
-  "Return count of active gui frames."
-  (let ((count 0))
-    (dolist (f (frame-list))
-      (unless (cdr (assq 'tty (frame-parameters f)))
-        (setq count (1+ count))))
-    count))
-
-(defun ach-emacs-close-dwim ()
-  "Close current frame if there's more than one visible frame active.
-
-Close Emacs only if there's no more open frames (like terminal frames)."
-  (interactive)
-  (if (> (ach--count-active-gui-frames) 1)
-      (delete-frame)
-    (if (= 1 (length (frame-list)))
-        (save-buffers-kill-emacs)
-      (ding)
-      (message
-       "There are terminal frames open. Close them or call save-buffers-kill-emacs directly"))))
-
-;; rebind it to C-x C-c
-(define-key ctl-x-map (kbd "C-c") 'ach-emacs-close-dwim)
-
 ;; use ibuffer instead of default C-x C-b
 (define-key ctl-x-map (kbd "C-b") 'ibuffer)
-
-;; The licensed code below has a BSD license which requires me to
-;; include the following:
-
-;; Copyright (c) 2006-2014, Steve Purcell
-;; All rights reserved.
-
-;; Actually I'm not trying to redistribute this code or anything, but
-;; I feel like it's healthier
-
-;; I've been stealing from Steve Purcell's config a lot. So let's
-;; tweak ibuffer to show human readable sizes
-(with-eval-after-load 'ibuffer
-  ;; Use human readable Size column instead of original one
-  (define-ibuffer-column size-h
-    (:name "Size" :inline t)
-    (cond
-     ((> (buffer-size) 1000000) (format "%7.1fM" (/ (buffer-size) 1000000.0)))
-     ((> (buffer-size) 1000) (format "%7.1fk" (/ (buffer-size) 1000.0)))
-     (t (format "%8d" (buffer-size))))))
-
-
-(with-eval-after-load 'ibuffer
-  (setq ibuffer-formats
-        '((mark modified read-only vc-status-mini " "
-                (name 18 18 :left :elide)
-                " "
-                (size-h 9 -1 :right)
-                " "
-                (mode 16 16 :left :elide)
-                " "
-                filename-and-process)
-          (mark modified read-only vc-status-mini " "
-                (name 18 18 :left :elide)
-                " "
-                (size-h 9 -1 :right)
-                " "
-                (mode 16 16 :left :elide)
-                " "
-                (vc-status 16 16 :left)
-                " "
-                filename-and-process))))
-
-;; Purcell's ibuffer-vc. I actually use a lot more helm-mini, but
-;; sometimes I get lost into how many buffers I open, so this can be
-;; handy in that situation.
-(use-package ibuffer-vc
-  :ensure t
-  :after ibuffer
-  :config
-  (require 'ibuffer-vc)
-  (defun ibuffer-set-up-preferred-filters ()
-    (ibuffer-vc-set-filter-groups-by-vc-root)
-    (unless (eq ibuffer-sorting-mode 'filename/process)
-      (ibuffer-do-sort-by-filename/process)))
-  (add-hook 'ibuffer-hook #'ibuffer-set-up-preferred-filters))
-
-;; I was using ace window, but trying out purcell's config I realized
-;; switch-window can be better
-(use-package switch-window
-  :ensure t
-  :demand
-  :bind (("C-x o" . switch-window))
-  :config
-  (setq switch-window-shortcut-style 'qwerty)
-  (setq switch-window-timeout nil))
-
-;; And rebind C-x 2 and C-x 3 to behave good
-(defun split-window-func-with-other-buffer (split-function)
-  (lexical-let ((s-f split-function))
-    (lambda (&optional arg)
-      "Split this window and switch to the new window unless ARG is provided.
-
-If ARG is provided, preserve original behavior."
-      (interactive "P")
-      (funcall s-f)
-      (unless arg
-        (let ((target-window (next-window)))
-          (set-window-buffer target-window (other-buffer))
-          (select-window target-window))))))
-
-(global-set-key (kbd "C-x 2") (split-window-func-with-other-buffer 'split-window-vertically))
-(global-set-key (kbd "C-x 3") (split-window-func-with-other-buffer 'split-window-horizontally))
-
-;; I've actually not used shift+arrows in a while, so let's bind
-;; windmove to that
-(windmove-default-keybindings 'control)
 
 ;; Some people swear by winner mode
 (winner-mode 1)

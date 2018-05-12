@@ -11,9 +11,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (zenburn-theme yari yaml-mode xterm-color xref-js2 whole-line-or-region which-key wgrep web-mode visual-fill-column virtualenvwrapper use-package tide switch-window spacemacs-theme smex smart-mode-line shell-pop ruby-end rjsx-mode restart-emacs rainbow-mode rainbow-delimiters py-yapf py-isort pip-requirements paredit-everywhere paradox page-break-lines ox-reveal ox-gfm noflet nlinum-relative nginx-mode neotree markdown-preview-mode magit link-hint latex-preview-pane json-reformat js2-refactor js-comint ivy-rich ivy-hydra indent-tools ibuffer-vc hungry-delete htmlize hl-sexp highlight-symbol highlight-quoted hexo help-fns+ helm gmail2bbdb gitignore-mode gist fullframe expand-region exec-path-from-shell evil-nerd-commenter evil eros emmet-mode elfeed edbi dumb-jump dired+ diminish diff-hl counsel-projectile company-web company-tern company-statistics company-quickhelp company-jedi company-flx company-bibtex color-identifiers-mode coffee-mode browse-at-remote bm beacon bbdb avy auctex anzu ac-html-bootstrap)))
  '(safe-local-variable-values (quote ((eval (quote (js2-jsx-mode))) (js2-jsx-mode))))
  '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell))))))
 
@@ -64,16 +61,6 @@
     (dolist (pkg packages)
       (unless (package-installed-p pkg)
         (package-install pkg)))))
-
-;; Paradox is quite nice. I love it! Thanks @malabarba!
-(use-package paradox
-  :ensure t
-  :defer t
-  :config
-  (setq paradox-automatically-star nil)
-  (let ((thefile "~/Dropbox/elisp/paradox-token.el"))
-    (when (file-exists-p thefile)
-      (load-file thefile))))
 
 ;; We'll be using evil
 (require 'setup-evil)

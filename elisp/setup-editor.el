@@ -165,35 +165,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; and unbind M-m
 (global-unset-key (kbd "M-m"))
 
-;; This should be a macro, but let's define it as a function
-;; I want it to behave exactly like PyCharm or IntelliJ Idea's C-d
-(defun ach-duplicate-line (times)
-  "Duplicate the current line TIMES times.
-
-Line is duplicated below and point is set in the last line.
-
-Negative prefix duplicates line above and sets point in the first (new) line.
-
-Mark is not set when calling this function."
-  (interactive "p")
-  (cl-letf ((column (current-column))
-            ((symbol-function 'push-mark) (lambda (&optional l n a) t)))
-    (save-excursion
-      (kill-ring-save (line-beginning-position) (line-end-position))
-      (dotimes (i (abs times))
-        (if (> times 0)
-            (progn
-              (move-end-of-line 1)
-              (newline))
-          (move-beginning-of-line 1)
-          (open-line 1))
-        (yank)))
-    (forward-line times)
-    (move-beginning-of-line 1)
-    (forward-char column)))
-
-(global-set-key (kbd "C-c d") 'ach-duplicate-line)
-
 ;; My version of transpose lines. While emacs' transpose lines does the job,
 ;; I like the IntelliJ/Pycharm implementation better. It's cleaner. So let's
 ;; do that
@@ -220,25 +191,6 @@ Mark is not set when calling this function."
 
 (global-set-key (kbd "M-P") 'ach-move-line-up)
 (global-set-key (kbd "M-N") 'ach-move-line-down)
-
-;; ==================== END of line manipulation functions =====
-;; I've ran into the situation where I want to zap stuff (specially
-;; with paredit). And I was trying zzz-up-to-char. But the extra key
-;; press isn't quite the right solution for the job: you see, if the
-;; region you want to kill is large, you will -as the word suggests-
-;; use a *region*. My mindset is that i'll only use zap to and up to
-;; char when the text region is short, which is why I do *not* want an
-;; extra key press, I just want the job done. I found the solution at
-;; purcell's emacs, magnars' and the irreal blog. Zapping can be very
-;; useful
-(autoload 'zap-up-to-char "misc" "Kill up to, but not including ARGth occurrence of CHAR.")
-
-;; M-z for up to and M-Z for the including variant.
-(global-set-key (kbd "M-z") 'zap-up-to-char)
-(global-set-key (kbd "M-Z") 'zap-to-char)
-
-;; For zapping backwards needs negative prefix. Need a lot of muscle
-;; memory for that.
 
 ;; Another useful one. COnvert DOuble CAps to Single Caps minor mode.
 ;; Source 1: http://endlessparentheses.com/fixing-double-capitals-as-you-type.html
@@ -324,46 +276,11 @@ Single Capitals as you type."
   (define-key paredit-everywhere-mode-map (kbd "M-]") nil)
   )
 
-;; Been using M-w quite a while and yes, @purcell is right, it is
-;; often the line I have to copy
-(use-package whole-line-or-region
-  :ensure t
-  :diminish ""
-  :init
-  (add-hook 'after-init-hook 'whole-line-or-region-mode)
-  :config
-  (diminish 'whole-line-or-region-local-mode ""))
-
 ;; This package is super useful with ivy-occur
 (use-package wgrep
   :ensure t
   :config
   (setq wgrep-auto-save-buffer t))
-
-;; Edit current file as sudo
-;; From spacemacs, which took this from magnars:
-(defun ach-sudo-edit (&optional arg)
-  "Edit current file as sudo, prompt for file instead if ARG is present."
-  (interactive "P")
-  (let ((fname (if (or arg (not buffer-file-name))
-                   (read-file-name "File: ")
-                 buffer-file-name)))
-    (find-file
-     (cond ((string-match-p "^/ssh:" fname)
-            (with-temp-buffer
-              (insert fname)
-              (search-backward ":")
-              (let ((last-match-end nil)
-                    (last-ssh-hostname nil))
-                (while (string-match "@\\\([^:|]+\\\)" fname last-match-end)
-                  (setq last-ssh-hostname (or (match-string 1 fname)
-                                              last-ssh-hostname))
-                  (setq last-match-end (match-end 0)))
-                (insert (format "|sudo:%s" (or last-ssh-hostname "localhost"))))
-              (buffer-string)))
-           (t (concat "/sudo:root@localhost:" fname))))))
-
-(global-set-key (kbd "C-c E") 'ach-sudo-edit)
 
 ;; xref-find-references
 (global-set-key (kbd "M-?") 'xref-find-references)
