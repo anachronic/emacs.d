@@ -5,15 +5,6 @@
 ;;
 ;;; Code:
 
-;; I read somewhere that this should be here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(safe-local-variable-values (quote ((eval (quote (js2-jsx-mode))) (js2-jsx-mode))))
- '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell))))))
-
 ;; According to https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
 ;; This can reduce emacs init time. I went from 3.0s to 2.5s
 (setq gc-cons-threshold 500000000)
@@ -24,6 +15,10 @@
        (melpaurl (concat (if no-ssl "http" "https") "://melpa.org/packages/"))
        (orgurl (concat "https" "://orgmode.org/elpa/")))
   (add-to-list 'package-archives (cons "melpa" melpaurl) t))
+
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -45,10 +40,8 @@
 (add-to-list 'custom-theme-load-path (expand-file-name (concat user-emacs-directory "themes/")))
 
 ;; Nobody likes those annoying ~ end files, so redirect them.
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 ;; Base auto-install and pretty code for configuring packages
 (unless (package-installed-p 'use-package)
