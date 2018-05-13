@@ -72,9 +72,9 @@ is already narrowed."
       (setq nlinum-relative-current-symbol "")
       (setq nlinum-relative-redisplay-delay 0.2))
   (defun ach/set-line-numbers ()
-    (setq-default display-line-numbers 'visual))
+    (setq-local display-line-numbers 'visual))
   (add-hook 'prog-mode-hook 'ach/set-line-numbers)
-  (add-hook 'prog-mode-hook 'ach/set-line-numbers))
+  (add-hook 'text-mode-hook 'ach/set-line-numbers))
 
 ;; expand region. An *excellent* tool.
 (use-package expand-region
@@ -94,6 +94,7 @@ is already narrowed."
 ;; Same as in vim: lightweight and great
 (use-package evil-commentary
   :ensure t
+  :diminish ""
   :config
   (evil-commentary-mode))
 
@@ -273,9 +274,6 @@ Single Capitals as you type."
   :ensure t
   :config
   (setq wgrep-auto-save-buffer t))
-
-;; xref-find-references
-(global-set-key (kbd "M-?") 'xref-find-references)
 
 ;; Hungry delete mode seems very good
 (use-package hungry-delete
