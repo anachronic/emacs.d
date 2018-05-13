@@ -21,8 +21,15 @@
   :init
   (global-evil-leader-mode)
   :config
+  ;; Leader stuff
   (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "gnus-.*-mode"))
   (evil-leader/set-leader "<SPC>")
+
+  ;; Use visual lines for navigation only
+  (define-key evil-normal-state-map "j" 'evil-next-visual-line)
+  (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
+
+  ;; leader defines
   (evil-leader/set-key
     "<SPC>" 'ivy-switch-buffer
 
