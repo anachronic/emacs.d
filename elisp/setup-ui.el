@@ -8,18 +8,17 @@
 
 ;; load the latest theme.
 ;; (load-theme 'nsalas-tomorrow-night t)
-(load-theme 'nsalas-flatui t)
+;; (load-theme 'nsalas-flatui t)
+(use-package spacemacs-theme
+  :ensure t
+  :defer t
+  :init
+  (load-theme 'spacemacs-dark t))
 
 ;; If powerline fonts are installed, use that
 (let ((pl-font "DejaVu Sans Mono"))
   (when (member pl-font (font-family-list))
     (set-face-attribute 'default nil :font pl-font)))
-
-(defun ach--get-font-height-for-host (host)
-  "Return a sensible font size for HOST."
-  (cond
-   ((string= host "okinawa") 110)
-   (t 110)))
 
 (defun ach-set-font-height-125 ()
   "Set font height to 125."
@@ -27,8 +26,7 @@
   (set-face-attribute 'default nil :height 125))
 
 (set-face-attribute 'default nil
-                    :height (ach--get-font-height-for-host
-                             (system-name)))
+                    :height 110)
 
 ;; This one was recommended by Steve Purcell. Looked pretty good
 ;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY
