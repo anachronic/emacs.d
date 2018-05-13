@@ -2,20 +2,15 @@
 ;;; Commentary:
 ;;; Code:
 
-
-;; For EWW buffers to actually be visible
-;; Source: https://emacs.stackexchange.com/a/3523
-(with-eval-after-load 'shr-color
-  (setq shr-color-visible-luminance-min 70))
-
-;; these two come from: https://www.emacswiki.org/emacs/SmoothScrolling
+;; https://www.emacswiki.org/emacs/SmoothScrolling
+;; Move the lines as they're should with the mouse
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 ;; load the latest theme.
 ;; (load-theme 'nsalas-tomorrow-night t)
 (load-theme 'nsalas-flatui t)
 
-;; If powerline fonts are izstalled, use that
+;; If powerline fonts are installed, use that
 (let ((pl-font "DejaVu Sans Mono"))
   (when (member pl-font (font-family-list))
     (set-face-attribute 'default nil :font pl-font)))
@@ -66,10 +61,6 @@ transpositions to execute in sequence."
         (set-window-buffer (funcall selector) this-win)
         (select-window (funcall selector)))
       (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
-
-;; Highlighting. I kind of like this feature
-(global-hi-lock-mode)
-(diminish 'hi-lock-mode)
 
 (provide 'setup-ui)
 ;;; setup-ui.el ends here
