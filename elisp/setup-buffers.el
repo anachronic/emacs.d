@@ -33,5 +33,8 @@
 ;; uniquify. I really got used to IntelliJ idea's way of handling stuff
 (setq uniquify-buffer-name-style 'forward)
 
+(with-eval-after-load 'with-editor
+  (diminish 'with-editor-mode "e"))
+
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here

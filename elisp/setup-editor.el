@@ -101,6 +101,8 @@ is already narrowed."
 
 ;; diminish visual-line-mode
 (diminish 'visual-line-mode)
+;; See https://www.wisdomandwonder.com/link/10214/httpsgithub-commagnars-emacs-dblobmastersite-lispdiminish-ell87why-you-cant-diminish-auto-fill-mode
+(diminish 'auto-fill-function "f")
 (add-hook 'Man-mode-hook 'visual-line-mode)
 
 ;; Might need to change this
@@ -205,7 +207,7 @@ point reaches the beginning or end of the buffer, stop there."
   "Toggle `dubcaps-mode'.  Converts words in DOuble CApitals to
 Single Capitals as you type."
   :init-value nil
-  :lighter (" DC")
+  :lighter (" D")
   (if dubcaps-mode
       (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
     (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
