@@ -21,9 +21,10 @@
 (add-hook 'org-agenda-mode-hook 'hl-line-mode)
 (add-hook 'dired-mode-hook 'hl-line-mode)
 
-;; Flycheck. What's an editor without error checking?
+;; Syntax checking
 (use-package flycheck
   :ensure t
+  :diminish ""  ;; dropping in favor of spaceline
   :config
   (global-flycheck-mode)
   (setq flycheck-emacs-lisp-load-path 'inherit)
@@ -251,7 +252,7 @@ Single Capitals as you type."
 ;; I often feel the need for this one
 (use-package paredit-everywhere
   :ensure t
-  :diminish "parev"
+  :diminish "p"
   :init
   (add-hook 'prog-mode-hook #'paredit-everywhere-mode)
   (add-hook 'LaTeX-mode-hook #'paredit-everywhere-mode)
