@@ -4,6 +4,10 @@
 
 (require 'f)
 
+(use-package evil-magit
+  :ensure t
+  :defer t)
+
 ;; Magit is critical for any developer
 (use-package magit
   :ensure t
@@ -15,6 +19,7 @@
          ("C-x g" . magit-status))
   :config
   (setq magit-repository-directories '("~/forks"))
+  (add-hook 'magit-mode-hook (lambda () (require 'evil-magit)))
   )
 
 ;; This one can't really be up there, because that doesn't load
