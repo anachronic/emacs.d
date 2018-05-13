@@ -32,3 +32,4 @@ emms
 /elisp/.tern-port
 /.edbi-ds-history
 /smex-items
+/custom.el
