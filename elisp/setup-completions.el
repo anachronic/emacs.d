@@ -61,9 +61,8 @@
 (use-package counsel-projectile
   :ensure t
   :after (counsel projectile)
-  :bind (("C-c a" . counsel-projectile-rg)
-         ("C-S-p" . counsel-projectile-find-file))
   :config
+  (evil-define-key 'normal global-map (kbd "C-p") 'counsel-projectile-find-file)
   (counsel-projectile-mode))
 
 ;; I guess this can't hurt
