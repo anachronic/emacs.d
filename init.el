@@ -51,6 +51,9 @@
 ;; We'll be using evil
 (require 'setup-evil)
 
+;; Some evil fixes. Mainly from evil-collection.el
+(require 'setup-evil-fixes)
+
 ;; Emacs core stuff
 (require 'setup-emacs)
 
