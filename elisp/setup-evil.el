@@ -2,6 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
+;; All evil variables that are going to be called by evil should go
+;; here since evil already is loaded when the evil-leader use-package
+;; sexp finishes interpreting
+(setq-default evil-want-C-u-scroll t)
+(setq-default evil-want-C-d-scroll t)
+(setq-default evil-search-module 'evil-search)
+
 (use-package evil-leader
   :demand t
   :ensure t
@@ -27,6 +34,9 @@
 
     ;; rg
     "a" 'counsel-projectile-rg
+
+    ;; Dired
+    "gj" 'dired-jump
 
     ;; projectile
     "pp" 'projectile-switch-project
