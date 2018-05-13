@@ -13,20 +13,6 @@
   (add-hook 'package-menu-mode-hook #'ach-set-link-hint-key)
   (add-hook 'help-mode-hook #'ach-set-link-hint-key))
 
-;; I gave it a try. looks pretty cool.
-(use-package anzu
-  :ensure t
-  :diminish ""
-  :config
-  ;; Spaceline already has the config. So let's remove anzu's modeline toggle.
-  (global-anzu-mode +1)
-  (set-face-attribute 'anzu-mode-line nil
-                      :foreground "yellow" :weight 'bold)
-  (define-key isearch-mode-map [remap isearch-query-replace]  #'anzu-isearch-query-replace)
-  (define-key isearch-mode-map [remap isearch-query-replace-regexp] #'anzu-isearch-query-replace-regexp)
-  (global-set-key [remap query-replace] #'anzu-query-replace)
-  (global-set-key [remap query-replace-regexp] #'anzu-query-replace-regexp))
-
 ;; Lets use swiper conservatively. I actually like isearch better.
 (use-package swiper
   :ensure t
@@ -45,6 +31,13 @@
   (define-key isearch-mode-map (kbd "C-S-r") #'isearch-swiper)
   (define-key isearch-mode-map (kbd "C-c s") #'isearch-swiper))
 
+;; evil-anzu
+(use-package evil-anzu
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'evil
+    (require 'evil-anzu)))
 
 ;; This is GREAT when tags don't really cut it
 (use-package dumb-jump
