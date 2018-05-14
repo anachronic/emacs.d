@@ -63,6 +63,8 @@
   :after (counsel projectile)
   :config
   (evil-define-key 'normal global-map (kbd "C-p") 'counsel-projectile-find-file)
+  (evil-leader/set-key
+    "a" 'counsel-projectile-rg)
   (counsel-projectile-mode))
 
 ;; I guess this can't hurt

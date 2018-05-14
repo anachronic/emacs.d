@@ -32,20 +32,16 @@
   ;; leader defines
   (evil-leader/set-key
     "<SPC>" 'ivy-switch-buffer
+    "RET" 'evil-ex-nohighlight
 
     ;; buffers
     "k" 'kill-this-buffer
     "w" 'save-buffer
     "br" 'rename-buffer
-
-    ;; rg
-    "a" 'counsel-projectile-rg
+    "bb" 'counsel-recentf
 
     ;; Dired
     "gj" 'dired-jump
-
-    ;; projectile
-    "pp" 'projectile-switch-project
     )
   (evil-mode 1))
 

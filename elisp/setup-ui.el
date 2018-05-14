@@ -13,7 +13,16 @@
   :ensure t
   :defer t
   :init
-  (load-theme 'spacemacs-dark t))
+  (defvar ach-theme-is-light t "Set to t if current theme is light"))
+
+(defun ach-cycle-spacemacs-theme ()
+  "Cycle through dark and light spacemacs themes."
+  (interactive)
+  (let ((next-theme (if ach-theme-is-light 'spacemacs-dark 'spacemacs-light)))
+    (load-theme next-theme t)
+    (setq ach-theme-is-light (not ach-theme-is-light))))
+
+(ach-cycle-spacemacs-theme)
 
 ;; If powerline fonts are installed, use that
 (let ((pl-font "DejaVu Sans Mono"))
