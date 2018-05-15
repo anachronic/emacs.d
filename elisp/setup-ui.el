@@ -9,20 +9,22 @@
 ;; load the latest theme.
 ;; (load-theme 'nsalas-tomorrow-night t)
 ;; (load-theme 'nsalas-flatui t)
-(use-package spacemacs-theme
+(use-package color-theme-sanityinc-tomorrow
   :ensure t
   :defer t
   :init
-  (defvar ach-theme-is-light t "Set to t if current theme is light"))
+  (defvar ach-theme-is-light t "Set to t if current theme is light."))
 
-(defun ach-cycle-spacemacs-theme ()
-  "Cycle through dark and light spacemacs themes."
+(defun ach-cycle-themes ()
+  "Cycle through current dark and light themes."
   (interactive)
-  (let ((next-theme (if ach-theme-is-light 'spacemacs-dark 'spacemacs-light)))
-    (load-theme next-theme t)
+  (let ((next-theme (if ach-theme-is-light
+                        '(color-theme-sanityinc-tomorrow-night)
+                      '(color-theme-sanityinc-tomorrow-day))))
+    (eval next-theme)
     (setq ach-theme-is-light (not ach-theme-is-light))))
 
-(ach-cycle-spacemacs-theme)
+(ach-cycle-themes)
 
 ;; If powerline fonts are installed, use that
 (let ((pl-font "DejaVu Sans Mono"))
