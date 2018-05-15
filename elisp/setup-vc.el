@@ -20,6 +20,11 @@
   :config
   (setq magit-repository-directories '("~/forks"))
   (add-hook 'magit-mode-hook (lambda () (require 'evil-magit)))
+
+  ;; Need for pushing
+  (add-hook 'magit-mode-hook (lambda ()
+                               (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+                               (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")))
   )
 
 ;; This one can't really be up there, because that doesn't load
