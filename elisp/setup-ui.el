@@ -19,7 +19,7 @@
   "Cycle through current dark and light themes."
   (interactive)
   (let ((next-theme (if ach-theme-is-light
-                        '(color-theme-sanityinc-tomorrow-night)
+                        '(color-theme-sanityinc-tomorrow-eighties)
                       '(color-theme-sanityinc-tomorrow-day))))
     (eval next-theme)
     (setq ach-theme-is-light (not ach-theme-is-light))))
