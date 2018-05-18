@@ -34,7 +34,7 @@
 (setq uniquify-buffer-name-style 'forward)
 
 (with-eval-after-load 'with-editor
-  (diminish 'with-editor-mode "e"))
+  (diminish 'with-editor-mode ""))
 
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here
