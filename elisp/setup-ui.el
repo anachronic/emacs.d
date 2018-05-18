@@ -22,20 +22,37 @@
 
 (set-face-attribute 'default nil
                     :height 110)
-
-;; This one was recommended by Steve Purcell. Looked pretty good
-;; From this chat: https://www.youtube.com/watch?v=Gq0hG_om9xY
 (use-package fullframe
   :ensure t
-  :after magit
   :config
   (fullframe magit-status magit-mode-quit-window)
   (fullframe magit-status-internal magit-mode-quit-window)
   (fullframe ibuffer ibuffer-quit)
   (fullframe package-list-packages quit-window)
-  (fullframe list-packages quit-window)
-  (fullframe shell bury-buffer)
-  )
+  (fullframe list-packages quit-window))
+
+;; Eyebrowse for something more tmux'y
+(use-package eyebrowse
+  :ensure t
+  :init
+  (setq-default eyebrowse-keymap-prefix (kbd "C-x x"))
+  (setq-default eyebrowse-mode-line-style 'always)
+  :config
+  (eyebrowse-mode)
+  (define-key eyebrowse-mode-map (kbd "M-0") 'eyebrowse-switch-to-window-config-0)
+  (define-key eyebrowse-mode-map (kbd "M-1") 'eyebrowse-switch-to-window-config-1)
+  (define-key eyebrowse-mode-map (kbd "M-2") 'eyebrowse-switch-to-window-config-2)
+  (define-key eyebrowse-mode-map (kbd "M-3") 'eyebrowse-switch-to-window-config-3)
+  (define-key eyebrowse-mode-map (kbd "M-4") 'eyebrowse-switch-to-window-config-4)
+  (define-key eyebrowse-mode-map (kbd "M-5") 'eyebrowse-switch-to-window-config-5)
+  (define-key eyebrowse-mode-map (kbd "M-6") 'eyebrowse-switch-to-window-config-6)
+  (define-key eyebrowse-mode-map (kbd "M-7") 'eyebrowse-switch-to-window-config-7)
+  (define-key eyebrowse-mode-map (kbd "M-8") 'eyebrowse-switch-to-window-config-8)
+  (define-key eyebrowse-mode-map (kbd "M-9") 'eyebrowse-switch-to-window-config-9)
+  (define-key evil-motion-state-map (kbd "gt") 'eyebrowse-next-window-config)
+  (define-key evil-motion-state-map (kbd "gT") 'eyebrowse-prev-window-config)
+  (define-key evil-motion-state-map (kbd "C-SPC") 'eyebrowse-last-window-config)
+  (define-key evil-motion-state-map (kbd "zx") 'eyebrowse-last-window-config))
 
 ;; From https://www.emacswiki.org/emacs/TransposeWindows
 ;; and crux.

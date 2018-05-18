@@ -25,6 +25,10 @@
   (add-hook 'magit-mode-hook (lambda ()
                                (exec-path-from-shell-copy-env "SSH_AGENT_PID")
                                (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")))
+  (define-key magit-mode-map (kbd "M-1") nil)
+  (define-key magit-mode-map (kbd "M-2") nil)
+  (define-key magit-mode-map (kbd "M-3") nil)
+  (define-key magit-mode-map (kbd "M-4") nil)
   )
 
 ;; This one can't really be up there, because that doesn't load

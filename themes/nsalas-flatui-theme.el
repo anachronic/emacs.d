@@ -256,6 +256,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(eshell-ls-symlink ((t (:foreground ,clouds :background ,amethyst))))
    ;; evil
    `(evil-search-highlight-persist-highlight-face ((t (:inherit lazy-highlight))))
+
+   ;; eyebrowse
+   `(eyebrowse-mode-line-active ((t (:foreground "aquamarine" :weight bold))))
+   `(eyebrowse-mode-line-inactive ((t (:foreground ,silver))))
    ;; flx
    `(flx-highlight-face ((t (:foreground ,orange :weight bold))))
    ;; flycheck
