@@ -24,7 +24,7 @@
 ;; Syntax checking
 (use-package flycheck
   :ensure t
-  :diminish ""  ;; dropping in favor of spaceline
+  :diminish ""
   :config
   (global-flycheck-mode)
   (setq flycheck-emacs-lisp-load-path 'inherit)
@@ -250,27 +250,6 @@ Single Capitals as you type."
 ;; I use this all the time
 (use-package rainbow-mode
   :ensure t)
-
-;; I often feel the need for this one
-(use-package paredit-everywhere
-  :ensure t
-  :diminish "p"
-  :init
-  (add-hook 'prog-mode-hook #'paredit-everywhere-mode)
-  (add-hook 'LaTeX-mode-hook #'paredit-everywhere-mode)
-  (add-hook 'web-mode-hook #'paredit-everywhere-mode)
-  :config
-  (define-key paredit-everywhere-mode-map (kbd "C-(") 'paredit-backward-slurp-sexp)
-  (define-key paredit-everywhere-mode-map (kbd "C-{") 'paredit-backward-barf-sexp)
-  (define-key paredit-everywhere-mode-map (kbd "C-<backspace>") 'paredit-backward-kill-word)
-
-  ;; paredit-kill in M-k and kill-sentence in M-K
-  (define-key paredit-everywhere-mode-map (kbd "M-k") 'paredit-kill)
-  (define-key paredit-everywhere-mode-map (kbd "M-K") 'kill-sentence)
-
-  ;; interfering with bm hotkeys
-  (define-key paredit-everywhere-mode-map (kbd "M-]") nil)
-  )
 
 ;; This package is super useful with ivy-occur
 (use-package wgrep
