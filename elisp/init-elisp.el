@@ -16,7 +16,7 @@
 ;; Paredit is the best package ever.
 (use-package paredit
   :ensure t
-  :diminish "P"
+  :diminish "par"
   :init
   (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook #'enable-paredit-mode)

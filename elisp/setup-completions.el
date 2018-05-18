@@ -136,7 +136,7 @@
   (defun company-complete-common-wrapper ()
     (let ((completion-at-point-functions completion-at-point-functions-saved))
       (company-complete-common)))
-  :diminish "c"
+  :diminish "comp"
   :bind (("C-S-<SPC>" . company-complete)))
 
 ;; Help is cool
