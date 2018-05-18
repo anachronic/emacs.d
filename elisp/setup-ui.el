@@ -8,23 +8,7 @@
 
 ;; load the latest theme.
 ;; (load-theme 'nsalas-tomorrow-night t)
-;; (load-theme 'nsalas-flatui t)
-(use-package color-theme-sanityinc-tomorrow
-  :ensure t
-  :defer t
-  :init
-  (defvar ach-theme-is-light t "Set to t if current theme is light."))
-
-(defun ach-cycle-themes ()
-  "Cycle through current dark and light themes."
-  (interactive)
-  (let ((next-theme (if ach-theme-is-light
-                        '(color-theme-sanityinc-tomorrow-eighties)
-                      '(color-theme-sanityinc-tomorrow-day))))
-    (eval next-theme)
-    (setq ach-theme-is-light (not ach-theme-is-light))))
-
-(ach-cycle-themes)
+(load-theme 'nsalas-flatui t)
 
 ;; If powerline fonts are installed, use that
 (let ((pl-font "DejaVu Sans Mono"))
