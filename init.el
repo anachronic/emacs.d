@@ -82,6 +82,9 @@
 ;; get bigger.
 (require 'setup-org)
 
+;; Gnus
+(require 'setup-gnus)
+
 ;; Shell config
 (require 'setup-shell)
 
