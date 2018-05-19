@@ -9,6 +9,9 @@
   :config
   (global-page-break-lines-mode))
 
+;; cask mode
+(use-package cask-mode
+  :ensure t)
 
 ;; I like prettify symbols mode. but only for elisp
 (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)

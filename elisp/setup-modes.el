@@ -11,6 +11,10 @@
 (use-package camcorder
   :defer t)
 
+;; not sure where to put this
+(use-package feature-mode
+  :ensure t)
+
 ;; this one is builtin
 (use-package subword
   :defer t
