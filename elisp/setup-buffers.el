@@ -23,18 +23,22 @@
 ;; use ibuffer instead of default C-x C-b
 (define-key ctl-x-map (kbd "C-b") 'ibuffer)
 
-;; Some people swear by winner mode
-(winner-mode 1)
-
-;; Let's bind it to accesible keys.
-(global-set-key (kbd "C-M-<") #'winner-undo)
-(global-set-key (kbd "C-M->") #'winner-redo)
-
 ;; uniquify. I really got used to IntelliJ idea's way of handling stuff
 (setq uniquify-buffer-name-style 'forward)
 
 (with-eval-after-load 'with-editor
   (diminish 'with-editor-mode ""))
+
+;; sudo save a buffer
+;; workflow is: open the file and C-x C-q it (disable read-only
+;; mode). Make your changes and M-x sudo-save RET. Input password and
+;; profit.
+(defun sudo-save ()
+  "Save current file as sudo."
+  (interactive)
+  (if (not buffer-file-name)
+      (write-file (concat "/sudo:root@localhost:" (ido-read-file-name "File:")))
+    (write-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
 (provide 'setup-buffers)
 ;;; setup-buffers.el ends here
