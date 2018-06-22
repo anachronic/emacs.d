@@ -85,6 +85,9 @@
 ;; Gnus
 (require 'setup-gnus)
 
+;; Mail with mu4e
+(require 'setup-mu4e)
+
 ;; Shell config
 (require 'setup-shell)
 
