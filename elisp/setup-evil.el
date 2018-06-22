@@ -39,9 +39,19 @@
     "w" 'save-buffer
     "br" 'rename-buffer
     "bb" 'counsel-recentf
+    "bs" 'save-buffer
+    "bS" 'sudo-save
+    "bk" 'kill-this-buffer
+
+    ;; Files
+    "ff" 'find-file
 
     ;; Dired
     "gj" 'dired-jump
+
+    ;; "Applications"
+    "gan" 'gnus
+    "gam" 'mu4e
     )
   (evil-mode 1))
 
