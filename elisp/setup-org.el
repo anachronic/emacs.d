@@ -9,9 +9,11 @@
 (use-package org
   :ensure t
   :defer t
-  :commands (org-mode org-agenda)
+  :commands (org-mode org-agenda org)
   :config
-  (setq org-agenda-files '("~/Dropbox/orgfiles/"))
+  (setq org-agenda-files '("~/Dropbox/orgfiles/")))
+
+(with-eval-after-load 'org
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
@@ -22,7 +24,7 @@
 
 (use-package evil-org
   :ensure t
-  :after org
+  :defer t
   :init
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook
