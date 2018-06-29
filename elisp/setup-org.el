@@ -16,8 +16,9 @@
 (with-eval-after-load 'org
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((emacs-lisp . t)
-     (shell . t)
+   `((emacs-lisp . t)
+     ;; From purcell
+     (,(if (locate-library "ob-sh") 'sh 'shell) . t)
      (ruby . t)
      (python . t)
      (R . t))))
