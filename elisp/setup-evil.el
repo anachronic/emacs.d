@@ -7,6 +7,7 @@
 ;; sexp finishes interpreting
 (setq-default evil-want-C-u-scroll t)
 (setq-default evil-want-C-d-scroll t)
+(setq-default evil-want-Y-yank-to-eol t)
 (setq-default evil-search-module 'evil-search)
 
 (use-package evil-leader
@@ -41,6 +42,7 @@
     "bb" 'counsel-recentf
     "bs" 'save-buffer
     "bS" 'sudo-save
+    "bR" 'rename-file-and-buffer ;; defined in setup-buffers.el
     "bk" 'kill-this-buffer
 
     ;; Files
@@ -54,6 +56,11 @@
     "gam" 'mu4e
     )
   (evil-mode 1))
+
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
 
 (provide 'setup-evil)
 ;;; setup-evil.el ends here
