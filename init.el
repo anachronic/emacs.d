@@ -23,6 +23,7 @@
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
+(setq package-enable-at-startup nil)
 
 ;; Emacs community is awesome
 ;; https://www.reddit.com/r/emacs/comments/6s9ez3/package_management_under_emacs_25/dlbzvyc/

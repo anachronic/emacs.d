@@ -12,14 +12,13 @@
   :commands (org-mode org-agenda)
   :config
   (setq org-agenda-files '("~/Dropbox/orgfiles/"))
-  (with-eval-after-load 'org-babel
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       (shell . t)
-       (ruby . t)
-       (python . t)
-       (R . t)))))
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell . t)
+     (ruby . t)
+     (python . t)
+     (R . t))))
 
 (use-package evil-org
   :ensure t
