@@ -21,6 +21,9 @@
   (setq magit-repository-directories '("~/forks"))
   (add-hook 'magit-mode-hook (lambda () (require 'evil-magit)))
 
+  ;; We want to start typing right away when committing
+  (add-hook 'with-editor-mode-hook 'evil-insert-state)
+
   ;; Need for pushing
   (add-hook 'magit-mode-hook (lambda ()
                                (exec-path-from-shell-copy-env "SSH_AGENT_PID")
