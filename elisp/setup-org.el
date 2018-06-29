@@ -8,21 +8,23 @@
 ;; is it a way to get packages. I'll get stuff once I need the stuff
 (use-package org
   :ensure t
+  :defer t
   :commands (org-mode org-agenda)
   :config
   (setq org-agenda-files '("~/Dropbox/orgfiles/"))
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (shell . t)
-     (ruby . t)
-     (python . t)
-     (R . t))))
+  (with-eval-after-load 'org-babel
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (shell . t)
+       (ruby . t)
+       (python . t)
+       (R . t)))))
 
 (use-package evil-org
   :ensure t
   :after org
-  :config
+  :init
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook
             (lambda ()
@@ -33,7 +35,8 @@
   (add-hook 'org-agenda-mode-hook
             (lambda ()
               (require 'evil-org-agenda)
-              (evil-org-agenda-set-keys))))
+              (evil-org-agenda-set-keys)))
+  )
 
 (use-package org-gcal
   :ensure t
