@@ -42,6 +42,7 @@
 
 (use-package org-gcal
   :ensure t
+  :defer t
   :init
   (maybe-load-file "~/Dropbox/private/org-gcal-config.el"))
 
