@@ -113,7 +113,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-constant-face ((t (:foreground ,green-sea))))
    `(font-lock-doc-face ((t (:foreground ,asbestos))))
    `(font-lock-function-name-face ((t (:foreground ,wet-asphalt :weight bold))))
-   `(font-lock-keyword-face ((t (:foreground "DeepPink"))))
+   `(font-lock-keyword-face ((t (:foreground "MediumVioletRed" :weight bold))))
    `(font-lock-negation-char-face ((t (:foreground ,peter-river :weight bold))))
    `(font-lock-preprocessor-face ((t (:foreground ,alizarin :weight bold))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,orange :weight bold))))
