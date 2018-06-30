@@ -35,12 +35,14 @@
               (require 'evil-org-agenda)
               (evil-org-agenda-set-keys))))
 
-(use-package org-gcal
-  :ensure t
-  :defer t
-  :commands (org-gcal-sync)
-  :init
-  (maybe-load-file "~/Dropbox/private/org-gcal-config.el"))
+(let ((gcal-file "~/Dropbox/private/org-gcal-config.el"))
+  (when (file-exists-p gcal-file)
+    (use-package org-gcal
+      :ensure t
+      :defer t
+      :commands (org-gcal-sync)
+      :init
+      (load-file gcal-file))))
 
 (provide 'setup-org)
 ;;; setup-org.el ends here
