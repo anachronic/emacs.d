@@ -8,20 +8,19 @@
   :config
   (setq
    mu4e-maildir       "~/.mail"           ;; top-level Maildir
-   mu4e-sent-folder   "/gmail/sent"       ;; folder for sent messages
-   mu4e-drafts-folder "/gmail/drafts"     ;; unfinished messages
-   mu4e-trash-folder  "/gmail/trash"      ;; trashed messages
-   mu4e-refile-folder "/gmail/archive")   ;; saved messages
+   mu4e-sent-folder   "/icloud/sent"       ;; folder for sent messages
+   mu4e-drafts-folder "/icloud/drafts"     ;; unfinished messages
+   mu4e-trash-folder  "/icloud/trash"      ;; trashed messages
+   mu4e-refile-folder "/icloud/archive")   ;; saved messages
 
   ;; custom config
   (setq mu4e-attachment-dir "~/Downloads"
         mu4e-compose-signature-auto-include nil
-        mu4e-maildir-shortcuts '(("/gmail/Inbox" . ?i)
-                                 ("/gmail/archive" . ?a)
-                                 ("/gmail/trash" . ?t)
-                                 ("/gmail/drafts" . ?d)
-                                 ("/gmail/sent" . ?s)
-                                 ("/gmail/starred" . ?S))
+        mu4e-maildir-shortcuts '(("/icloud/Inbox" . ?i)
+                                 ("/icloud/archive" . ?a)
+                                 ("/icloud/trash" . ?t)
+                                 ("/icloud/drafts" . ?d)
+                                 ("/icloud/sent" . ?s))
         mu4e-completing-read-function 'ivy-completing-read
         mu4e-sent-messages-behavior 'delete
         mu4e-change-filenames-when-moving t
@@ -30,7 +29,9 @@
         ;; mu4e-use-fancy-chars t
         mu4e-confirm-quit nil
         mail-user-agent 'mu4e-user-agent
-        mu4e-html2text-command "iconv -c -t utf-8 | pandoc -f html -t plain"
+        mu4e-html2text-command "elinks -dump"
+        mu4e-update-interval 300
+        mu4e-get-mail-command "mbsync icloud"
         )
 
   ;; view in browser
