@@ -7,8 +7,7 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 ;; load the latest theme.
-;; (load-theme 'nsalas-tomorrow-night t)
-(load-theme 'nsalas-flatui t)
+(load-theme 'ach-dark t)
 
 ;; If powerline fonts are installed, use that
 (let ((pl-font "DejaVu Sans Mono"))

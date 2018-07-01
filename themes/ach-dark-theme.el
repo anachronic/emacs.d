@@ -1,20 +1,20 @@
-;;; nsalas-flatui-theme.el --- A color theme for Emacs based on flatuicolors.com
+;;; ach-dark-theme.el --- A color theme for Emacs based on flatuicolors.com
 
 ;;; Commentary:
 
-;; This theme is based on https://github.com/john2x/flatui-theme.el
-;; and considering the FlatUI colors. However, this theme is by no
-;; means strict on its colors, which means some colors will change,
-;; but the spirit of the theme is to follow the FlatUI design
+;; This theme is based on ach-light (made by myself based on flatui)
+;; and spacemacs with some enhancements
 
 ;;; Code:
 
-(deftheme nsalas-flatui "FlatUI based color theme.")
+(deftheme ach-dark "FlatUI + Spacemacs based theme")
 
 ;;; Color Palette
 
-(defvar flatui-colors-alist
-  '(("clouds"          . "#ecf0f1")
+(defvar ach-dark-colors-alist
+  '(("foreground"      . "#b2b2b2")
+    ("background"      . "#292b2e")
+    ("clouds"          . "#ecf0f1")
     ("silver"          . "#dfe4ea")
     ("concrete"        . "#95a5a6")
     ("asbestos"        . "#7f8c8d")
@@ -27,7 +27,7 @@
     ("emerald"         . "#2ecc71")
     ("nephritis"       . "#27ae60")
 
-    ("peter-river"     . "#2492db")
+    ("peter-river"     . "#7590db")
     ("belize-hole"     . "#0a74b9")
 
     ("amethyst"        . "#9b59b6")
@@ -44,29 +44,29 @@
   "List of FlatUI colors.
 Each element has the form (NAME . HEX).")
 
-(defmacro flatui/with-color-variables (&rest body)
-  "`let' bind all colors defined in `flatui-colors-alist' around BODY.
+(defmacro ach-dark/with-color-variables (&rest body)
+  "`let' bind all colors defined in `ach-dark-colors-alist' around BODY.
 Also bind `class' to ((class color) (min-colors 89))."
   (declare (indent 0))
   `(let ((class '((class color) (min-colors 89)))
          ,@(mapcar (lambda (cons)
                      (list (intern (car cons)) (cdr cons)))
-                   flatui-colors-alist))
+                   ach-dark-colors-alist))
      ,@body))
 
 ;;; Theme Faces
-(flatui/with-color-variables
+(ach-dark/with-color-variables
   (custom-theme-set-faces
-   'nsalas-flatui
-   ; Built-in
+   'ach-dark
+                                        ; Built-in
    ;; basic coloring
    '(button ((t (:underline t))))
    `(link ((t (:foreground ,peter-river :underline t :weight bold))))
    `(link-visited ((t (:foreground ,amethyst :underline t :weight normal))))
-   `(default ((t (:foreground ,midnight-blue :background ,clouds))))
-   `(cursor ((t (:foreground ,midnight-blue :background "RoyalBlue"))))
+   `(default ((t (:foreground ,foreground :background ,background))))
+   `(cursor ((t (:foreground ,midnight-blue :background "DarkGoldenrod2"))))
    `(escape-glyph ((t (:foreground ,sun-flower :bold t))))
-   `(fringe ((t (:foreground ,wet-asphalt :background ,silver))))
+   `(fringe ((t (:foreground ,wet-asphalt :background ,background))))
    `(header-line ((t (:foreground ,midnight-blue
                                   :background "LightSkyBlue1"
                                   :box (:line-width -1 :style released-button)))))
@@ -105,22 +105,22 @@ Also bind `class' to ((class color) (min-colors 89))."
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,turquoise))))
    `(trailing-whitespace ((t (:background ,alizarin))))
-   `(vertical-border ((t (:foreground ,silver))))
+   `(vertical-border ((t (:foreground "#5d4d7a"))))
    ;; font lock
    `(font-lock-builtin-face ((t (:foreground ,green-sea))))
    `(font-lock-comment-face ((t (:foreground ,asbestos))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,concrete))))
-   `(font-lock-constant-face ((t (:foreground ,green-sea))))
+   `(font-lock-constant-face ((t (:foreground ,amethyst))))
    `(font-lock-doc-face ((t (:foreground ,asbestos))))
    `(font-lock-function-name-face ((t (:foreground ,wet-asphalt :weight bold))))
-   `(font-lock-keyword-face ((t (:foreground "MediumVioletRed" :weight bold))))
+   `(font-lock-keyword-face ((t (:foreground ,peter-river :weight bold))))
    `(font-lock-negation-char-face ((t (:foreground ,peter-river :weight bold))))
    `(font-lock-preprocessor-face ((t (:foreground ,alizarin :weight bold))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,orange :weight bold))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,amethyst :weight bold))))
-   `(font-lock-string-face ((t (:foreground ,belize-hole))))
+   `(font-lock-string-face ((t (:foreground ,nephritis))))
    `(font-lock-type-face ((t (:foreground ,peter-river))))
-   `(font-lock-variable-name-face ((t (:foreground ,pumpkin))))
+   `(font-lock-variable-name-face ((t (:foreground ,peter-river))))
    `(font-lock-warning-face ((t (:foreground ,pumpkin :weight bold))))
 
    `(c-annotation-face ((t (:inherit font-lock-constant-face))))
@@ -128,7 +128,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-directive-face ((t (:foreground ,nephritis))))
    `(ledger-font-periodic-xact-face ((t (:inherit ledger-font-directive-face))))
    `(ledger-occur-xact-face ((t (:background ,silver))))
-   ; Third-party
+                                        ; Third-party
    ;; ace-jump
    `(ace-jump-face-background
      ((t (:foreground ,concrete :background ,clouds :inverse-video nil))))
@@ -346,10 +346,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(highlight-symbol-face ((t (:background "grey88"))))
 
    ;; hl-line-mode
-   `(hl-line-face ((,class (:background ,silver))
-                   (t :weight bold)))
-   `(hl-line ((,class (:background ,silver)) ; old emacsen
-              (t :weight bold)))
+   `(hl-line ((t (:background "#212026"))))
    ;; hl-sexp
    `(hl-sexp-face ((,class (:background ,silver))
                    (t :weight bold)))
@@ -381,7 +378,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; linum-mode and nlinum-mode
    `(linum ((t (:foreground ,wet-asphalt :background ,silver))))
    `(nlinum-relative-current-face ((t (:foreground ,pomegranate :weight bold :background "grey75"))))
-   `(line-number-current-line ((t (:foreground ,pomegranate :weight bold :background "grey75"))))
+   `(line-number ((t (:foreground "#686868"))))
+   `(line-number-current-line ((t (:foreground "#686868" :weight bold))))
    ;; magit
    `(magit-header ((t (:foreground ,midnight-blue :background nil :weight bold))))
    `(magit-header-line ((t (:inherit magit-section-heading :foreground ,wet-asphalt))))
@@ -459,18 +457,18 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(paradox-mode-line-face ((t (:foreground "DarkKhaki"))))
 
    ;; rainbow-delimiters
-   `(rainbow-delimiters-depth-1-face ((t (:foreground ,wet-asphalt))))
-   `(rainbow-delimiters-depth-2-face ((t (:foreground ,turquoise))))
-   `(rainbow-delimiters-depth-3-face ((t (:foreground ,emerald))))
-   `(rainbow-delimiters-depth-4-face ((t (:foreground ,peter-river))))
-   `(rainbow-delimiters-depth-5-face ((t (:foreground ,amethyst))))
-   `(rainbow-delimiters-depth-6-face ((t (:foreground ,orange))))
-   `(rainbow-delimiters-depth-7-face ((t (:foreground ,carrot))))
-   `(rainbow-delimiters-depth-8-face ((t (:foreground ,alizarin))))
-   `(rainbow-delimiters-depth-9-face ((t (:foreground ,green-sea))))
-   `(rainbow-delimiters-depth-10-face ((t (:foreground ,nephritis))))
-   `(rainbow-delimiters-depth-11-face ((t (:foreground ,belize-hole))))
-   `(rainbow-delimiters-depth-12-face ((t (:foreground ,wisteria))))
+   `(rainbow-delimiters-depth-1-face ((t (:foreground "#4f97d7"))))
+   `(rainbow-delimiters-depth-2-face ((t (:foreground "#bc6ec5"))))
+   `(rainbow-delimiters-depth-3-face ((t (:foreground "#2d9574"))))
+   `(rainbow-delimiters-depth-4-face ((t (:foreground "#67b11d"))))
+   `(rainbow-delimiters-depth-5-face ((t (:foreground "#b1951d"))))
+   `(rainbow-delimiters-depth-6-face ((t (:foreground "#4f97d7"))))
+   `(rainbow-delimiters-depth-7-face ((t (:foreground "#bc6ec5"))))
+   `(rainbow-delimiters-depth-8-face ((t (:foreground "#2d9574"))))
+   `(rainbow-delimiters-depth-9-face ((t (:foreground "#67b11d"))))
+   `(rainbow-delimiters-depth-10-face ((t (:foreground "#b1951d"))))
+   `(rainbow-delimiters-depth-11-face ((t (:foreground "#4f97d7"))))
+   `(rainbow-delimiters-depth-12-face ((t (:foreground "#bc6ec5"))))
    ;; structured-haskell-mode
    `(shm-current-face ((t (:background ,silver))))
    `(shm-quarantine-face ((t (:inherit font-lock-error))))
@@ -616,9 +614,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    ))
 
 ;;; Theme Variables
-(flatui/with-color-variables
+(ach-dark/with-color-variables
   (custom-theme-set-variables
-   'nsalas-flatui
+   'ach-dark
    ;; ansi-color
    `(ansi-color-names-vector [,clouds ,alizarin ,emerald ,sun-flower
                                       ,peter-river ,amethyst ,turquoise ,midnight-blue])
@@ -651,8 +649,6 @@ Also bind `class' to ((class color) (min-colors 89))."
    ))
 
 
-;;; Footer
-
 ;;;###autoload
 (and load-file-name
      (boundp 'custom-theme-load-path)
@@ -660,6 +656,5 @@ Also bind `class' to ((class color) (min-colors 89))."
                   (file-name-as-directory
                    (file-name-directory load-file-name))))
 
-(provide-theme 'nsalas-flatui)
-
-;;; nsalas-flatui-theme.el ends here
+(provide-theme 'ach-dark)
+;;; ach-dark-theme.el ends here

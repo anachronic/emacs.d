@@ -1,4 +1,4 @@
-;;; nsalas-wombat-theme.el --- A color theme for Emacs based on flatuicolors.com
+;;; nsalas-flatui-theme.el --- A color theme for Emacs based on flatuicolors.com
 
 ;;; Commentary:
 
@@ -9,68 +9,64 @@
 
 ;;; Code:
 
-(deftheme nsalas-wombat "FlatUI based color theme.")
+(deftheme ach-light "FlatUI based color theme.")
 
 ;;; Color Palette
 
-(defvar wombat-colors-alist
-  '(("wombat-fg"     . "#f6f3e8")
-    ("wombat-bg"     . "#242424")
+(defvar flatui-colors-alist
+  '(("clouds"          . "#ecf0f1")
+    ("silver"          . "#dfe4ea")
+    ("concrete"        . "#95a5a6")
+    ("asbestos"        . "#7f8c8d")
+    ("wet-asphalt"     . "#34495e")
+    ("midnight-blue"   . "#2c3e50")
 
-    ("clouds"        . "#ecf0f1")
-    ("silver"        . "#dfe4ea")
-    ("concrete"      . "#95a5a6")
-    ("asbestos"      . "#7f8c8d")
-    ("wet-asphalt"   . "#34495e")
-    ("midnight-blue" . "#2c3e50")
+    ("turquoise"       . "#1abc9c")
+    ("green-sea"       . "#16a085")
 
-    ("turquoise"     . "#1abc9c")
-    ("green-sea"     . "#16a085")
+    ("emerald"         . "#2ecc71")
+    ("nephritis"       . "#27ae60")
 
-    ("emerald"       . "#2ecc71")
-    ("nephritis"     . "#27ae60")
+    ("peter-river"     . "#2492db")
+    ("belize-hole"     . "#0a74b9")
 
-    ("peter-river"   . "#8ac6f2")
-    ("belize-hole"   . "#0a74b9")
+    ("amethyst"        . "#9b59b6")
+    ("wisteria"        . "DeepPink")
 
-    ("amethyst"      . "#9b59b6")
-    ("wisteria"      . "DeepPink")
+    ("sun-flower"      . "#f1c40f")
+    ("orange"          . "#d98c10")
 
-    ("sun-flower"    . "#f1c40f")
-    ("orange"        . "#d98c10")
+    ("carrot"          . "#e67e22")
+    ("pumpkin"         . "#d35400")
 
-    ("carrot"        . "#e67e22")
-    ("pumpkin"       . "#d35400")
-
-    ("alizarin"      . "#e74c3c")
-    ("pomegranate"   . "#c0392b"))
+    ("alizarin"        . "#e74c3c")
+    ("pomegranate"     . "#c0392b"))
   "List of FlatUI colors.
 Each element has the form (NAME . HEX).")
 
-(defmacro wombat/with-color-variables (&rest body)
-  "`let' bind all colors defined in `wombat-colors-alist' around BODY.
+(defmacro flatui/with-color-variables (&rest body)
+  "`let' bind all colors defined in `flatui-colors-alist' around BODY.
 Also bind `class' to ((class color) (min-colors 89))."
   (declare (indent 0))
   `(let ((class '((class color) (min-colors 89)))
          ,@(mapcar (lambda (cons)
                      (list (intern (car cons)) (cdr cons)))
-                   wombat-colors-alist))
+                   flatui-colors-alist))
      ,@body))
 
 ;;; Theme Faces
-(wombat/with-color-variables
+(flatui/with-color-variables
   (custom-theme-set-faces
-   'nsalas-wombat
-   ;; Built-in
+   'ach-light
+   ; Built-in
    ;; basic coloring
    '(button ((t (:underline t))))
    `(link ((t (:foreground ,peter-river :underline t :weight bold))))
    `(link-visited ((t (:foreground ,amethyst :underline t :weight normal))))
-   `(default ((t (:foreground ,wombat-fg :background ,wombat-bg))))
-   `(cursor ((t (:foreground ,midnight-blue :background ,wet-asphalt))))
+   `(default ((t (:foreground ,midnight-blue :background ,clouds))))
+   `(cursor ((t (:foreground ,midnight-blue :background "RoyalBlue"))))
    `(escape-glyph ((t (:foreground ,sun-flower :bold t))))
-   `(fringe ((t (:foreground ,wombat-fg :background "grey19"))))
-   `(vertical-border ((t (:foreground ,wombat-fg :background ,wombat-bg))))
+   `(fringe ((t (:foreground ,wet-asphalt :background ,silver))))
    `(header-line ((t (:foreground ,midnight-blue
                                   :background "LightSkyBlue1"
                                   :box (:line-width -1 :style released-button)))))
@@ -90,7 +86,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(compilation-message-face ((t (:foreground ,wet-asphalt))))
    `(compilation-warning-face ((t (:foreground ,pumpkin :weight bold :underline t))))
    `(compilation-mode-line-exit ((t (:foreground ,turquoise :weight bold))))
-   `(compilation-mode-line-fail ((t (:foreground ,pomegranate :weight bold))))
+   `(compilation-mode-line-fail ((t (:foreground "LightSalmon" :weight bold))))
    `(compilation-mode-line-run ((t (:foreground ,orange :weight bold))))
    ;; grep
    `(grep-context-face ((t (:foreground ,wet-asphalt))))
@@ -116,8 +112,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-comment-delimiter-face ((t (:foreground ,concrete))))
    `(font-lock-constant-face ((t (:foreground ,green-sea))))
    `(font-lock-doc-face ((t (:foreground ,asbestos))))
-   `(font-lock-function-name-face ((t (:foreground ,amethyst :weight bold))))
-   `(font-lock-keyword-face ((t (:foreground ,peter-river :weight bold))))
+   `(font-lock-function-name-face ((t (:foreground ,wet-asphalt :weight bold))))
+   `(font-lock-keyword-face ((t (:foreground "MediumVioletRed" :weight bold))))
    `(font-lock-negation-char-face ((t (:foreground ,peter-river :weight bold))))
    `(font-lock-preprocessor-face ((t (:foreground ,alizarin :weight bold))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,orange :weight bold))))
@@ -132,7 +128,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-directive-face ((t (:foreground ,nephritis))))
    `(ledger-font-periodic-xact-face ((t (:inherit ledger-font-directive-face))))
    `(ledger-occur-xact-face ((t (:background ,silver))))
-                                        ; Third-party
+   ; Third-party
    ;; ace-jump
    `(ace-jump-face-background
      ((t (:foreground ,concrete :background ,clouds :inverse-video nil))))
@@ -260,6 +256,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(eshell-ls-symlink ((t (:foreground ,clouds :background ,amethyst))))
    ;; evil
    `(evil-search-highlight-persist-highlight-face ((t (:inherit lazy-highlight))))
+
+   ;; eyebrowse
+   `(eyebrowse-mode-line-active ((t (:foreground "aquamarine" :weight bold))))
+   `(eyebrowse-mode-line-inactive ((t (:foreground ,silver))))
    ;; flx
    `(flx-highlight-face ((t (:foreground ,orange :weight bold))))
    ;; flycheck
@@ -343,7 +343,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-moccur-buffer ((t (:foreground ,asbestos))))
 
    ;; highlight-symbol
-   `(highlight-symbol-face ((t (:background "grey25"))))
+   `(highlight-symbol-face ((t (:background "grey88"))))
 
    ;; hl-line-mode
    `(hl-line-face ((,class (:background ,silver))
@@ -373,14 +373,15 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-error ((t (:foreground ,alizarin :weight bold))))
    `(js2-jsdoc-tag ((t (:foreground ,amethyst))))
    `(js2-jsdoc-type ((t (:foreground ,wisteria))))
+   `(js2-object-property ((t (:foreground ,amethyst))))
    `(js2-jsdoc-value ((t (:foreground ,peter-river))))
    `(js2-function-call ((t (:foreground ,peter-river))))
    `(js2-function-param ((t (:foreground ,wet-asphalt))))
    `(js2-external-variable ((t (:foreground ,pumpkin))))
    ;; linum-mode and nlinum-mode
-
-   `(linum ((t (:foreground ,wombat-fg :background ,wombat-bg))))
-   `(nlinum-relative-current-face ((t (:background ,midnight-blue :foreground ,sun-flower :weight bold))))
+   `(linum ((t (:foreground ,wet-asphalt :background ,silver))))
+   `(nlinum-relative-current-face ((t (:foreground ,pomegranate :weight bold :background "grey75"))))
+   `(line-number-current-line ((t (:foreground ,pomegranate :weight bold :background "grey75"))))
    ;; magit
    `(magit-header ((t (:foreground ,midnight-blue :background nil :weight bold))))
    `(magit-header-line ((t (:inherit magit-section-heading :foreground ,wet-asphalt))))
@@ -397,7 +398,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; magit log
    `(magit-log-author ((t (:foreground ,belize-hole))))
    `(magit-log-sha1 ((t (:foreground ,carrot :weight bold))))
-   `(magit-tag ((t (:foreground ,wisteria :weight bold))))
+   `(magit-tag ((t (:foreground ,alizarin :weight bold))))
    `(magit-log-head-label-head ((t (:foreground ,midnight-blue :background ,turquoise
                                                 :weight bold
                                                 :box (:line-width 1 :color ,green-sea)))))
@@ -427,15 +428,15 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-formula ((t (:foreground ,sun-flower))))
    `(org-headline-done ((t (:foreground ,emerald))))
    `(org-hide ((t (:foreground ,clouds))))
-   `(org-level-1 ((t (:foreground ,green-sea))))
-   `(org-level-2 ((t (:foreground ,belize-hole))))
-   `(org-level-3 ((t (:foreground ,wisteria))))
+   `(org-level-1 ((t (:foreground ,green-sea :weight bold))))
+   `(org-level-2 ((t (:foreground ,belize-hole :weight bold))))
+   `(org-level-3 ((t (:foreground ,amethyst :weight bold))))
    `(org-level-4 ((t (:foreground ,orange))))
    `(org-level-5 ((t (:foreground ,pumpkin))))
    `(org-level-6 ((t (:foreground ,pomegranate))))
    `(org-level-7 ((t (:foreground ,turquoise))))
    `(org-level-8 ((t (:foreground ,emerald))))
-   `(org-link ((t (:foreground ,peter-river :weight bold))))
+   `(org-link ((t (:foreground ,peter-river :weight bold :underline t))))
    `(org-scheduled ((t (:foreground ,nephritis))))
    `(org-special-keyword ((t (:inherit font-lock-comment-face))))
    `(org-table ((t (:foreground ,asbestos))))
@@ -444,7 +445,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-upcoming-deadline ((t (:inherit font-lock-keyword-face))))
    `(org-warning ((t (:bold t :foreground ,alizarin :weight bold :underline nil))))
    `(org-footnote ((t (:foreground ,amethyst :weight bold))))
-   `(org-document-title ((t (:foreground ,clouds))))
+   `(org-document-title ((t (:foreground ,wet-asphalt))))
    `(org-document-info ((t (:foreground ,concrete))))
    ;; outline
    `(outline-1 ((t (:foreground ,green-sea))))
@@ -481,7 +482,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((,class (:inverse-video unspecified
                               :underline unspecified
                               :foreground ,silver
-                              :background "grey30"
+                              :background "grey20"
                               :box (:line-width 1
                                                 :color ,wet-asphalt
                                                 :style unspecified)))
@@ -490,25 +491,39 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((t (:inverse-video unspecified
                          :underline unspecified
                          :foreground ,silver
-                         :background "grey50"
+                         :background "grey35"
                          :box (:line-width 1
                                            :color ,wet-asphalt
                                            :style unspecified)))))
    `(mode-line-buffer-id ((t (:foreground ,sun-flower :weight bold))))
-   `(sml/global ((t (:foreground ,concrete))))
-   `(sml/modes ((t (:foreground ,nephritis))))
-   `(sml/filename ((t (:foreground ,nephritis))))
-   `(sml/folder ((t (:foreground ,carrot))))
-   `(sml/prefix ((t (:foreground ,carrot))))
-   `(sml/read-only ((t (:foreground ,wisteria))))
-   `(sml/modified ((t (:foreground ,pumpkin :weight bold))))
-   `(sml/outside-modified ((t (:background ,pomegranate
-                                           :foreground ,sun-flower :weight bold))))
-   `(sml/line-number ((t (:foreground ,turquoise :weight bold))))
-   `(sml/col-number ((t (:foreground ,turquoise :weight bold))))
-   `(sml/vc ((t (:foreground ,peter-river :weight bold))))
-   `(sml/vc-edited ((t (:foreground ,pumpkin :weight bold))))
-   `(sml/git ((t (:foreground ,peter-river :weight bold))))
+   `(sml/global    ((t :foreground "gray80" :inverse-video nil)))
+   `(sml/modes     ((t :inherit sml/global :foreground "White")))
+   `(sml/minor-modes ((t :inherit sml/global)))
+   `(sml/filename  ((t :inherit sml/global :foreground ,sun-flower :weight bold)))
+   `(sml/prefix    ((t :inherit sml/global :foreground "LightCoral")))
+   `(sml/read-only ((t :inherit sml/not-modified :foreground "DeepSkyBlue")))
+   `(sml/modified ((t :inherit sml/not-modified :foreground ,emerald :weight bold)))
+   `(sml/outside-modified ((t :inherit sml/not-modified :foreground "#ffffff" :background ,pomegranate)))
+
+   `(sml/line-number ((t :inherit sml/modes :weight bold)))
+   `(sml/remote ((t :inherit sml/global)))
+   `(sml/name-filling ((t :inherit sml/position-percentage)))
+   `(sml/position-percentage ((t :inherit sml/prefix :weight normal)))
+   `(sml/col-number ((t :inherit sml/global)))
+   `(sml/numbers-separator ((t :inherit sml/col-number)))
+   `(sml/client ((t :inherit sml/prefix)))
+   `(sml/not-modified ((t :inherit sml/global)))
+   `(sml/mule-info ((t :inherit sml/global)))
+   `(sml/sudo ((t :inherit sml/outside-modified)))
+   `(sml/git ((t :inherit (sml/read-only sml/prefix))))
+   `(sml/folder ((t :inherit sml/global :weight normal)))
+   `(sml/process ((t :inherit sml/prefix)))
+   `(sml/vc ((t :inherit sml/git)))
+   `(sml/vc-edited ((t :inherit sml/prefix)))
+   `(sml/charging ((t :inherit sml/global :foreground "ForestGreen")))
+   `(sml/discharging ((t :inherit sml/global :foreground "Red")))
+   `(sml/time ((t :inherit sml/modes)))
+
    ;; SLIME
    `(slime-repl-output-face ((t (:foreground ,midnight-blue))))
    `(slime-repl-inputed-output-face ((t (:foreground ,wet-asphalt))))
@@ -564,6 +579,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(web-mode-doctype-face ((t (:inherit ,font-lock-comment-face))))
    `(web-mode-folded-face ((t (:underline t))))
    `(web-mode-function-name-face ((t (:foreground ,midnight-blue :weight bold))))
+   `(web-mode-function-call-face ((t (:foreground ,peter-river))))
    `(web-mode-html-attr-name-face ((t (:foreground ,wisteria))))
    `(web-mode-html-attr-value-face ((t (:inherit ,font-lock-string-face))))
    `(web-mode-html-tag-face ((t (:foreground ,turquoise :weight bold))))
@@ -580,7 +596,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(web-mode-whitespaces-face ((t (:background ,alizarin))))
    `(web-mode-block-face ((t (:background "gray88"))))
    `(web-mode-block-control-face ((t (:foreground ,alizarin))))
-   `(web-mode-current-element-highlight-face ((t (:inverse-video t))))
+   `(web-mode-current-element-highlight-face ((t (:background "grey79"))))
    ;; whitespace-mode
    `(whitespace-space ((t (:background ,clouds :foreground ,sun-flower))))
    `(whitespace-hspace ((t (:background ,clouds :foreground ,sun-flower))))
@@ -600,9 +616,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    ))
 
 ;;; Theme Variables
-(wombat/with-color-variables
+(flatui/with-color-variables
   (custom-theme-set-variables
-   'nsalas-wombat
+   'ach-light
    ;; ansi-color
    `(ansi-color-names-vector [,clouds ,alizarin ,emerald ,sun-flower
                                       ,peter-river ,amethyst ,turquoise ,midnight-blue])
@@ -644,5 +660,5 @@ Also bind `class' to ((class color) (min-colors 89))."
                   (file-name-as-directory
                    (file-name-directory load-file-name))))
 
-(provide-theme 'nsalas-wombat)
-;;; nsalas-wombat-theme.el ends here
+(provide-theme 'ach-light)
+;;; ach-light-theme.el ends here
