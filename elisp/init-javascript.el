@@ -7,12 +7,12 @@
   :commands (js2-mode js2-jsx-mode)
   :defer t
   :mode (("\\.js\\'" . js2-mode))
+  :interpreter "node"
   :config
   (setq js2-basic-offset 2)
   (setq-default js2-mode-show-parse-errors nil
                 js2-mode-show-strict-warnings nil
                 js2-idle-timer-delay 0.4)
-  (add-hook 'js2-mode-hook (lambda () (color-identifiers-mode -1)))
   (with-eval-after-load 'dumb-jump
     (define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
     (define-key js2-mode-map (kbd "M-,") 'dumb-jump-back))
@@ -366,8 +366,7 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
 ;; CoffeeScript
 (use-package coffee-mode
   :ensure t
-  :config
-  (add-hook 'coffee-mode-hook (lambda () (color-identifiers-mode -1))))
+  :config)
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
