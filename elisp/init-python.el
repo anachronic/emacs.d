@@ -234,7 +234,6 @@ Runs autoflake --remove-all-unused-imports -i file"
   (add-to-list 'ivy-ignore-buffers "\\*epc con"))
 
 (add-hook 'python-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'python-mode-hook (lambda () (color-identifiers-mode -1)))
 
 ;; pip requirements. Looks like a very good package
 (use-package pip-requirements
