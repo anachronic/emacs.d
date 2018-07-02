@@ -16,10 +16,26 @@
 ;; I like prettify symbols mode. but only for elisp
 (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
 
-(use-package evil-cleverparens
+;; Replacing paredit in evil is quite a pain
+;; (use-package evil-cleverparens
+;;   :ensure t
+;;   :config
+;;   (add-hook 'emacs-lisp-mode-hook 'evil-cleverparens-mode))
+
+(use-package lispyville
   :ensure t
+  :init
+  (add-hook 'emacs-lisp-mode-hook #'lispyville-mode)
   :config
-  (add-hook 'emacs-lisp-mode-hook 'evil-cleverparens-mode))
+  (lispyville-set-key-theme
+   '(operators
+     c-w
+     prettify
+     additional-motions
+     slurp/barf-lispy
+     wrap
+     additional
+     additional-insert)))
 
 ;; Stealing conf from purcell's .emacs.d. This package is actually
 ;; pretty cool, it gets you out of the dullness of full white text (or
