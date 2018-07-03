@@ -264,5 +264,8 @@ Single Capitals as you type."
   :init
   (add-hook 'prog-mode-hook 'hungry-delete-mode))
 
+;; going back to winner mode, can be useful
+(winner-mode 1)
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
