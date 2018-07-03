@@ -28,10 +28,10 @@
     ("nephritis"       . "#27ae60")
 
     ("peter-river"     . "#7590db")
-    ("belize-hole"     . "#0a74b9")
+    ("belize-hole"     . "#4f97d7")
 
     ("amethyst"        . "#9b59b6")
-    ("wisteria"        . "DeepPink")
+    ("wisteria"        . "#bc6ec5")
 
     ("sun-flower"      . "#f1c40f")
     ("orange"          . "#d98c10")
@@ -58,7 +58,6 @@ Also bind `class' to ((class color) (min-colors 89))."
 (ach-dark/with-color-variables
   (custom-theme-set-faces
    'ach-dark
-                                        ; Built-in
    ;; basic coloring
    '(button ((t (:underline t))))
    `(link ((t (:foreground ,peter-river :underline t :weight bold))))
@@ -70,7 +69,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(header-line ((t (:foreground ,midnight-blue
                                   :background "LightSkyBlue1"
                                   :box (:line-width -1 :style released-button)))))
-   `(highlight ((t (:background ,silver))))
+   `(highlight ((t (:background "#444155" :foreground "#b2b2b2"))))
    `(success ((t (:foreground ,nephritis :weight bold))))
    `(warning ((t (:foreground ,pumpkin :weight bold))))
    ;; compilation
@@ -95,25 +94,25 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(grep-match-face ((t (:foreground ,sun-flower :weight bold))))
    `(match ((t (:background ,turquoise :foreground ,wet-asphalt))))
    ;; isearch
-   `(isearch ((t (:foreground ,clouds :weight bold :background ,alizarin))))
+   `(isearch ((t (:foreground ,background :background "#86dc2f"))))
    `(isearch-fail ((t (:foreground ,sun-flower :weight bold :background ,pomegranate))))
-   `(lazy-highlight ((t (:foreground ,wet-asphalt :weight bold :background ,sun-flower))))
+   `(lazy-highlight ((t (:background "#29422d"))))
 
    `(menu ((t (:foreground ,midnight-blue :background ,silver))))
-   `(minibuffer-prompt ((t (:foreground ,wet-asphalt :weight bold))))
-   `(region ((,class (:background ,sun-flower))
+   `(minibuffer-prompt ((t (:foreground ,belize-hole :weight bold))))
+   `(region ((,class (:background "#444155"))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,turquoise))))
    `(trailing-whitespace ((t (:background ,alizarin))))
    `(vertical-border ((t (:foreground "#5d4d7a"))))
    ;; font lock
-   `(font-lock-builtin-face ((t (:foreground ,green-sea))))
+   `(font-lock-builtin-face ((t (:foreground ,belize-hole))))
    `(font-lock-comment-face ((t (:foreground ,asbestos))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,concrete))))
    `(font-lock-constant-face ((t (:foreground ,amethyst))))
    `(font-lock-doc-face ((t (:foreground ,asbestos))))
-   `(font-lock-function-name-face ((t (:foreground ,wet-asphalt :weight bold))))
-   `(font-lock-keyword-face ((t (:foreground ,peter-river :weight bold))))
+   `(font-lock-function-name-face ((t (:foreground ,wisteria :weight bold))))
+   `(font-lock-keyword-face ((t (:foreground ,belize-hole :weight bold))))
    `(font-lock-negation-char-face ((t (:foreground ,peter-river :weight bold))))
    `(font-lock-preprocessor-face ((t (:foreground ,alizarin :weight bold))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,orange :weight bold))))
@@ -129,6 +128,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-periodic-xact-face ((t (:inherit ledger-font-directive-face))))
    `(ledger-occur-xact-face ((t (:background ,silver))))
                                         ; Third-party
+   ;; evil
+   `(evil-search-highlight-persist-highlight-face ((t (:inherit lazy-highlight))))
+   `(evil-ex-lazy-highlight ((t (:inherit lazy-highlight))))
+   `(evil-match ((t (:inherit lazy-highlight))))
    ;; ace-jump
    `(ace-jump-face-background
      ((t (:foreground ,concrete :background ,clouds :inverse-video nil))))
@@ -343,7 +346,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-moccur-buffer ((t (:foreground ,asbestos))))
 
    ;; highlight-symbol
-   `(highlight-symbol-face ((t (:background "grey88"))))
+   `(highlight-symbol-face ((t (:background ,wet-asphalt))))
 
    ;; hl-line-mode
    `(hl-line ((t (:background "#212026"))))
@@ -358,11 +361,12 @@ Also bind `class' to ((class color) (min-colors 89))."
 
    ;; ivy-mode
    `(ivy-virtual ((t (:foreground ,pumpkin))))
-   `(ivy-current-match ((t (:foreground "white" :background "#1a4b77"))))
-   `(ivy-minibuffer-match-face-1 ((t (:background "#d3d3d3"))))
-   `(ivy-minibuffer-match-face-2 ((t (:background "#e99ce8" :weight bold))))
-   `(ivy-minibuffer-match-face-3 ((t (:background "#bbbbff" :weight bold))))
-   `(ivy-minibuffer-match-face-4 ((t (:background "#ffbbff" :weight bold))))
+   `(ivy-highlight-face ((t (:inherit highlight))))
+   `(ivy-current-match ((t (:background "#444155"))))
+   `(ivy-minibuffer-match-face-1 ((t (:foreground "#bbbbff" :underline t))))
+   `(ivy-minibuffer-match-face-2 ((t (:foreground "#e99ce8" :weight bold :underline t))))
+   `(ivy-minibuffer-match-face-3 ((t (:foreground ,emerald :weight bold :underline t))))
+   `(ivy-minibuffer-match-face-4 ((t (:foreground ,sun-flower :weight bold :underline t))))
    ;; indent-guide
    `(indent-guide-face ((t (:foreground ,concrete))))
    ;; js2-mode
@@ -373,7 +377,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(js2-object-property ((t (:foreground ,amethyst))))
    `(js2-jsdoc-value ((t (:foreground ,peter-river))))
    `(js2-function-call ((t (:foreground ,peter-river))))
-   `(js2-function-param ((t (:foreground ,wet-asphalt))))
+   `(js2-function-param ((t (:inherit font-lock-variable-name-face))))
    `(js2-external-variable ((t (:foreground ,pumpkin))))
    ;; linum-mode and nlinum-mode
    `(linum ((t (:foreground ,wet-asphalt :background ,silver))))
@@ -384,14 +388,19 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-header ((t (:foreground ,midnight-blue :background nil :weight bold))))
    `(magit-header-line ((t (:inherit magit-section-heading :foreground ,wet-asphalt))))
    `(magit-section-title ((t (:foreground ,midnight-blue :background nil :weight bold))))
-   `(magit-section-highlight ((t (:background "grey85"))))
+   `(magit-section-heading ((t (:foreground ,belize-hole :background nil :weight bold))))
+   `(magit-section-highlight ((t (:background "#212026"))))
    `(magit-branch ((t (:foreground ,midnight-blue :background ,turquoise
                                    :weight bold
                                    :box (:line-width 1 :color ,green-sea)))))
    `(magit-item-highlight ((t (:background ,silver))))
 
    ;; magit-diff
-   `(magit-diff-context-highlight ((t (:foreground "grey50" :background "grey85"))))
+   `(magit-diff-added-highlight ((t (:foreground "#ceecc" :background "#336633"))))
+   `(magit-diff-context-highlight ((t (:foreground "#b2b2b2" :background "#212026"))))
+   `(magit-diff-file-heading ((t (:foreground ,foreground))))
+   `(magit-diff-file-heading-highlight ((t (:inherit magit-section-highlight))))
+   `(magit-diff-hunk-heading-highlight ((t (:foreground "#9a9aba" :background "#34323e"))))
 
    ;; magit log
    `(magit-log-author ((t (:foreground ,belize-hole))))
@@ -416,12 +425,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-agenda-date ((t (:inherit font-lock-comment-face))) t)
    `(org-agenda-structure ((t (:foreground ,green-sea))))
    `(org-archived ((t (:foreground ,midnight-blue :weight bold))))
-   `(org-block-end-line ((t (:foreground ,concrete :background "LightCyan"))))
-   `(org-block-begin-line ((t (:foreground ,concrete :background "LightCyan"))))
+   `(org-block-begin-line ((t (:foreground "#827591" :background "#373040"))))
+   `(org-block-end-line ((t (:inherit org-block-begin-line))))
+   `(org-block ((t (:foreground "#cbc1d5" :background "#2f2b33"))))
    `(org-checkbox ((t (:background ,silver :foreground ,wet-asphalt
                                    :box (:line-width 1 :style unspecified)))))
    `(org-date ((t (:foreground ,belize-hole :underline t))))
    `(org-deadline-announce ((t (:foreground ,alizarin))))
+   `(org-document-title ((t (:foreground ,wisteria :weight bold))))
    `(org-done ((t (:bold t :weight bold :foreground ,emerald))))
    `(org-formula ((t (:foreground ,sun-flower))))
    `(org-headline-done ((t (:foreground ,emerald))))
@@ -442,6 +453,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-todo ((t (:bold t :foreground ,alizarin :weight bold))))
    `(org-upcoming-deadline ((t (:inherit font-lock-keyword-face))))
    `(org-warning ((t (:bold t :foreground ,alizarin :weight bold :underline nil))))
+   `(org-verbatim ((t (:foreground ,belize-hole))))
    `(org-footnote ((t (:foreground ,amethyst :weight bold))))
    `(org-document-title ((t (:foreground ,wet-asphalt))))
    `(org-document-info ((t (:foreground ,concrete))))
