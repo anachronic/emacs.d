@@ -10,9 +10,10 @@
 (load-theme 'ach-dark t)
 
 ;; If powerline fonts are installed, use that
-(let ((pl-font "DejaVu Sans Mono"))
-  (when (member pl-font (font-family-list))
-    (set-face-attribute 'default nil :font pl-font)))
+(let ((pl-font "Source Code Pro"))
+  (set-face-attribute 'default nil :font (if (member pl-font (font-family-list))
+                                             pl-font
+                                           "DejaVu Sans Mono")))
 
 (defun ach-set-font-height-125 ()
   "Set font height to 125."
