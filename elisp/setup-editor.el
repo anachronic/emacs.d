@@ -267,5 +267,21 @@ Single Capitals as you type."
 ;; going back to winner mode, can be useful
 (winner-mode 1)
 
+;; Smooth scrolling from spacemacs
+;; smooth scrolling
+
+(defun ach/enable-smooth-scrolling ()
+  "Enable smooth scrolling."
+  (interactive)
+  (setq scroll-conservatively 101))
+
+(defun ach/disable-smooth-scrolling ()
+  "Disable smooth scrolling."
+  (interactive)
+  (setq scroll-conservatively 0))
+
+(ach/enable-smooth-scrolling)
+
+
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
