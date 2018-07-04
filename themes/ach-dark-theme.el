@@ -360,7 +360,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ido-indicator ((t (:foreground ,sun-flower :background ,pumpkin))))
 
    ;; ivy-mode
-   `(ivy-virtual ((t (:foreground ,pumpkin))))
+   `(ivy-virtual ((t (:foreground ,peter-river))))
    `(ivy-highlight-face ((t (:inherit highlight))))
    `(ivy-current-match ((t (:background "#444155"))))
    `(ivy-minibuffer-match-face-1 ((t (:foreground "#bbbbff" :underline t))))
@@ -487,25 +487,15 @@ Also bind `class' to ((class color) (min-colors 89))."
    ;; show-paren
    `(show-paren-mismatch ((t (:foreground ,sun-flower :background ,pomegranate :weight bold))))
    `(show-paren-match ((t (:weight bold :inverse-video t))))
-   ;; mode-line/sml-mode-line
-   `(mode-line
-     ((,class (:inverse-video unspecified
-                              :underline unspecified
-                              :foreground ,silver
-                              :background "grey20"
-                              :box (:line-width 1
-                                                :color ,wet-asphalt
-                                                :style unspecified)))
-      (t :inverse-video t)))
-   `(mode-line-inactive
-     ((t (:inverse-video unspecified
-                         :underline unspecified
-                         :foreground ,silver
-                         :background "grey35"
-                         :box (:line-width 1
-                                           :color ,wet-asphalt
-                                           :style unspecified)))))
+   ;; mode-line and powerline
+   `(mode-line ((t (:foreground ,foreground :background "#222226"))))
+   `(mode-line-inactive ((t (:foreground ,foreground :background ,background :box (:color "#5d4d7a" :line-width 1)))))
    `(mode-line-buffer-id ((t (:foreground ,sun-flower :weight bold))))
+   `(powerline-active0 ((t (:inherit mode-line))))
+   `(powerline-active1 ((t (:foreground ,foreground :background "#5d4d7a"))))
+   `(powerline-active2 ((t (:foreground ,foreground :background "#5d4d7a"))))
+
+   ;; smart mode line
    `(sml/global    ((t :foreground "gray80" :inverse-video nil)))
    `(sml/modes     ((t :inherit sml/global :foreground "White")))
    `(sml/minor-modes ((t :inherit sml/global)))
