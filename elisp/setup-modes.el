@@ -18,7 +18,7 @@
 ;; this one is builtin
 (use-package subword
   :defer t
-  :diminish "")
+  :diminish "w")
 
 (provide 'setup-modes)
 ;;; setup-modes.el ends here
