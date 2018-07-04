@@ -13,7 +13,7 @@
 (use-package latex-preview-pane
   :ensure t
   :after auctex
-  :diminish "Preview"
+  :diminish "P"
   :config
   (latex-preview-pane-enable))
 
@@ -27,7 +27,7 @@
 (defun ach-add-flyspell ()
   "Add Flyspell to a buffer and diminish it to FlyS."
   (flyspell-mode)
-  (diminish 'flyspell-mode "FlyS"))
+  (diminish 'flyspell-mode "S"))
 (add-hook 'LaTeX-mode-hook #'ach-add-flyspell)
 
 ;; Enable narrowing. God disabled commands are annoying.

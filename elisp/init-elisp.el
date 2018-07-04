@@ -24,12 +24,14 @@
 
 (use-package lispyville
   :ensure t
+  :diminish "L"
   :init
   (add-hook 'emacs-lisp-mode-hook #'lispyville-mode)
   :config
   (lispyville-set-key-theme
    '(operators
      c-w
+     text-objects
      prettify
      additional-motions
      slurp/barf-lispy

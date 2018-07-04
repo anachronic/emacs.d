@@ -261,6 +261,7 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
 (use-package tern
   :ensure t
   :defer t
+  :diminish ""
   :init
   (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
   :config
@@ -309,6 +310,7 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
 (use-package js2-refactor
   :ensure t
   :defer t
+  :diminish (js2-refactor-mode)
   :init
   (add-hook 'js2-mode-hook 'js2-refactor-mode)
   :config

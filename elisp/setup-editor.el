@@ -100,7 +100,7 @@ is already narrowed."
   (evil-commentary-mode))
 
 ;; diminish visual-line-mode
-(diminish 'visual-line-mode)
+(diminish 'visual-line-mode "v")
 ;; See https://www.wisdomandwonder.com/link/10214/httpsgithub-commagnars-emacs-dblobmastersite-lispdiminish-ell87why-you-cant-diminish-auto-fill-mode
 (diminish 'auto-fill-function "f")
 (add-hook 'Man-mode-hook 'visual-line-mode)
