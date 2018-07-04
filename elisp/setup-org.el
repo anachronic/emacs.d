@@ -15,8 +15,8 @@
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((emacs-lisp . t)
-     (shell . t)
+   `((emacs-lisp . t)
+     (,(if (locate-library "ob-sh") 'sh 'shell) . t)
      (ruby . t)
      (python . t)
      (R . t))))
@@ -26,7 +26,7 @@
   :after org
   :defer t
   :diminish "e"
-  :inir
+  :init
   (add-hook 'org-mode-hook 'evil-org-mode)
   :config
   (add-hook 'evil-org-mode-hook
