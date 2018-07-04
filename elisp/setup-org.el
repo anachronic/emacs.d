@@ -8,9 +8,11 @@
 ;; is it a way to get packages. I'll get stuff once I need the stuff
 (use-package org
   :ensure t
+  :defer t
   :commands (org-mode org-agenda)
+  :init
+  (setq-default org-agenda-files '("~/Dropbox/orgfiles/"))
   :config
-  (setq org-agenda-files '("~/Dropbox/orgfiles/"))
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
@@ -22,8 +24,11 @@
 (use-package evil-org
   :ensure t
   :after org
-  :config
+  :defer t
+  :diminish "e"
+  :inir
   (add-hook 'org-mode-hook 'evil-org-mode)
+  :config
   (add-hook 'evil-org-mode-hook
             (lambda ()
               (evil-org-set-key-theme)
