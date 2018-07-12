@@ -7,6 +7,7 @@
   :commands (web-mode)
   :mode
   (("\\.phtml\\'" . web-mode)
+   ("\\.php\\'" . web-mode)
    ("\\.tpl\\.php\\'" . web-mode)
    ("\\.[agj]sp\\'" . web-mode)
    ("\\.as[cp]x\\'" . web-mode)
@@ -20,6 +21,12 @@
   :config
   ;; I feel like subword mode in web mode is sensible
   (add-hook 'web-mode-hook 'subword-mode)
+
+  ;; On php only we'll admit code blocks to be 4 spaces
+  (defun ach/web-mode-php-indent-4 ()
+    (when (string= (f-ext (f-this-file)) "php")
+      (setq-local web-mode-code-indent-offset 4)))
+  (add-hook 'web-mode-hook 'ach/web-mode-php-indent-4)
 
   ;; Web mode defaults: every indent to 2 spaces
   (setq web-mode-comment-style 2)
@@ -81,6 +88,7 @@
 ;; Emmet!!!
 (use-package emmet-mode
   :ensure t
+  :diminish "<"
   :config
   (progn
     (add-hook 'web-mode-hook 'emmet-mode)))

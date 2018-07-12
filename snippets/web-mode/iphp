@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: iphp
+# key: iphp
+# --
+<?php $0 ?>
