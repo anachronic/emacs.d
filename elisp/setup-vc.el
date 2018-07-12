@@ -48,7 +48,7 @@
   (setq projectile-completion-system 'ivy)
   (setq projectile-mode-line '(:eval
                                (when (not (projectile-project-p))
-                                 " -")))
+                                 " ")))
   (defun projectile-magit-action ()
     "Switch to magit status action when invoking projectile."
     (magit-status-internal (projectile-project-root)))
