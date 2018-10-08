@@ -72,10 +72,6 @@
 (use-package company-web
   :ensure t)
 
-;; This package works wonders. I have to say I didn't expect it to.
-(use-package ac-html-bootstrap
-  :ensure t)
-
 (defun ach-add-company-backends-webmode ()
   "Add Tern, webmode and bootstrap backends to company."
   (setq-local company-backends company-backends)

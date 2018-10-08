@@ -70,9 +70,8 @@
 ;; I guess this can't hurt
 (use-package ivy-rich
   :ensure t
-  :config
-  (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer)
-  (ivy-set-display-transformer 'counsel-projectile-switch-to-buffer 'ivy-rich-switch-buffer-transformer))
+  :init
+  (ivy-rich-mode 1))
 
 ;; YASnippet, always so handy...
 (use-package yasnippet
