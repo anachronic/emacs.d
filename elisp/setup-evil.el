@@ -51,6 +51,9 @@
     ;; Dired
     "gj" 'dired-jump
 
+    ;; Only
+    "o" 'delete-other-windows
+
     ;; "Applications"
     "gan" 'gnus
     "gam" 'mu4e
