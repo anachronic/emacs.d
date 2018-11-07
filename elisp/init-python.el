@@ -75,36 +75,17 @@ If ARG is present, ask for a command to run."
              (run-python)
              (python-shell-switch-to-shell)))))
 
-;; Add tweaks to standard python.el defined in this file.
-;; Shell related commands
-(define-key python-mode-map (kbd "C-c C-z") #'ach-python-switch-to-shell)
-(define-key python-mode-map (kbd "C-c C-r") #'spacemacs/python-execute-file)
-(define-key python-mode-map (kbd "C-c C-c") #'python-shell-send-dwim)
-
-(define-key python-mode-map (kbd "C-M-f") #'python-nav-forward-sexp)
-(define-key python-mode-map (kbd "C-M-b") #'python-nav-backward-sexp)
-(define-key python-mode-map (kbd "C-M-a") #'python-nav-backward-defun)
-(define-key python-mode-map (kbd "C-M-e") #'python-nav-end-of-defun)
-
-(defun ach-python-debug (&optional arg)
-  "Insert `ach-python-debug-string' in line above, remove all of them with ARG prefix."
-  (interactive "P")
-  (if arg
-      (ach--python-remove-debug-calls)
-    (ach--python-insert-debug)))
-
-(define-key python-mode-map (kbd "C-c C-e") 'ach-python-debug)
 
 ;; Dealing with imports is a pain in Python
-(autoload 'importmagic-mode "importmagic")
-(add-hook 'python-mode-hook 'importmagic-mode)
-(define-key python-mode-map (kbd "C-c C-f") nil)
-(with-eval-after-load 'importmagic
-  (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
-  (define-key importmagic-mode-map (kbd "C-c C-l") nil)
-  (setq importmagic-style-configuration-alist '((multiline . backslash)
-                                                (max_columns . 2000)))
-  (diminish 'importmagic-mode))
+;; (autoload 'importmagic-mode "importmagic")
+;; (add-hook 'python-mode-hook 'importmagic-mode)
+;; (define-key python-mode-map (kbd "C-c C-f") nil)
+;; (with-eval-after-load 'importmagic
+;;   (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
+;;   (define-key importmagic-mode-map (kbd "C-c C-l") nil)
+;;   (setq importmagic-style-configuration-alist '((multiline . backslash)
+;;                                                 (max_columns . 2000)))
+;;   (diminish 'importmagic-mode))
 
 ;; Use autoflake to remove unused crap. This idea comes from spacemacs
 ;; and the following URL
