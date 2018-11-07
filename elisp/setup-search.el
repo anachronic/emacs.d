@@ -37,6 +37,10 @@
   (define-key dumb-jump-mode-map (kbd "C-M-g") nil)
   (define-key dumb-jump-mode-map (kbd "C-M-p") nil)
   (define-key dumb-jump-mode-map (kbd "C-M-q") nil)
+  (defun ach--set-evil-jump-before-dumb-jump-go (&optional use-tooltip prefer-external prompt)
+    "Set an evil jump before actually jumping."
+    (evil-set-jump))
+  (advice-add 'dumb-jump-go :before #'ach--set-evil-jump-before-dumb-jump-go)
   (add-hook 'prog-mode-hook 'dumb-jump-mode))
 
 (provide 'setup-search)
