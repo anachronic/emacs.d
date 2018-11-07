@@ -48,8 +48,7 @@
 (use-package counsel
   :ensure t
   :demand
-  :bind (("M-x" . counsel-M-x)
-         ("C-x f" . counsel-recentf))
+  :bind (("M-x" . counsel-M-x))
   :config
 
   ;; For some reason evil hijacks C-.
@@ -165,11 +164,11 @@
 ;; Hippie expand can be very annoying with list expanding and
 ;; abbrevs. Config taken from purcell's
 (setq hippie-expand-try-functions-list
-      '(try-complete-file-name-partially
-        try-complete-file-name
-        try-expand-dabbrev
+      '(try-expand-dabbrev
         try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill))
+        try-expand-dabbrev-from-kill
+        try-complete-file-name
+        try-complete-file-name-partially))
 
 ;; I saw this talk and it blew my mind about some vim completions.
 ;; https://youtu.be/3TX3kV3TICU
