@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: imgto
+# key: imgto
+# --
+<%= image_tag "${1:path}"$0 %>

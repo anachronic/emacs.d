@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: each
+# key: each
+# --
+${1:collection}.each do |${2:varname}|
+$0
+end

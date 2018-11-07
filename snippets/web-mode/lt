@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lt
+# key: lt
+# --
+<%= link_to "${1:text}"$0 %>
