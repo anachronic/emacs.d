@@ -41,53 +41,6 @@
   (setq venv-location "~/.virtualenvs/")
   )
 
-;; They say IPython rocks. I guess it does.
-(when (executable-find "ipython")
-  (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "--simple-prompt -i"
-        python-shell-buffer-name "IPython"))
-
-;; Let's get rid of the region/buffer keybindings by making -yet
-;; again- a dwim command. Bind it to C-c C-c
-(defun ach-python-shell-send-dwim (&optional send-main msg)
-  "If region is active, send region to buffer, otherwise send the entire buffer.
-The SEND-MAIN and MSG arguments are the same as in python-shell-send-region and
-python-shell-send-buffer."
-  (interactive (list current-prefix-arg t))
-  (if (region-active-p)
-      (python-shell-send-region (region-beginning)
-                                (region-end)
-                                send-main
-                                msg)
-    (progn
-      (save-restriction
-        (widen)
-        (python-shell-send-region (point-min)
-                                  (point-max)
-                                  send-main
-                                  msg)))))
-
-;; While the former function is pretty ok with everything and you
-;; don't lose any functionality, it's kind of a bummer that you have
-;; to C-c C-p before sending the buffer. Why can't we just C-c C-c and
-;; create a Python shell if there isn't one active? Let's just take
-;; the magnars approach here: Don't wait for anyone to fix it, just
-;; code it and be happy. It kind of sucks that print statements show
-;; before completion the first time the command is run, but I'm fine
-;; with that. I'd rather not have to hit C-c C-p before C-c. Elpy
-;; really got a lot of this right.
-(defun python-shell-send-dwim (&optional send-main msg)
-  "Send the current region or buffer to shell.
-
-Start the shell if it's not up, SEND-MAIN and MSG are the same
-arguments that `ach-python-shell-swnd-dwim' takes."
-  (interactive (list current-prefix-arg t))
-  (condition-case nil
-      (call-interactively 'ach-python-shell-send-dwim)
-    (error (progn
-             (run-python (python-shell-calculate-command) nil t)
-             (call-interactively 'ach-python-shell-send-dwim)))))
-
 ;; There's a great approach to the "run project" problem in Spacemacs
 ;; that I thought is very valuable. Just set a hotkey to run the
 ;; current file in a Shell buffer. Quite simple, huh?  It also works
@@ -128,53 +81,10 @@ If ARG is present, ask for a command to run."
 (define-key python-mode-map (kbd "C-c C-r") #'spacemacs/python-execute-file)
 (define-key python-mode-map (kbd "C-c C-c") #'python-shell-send-dwim)
 
-(with-eval-after-load 'indent-tools
-  (define-key python-mode-map (kbd "C-M-n") 'indent-tools-goto-next-sibling)
-  (define-key python-mode-map (kbd "C-M-p") 'indent-tools-goto-previous-sibling)
-  (define-key python-mode-map (kbd "M-k") 'indent-tools-kill-level)
-  (define-key python-mode-map (kbd "C-M-d") 'indent-tools-goto-child)
-
-  ;; Evaluate the possibility to bind this to a key
-  (defun ach-raise-current-indent-level ()
-    "Raise current indent level."
-    (interactive)
-    (save-excursion
-      (indent-tools-goto-parent)
-      (indent-tools-demote)
-      (kill-whole-line)
-      (move-beginning-of-line 1)
-      (newline-and-indent)))
-
-  ;; Promoting and demoting
-  (define-key python-mode-map (kbd "C-c ]") 'indent-tools-indent)
-  (define-key python-mode-map (kbd "C-c [") 'indent-tools-demote)
-  )
-
 (define-key python-mode-map (kbd "C-M-f") #'python-nav-forward-sexp)
 (define-key python-mode-map (kbd "C-M-b") #'python-nav-backward-sexp)
 (define-key python-mode-map (kbd "C-M-a") #'python-nav-backward-defun)
 (define-key python-mode-map (kbd "C-M-e") #'python-nav-end-of-defun)
-
-;; Debugging stuff
-(defvar ach-python-debug-string
-  "import ipdb; ipdb.set_trace()"
-  "Python debugging string to insert in buffers.")
-
-(defun ach--python-insert-debug ()
-  "Insert `ach-python-debug-string' in a line before this one."
-  (back-to-indentation)
-  (insert ach-python-debug-string)
-  (newline-and-indent))
-
-(defun ach--python-remove-debug-calls ()
-  "Remove every line containing `ach-python-debug-string' in buffer."
-  (save-excursion
-    (save-restriction
-      (widen)
-      (goto-char (point-min))
-      (let ((re (concat "^\\s-*" ach-python-debug-string "$")))
-        (while (re-search-forward re nil t)
-          (kill-whole-line))))))
 
 (defun ach-python-debug (&optional arg)
   "Insert `ach-python-debug-string' in line above, remove all of them with ARG prefix."
