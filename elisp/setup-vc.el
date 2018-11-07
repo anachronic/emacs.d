@@ -15,8 +15,6 @@
   ;; magit-status is autoloaded
   (evil-leader/set-key
     "gg" 'magit-status)
-  :bind (("<f8>" . magit-status)
-         ("C-x g" . magit-status))
   :config
   (setq magit-repository-directories '("~/forks"))
   (add-hook 'magit-mode-hook (lambda () (require 'evil-magit)))
@@ -28,10 +26,6 @@
   (add-hook 'magit-mode-hook (lambda ()
                                (exec-path-from-shell-copy-env "SSH_AGENT_PID")
                                (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")))
-  (define-key magit-mode-map (kbd "M-1") nil)
-  (define-key magit-mode-map (kbd "M-2") nil)
-  (define-key magit-mode-map (kbd "M-3") nil)
-  (define-key magit-mode-map (kbd "M-4") nil)
   )
 
 ;; This one can't really be up there, because that doesn't load
