@@ -6,6 +6,10 @@
 (define-key help-map (kbd "C-f") nil)
 (define-key help-map (kbd "C-f") #'counsel-describe-face)
 
+;; Move help to leader rather than C-h
+(evil-leader/set-key "h"
+  help-map)
+
 ;; Command-log is useful sometimes, but let's not autoinstall as it
 ;; will only slow first run time.
 (use-package command-log-mode
