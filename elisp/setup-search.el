@@ -31,6 +31,9 @@
 ;; This is GREAT when tags don't really cut it
 (use-package dumb-jump
   :ensure t
+  :init
+  (defun ach--set-dumb-jump-locally ()
+    (evil-local-set-key 'normal (kbd "gd") 'dumb-jump-go))
   :config
   (setq dumb-jump-selector 'ivy)
   (setq dumb-jump-prefer-searcher 'rg)

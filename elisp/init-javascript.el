@@ -13,9 +13,7 @@
   (setq-default js2-mode-show-parse-errors nil
                 js2-mode-show-strict-warnings nil
                 js2-idle-timer-delay 0.4)
-  (with-eval-after-load 'dumb-jump
-    (define-key js2-mode-map (kbd "M-.") 'dumb-jump-go)
-    (define-key js2-mode-map (kbd "M-,") 'dumb-jump-back))
+  (add-hook 'js2-mode-hook 'ach--set-dumb-jump-locally)
 
   ;; Set sensible mode lighters...
   (add-hook 'js2-mode-hook (lambda () (setq-local mode-name "Javascript")))
@@ -55,8 +53,7 @@
       ;; ("Function" "^[ \t]*\\([A-Za-z_$][A-Za-z0-9_$]+\\)[ \t]*([a-zA-Z0-9, ]*) *\{ *$" 1) ;; es6 fn1 () { }
       ;; ("Function" "^[ \t]*\\([A-Za-z_$][A-Za-z0-9_$]+\\)[ \t]*=[ \t]*(?[a-zA-Z0-9, ]*)?[ \t]*=>" 1) ;; es6 fn1 = (e) =>
       ;; ;; }}
-      ("Task" "[. \t]task([ \t]*['\"]\\([^'\"]+\\)" 1)
-      ))
+      ("Task" "[. \t]task([ \t]*['\"]\\([^'\"]+\\)" 1)))
 
   ;; {{ patching imenu in js2-mode
   (setq js2-imenu-extra-generic-expression javascript-common-imenu-regex-list)
@@ -165,7 +162,7 @@ If NOT-JSON-P is not nil, validate as Javascript expression instead of JSON."
            first-err
            (first-err-pos (if (region-active-p) (region-beginning) 0)))
       (unless not-json-p
-        (setq json-exp (format "var a=%s;"  json-exp)))
+        (setq json-exp (format "var a=%s;" json-exp)))
       (with-temp-buffer
         (insert json-exp)
         (unless (featurep 'js2-mode)
@@ -265,8 +262,6 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
   :init
   (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
   :config
-  (define-key tern-mode-keymap (kbd "M-.") nil)
-  (define-key tern-mode-keymap (kbd "M-,") nil)
   (define-key tern-mode-keymap (kbd "C-c C-r") nil))
 
 ;; See above

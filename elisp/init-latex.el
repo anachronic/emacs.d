@@ -17,12 +17,6 @@
   :config
   (latex-preview-pane-enable))
 
-;; The following doesn't play nice with use-package. Whatever.
-(defun ach-add-preview-pane-toggle ()
-  "Add latex preview pane keybinding."
-  (local-set-key (kbd "C-x p") 'latex-preview-pane-mode))
-(add-hook 'LaTeX-mode-hook 'ach-add-preview-pane-toggle)
-
 ;; Let's try Flyspell with TeX documents.
 (defun ach-add-flyspell ()
   "Add Flyspell to a buffer and diminish it to FlyS."
