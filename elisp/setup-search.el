@@ -25,6 +25,7 @@
   :defer t
   :init
   (setq-default anzu-cons-mode-line-p nil)
+  (global-set-key [remap query-replace] 'anzu-query-replace)  ;; This is autoloaded
   (with-eval-after-load 'evil
     (require 'evil-anzu)))
 
