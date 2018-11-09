@@ -30,6 +30,16 @@
   (define-key evil-normal-state-map "j" 'evil-next-visual-line)
   (define-key evil-normal-state-map "k" 'evil-previous-visual-line)
 
+  ;; Moving around with windows
+  (global-unset-key (kbd "C-h"))
+  (global-unset-key (kbd "C-j"))
+  (global-unset-key (kbd "C-k"))
+  (global-unset-key (kbd "C-l"))
+  (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+  (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+  (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+  (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
   ;; leader defines
   (evil-leader/set-key
     "<SPC>" 'ivy-switch-buffer

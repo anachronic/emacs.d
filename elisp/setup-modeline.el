@@ -16,8 +16,7 @@
   :init
   (require 'spaceline-config)
   :config
-  (spaceline-spacemacs-theme)
-  (setq spaceline-minor-modes-separator ""))
+  (spaceline-spacemacs-theme))
 
 (provide 'setup-modeline)
 ;;; setup-modeline.el ends here

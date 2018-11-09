@@ -85,9 +85,12 @@
 (use-package emmet-mode
   :ensure t
   :diminish "<"
+  :init
+  (add-hook 'web-mode-hook 'emmet-mode)
   :config
-  (progn
-    (add-hook 'web-mode-hook 'emmet-mode)))
+  (define-key emmet-mode-keymap (kbd "C-j") nil)
+  (define-key emmet-mode-keymap (kbd "<C-return>") nil)
+  (define-key emmet-mode-keymap (kbd "C-;") 'emmet-expand-line))
 
 (with-eval-after-load 'web-mode
   (define-key web-mode-map (kbd "M-.") #'dumb-jump-go)

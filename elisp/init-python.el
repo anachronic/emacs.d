@@ -77,15 +77,15 @@ If ARG is present, ask for a command to run."
 
 
 ;; Dealing with imports is a pain in Python
-;; (autoload 'importmagic-mode "importmagic")
-;; (add-hook 'python-mode-hook 'importmagic-mode)
-;; (define-key python-mode-map (kbd "C-c C-f") nil)
-;; (with-eval-after-load 'importmagic
-;;   (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
-;;   (define-key importmagic-mode-map (kbd "C-c C-l") nil)
-;;   (setq importmagic-style-configuration-alist '((multiline . backslash)
-;;                                                 (max_columns . 2000)))
-;;   (diminish 'importmagic-mode))
+(autoload 'importmagic-mode "importmagic")
+(add-hook 'python-mode-hook 'importmagic-mode)
+(define-key python-mode-map (kbd "C-c C-f") nil)
+(with-eval-after-load 'importmagic
+  (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
+  (define-key importmagic-mode-map (kbd "C-c C-l") nil)
+  (setq importmagic-style-configuration-alist '((multiline . backslash)
+                                                (max_columns . 2000)))
+  (diminish 'importmagic-mode))
 
 ;; Use autoflake to remove unused crap. This idea comes from spacemacs
 ;; and the following URL
