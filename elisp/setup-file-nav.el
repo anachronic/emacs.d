@@ -23,6 +23,8 @@
              (message "Can't xdg-open file at point")))))
 
 (define-key dired-mode-map (kbd "M-RET") 'dired-xdg-open)
+(evil-define-minor-mode-key 'normal 'dired-mode
+  (kbd "-") 'dired-up-directory)
 
 ;; We want to be able to toggle dot files in dired
 ;; (add-hook 'dired-mode-hook (lambda ()

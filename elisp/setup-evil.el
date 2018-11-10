@@ -64,6 +64,12 @@
     ;; Only
     "o" 'delete-other-windows
 
+    ;; Eshell
+    "s" 'eshell
+
+    ;; Bury buffer
+    "q" 'bury-buffer
+
     ;; "Applications"
     "gan" 'gnus
     "gam" 'mu4e

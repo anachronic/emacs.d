@@ -13,6 +13,10 @@
 ;; don't really know about this one but sounds sensible
 (setq eshell-prefer-lisp-functions nil)
 
+(evil-define-minor-mode-key 'insert 'eshell-mode
+  (kbd "C-u") 'eshell-kill-input
+  (kbd "C-w") 'backward-kill-word
+  (kbd "<tab>") 'company-complete)
 
 ;; This part is entirely copied from Howard Abrams' config.
 ;; I'll make a reference in the README.md file.
@@ -94,51 +98,6 @@
 (setq eshell-highlight-prompt nil)
 
 ;; ---------------------------------- END HA's copy ------------------------------
-
-;; I use C-d quite frequently when in shells. I guess I want that
-;; too. Thank you Howard!
-(defun ha/eshell-quit-or-delete-char (arg)
-  (interactive "p")
-  (if (and (eolp) (looking-back eshell-prompt-regexp))
-      (progn
-        (eshell-life-is-too-much))
-    (delete-forward-char arg)))
-
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (define-key eshell-mode-map (kbd "C-d")
-              'ha/eshell-quit-or-delete-char)))
-
-;; Sometimes a shell is better...
-
-
-(global-set-key (kbd "<f10>") 'eshell)
-
-;; I'd like to completely quit shell with C-c C-k
-(defun ach-kill-shell ()
-  "Kill the current shell process and buffer."
-  (interactive)
-  (let ((process (get-buffer-process (current-buffer))))
-    (when process
-      (delete-process process))
-    (kill-this-buffer)))
-
-(with-eval-after-load 'shell
-  (define-key shell-mode-map (kbd "C-c C-k") 'ach-kill-shell))
-
-;; Need color, mainly for python and shell coloring
-(use-package xterm-color
-  :ensure t
-  :config
-  ;; eshell color
-  (add-hook 'eshell-mode-hook
-            (lambda ()
-              (setq xterm-color-preserve-properties t)))
-
-  (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-
-  ;; comint color
-  (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter))
 
 ;; Exec path from shell. Mainly to get PATH out of my shell into
 ;; eshell and whatnot
