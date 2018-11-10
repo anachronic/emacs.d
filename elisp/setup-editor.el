@@ -282,6 +282,11 @@ Single Capitals as you type."
 
 (ach/enable-smooth-scrolling)
 
+(use-package editorconfig
+  :ensure t
+  :diminish "E"
+  :config
+  (editorconfig-mode 1))
 
 (provide 'setup-editor)
 ;;; setup-editor.el ends here
