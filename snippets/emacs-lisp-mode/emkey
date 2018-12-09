@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: emkey
+# key: emkey
+# --
+(evil-leader/set-key-for-mode '${1:mode} "${2:key}" $0)
