@@ -35,6 +35,7 @@
   (setq ivy-use-virtual-buffers t)
   (define-key ivy-minibuffer-map (kbd "TAB") #'ivy-alt-done)
   (define-key ivy-minibuffer-map [tab] #'ivy-alt-done)
+  (define-key ivy-minibuffer-map (kbd "<escape>") 'keyboard-escape-quit)
   (ivy-mode 1))
 
 ;; ivy-hydra is not too horrible
@@ -87,53 +88,11 @@
 (use-package company
   :ensure t
   :demand
-  :config
-  (defun ach-company-complete-if-only-one ()
-    "Complete candidate if there's only one option, otherwise yas-expand"
-    (interactive)
-    (if (eq 1 company-candidates-length)
-        (company-complete)
-      (yas-expand)))
-  (add-hook 'prog-mode-hook #'company-mode)
-  (add-hook 'comint-mode-hook #'company-mode)
-  (define-key company-active-map (kbd "TAB") #'ach-company-complete-if-only-one)
-  (define-key company-active-map (kbd "<tab>") #'ach-company-complete-if-only-one)
-  (define-key company-active-map (kbd "C-j") 'company-complete-common-or-cycle)
-
-  ;; Default settings
-  (setq company-idle-delay nil
-        company-tooltip-align-annotations t)
-
-  ;; default backends
-  (setq-default company-backends
-                '(company-bbdb
-                  company-nxml company-css
-                  company-eclim company-semantic company-clang
-                  company-xcode company-cmake
-                  company-capf
-                  company-files
-                  (company-dabbrev-code company-gtags company-etags
-                                        company-keywords)
-                  company-oddmuse))
-
-  ;; The following comes from
-  ;; https://github.com/company-mode/company-mode/issues/94#issuecomment-40884387
-  ;; This means no idle completion and no annoying C-S-SPC
-  (define-key company-mode-map [remap indent-for-tab-command]
-    'company-indent-for-tab-command)
-
-  (setq tab-always-indent 'complete)
-
-  (defvar completion-at-point-functions-saved nil)
-  (defun company-indent-for-tab-command (&optional arg)
-    (interactive "P")
-    (let ((completion-at-point-functions-saved completion-at-point-functions)
-          (completion-at-point-functions '(company-complete-common-wrapper)))
-      (indent-for-tab-command arg)))
-
-  (defun company-complete-common-wrapper ()
-    (let ((completion-at-point-functions completion-at-point-functions-saved))
-      (company-complete-common)))
+  :init
+  (global-company-mode)
+  (defun ach-add-company-backend-locally (symbol)
+    (setq-local company-backends company-backends)
+    (add-to-list 'company-backends symbol))
   :diminish "C"
   :bind (("C-S-<SPC>" . company-complete)))
 
@@ -152,14 +111,12 @@
 ;; Will be trying company-flx for a while.
 (use-package company-flx
   :ensure t
-  :after flx
+  :defer t
   :config
-  (company-flx-mode +1)
   (setq company-flx-limit 75))
 
 ;; Hippie expand
 (global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-/") 'hippie-expand)
 
 ;; Hippie expand can be very annoying with list expanding and
 ;; abbrevs. Config taken from purcell's
