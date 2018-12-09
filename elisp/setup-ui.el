@@ -7,7 +7,7 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 ;; load the latest theme.
-(load-theme 'ach-dark t)
+(load-theme 'ach-light t)
 
 ;; If powerline fonts are installed, use that
 (let ((pl-font "Source Code Pro"))
