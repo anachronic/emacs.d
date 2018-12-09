@@ -19,9 +19,6 @@
   (add-hook 'js2-mode-hook (lambda () (setq-local mode-name "Javascript")))
   (add-hook 'js2-jsx-mode-hook (lambda () (setq-local mode-name "JSX")))
 
-  ;; I tend to write javascript in camelCase.
-  (add-hook 'js2-mode-hook 'subword-mode)
-
   ;; The following comes from:
   ;; https://github.com/redguardtoo/emacs.d/blob/master/lisp/init-javascript.el
 
@@ -269,9 +266,7 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
   :ensure t
   :defer t
   :init
-  (add-hook 'js2-mode-hook (lambda ()
-                             (setq-local company-backends company-backends)
-                             (add-to-list 'company-backends 'company-tern))))
+  (add-hook 'js2-mode-hook (lambda () (ach-add-company-backend-locally 'company-tern))))
 
 ;; Tends to be a little crappy when finding definitions but is quite
 ;; useful for references. We use the default key: M-?
@@ -292,14 +287,8 @@ Merge RLT and EXTRA-RLT, items in RLT has *higher* priority."
 ;; js-comint. I have the need for this now
 (use-package js-comint
   :ensure t
-  :defer t
-  :after js2-mode
-  :config
-  (define-key js2-mode-map (kbd "C-x C-e") 'js-send-last-sexp)
-  (define-key js2-mode-map (kbd "C-M-x") 'js-send-last-sexp-and-go)
-  (define-key js2-mode-map (kbd "C-c C-s") 'js-send-buffer)
-  (define-key js2-mode-map (kbd "C-c C-b") 'js-send-buffer-and-go)
-  (define-key js2-mode-map (kbd "C-c C-z") 'run-js))
+  :commands run-js
+  :defer t)
 
 ;; They say this is good. I have yet to give it a try
 (use-package js2-refactor
