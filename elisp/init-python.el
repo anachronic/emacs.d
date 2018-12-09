@@ -4,18 +4,18 @@
 
 (require 'python)
 
-;; Anaconda feels sluggish and ultimately useless.
-;; I'll be trying jedi.
-(use-package company-jedi
+;; jedi was kinda awful
+(use-package anaconda-mode
   :ensure t
-  :config
-  (defun ach-python-mode-hook ()
-    (add-to-list 'company-backends 'company-jedi))
+  :init
+  (setq python-shell-interpreter "/usr/bin/python3")
+  (add-hook 'python-mode-hook 'anaconda-mode))
 
-  (add-hook 'python-mode-hook 'ach-python-mode-hook)
-  (define-key python-mode-map (kbd "M-.") 'jedi:goto-definition)
-  (define-key python-mode-map (kbd "M-,") 'jedi:goto-definition-pop-marker)
-  (define-key python-mode-map (kbd "C-c ?") 'jedi:show-doc))
+;; Now do company anaconda
+(use-package company-anaconda
+  :ensure t
+  :init
+  (add-hook 'python-mode-hook (lambda () (ach-add-company-backend-locally 'company-anaconda))))
 
 ;; Since linters are more clever than me at formatting code, let's use
 ;; a tool for that, but let's not be too aggresive, just bind it to a
@@ -32,8 +32,9 @@
   :defer t
   :commands (venv-workon venv-deactivate)
   :init
-  (define-key python-mode-map (kbd "C-c C-w") 'venv-workon)
-  (define-key python-mode-map (kbd "C-c C-d") 'venv-deactivate)
+  (evil-leader/set-key-for-mode 'python-mode
+    "mw" 'venv-workon
+    "md" 'venv-deactivate)
 
   :config
   (venv-initialize-interactive-shells)
@@ -61,31 +62,19 @@ If ARG is present, ask for a command to run."
       (with-current-buffer (get-buffer "*compilation*")
         (inferior-python-mode)))))
 
-
-;; Let's add more tweaks to the Python key bindings. I'd like to use
-;; C-c C-z (which is python-shell-switch-to-shell) without having to
-;; C-c C-p before. If it's not there, well, start it, why wouldn't we
-;; do that?
-(defun ach-python-switch-to-shell ()
-  "Switch to Python shell in other window, create a Python shell if it doesn't exist."
-  (interactive)
-  (condition-case nil
-      (python-shell-switch-to-shell)
-    (error (progn
-             (run-python)
-             (python-shell-switch-to-shell)))))
-
+(evil-leader/set-key-for-mode 'python-mode "mr" 'spacemacs/python-execute-file)
 
 ;; Dealing with imports is a pain in Python
-(autoload 'importmagic-mode "importmagic")
-(add-hook 'python-mode-hook 'importmagic-mode)
-(define-key python-mode-map (kbd "C-c C-f") nil)
-(with-eval-after-load 'importmagic
-  (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
-  (define-key importmagic-mode-map (kbd "C-c C-l") nil)
-  (setq importmagic-style-configuration-alist '((multiline . backslash)
-                                                (max_columns . 2000)))
-  (diminish 'importmagic-mode))
+(when (file-exists-p "/home/nsalas/forks/importmagic/importmagic.el")
+  (autoload 'importmagic-mode "importmagic")
+  (add-hook 'python-mode-hook 'importmagic-mode)
+  (define-key python-mode-map (kbd "C-c C-f") nil)
+  (with-eval-after-load 'importmagic
+    (define-key importmagic-mode-map (kbd "C-c C-f") 'importmagic-fix-imports)
+    (define-key importmagic-mode-map (kbd "C-c C-l") nil)
+    (setq importmagic-style-configuration-alist '((multiline . backslash)
+                                                  (max_columns . 2000)))
+    (diminish 'importmagic-mode)))
 
 ;; Use autoflake to remove unused crap. This idea comes from spacemacs
 ;; and the following URL
@@ -101,7 +90,7 @@ Runs autoflake --remove-all-unused-imports -i file"
   (revert-buffer t t t))
 
 ;; Bind it to C-c C-a (mnemonic is [a]utoflake)
-(define-key python-mode-map (kbd "C-c C-a") 'python-remove-unused-imports)
+(evil-leader/set-key-for-mode 'python-mode "mu" 'python-remove-unused-imports)
 
 ;; Ok. Now that we have gotten rid of unused imports, need to sort
 ;; them. py-isort lets us do that
@@ -109,7 +98,7 @@ Runs autoflake --remove-all-unused-imports -i file"
   :ensure t
   :defer t
   :init
-  (define-key python-mode-map (kbd "C-c C-s") 'py-isort-buffer))
+  (evil-leader/set-key-for-mode 'python-mode "ms" 'py-isort-buffer))
 
 ;; Another package of mine: projectile-django
 (when (file-exists-p "/home/nsalas/forks/projectile-django/projectile-django.el")
