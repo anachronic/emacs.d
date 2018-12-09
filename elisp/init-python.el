@@ -7,6 +7,7 @@
 ;; jedi was kinda awful
 (use-package anaconda-mode
   :ensure t
+  :diminish ""
   :init
   (setq python-shell-interpreter "/usr/bin/python3")
   (add-hook 'python-mode-hook 'anaconda-mode))
