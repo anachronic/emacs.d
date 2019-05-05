@@ -7,13 +7,12 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 ;; load the latest theme.
-(load-theme 'ach-dark t)
+;; (load-theme 'ach-light t)
+(color-theme-sanityinc-tomorrow-day)
 
 ;; If powerline fonts are installed, use that
-(let ((pl-font "Source Code Pro"))
-  (set-face-attribute 'default nil :font (if (member pl-font (font-family-list))
-                                             pl-font
-                                           "DejaVu Sans Mono")))
+(if (member "Fira Code Medium" (font-family-list))
+    (set-face-attribute 'default nil :font "Fira Code Medium"))
 
 (defun ach-set-font-height-125 ()
   "Set font height to 125."
@@ -21,7 +20,8 @@
   (set-face-attribute 'default nil :height 125))
 
 (set-face-attribute 'default nil
-                    :height 110)
+                    :height 135)
+
 (use-package fullframe
   :ensure t
   :config
