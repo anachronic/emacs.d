@@ -105,12 +105,7 @@
   :ensure t
   :config
   (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize))
-  (setenv "SHELL" "/usr/bin/zsh")
-
-  ;; jesus this was horrible to track
-  ;; http://chat.stackexchange.com/rooms/30591/discussion-between-tom-hunt-and-random832
-  (setenv "COLORTERM" "rxvt"))
+    (exec-path-from-shell-initialize)))
 
 ;; Struggled until I found
 ;; http://stackoverflow.com/questions/13763912/emacs-how-to-change-some-colors-in-m-x-shell
