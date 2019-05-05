@@ -33,3 +33,4 @@ emms
 /.edbi-ds-history
 /smex-items
 /custom.el
+/transient/history.el
